@@ -1,0 +1,107 @@
+// import { Fragment } from "react"
+import Link from "next/link"
+
+import { siteConfig } from "@/config/site"
+import { Icons } from "@/components/icons"
+import { MainNav } from "@/components/main-nav"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Button, buttonVariants } from "@/components/ui/button"
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
+export function SiteHeader() {
+  return (
+    <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-slate-900">
+      <div className="container flex h-16 items-center gap-6 sm:justify-between sm:space-x-0">
+        <Link href="/" className="items-center md:flex">
+          <Icons.logo className="h-14 w-14" />
+        </Link>
+        <MainNav items={siteConfig.mainNav} />
+        <div className="flex flex-1 items-center justify-end">
+          <nav className="flex items-center gap-2">
+            <ThemeToggle />
+            {/* <DropdownMenu dir="rtl">
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="border border-slate-200 px-2 text-base hover:bg-transparent dark:border-slate-600 lg:hidden"
+                >
+                  <Icons.hamburger className="h-8 w-8 text-slate-500" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="start"
+                sideOffset={24}
+                className="w-[300px] overflow-scroll"
+              >
+                <DropdownMenuLabel>
+                  <Link href="/" className="flex items-center">
+                    <Icons.logo className="ml-2 h-10 w-10" /> {siteConfig.name}
+                  </Link>
+                </DropdownMenuLabel>
+                {siteConfig.mainNav?.map(
+                  (item, index) =>
+                    item.href && (
+                      <Fragment key={index}>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem key={index} asChild>
+                          <Link href={item.href}>{item.title}</Link>
+                        </DropdownMenuItem>
+                      </Fragment>
+                    )
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu> */}
+            {/* <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className=" border-slate-200 px-2 text-base  dark:border-slate-600" // lg:hidden"
+                >
+                  <Icons.hamburger className="h-8 w-8 text-slate-400 transition-all duration-300 hover:text-slate-700 dark:hover:text-slate-300" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                position="left"
+                size="xl"
+                className="w-[75%] lg:w-[45%]"
+              >
+                <SheetHeader>
+                  <SheetTitle>Edit profile</SheetTitle>
+                  <SheetDescription>
+                    Make changes to your profile here. Click save when
+                    you&apos;re done.
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="grid gap-4 py-4">
+                  <div className="grid grid-cols-4 items-center gap-4"></div>
+                  <div className="grid grid-cols-4 items-center gap-4"></div>
+                </div>
+                <SheetFooter>
+                  <Button type="submit">Save changes</Button>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet> */}
+          </nav>
+        </div>
+      </div>
+    </header>
+  )
+}
