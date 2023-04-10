@@ -19,6 +19,12 @@ const ArticleRenderer = dynamic(
 export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
   // console.log("articleData: ", articleData)
 
+  console.log("articleData.content: ", articleData.content)
+  console.log(
+    "articleData.article_source_url: ",
+    articleData.article_source_url
+  )
+
   return (
     // <div className="flex h-screen flex-col justify-between">
     <div
