@@ -48,7 +48,9 @@ async function scrapeArticle(params) {
     let content
     let keywords
     content = $article(`${content_selector}`).html().trim()
-    keywords = $article('meta[name="keywords"]').attr("content").trim()
+    keywords =
+      $article('meta[name="keywords"]')?.attr("content")?.trim() ||
+      $article('meta[name="news_keywords"]')?.attr("content")?.trim()
 
     data = {
       article_source_url,
