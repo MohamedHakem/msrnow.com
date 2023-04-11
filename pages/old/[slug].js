@@ -93,6 +93,8 @@ const ArticlePage = ({ articleData }) => {
     ? articleData.description
     : articleData.title
 
+  // console.log("updatedArticle: ", updatedArticle)
+  // console.log("articleData?.keywords: ", articleData?.keywords)
   return (
     <Layout>
       <Head>
@@ -168,12 +170,15 @@ const ArticlePage = ({ articleData }) => {
 export default ArticlePage
 
 export async function getStaticProps({ params }) {
+  // console.log("params: ", params)
   const articleData = await scrapeArticle(params)
 
   // Convert the `createdAt`, `updatedAt`, and `published_at` fields of each item to a JSON-serializable format
   const formattedData = {
     ...articleData.article,
     published_at: articleData.article.published_at.toISOString(),
+    createdAt: articleData.article.createdAt.toISOString(),
+    updatedAt: articleData.article.updatedAt.toISOString(),
   }
 
   return {

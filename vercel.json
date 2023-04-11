@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/world",
+      "destination": "/news/world",
+      "permanent": true
+    },
+    {
+      "source": "/local",
+      "destination": "/news/local",
+      "permanent": true
+    },
+    {
+      "source": "/politics",
+      "destination": "/news/politics",
+      "permanent": true
+    },
+    {
+      "source": "/arts",
+      "destination": "/news/arts",
+      "permanent": true
+    }
+  ]
+}

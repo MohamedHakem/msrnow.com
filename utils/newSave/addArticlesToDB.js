@@ -37,7 +37,7 @@ async function addArticlesToDB(newArticles, category) {
         console.log("full error: ", error)
         sluggedArticles = addShortSlug(newArticles, "short_slug")
       } else {
-        console.log("counter: ", counter)
+        // console.log("counter: ", counter)
         console.log(
           "Error while saving article(s) to db: \n",
           "prisma error code: ",

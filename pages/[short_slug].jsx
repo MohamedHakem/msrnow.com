@@ -24,7 +24,7 @@ export default function ShortUrlPage({ data, newSlug }) {
   return (
     <>
       <Head>
-        <title>{`${data.article.title} - كل أخبارك`}</title>
+        <title>{`${data.article.title} - ${process.env.SITE_NAME_AR}`}</title>
         <link
           rel="canonical"
           href={`https://news-4.vercel.app/news/${data.article.slug}`}
@@ -33,7 +33,7 @@ export default function ShortUrlPage({ data, newSlug }) {
         <meta name="og:title" content={data.article.title}></meta>
         <meta property="og:description" content={desc}></meta>
         <meta property="og:locale" content="ar_AR"></meta>
-        <meta property="og:site_name" content="كل أخبارك"></meta>
+        <meta property="og:site_name" content={process.env.SITE_NAME_AR}></meta>
         <meta name="og:updated_time" content={data.article.published_at}></meta>
         <meta
           name="og:url"

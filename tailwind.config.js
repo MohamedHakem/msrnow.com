@@ -22,7 +22,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        hoverBgColor: { Default: "#eaeaea" },
+        hoverBgColor: { Default: "#f1f5f9" },
+        darkBorderColor: { Default: "neutral-800" },
+        borderColor: { Default: "neutral-50" },
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

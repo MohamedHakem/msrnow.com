@@ -3,28 +3,15 @@ import Image from "next/image"
 import Link from "next/link"
 import fallbackImage from "@/public/assets/images/fallbackImage.svg"
 import { editThumb } from "@/utils/old/editThumb"
-import { slugifyDate } from "@/utils/old/slugifyDate"
 import Balancer from "react-wrap-balancer"
-
-import { categoriesById } from "@/lib/categories"
-import { sourcesById } from "@/lib/sources"
 
 export default function FeaturedCard({ article, getBase64, category }) {
   const editThumbRes = editThumb(article, 1200)
   const updatedArticle = editThumbRes.obj
-  // const slugifiedDate = slugifyDate(updatedArticle.published_at)
-  const [imgSrc, set_imgSrc] = useState(updatedArticle.google_thumb) //${updatedArticle.thumb}
-
-  // const source = sourcesById[category][updatedArticle.sourceId]
-  // console.log("category: ", category)
-  // console.log("updatedArticle.sourceId: ", updatedArticle.sourceId)
-  const source = sourcesById[category][updatedArticle.sourceId]
-  // console.log("source: ", source)
-
-  // console.log("updatedArticle: ", updatedArticle)
+  const [imgSrc, set_imgSrc] = useState(updatedArticle.google_thumb)
 
   return (
-    <li className="news-item">
+    <li className="news-item" key={updatedArticle.short_slug}>
       <Link href={`/news/${updatedArticle.slug}`}>
         <div className="relative h-[330px] overflow-hidden rounded-lg border shadow-md lg:h-[450px]">
           <div className="absolute bottom-0 z-10 h-3/5 w-full overflow-hidden bg-gradient-to-t from-black via-slate-900 to-transparent opacity-60"></div>

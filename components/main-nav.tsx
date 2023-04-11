@@ -32,7 +32,8 @@ export function MainNav({ items }: MainNavProps) {
                 (item, index) =>
                   item.href && (
                     <NavigationMenuItem key={index} className="my-2 lg:flex">
-                      {item.title === "فن ومشاهير" ? (
+                      {item.title ===
+                      "فن ومشاهير - ملغي مؤقتا حتي اضافة اكثر من قسم فرعي" ? (
                         <>
                           <NavigationMenuTrigger className="h-9 font-semibold lg:flex">
                             {item.title}
@@ -71,7 +72,8 @@ export function MainNav({ items }: MainNavProps) {
                             </ul>
                           </NavigationMenuContent>
                         </>
-                      ) : item.title === "أخبار محلية" ? (
+                      ) : item.title ===
+                        "أخبار محلية - ملغي مؤقتا حتي اضافة اكتر من منطقة محلية" ? (
                         <>
                           <NavigationMenuTrigger className="h-9 font-semibold">
                             {item.title}
@@ -119,7 +121,7 @@ export function MainNav({ items }: MainNavProps) {
                                 <NavigationMenuLink
                                   className={cn(
                                     buttonVariants({ variant: "outline" }),
-                                    "mb-2 w-full font-semibold hover:bg-[#eaeaea] dark:hover:bg-slate-700"
+                                    "mb-2 w-full font-semibold hover:bg-slate-100 dark:hover:bg-slate-700"
                                   )}
                                 >
                                   كل المناطق
@@ -134,7 +136,7 @@ export function MainNav({ items }: MainNavProps) {
                           legacyBehavior
                           passHref
                           className={cn(
-                            "flex items-center text-lg font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-100 sm:text-sm",
+                            "flex items-center text-lg font-semibold text-slate-600 hover:text-slate-100 focus:shadow-md dark:text-slate-100 sm:text-lg",
                             item.disabled &&
                               "cursor-not-allowed opacity-80 hover:font-semibold"
                           )}
@@ -142,7 +144,7 @@ export function MainNav({ items }: MainNavProps) {
                           <NavigationMenuLink
                             className={cn(
                               navigationMenuTriggerStyle(),
-                              "mx-[1px] h-9 font-semibold"
+                              "mx-[1px] h-10 font-semibold sm:text-lg"
                             )}
                           >
                             {item.title}
@@ -172,7 +174,7 @@ const ListItem = React.forwardRef<
       <Link href={href} passHref legacyBehavior {...props}>
         <NavigationMenuLink
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#eaeaea] focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-200 focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700",
             className
           )}
         >

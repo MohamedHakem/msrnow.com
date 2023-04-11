@@ -1,13 +1,25 @@
 import { useState } from "react"
+// import dynamic from "next/dynamic"
 import Head from "next/head"
+// import Image from "next/image"
+// import Link from "next/link"
 import logo from "@/public/android-chrome-192x192.png"
 import { scrapeArticle } from "@/utils/newScrape/scrapeArticle.js"
 import { editThumb } from "@/utils/old/editThumb"
 import { getBase64 } from "@/utils/old/imagePlaceholderBase64.js"
 import { slugifyDate } from "@/utils/old/slugifyDate"
 
+// import { categoriesById } from "@/lib/categories"
+// import { sourcesById } from "@/lib/sources"
 import { Layout } from "@/components/layout"
 import { NewsArticle } from "../../components/newsArticle"
+
+// const ArticleRenderer = dynamic(
+//   () => import("@/components/old/ArticleRenderer"),
+//   {
+//     ssr: false,
+//   }
+// )
 
 const ArticlePage = ({ articleData }) => {
   console.log("articleData: ", articleData ? true : false)
@@ -93,6 +105,8 @@ const ArticlePage = ({ articleData }) => {
     ? articleData.description
     : articleData.title
 
+  // console.log("updatedArticle: ", updatedArticle)
+  // console.log("articleData?.keywords: ", articleData?.keywords)
   return (
     <Layout>
       <Head>
@@ -168,12 +182,15 @@ const ArticlePage = ({ articleData }) => {
 export default ArticlePage
 
 export async function getStaticProps({ params }) {
+  // console.log("params: ", params)
   const articleData = await scrapeArticle(params)
 
   // Convert the `createdAt`, `updatedAt`, and `published_at` fields of each item to a JSON-serializable format
   const formattedData = {
     ...articleData.article,
     published_at: articleData.article.published_at.toISOString(),
+    createdAt: articleData.article.createdAt.toISOString(),
+    updatedAt: articleData.article.updatedAt.toISOString(),
   }
 
   return {

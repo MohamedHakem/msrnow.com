@@ -1,25 +1,33 @@
 import { Key } from "react"
 import Head from "next/head"
-// import Link from "next/link"
+import Link from "next/link"
+// import getCategory from "@/services/category/getCategory"
+import getCategoryArticles from "@/services/homepage/getArticles"
 import { getLastDateOnGithub } from "@/utils/newGet/getLastDateOnGithub"
 import addArticlesToDB from "@/utils/newSave/addArticlesToDB"
 import { updateLastDateOnGithub } from "@/utils/newSave/updateLastDateOnGithub"
 import { scrapeLatestNews } from "@/utils/newScrape/scrapeLatestNews"
 import { formatArrayDatetimeSince } from "@/utils/old/formatArrayDatetimeSince"
-// import { getLatestEgyptNewsFromGithub } from "@/utils/old/getLatestEgyptNewsFromGithub"
 import { getBase64 } from "@/utils/old/imagePlaceholderBase64.js"
 
-// import { siteConfig } from "@/config/site"
-import prisma from "@/lib/prisma"
-import Cardx240 from "@/components/cards/cardx240"
+// import prisma from "@/lib/prisma"
 import Cardx360 from "@/components/cards/cardx360"
-// import { sourcesById } from "@/lib/sources"
 import { Layout } from "@/components/layout"
-import { ArticleCard, FeaturedCard } from "@/components/old/index"
 
-// import { buttonVariants } from "@/components/ui/button"
+// import { FeaturedCard } from "@/components/old/index"
 
-export default function IndexPage({ formattedData, category }) {
+// export default function IndexPage({ formattedData, category }) {
+export default function IndexPage({ data, category }) {
+  const categories = [
+    { name: "أخبار مصر", slug: "/news/egypt", objName: "Egypt" },
+    { name: "الرياضة", slug: "/sports", objName: "Sports" },
+    { name: "فن ومشاهير", slug: "/news/arts", objName: "Arts" },
+    { name: "مال وأعمال", slug: "/finance", objName: "Finance" },
+    { name: "خارج الحدود", slug: "/news/world", objName: "World" },
+    { name: "أخبار سياسية", slug: "/news/politics", objName: "Politics" },
+    { name: "أخبار محلية", slug: "/news/local", objName: "Local" },
+  ]
+
   return (
     <Layout>
       <Head>
@@ -27,135 +35,102 @@ export default function IndexPage({ formattedData, category }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="container grid items-center gap-6 px-4 pt-6 pb-8 md:py-10">
-        <div
-          dir="rtl"
-          className="m-auto w-full items-center justify-center" //my-[85px] max-w-5xl
-        >
-          <div className="mt-10 mb-12 md:mx-2">
-            <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2 lg:grid-cols-2 xl:grid-cols-2">
-              {formattedData.map(
-                (article: { title: string; short_slug: Key }, i: number) =>
-                  i < 4 ? (
-                    <FeaturedCard
-                      key={article.short_slug}
-                      article={article}
-                      getBase64={getBase64}
-                      category={category}
-                    />
-                  ) : null
-              )}
-            </ul>
-          </div>
-          <div className="mb-10 mt-4 md:mx-2">
-            <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-4">
-              {formattedData.map(
-                (article: { title: string; short_slug: Key }, i: number) =>
-                  i >= 4 ? (
-                    <>
+        <div dir="rtl" className="m-auto w-full items-center justify-center">
+          {categories.map((category, index) => (
+            <div key={index} className="mb-10 mt-4 md:mx-2">
+              {index === 1 ? (
+                <hr className="my-8 border-4 border-dashed dark:border-neutral-800"></hr>
+              ) : null}
+              <div>
+                <h2 className="my-8 w-fit text-3xl font-semibold underline underline-offset-[10px]">
+                  <Link href={`${category.slug}`}>{category.name}</Link>
+                </h2>
+              </div>
+              <div className="w-full rounded-3xl border px-8 pb-4 pt-12 dark:border-neutral-800">
+                <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-4">
+                  {data[`${category.objName}Articles`].map(
+                    (article: { title: string; slug: Key }) => (
                       <Cardx360
-                        key={article.short_slug}
+                        key={article.slug}
                         article={article}
                         getBase64={getBase64}
                         category={category}
                       />
-                    </>
-                  ) : null
-              )}
-            </ul>
-            {/* <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
-              {formattedData.map(
-                (article: { title: string; short_slug: Key }, i: number) =>
-                  article.title.length < 62 ? (
-                    <>
-                      <Cardx240
-                        key={article.short_slug}
-                        article={article}
-                        getBase64={getBase64}
-                        category={category}
-                      />
-                    </>
-                  ) : null
-              )}
-            </ul> */}
-          </div>
+                    )
+                  )}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </Layout>
   )
 }
 
+// spread, map, filter the 3 are performance killers, avoid them
 export async function getStaticProps() {
   console.log("========== SCRAPING =========")
   // specify category
   const category = "egypt"
 
+  console.time("Homepage server")
+  console.time("scraping")
   // get last date
   const lastDate = await getLastDateOnGithub(category)
 
   // scrape
   const { newLastDate, articles } = await scrapeLatestNews(lastDate, category)
 
-  // update the last-date AND save scraped articles, if scraped > 0 articles
+  // update the last-date AND save scraped articles
   if (articles.length > 0) {
     console.log(`[getStaticProps] scraped ${articles.length} articles`)
-    updateLastDateOnGithub(newLastDate, category) // go for prod, no need, using separate files for dev and prod
+    updateLastDateOnGithub(newLastDate, category)
 
     await addArticlesToDB(articles, category)
   }
+  console.timeEnd("scraping")
 
   console.log("========== FETCHING FROM DB =========")
-  const data = await prisma.Article.findMany({
-    select: {
-      title: true,
-      slug: true,
-      published_at: true,
-      google_thumb: true,
-      source: {
-        select: {
-          name: true,
-        },
-      },
-    },
-    orderBy: {
-      published_at: "desc",
-    },
-    take: 40,
-  })
 
-  // Convert the `createdAt`, `updatedAt`, and `published_at` fields of each item to a JSON-serializable format
-  let formattedData = data.map(
-    (item: {
-      createdAt: { toISOString: () => any }
-      updatedAt: { toISOString: () => any }
-      published_at: { toISOString: () => any }
-    }) => ({
-      ...item,
-      // createdAt: item.createdAt.toISOString(),
-      // updatedAt: item.updatedAt.toISOString(),
-      published_at: item.published_at.toISOString(),
-    })
-  )
+  console.time("Fetching for homepage")
+  const categories = [
+    "Egypt",
+    "Politics",
+    "Arts",
+    "World",
+    "Local",
+    "Sports",
+    "Finance",
+  ]
 
-  // turn the datetime into "2 hours ago" in Arabic as timeAgo property on each article's object
-  formatArrayDatetimeSince(formattedData)
+  const data = {
+    EgyptArticles: [],
+    PoliticsArticles: [],
+    ArtsArticles: [],
+    WorldArticles: [],
+    LocalArticles: [],
+    SportsArticles: [],
+    FinanceArticles: [],
+  }
 
-  console.log("formattedData.length: ", formattedData.length)
+  for (const category of categories) {
+    const articles = await getCategoryArticles(category.toLowerCase(), 8)
 
-  // sort the articleArray to take the most recent num of it
-  formattedData.sort(
-    (
-      a: { published_at: string | Date },
-      b: { published_at: string | Date }
-    ) => {
-      return (
-        new Date(b.published_at).getTime() - new Date(a.published_at).getTime()
-      )
+    for (const article of articles) {
+      article.published_at = new Date(article.published_at).toISOString()
     }
-  )
 
-  console.log("formattedData[0]: ", formattedData[0].slug)
+    formatArrayDatetimeSince(articles)
+    data[`${category}Articles`] = articles
+  }
+
+  console.timeEnd("Fetching for homepage")
+  console.timeEnd("Homepage server")
+  console.log("done fetching")
+
   return {
-    props: { category, formattedData },
+    props: { category, data },
     revalidate: 1800,
   }
 }

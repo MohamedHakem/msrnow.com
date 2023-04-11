@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       <description>كل اخبارك - البوابة العربية للأخبار - مصدرك الأول للأخبار باللغة العربية</description>
       <language>ar-eg</language>
       <lastBuildDate>${new Date()}</lastBuildDate>
-      <copyright>كل أخبارك</copyright>`
+      <copyright>{process.env.SITE_NAME_AR}</copyright>`
 
   const formatDate = (date) => {
     const input_datetime_utc = new Date(date)

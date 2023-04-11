@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-10 border-t border-slate-300 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-400">
+    <footer className="mt-10 border-t border-slate-300 dark:border-slate-700 dark:bg-[#18191a] dark:text-gray-400">
       {/* <section className="m-auto flex h-auto items-center justify-center bg-[#f9f9f9] py-10 text-center">
         <div className="py-9 px-4 2xl:container md:py-12 md:px-6 lg:px-20 2xl:mx-auto">
           <div className="mb-8 text-center">
@@ -277,7 +277,7 @@ export function SiteFooter() {
 
       <div className="border-b border-slate-300 dark:border-slate-700">
         <div className="container my-8">
-          <h3 className="text-6xl font-black">كل أخبارك</h3>
+          <h3 className="text-6xl font-black">مصر الان</h3>
           {/* <svg width="124" height="32" xmlns="http://www.w3.org/2000/svg">
               <g fill="currentColor" fill-rule="evenodd">
                 <path d="M13.29.71c12.26-2.16 15.792.217 17.972 12.586 2.181 12.368-.038 15.76-12.583 17.973C6.133 33.48 2.889 31.056.707 18.684-1.474 6.312 1.032 2.873 13.291.71zm1.413 5.465c-2.347.414-4.044 1.492-5.02 3.058-.767 1.23-1.011 2.671-.79 3.838.489 2.573 2.613 4.193 6.917 4.52l.336.024.334.027.318.03c1.5.15 2.46.405 2.99.733.354.218.496.456.597 1.033.193 1.095-.66 2.087-2.906 2.483-1.485.262-3.07-.053-4.803-.998a1.875 1.875 0 10-1.795 3.293c2.445 1.333 4.879 1.817 7.25 1.399 4.139-.73 6.533-3.51 5.948-6.828-.556-3.151-2.778-4.557-7.68-4.914l-.323-.023c-1.579-.121-2.567-.428-3.089-.818-.258-.194-.353-.365-.41-.66-.049-.263.033-.745.288-1.155.392-.628 1.156-1.113 2.49-1.348 1.182-.209 2.325-.008 3.496.628a1.875 1.875 0 101.791-3.295c-1.903-1.035-3.905-1.386-5.939-1.027z"></path>
@@ -533,7 +533,7 @@ export function SiteFooter() {
           </div> */}
           <div className="flex items-center border-t border-slate-300 pt-10 text-black dark:border-slate-700 dark:text-gray-400 md:space-x-6">
             <div className="grow">
-              © 2023 <span className="mr-3">كل أخبارك</span>
+              © 2023 <span className="mr-3">مصر الان | MsrNow.com</span>
               {/* <span className="mr-5">news-4.vercel.app</span> */}
             </div>
             <div className="flex flex-row gap-4">
@@ -542,6 +542,9 @@ export function SiteFooter() {
               </span>
               <span>
                 <Link href="/contact">اتصل بنا</Link>
+              </span>
+              <span>
+                <Link href="/terms">شروط</Link>
               </span>
               <span>
                 <Link href="/privacy-policy">الخصوصية</Link>

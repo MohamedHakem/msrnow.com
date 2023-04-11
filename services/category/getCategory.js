@@ -1,8 +1,22 @@
 import prisma from "@/lib/prisma"
 
-export default async function getCategory(id) {
+export default async function getCategory(by, id, name) {
   try {
-    if (!id) {
+    if (by === "homepage") {
+      // get all categories ids
+      const categories = await prisma.category.findMany({
+        select: {
+          id: true,
+          name: true,
+        },
+      })
+      if (!categories) {
+        return { success: false, categories }
+      }
+      return { success: true, categories }
+    }
+    if (!id && !name) {
+      // get all categories
       const categories = await prisma.category.findMany({
         select: {
           id: true,
@@ -16,17 +30,33 @@ export default async function getCategory(id) {
       }
       return { success: true, categories }
     }
-    const category = await prisma.category.findUnique({
-      where: {
-        id: id,
-      },
-    })
+    if (by === "name") {
+      // get category by name
+      const category = await prisma.category.findFirst({
+        where: {
+          name: name,
+        },
+      })
 
-    if (!category) {
-      return { success: false }
+      if (!category) {
+        return { success: false }
+      }
+      return { success: true, category }
     }
-    return { success: true, category }
+    if (by === "id") {
+      // get category by id
+      const category = await prisma.category.findUnique({
+        where: {
+          id: id,
+        },
+      })
+
+      if (!category) {
+        return { success: false }
+      }
+      return { success: true, category }
+    }
   } catch (error) {
-    console.log(`Error getting category {${id}}`)
+    console.log(`Error getting category {${id}}, error: ${error}`)
   }
 }

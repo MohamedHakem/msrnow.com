@@ -57,30 +57,20 @@ export function VerticalShare({ articleData }) {
   }
 
   return (
-    <div dir="rtl" className="sticky top-36 rounded-lg border">
+    <div
+      dir="rtl"
+      className="sticky top-36 w-full rounded-lg border dark:border-slate-700 dark:bg-slate-700/60"
+    >
       <ul className="flex flex-col">
-        <li className="m-auto flex w-full flex-col py-2 text-gray-500">
+        <li className="m-auto flex w-full flex-col py-2 text-gray-500 dark:text-slate-300">
           <span className="text-center text-3xl font-bold">
             {articleData.shares}
           </span>
-          <span className="text-center text-xs xl:mr-0 xl:text-lg">مشاركة</span>
+          <span className="mb-2 text-center text-xs xl:mr-0 xl:text-[15px]">
+            مشاركة
+          </span>
         </li>
-        <li className="border-t hover:bg-gray-100">
-          <button
-            className="contents"
-            onClick={() => toaster("tw_shares", tw_shares + 1)}
-          >
-            <Link
-              target={"_blank"}
-              rel="noopener nofollow noreferrer"
-              title="Share on Twitter"
-              href={`https://twitter.com/intent/tweet?via=msrnowcom&text=${articleData.title}&url=https://news-4.vercel.app/${articleData.short_slug}`}
-            >
-              <Icons.twitter className="px-5 py-4" />
-            </Link>
-          </button>
-        </li>
-        <li className="h-[68px] w-[75px] border-t hover:bg-gray-100">
+        <li className="h-[58px] w-[65px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
           <button
             className="contents"
             onClick={() => toaster("fb_shares", fb_shares + 1)}
@@ -96,7 +86,22 @@ export function VerticalShare({ articleData }) {
             </Link>
           </button>
         </li>
-        <li className="h-[68px] w-[75px] border-t hover:bg-gray-100">
+        <li className="border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
+          <button
+            className="contents"
+            onClick={() => toaster("tw_shares", tw_shares + 1)}
+          >
+            <Link
+              target={"_blank"}
+              rel="noopener nofollow noreferrer"
+              title="Share on Twitter"
+              href={`https://twitter.com/intent/tweet?via=msrnowcom&text=${articleData.title}&url=https://news-4.vercel.app/${articleData.short_slug}`}
+            >
+              <Icons.twitter className="p-5" />
+            </Link>
+          </button>
+        </li>
+        <li className="h-[58px] w-[65px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
           <button
             className="contents"
             onClick={() => toaster("wa_shares", wa_shares + 1)}
@@ -107,11 +112,11 @@ export function VerticalShare({ articleData }) {
               title="Share on Facebook"
               href={`https://api.whatsapp.com/send?text=https://news-4.vercel.app/${articleData.short_slug} ${articleData.title}`}
             >
-              <Icons.whatsapp className="h-[68px] w-full p-3 px-[12px]" />
+              <Icons.whatsapp className="h-[58px] w-full p-3 px-[12px]" />
             </Link>
           </button>
         </li>
-        <li className="h-[68px] w-[75px] border-t hover:bg-gray-100">
+        <li className="h-[58px] w-[65px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
           <button
             className="contents"
             onClick={() => toaster("ln_shares", ln_shares + 1)}
@@ -123,7 +128,7 @@ export function VerticalShare({ articleData }) {
               // href={`https://www.linkedin.com/sharing/share-offsite/?url=https://news-4.vercel.app/${articleData.short_slug}&via=@msrnowcom&text=${title}`}
               href={`https://www.linkedin.com/shareArticle?mini=true&url=https://news-4.vercel.app/${articleData.short_slug}&title=${articleData.title}`}
             >
-              <Icons.linkedin className="h-[68px] w-full p-3 px-[12px]" />
+              <Icons.linkedin className="h-[58px] w-full p-3 px-[12px]" />
             </Link>
           </button>
         </li>

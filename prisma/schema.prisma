@@ -13,7 +13,7 @@ model Article {
   title              String   @default("") @db.VarChar(150)
   slug               String   @unique @db.VarChar(120)
   content            String?  @default("") @db.Text
-  google_thumb       String   @default("") @db.VarChar(330)
+  google_thumb       String   @default("") @db.VarChar(700)
   thumbnail_url      String?  @default("") @db.VarChar(400)
   scraped_from       String   @default("") @db.VarChar(50)
   article_google_url String   @default("") @db.VarChar(1400)

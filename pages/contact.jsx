@@ -9,8 +9,8 @@ const ContactUsPage = () => {
         dir="rtl"
         className="m-auto my-[85px] max-w-5xl items-center justify-center"
       >
-        <div className="m-10 pt-3 text-center">
-          <h1 className="mt-12 mb-6 text-4xl">اتصل بنا</h1>
+        <div className="m-10 text-center">
+          <h1 className="mb-6 text-4xl">اتصل بنا</h1>
         </div>
         <div className="mx-2 mt-10 mb-4">
           <article class="main-content mb">

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import smallFallbackImage from "@/public/assets/images/smallFallbackImage.svg"
 
 // import Balancer from "react-wrap-balancer"
 
@@ -16,10 +17,7 @@ export default function Cardx360({ article, getBase64, category }) {
   // }
 
   return (
-    <li
-      key={updatedArticle.titleSlug}
-      className="news-item mb-3 box-content rounded-lg bg-white"
-    >
+    <li className="news-item mb-3 box-content rounded-lg bg-transparent">
       <Link href={`/news/${updatedArticle.slug}`} className="overflow-hidden">
         <Image
           unoptimized
@@ -30,15 +28,24 @@ export default function Cardx360({ article, getBase64, category }) {
           height={180}
           placeholder={"blur"}
           blurDataURL={getBase64()}
-          onError={() => set_imgSrc(updatedArticle.google_thumb.slice(30, -21))}
+          onLoadingComplete={(result) => {
+            if (result.naturalWidth === 0) {
+              set_imgSrc(updatedArticle.google_thumb.slice(30, -21))
+            }
+          }}
+          onError={() => set_imgSrc(smallFallbackImage)}
           sizes="(max-width: 768px) 100vw,
           (max-width: 1024px) 50vw,
           33vw"
         />
         <div className="my-2 text-right">
-          <div className="pr-0">
-            <h3 className="mb-0 pl-[1px] text-lg font-semibold md:text-[17px]">
-              {updatedArticle.title}
+          <div className="pr-0 text-black dark:text-white">
+            <h3 className="mb-0 mr-[4px] pl-[1px] text-lg font-semibold md:text-[17px]">
+              {/* {updatedArticle.title} */}
+              {updatedArticle.title.replace(
+                /\b\w+\.(com|net|org|co|uk)\b/gi,
+                ""
+              )}
             </h3>
             <time
               dateTime={updatedArticle.datetime}
