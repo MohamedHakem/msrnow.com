@@ -17,7 +17,8 @@ import { Layout } from "@/components/layout"
 // import { FeaturedCard } from "@/components/old/index"
 
 // export default function IndexPage({ formattedData, category }) {
-export default function IndexPage({ data, category }) {
+// export default function IndexPage({ data, category }) {
+export default function IndexPage({ data }) {
   const categories = [
     { name: "أخبار مصر", slug: "/news/egypt", objName: "Egypt" },
     { name: "الرياضة", slug: "/sports", objName: "Sports" },
@@ -76,29 +77,28 @@ export default function IndexPage({ data, category }) {
 
 // spread, map, filter the 3 are performance killers, avoid them
 export async function getStaticProps() {
-  console.log("========== SCRAPING =========")
-  // specify category
-  const category = "egypt"
+  // console.log("========== SCRAPING =========")
+  // // specify category
+  // const category = "egypt"
 
-  console.time("Homepage server")
-  console.time("scraping")
-  // get last date
-  const lastDate = await getLastDateOnGithub(category)
+  // console.time("Homepage server")
+  // console.time("scraping")
+  // // get last date
+  // const lastDate = await getLastDateOnGithub(category)
 
-  // scrape
-  const { newLastDate, articles } = await scrapeLatestNews(lastDate, category)
+  // // scrape
+  // const { newLastDate, articles } = await scrapeLatestNews(lastDate, category)
 
-  // update the last-date AND save scraped articles
-  if (articles.length > 0) {
-    console.log(`[getStaticProps] scraped ${articles.length} articles`)
-    updateLastDateOnGithub(newLastDate, category)
+  // // update the last-date AND save scraped articles
+  // if (articles.length > 0) {
+  //   console.log(`[getStaticProps] scraped ${articles.length} articles`)
+  //   updateLastDateOnGithub(newLastDate, category)
 
-    await addArticlesToDB(articles, category)
-  }
-  console.timeEnd("scraping")
+  //   await addArticlesToDB(articles, category)
+  // }
+  // console.timeEnd("scraping")
 
   console.log("========== FETCHING FROM DB =========")
-
   console.time("Fetching for homepage")
   const categories = [
     "Egypt",
@@ -132,11 +132,11 @@ export async function getStaticProps() {
   }
 
   console.timeEnd("Fetching for homepage")
-  console.timeEnd("Homepage server")
   console.log("done fetching")
 
   return {
-    props: { category, data },
+    props: { data },
     revalidate: 1800,
   }
+  // props: { category, data },
 }

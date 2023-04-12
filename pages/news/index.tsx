@@ -103,8 +103,8 @@ export async function getStaticProps() {
       published_at: { toISOString: () => any }
     }) => ({
       ...item,
-      createdAt: item.createdAt.toISOString(),
-      updatedAt: item.updatedAt.toISOString(),
+      // createdAt: item.createdAt.toISOString(),
+      // updatedAt: item.updatedAt.toISOString(),
       published_at: item.published_at.toISOString(),
     })
   )
