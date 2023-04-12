@@ -98,7 +98,7 @@ export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
           </div>
         </div>
         {/* <div className="col-span-12 h-full w-full lg:col-span-7 lg:border-[4px] lg:border-dashed lg:p-8 dark:lg:border-[6px] dark:lg:border-neutral-800"> */}
-        <div className="col-span-12 h-full w-full lg:col-span-7 lg:border-[0px] lg:border-dashed lg:p-8 dark:lg:border-[0px] dark:lg:border-neutral-800">
+        <div className="col-span-12 h-full w-full lg:col-span-8 lg:border-[0px] lg:border-dashed lg:p-8 dark:lg:border-[0px] dark:lg:border-neutral-800">
           <div className="bg-transparent">
             <h1
               className="m-auto mb-12 max-w-fit text-center text-[24px] font-black leading-[45px] text-black
@@ -130,7 +130,7 @@ export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
           />
           <>
             {!articleData.content ? (
-              <div className="w-full overflow-hidden md:w-[680px]">
+              <div className="w-full overflow-hidden">
                 <div className="relative w-full lg:w-[1025px]">
                   <iframe
                     src={articleData.article_source_url}
