@@ -7,7 +7,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-[#18191a]">
+    <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-[#353d50]">
       <div className="container flex h-20 items-center gap-6 sm:justify-between sm:space-x-0">
         <Link href="/" className="items-center md:flex">
           <Icons.logo className="h-14 w-14" />

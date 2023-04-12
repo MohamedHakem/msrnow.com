@@ -6,7 +6,8 @@ export default function Document() {
       <Head />
       <body
         dir="rtl"
-        className="min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-[#111010] dark:text-slate-50"
+        // className="min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-[#111010] dark:text-slate-50"
+        className="min-h-screen bg-white font-sans text-slate-900 antialiased dark:bg-[#2b3347] dark:text-slate-50"
       >
         <Main />
         <NextScript />

@@ -59,18 +59,18 @@ export function VerticalShare({ articleData }) {
   return (
     <div
       dir="rtl"
-      className="sticky top-36 w-full rounded-lg border dark:border-slate-700 dark:bg-slate-700/60"
+      className="sticky top-72 w-full dark:border-slate-700 dark:bg-slate-700/60"
     >
       <ul className="flex flex-col">
         <li className="m-auto flex w-full flex-col py-2 text-gray-500 dark:text-slate-300">
           <span className="text-center text-3xl font-bold">
             {articleData.shares}
           </span>
-          <span className="mb-2 text-center text-xs xl:mr-0 xl:text-[15px]">
+          <span className="mb-2 text-center text-xs xl:mr-0 xl:text-[13px]">
             مشاركة
           </span>
         </li>
-        <li className="h-[58px] w-[65px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
+        <li className="h-[58px] w-[55px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-gray-600">
           <button
             className="contents"
             onClick={() => toaster("fb_shares", fb_shares + 1)}
@@ -82,26 +82,12 @@ export function VerticalShare({ articleData }) {
               title="Share on Facebook"
               href={`https://www.facebook.com/sharer/sharer.php?u=https://news-4.vercel.app/${articleData.short_slug}`}
             >
-              <Icons.facebook className="p-3 px-6" />
+              <Icons.facebook className="py-3 px-[18px]" />
             </Link>
           </button>
         </li>
-        <li className="border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
-          <button
-            className="contents"
-            onClick={() => toaster("tw_shares", tw_shares + 1)}
-          >
-            <Link
-              target={"_blank"}
-              rel="noopener nofollow noreferrer"
-              title="Share on Twitter"
-              href={`https://twitter.com/intent/tweet?via=msrnowcom&text=${articleData.title}&url=https://news-4.vercel.app/${articleData.short_slug}`}
-            >
-              <Icons.twitter className="p-5" />
-            </Link>
-          </button>
-        </li>
-        <li className="h-[58px] w-[65px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
+
+        <li className="h-[58px] w-[55px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-gray-600">
           <button
             className="contents"
             onClick={() => toaster("wa_shares", wa_shares + 1)}
@@ -112,11 +98,27 @@ export function VerticalShare({ articleData }) {
               title="Share on Facebook"
               href={`https://api.whatsapp.com/send?text=https://news-4.vercel.app/${articleData.short_slug} ${articleData.title}`}
             >
-              <Icons.whatsapp className="h-[58px] w-full p-3 px-[12px]" />
+              <Icons.whatsapp className="h-[58px] w-full py-3 px-[8px]" />
             </Link>
           </button>
         </li>
-        <li className="h-[58px] w-[65px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-slate-100/50">
+        <li className="w-[55px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-gray-600">
+          <button
+            className="contents"
+            onClick={() => toaster("tw_shares", tw_shares + 1)}
+          >
+            <Link
+              target={"_blank"}
+              rel="noopener nofollow noreferrer"
+              title="Share on Twitter"
+              href={`https://twitter.com/intent/tweet?via=msrnowcom&text=${articleData.title}&url=https://news-4.vercel.app/${articleData.short_slug}`}
+            >
+              <Icons.twitter className="p-3" />
+            </Link>
+          </button>
+        </li>
+
+        <li className="h-[58px] w-[55px] border-t hover:bg-gray-200/80 dark:border-slate-900 dark:hover:bg-gray-600">
           <button
             className="contents"
             onClick={() => toaster("ln_shares", ln_shares + 1)}

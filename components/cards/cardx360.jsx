@@ -17,11 +17,11 @@ export default function Cardx360({ article, getBase64, category }) {
   // }
 
   return (
-    <li className="news-item mb-3 box-content rounded-lg bg-transparent">
+    <li className="news-item mb-0  rounded-lg bg-transparent md:mb-3">
       <Link href={`/news/${updatedArticle.slug}`} className="overflow-hidden">
         <Image
           unoptimized
-          className="relative z-0 box-content h-[180px] w-[360px] rounded-xl object-cover lg:h-[200px] lg:w-[322px]" // h-[280px] w-full
+          className="relative z-0 box-content h-[180px] w-[368px] rounded-xl object-cover md:w-[360px] lg:h-[200px] lg:w-[322px]" // h-[280px] w-full
           src={imgSrc}
           alt={updatedArticle.title}
           width={360}

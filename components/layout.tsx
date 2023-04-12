@@ -11,7 +11,7 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="flex h-screen flex-col justify-between">
       <div dir="ltr">
-        <Toaster position="bottom-right" reverseOrder={false} />
+        <Toaster position="bottom-center" reverseOrder={false} />
       </div>
       <SiteHeader />
       <main className="mb-auto">{children}</main>

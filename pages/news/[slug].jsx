@@ -173,6 +173,8 @@ export async function getStaticProps({ params }) {
   // Convert the `createdAt`, `updatedAt`, and `published_at` fields of each item to a JSON-serializable format
   const formattedData = {
     ...articleData.article,
+    createdAt: articleData.article.createdAt.toISOString(),
+    updatedAt: articleData.article.updatedAt.toISOString(),
     published_at: articleData.article.published_at.toISOString(),
   }
 

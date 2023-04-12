@@ -1,4 +1,4 @@
-import { Key } from "react"
+import { Fragment, Key } from "react"
 import Head from "next/head"
 import Link from "next/link"
 // import getCategory from "@/services/category/getCategory"
@@ -34,28 +34,34 @@ export default function IndexPage({ data, category }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="container grid items-center gap-6 px-4 pt-6 pb-8 md:py-10">
+      <section className="container grid items-center gap-6 px-[10px] pt-6 pb-8 md:py-10 lg:px-4">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           {categories.map((category, index) => (
             <div key={index} className="mb-10 mt-4 md:mx-2">
-              {index === 1 ? (
-                <hr className="my-8 border-4 border-dashed dark:border-neutral-800"></hr>
-              ) : null}
-              <div>
-                <h2 className="my-8 w-fit text-3xl font-semibold underline underline-offset-[10px]">
+              {/* `{console.log("category.objName", category.objName)}` */}
+              <div
+              // className={`bg-${
+              //   category.objName === "Finance" ? "[#1B54E5]" : "red"
+              // }`}
+              >
+                <h2
+                  className={`my-8 mx-auto w-full border-4 p-4 text-center text-3xl font-semibold underline underline-offset-[10px] md:my-8 md:mx-0 md:w-fit md:border-0`}
+                >
                   <Link href={`${category.slug}`}>{category.name}</Link>
                 </h2>
               </div>
-              <div className="w-full rounded-3xl border px-8 pb-4 pt-12 dark:border-neutral-800">
-                <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-4">
+              <div className="w-full rounded-3xl py-[14px] px-1 dark:border-neutral-800 md:border lg:px-8 lg:pt-12">
+                <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-4">
                   {data[`${category.objName}Articles`].map(
                     (article: { title: string; slug: Key }) => (
-                      <Cardx360
-                        key={article.slug}
-                        article={article}
-                        getBase64={getBase64}
-                        category={category}
-                      />
+                      <Fragment key={article.slug}>
+                        <Cardx360
+                          article={article}
+                          getBase64={getBase64}
+                          category={category}
+                        />
+                        <div className="border-t-2 pt-3 md:hidden"></div>
+                      </Fragment>
                     )
                   )}
                 </ul>
