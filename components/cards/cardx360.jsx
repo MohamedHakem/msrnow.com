@@ -49,7 +49,7 @@ export default function Cardx360({ article, getBase64, category }) {
             </h3>
             <time
               dateTime={updatedArticle.datetime}
-              className="ml-2 text-sm font-medium opacity-80"
+              className="ml-2 text-sm font-medium opacity-100"
             >
               {updatedArticle.timeAgo}
             </time>
