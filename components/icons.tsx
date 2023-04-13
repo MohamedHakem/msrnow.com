@@ -1,4 +1,5 @@
 import {
+  ChevronLeft,
   Laptop,
   LucideProps,
   Minus,
@@ -16,6 +17,7 @@ export const Icons = {
   moon: Moon,
   laptop: Laptop,
   plus: Plus,
+  leftArrow: ChevronLeft,
   minus: Minus,
   // twitter: Twitter,
   logo: (props: LucideProps) => (

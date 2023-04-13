@@ -12,6 +12,7 @@ import { getBase64 } from "@/utils/old/imagePlaceholderBase64.js"
 
 // import prisma from "@/lib/prisma"
 import Cardx360 from "@/components/cards/cardx360"
+import { Icons } from "@/components/icons"
 import { Layout } from "@/components/layout"
 
 // import { FeaturedCard } from "@/components/old/index"
@@ -39,20 +40,23 @@ export default function IndexPage({ data }) {
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           {categories.map((category, index) => (
             <div key={index} className="mb-10 mt-4 md:mx-2">
-              {/* `{console.log("category.objName", category.objName)}` */}
-              <div
-              // className={`bg-${
-              //   category.objName === "Finance" ? "[#1B54E5]" : "red"
-              // }`}
-              >
-                <h2
-                  className={`my-8 mx-auto w-full border-4 p-4 text-center text-3xl font-semibold underline underline-offset-[10px] md:my-8 md:mx-0 md:w-fit md:border-0`}
-                >
-                  <Link href={`${category.slug}`}>{category.name}</Link>
-                </h2>
-              </div>
-              <div className="w-full rounded-3xl py-[14px] px-1 dark:border-neutral-800 md:border lg:px-8 lg:pt-12">
-                <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-4">
+              <div className="w-full rounded-3xl bg-white py-[14px] px-1 dark:border-neutral-800 dark:bg-[#353d50] md:border-0 lg:p-4">
+                <div className="w-full border-b border-gray-300 dark:border-slate-500 md:mb-6">
+                  <h2
+                    className={`my-8 mx-auto w-full p-4 text-center text-2xl font-medium 
+                    text-[#1867dc] underline-offset-[10px] dark:text-white md:m-0 md:w-fit md:pt-0 md:pr-1`}
+                  >
+                    <Link
+                      href={`${category.slug}`}
+                      className="flex flex-row gap-0 transition-all duration-150 ease-in-out hover:gap-4"
+                      title={`اضغط للمزيد من ${category.name}`}
+                    >
+                      {category.name}
+                      <Icons.leftArrow className="mt-1 mr-[-2px] h-7 w-7 text-lg" />
+                    </Link>
+                  </h2>
+                </div>
+                <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 lg:grid-cols-4 xl:grid-cols-4">
                   {data[`${category.objName}Articles`].map(
                     (article: { title: string; slug: Key }) => (
                       <Fragment key={article.slug}>
@@ -77,27 +81,6 @@ export default function IndexPage({ data }) {
 
 // spread, map, filter the 3 are performance killers, avoid them
 export async function getStaticProps() {
-  // console.log("========== SCRAPING =========")
-  // // specify category
-  // const category = "egypt"
-
-  // console.time("Homepage server")
-  // console.time("scraping")
-  // // get last date
-  // const lastDate = await getLastDateOnGithub(category)
-
-  // // scrape
-  // const { newLastDate, articles } = await scrapeLatestNews(lastDate, category)
-
-  // // update the last-date AND save scraped articles
-  // if (articles.length > 0) {
-  //   console.log(`[getStaticProps] scraped ${articles.length} articles`)
-  //   updateLastDateOnGithub(newLastDate, category)
-
-  //   await addArticlesToDB(articles, category)
-  // }
-  // console.timeEnd("scraping")
-
   console.log("========== FETCHING FROM DB =========")
   console.time("Fetching for homepage")
   const categories = [

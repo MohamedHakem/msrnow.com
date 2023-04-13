@@ -23,8 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>
-          مصر الان - البوابة العربية للأخبار، مصدرك الأول للأخبار باللغة
-          العربية
+          مصر الان - البوابة العربية للأخبار، مصدرك الأول للأخبار باللغة العربية
         </title>
         <meta
           name="description"
@@ -43,6 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
 			}`}</style>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <Component {...pageProps} />
+        <div className="homeBg fixed inset-0 z-0"></div>
         <Analytics />
       </ThemeProvider>
     </>

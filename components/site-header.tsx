@@ -13,10 +13,12 @@ export function SiteHeader() {
           <Icons.logo className="h-14 w-14" name="msrnow-logo" />
         </Link>
         <MainNav items={siteConfig.mainNav} />
-        <div className="flex flex-1 items-center justify-end">
-          <nav className="flex items-center gap-2">
-            <ThemeToggle />
-          </nav>
+        <div className="h-full border border-y-0 border-gray-200 dark:border-slate-500">
+          <div className="flex h-full flex-1 items-center justify-end">
+            <nav className="flex h-full items-center gap-2 overflow-hidden">
+              <ThemeToggle />
+            </nav>
+          </div>
         </div>
       </div>
     </header>

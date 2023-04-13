@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-10 border-t border-slate-300 dark:border-slate-700 dark:bg-[#353d50] dark:text-gray-400">
+    <footer className="mt-10 border-t border-slate-300 bg-white dark:border-slate-700 dark:bg-[#353d50] dark:text-gray-400">
       {/* <section className="m-auto flex h-auto items-center justify-center bg-[#f9f9f9] py-10 text-center">
         <div className="py-9 px-4 2xl:container md:py-12 md:px-6 lg:px-20 2xl:mx-auto">
           <div className="mb-8 text-center">
