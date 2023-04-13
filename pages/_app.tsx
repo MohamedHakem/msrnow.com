@@ -29,6 +29,34 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="مصر الان - البوابة العربية للأخبار - مصدرك الأول للأخبار باللغة العربية"
         />
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href="/favicon-test.jpg"
+        ></link>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        ></link>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/android-chrome-512x512.png"
+        ></link>
+        <link rel="manifest" href="/site.webmanifest"></link>
+        <link
+          rel="mask-icon"
+          href="/safari-pinned-tab.svg"
+          color="#ff0000"
+        ></link>
+        <meta name="msapplication-TileColor" content="#ffffff"></meta>
+        <meta
+          name="msapplication-TileImage"
+          content="/mstile-144x144.png"
+        ></meta>
+        <meta name="theme-color" content="#ffffff"></meta>
       </Head>
       <Script
         async
