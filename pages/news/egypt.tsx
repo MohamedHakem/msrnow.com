@@ -1,4 +1,4 @@
-import { Key } from "react"
+import { Fragment, Key } from "react"
 import Head from "next/head"
 import getCategory from "@/services/category/getCategory"
 import { getLastDateOnGithub } from "@/utils/newGet/getLastDateOnGithub"
@@ -42,12 +42,18 @@ export default function EgyptNewsPage({ formattedData, category }) {
               {formattedData.map(
                 (article: { title: string; slug: Key }, i: number) =>
                   i >= 4 ? (
-                    <Cardx360
-                      key={article.slug}
-                      article={article}
-                      getBase64={getBase64}
-                      category={category}
-                    />
+                    <Fragment key={article.slug}>
+                      <Cardx360
+                        article={article}
+                        getBase64={getBase64}
+                        category={category}
+                      />
+                      {i < 39 ? (
+                        <div className="mx-2 mt-1 border-t-2 border-slate-200 pt-3 dark:border-slate-600 md:hidden"></div>
+                      ) : (
+                        <div className="my-2"></div>
+                      )}
+                    </Fragment>
                   ) : null
               )}
             </ul>
