@@ -36,15 +36,15 @@ export default function IndexPage({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="container grid items-center gap-6 px-[10px] pt-6 pb-8 md:py-10 lg:px-4">
+      <section className="container grid items-center gap-6 px-0 pt-6 pb-8 md:px-[10px] md:py-10 lg:px-4">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           {categories.map((category, index) => (
             <div key={index} className="mb-10 mt-4 md:mx-2">
-              <div className="w-full rounded-3xl bg-white py-[14px] px-1 dark:border-neutral-800 dark:bg-[#353d50] md:border-0 lg:p-4">
-                <div className="w-full border-b border-gray-300 dark:border-slate-500 md:mb-6">
+              <div className="w-full rounded-3xl bg-white px-1 dark:border-neutral-800 dark:bg-[#353d50] md:border-0 md:py-[14px] lg:p-4">
+                <div className="w-full border-gray-300 dark:border-slate-500 md:mb-6 md:border-b">
                   <h2
-                    className={`my-8 mx-auto w-full p-4 text-center text-2xl font-medium 
-                    text-[#1867dc] underline-offset-[10px] dark:text-white md:m-0 md:w-fit md:pt-0 md:pr-1`}
+                    className={`mx-auto w-full p-4 text-center text-2xl font-medium text-[#1867dc] 
+                    underline-offset-[10px] dark:text-white md:m-0 md:my-8 md:w-fit md:pt-0 md:pr-1`}
                   >
                     <Link
                       href={`${category.slug}`}
@@ -58,14 +58,18 @@ export default function IndexPage({ data }) {
                 </div>
                 <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 lg:grid-cols-4 xl:grid-cols-4">
                   {data[`${category.objName}Articles`].map(
-                    (article: { title: string; slug: Key }) => (
+                    (article: { title: string; slug: Key }, index) => (
                       <Fragment key={article.slug}>
                         <Cardx360
                           article={article}
                           getBase64={getBase64}
                           category={category}
                         />
-                        <div className="border-t-2 pt-3 md:hidden"></div>
+                        {index < 7 ? (
+                          <div className="mx-2 mt-1 border-t-2 border-slate-200 pt-3 dark:border-slate-600 md:hidden"></div>
+                        ) : (
+                          <div className="my-2"></div>
+                        )}
                       </Fragment>
                     )
                   )}

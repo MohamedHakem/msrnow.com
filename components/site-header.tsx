@@ -8,9 +8,9 @@ import { ThemeToggle } from "@/components/theme-toggle"
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-[#353d50]">
-      <div className="container flex h-20 items-center gap-6 sm:justify-between sm:space-x-0">
-        <Link href="/" className="items-center md:flex">
-          <Icons.logo className="h-14 w-14" name="msrnow-logo" />
+      <div className="container flex h-20 items-center justify-between gap-6 sm:space-x-0">
+        <Link href="/" className="h-full items-center md:flex">
+          <Icons.logo className="h-full w-[80%]" name="msrnow-logo" />
         </Link>
         <MainNav items={siteConfig.mainNav} />
         <div className="h-full border border-y-0 border-gray-200 dark:border-slate-500">

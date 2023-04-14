@@ -13,7 +13,7 @@ export default function FeaturedCard({ article, getBase64, category }) {
   return (
     <li className="news-item" key={updatedArticle.short_slug}>
       <Link href={`/news/${updatedArticle.slug}`}>
-        <div className="relative h-[330px] overflow-hidden rounded-lg border border-neutral-800 shadow-md lg:h-[450px]">
+        <div className="relative h-[330px] overflow-hidden rounded-lg border border-neutral-200 shadow-md dark:border-neutral-700 lg:h-[450px]">
           <div className="absolute bottom-0 z-10 h-3/5 w-full overflow-hidden bg-gradient-to-t from-black via-slate-900 to-transparent opacity-60"></div>
           {/* vercel limit on optimized source images using Image component, add unoptimized to opt-out */}
           <Image
