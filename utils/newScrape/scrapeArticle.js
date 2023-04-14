@@ -21,9 +21,12 @@ async function scrapeArticle(params) {
 
   const slug = params.slug
   const article = await getArticle("slug_to_data", slug)
-  // console.log("article: ", article)
   const source = await getSource(article.article.sourceId)
   const content_selector = source.source.content_selector
+  // this content_selector, in particular the :not() is not working anymore
+  // #body-text > *:not(.advertisement-wrapper):not(.feed-card.ar)
+  console.log("content_selector: ", content_selector)
+
   const isScrapable = source.source.scrapable
   const articleGoogleUrlRes = await axios.get(
     article.article.article_google_url
@@ -40,14 +43,24 @@ async function scrapeArticle(params) {
 
   if (isScrapable) {
     const articlePage = await axios.get(article_source_url)
-    const $article = cheerio.load(articlePage.data)
+    const $article = cheerio.load(articlePage.data, { xmlMode: true })
     const description = $article('meta[name="description"]')
       .attr("content")
       .trim()
-
     let content
     let keywords
-    content = $article(`${content_selector}`).html().trim()
+
+    if (source.source.name === "العربية") {
+      content = $article("#body-text")
+        .html()
+        .replace($article("#body-text").find(".feed-card"), "")
+        .replace($article("#body-text").find(".ad25"), "")
+        .replace($article("#body-text").find(".hide-in-mobile"), "")
+        .trim()
+    } else {
+      content = $article(`${content_selector}`).html().trim()
+    }
+
     keywords =
       $article('meta[name="keywords"]')?.attr("content")?.trim() ||
       $article('meta[name="news_keywords"]')?.attr("content")?.trim()

@@ -59,7 +59,7 @@ export function VerticalShare({ articleData }) {
   return (
     <div
       dir="rtl"
-      className="sticky top-72 w-full dark:border-slate-700 dark:bg-slate-700/60"
+      className="sticky top-72 w-full border-x bg-white dark:border-slate-700 dark:bg-slate-700/60"
     >
       <ul className="flex flex-col">
         <li className="m-auto flex w-full flex-col py-2 text-gray-500 dark:text-slate-300">

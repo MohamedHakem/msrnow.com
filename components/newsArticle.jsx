@@ -74,7 +74,7 @@ export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
                   onClick={() =>
                     setTextSize(textSize === 3 ? 3 : parseInt(textSize) + 1)
                   }
-                  className="h-12 w-full justify-center rounded-t-2xl border-b bg-[#f7f7f9] text-center text-3xl text-black
+                  className="h-12 w-full justify-center rounded-t-2xl border bg-white text-center text-3xl text-black
                 transition-all duration-200 ease-in-out hover:bg-gray-200 active:scale-[.8] dark:border-slate-600 dark:bg-[#353d50] dark:text-white dark:hover:bg-gray-600"
                 >
                   <span className="">
@@ -85,7 +85,7 @@ export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
                   onClick={() =>
                     setTextSize(textSize === 0 ? 0 : parseInt(textSize) - 1)
                   }
-                  className="h-12 w-full justify-center rounded-b-2xl border-t bg-[#f7f7f9] text-center text-3xl text-black transition-all
+                  className="h-12 w-full justify-center rounded-b-2xl border bg-white text-center text-3xl text-black transition-all
                 duration-200 ease-in-out hover:bg-gray-200 active:scale-[.8] dark:border-slate-600 dark:bg-[#353d50] dark:text-white dark:hover:bg-gray-600"
                 >
                   <Icons.minus className="m-auto my-1 h-6 w-6" />
