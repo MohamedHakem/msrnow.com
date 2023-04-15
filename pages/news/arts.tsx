@@ -1,5 +1,5 @@
 import { Key } from "react"
-import Head from "next/head"
+// import Head from "next/head"
 import getCategory from "@/services/category/getCategory"
 import { getLastDateOnGithub } from "@/utils/newGet/getLastDateOnGithub"
 import addArticlesToDB from "@/utils/newSave/addArticlesToDB"
@@ -16,10 +16,6 @@ import { Layout } from "../../components/layout"
 export default function ArtsNewsPage({ formattedData, category }) {
   return (
     <Layout>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <section className="container grid items-center gap-6 px-4 pt-6 pb-8 md:py-10">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           <div className="mt-10 mb-12 md:mx-2">
@@ -81,7 +77,7 @@ export async function getStaticProps() {
   const categoryId = await getCategory("name", "", category).then(
     (c) => c.category.id
   )
-  console.log("categoryId: ", categoryId)
+  // console.log("categoryId: ", categoryId)
   const data = await prisma.Article.findMany({
     where: {
       categoryId: categoryId,

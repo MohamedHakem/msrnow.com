@@ -1,6 +1,6 @@
 import { Key } from "react"
 import { InferGetStaticPropsType } from "next"
-import Head from "next/head"
+// import Head from "next/head"
 import { getLastDateOnGithub } from "@/utils/newGet/getLastDateOnGithub"
 import addArticlesToDB from "@/utils/newSave/addArticlesToDB"
 import { updateLastDateOnGithub } from "@/utils/newSave/updateLastDateOnGithub"
@@ -20,10 +20,6 @@ export default function SportsPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <section className="container grid items-center gap-6 px-4 pt-6 pb-8 md:py-10">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           <div className="mt-10 mb-12 md:mx-2">
@@ -72,7 +68,7 @@ export async function getStaticProps() {
 
   // scrape
   const { newLastDate, articles } = await scrapeLatestNews(lastDate, category)
-  console.log("[SportsPage] articles[0]: ", articles[0])
+  // console.log("[SportsPage] articles[0]: ", articles[0])
   // update the last-date AND save scraped articles, if scraped > 0 articles
   if (articles.length > 0) {
     console.log(`[getStaticProps] scraped ${articles.length} articles`)
@@ -85,7 +81,7 @@ export async function getStaticProps() {
   const categoryId = await getCategory("name", "", category).then(
     (c) => c.category.id
   )
-  console.log("categoryId: ", categoryId)
+  // console.log("categoryId: ", categoryId)
   const data = await prisma.Article.findMany({
     where: {
       categoryId: categoryId,

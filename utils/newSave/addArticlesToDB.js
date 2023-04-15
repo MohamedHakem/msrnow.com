@@ -50,11 +50,11 @@ async function addArticlesToDB(newArticles, category) {
     }
   }
 
-  console.log("counter: ", counter)
-  console.log("savedArticles: ", savedArticles)
+  // console.log("counter: ", counter)
+  // console.log("savedArticles: ", savedArticles)
 
   console.log(
-    `added ${savedArticles.count} articles to DB, out of ${newArticles.length} scraped articles - under ${category} category`
+    `savedArticles: ${savedArticles}, added ${savedArticles.count} articles to DB, out of ${newArticles.length} scraped articles - under ${category} category`
   )
 }
 

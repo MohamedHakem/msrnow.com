@@ -1,24 +1,13 @@
 import { Fragment, Key } from "react"
-import Head from "next/head"
 import Link from "next/link"
-// import getCategory from "@/services/category/getCategory"
 import getCategoryArticles from "@/services/homepage/getArticles"
-import { getLastDateOnGithub } from "@/utils/newGet/getLastDateOnGithub"
-import addArticlesToDB from "@/utils/newSave/addArticlesToDB"
-import { updateLastDateOnGithub } from "@/utils/newSave/updateLastDateOnGithub"
-import { scrapeLatestNews } from "@/utils/newScrape/scrapeLatestNews"
 import { formatArrayDatetimeSince } from "@/utils/old/formatArrayDatetimeSince"
 import { getBase64 } from "@/utils/old/imagePlaceholderBase64.js"
 
-// import prisma from "@/lib/prisma"
 import Cardx360 from "@/components/cards/cardx360"
 import { Icons } from "@/components/icons"
 import { Layout } from "@/components/layout"
 
-// import { FeaturedCard } from "@/components/old/index"
-
-// export default function IndexPage({ formattedData, category }) {
-// export default function IndexPage({ data, category }) {
 export default function IndexPage({ data }) {
   const categories = [
     { name: "أخبار مصر", slug: "/news/egypt", objName: "Egypt" },
@@ -32,10 +21,6 @@ export default function IndexPage({ data }) {
 
   return (
     <Layout>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <section className="container grid items-center gap-6 px-0 pt-6 pb-8 md:px-[10px] md:py-10 lg:px-4">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           {categories.map((category, index) => (
@@ -44,7 +29,7 @@ export default function IndexPage({ data }) {
                 <div className="w-full border-gray-300 dark:border-slate-500 md:mb-6 md:border-b">
                   <h2
                     className={`mx-auto w-full p-4 text-center text-2xl font-medium text-[#1867dc] 
-                    underline-offset-[10px] dark:text-white md:m-0 md:my-8 md:w-fit md:pt-0 md:pr-1`}
+                    underline-offset-[10px] dark:text-white md:m-0 md:w-fit md:pt-0 md:pr-1`}
                   >
                     <Link
                       href={`${category.slug}`}
@@ -85,8 +70,28 @@ export default function IndexPage({ data }) {
 
 // spread, map, filter the 3 are performance killers, avoid them
 export async function getStaticProps() {
-  console.log("========== FETCHING FROM DB =========")
-  console.time("Fetching for homepage")
+  const isProduction = process.env.NODE_ENV === "production"
+  const baseUrl = isProduction
+    ? "https://www.msrnow.com"
+    : "http://localhost:3000"
+
+  // console.time("TRIGGERING CATEGORIES AUTO SCRA*PER, took: ")
+  // console.log(
+  //   `await fetch("${baseUrl}/sports"): `,
+  //   await fetch(`${baseUrl}/sports`).then((t) => t.statusText)
+  // )
+  // await fetch(`${baseUrl}/news/egypt`)
+  // await fetch(`${baseUrl}/news/arts`)
+  // await fetch(`${baseUrl}/news/world`)
+  // await fetch(`${baseUrl}/news/politics`)
+  // await fetch(`${baseUrl}/news/local`)
+  // await fetch(`${baseUrl}/finance`)
+  // console.timeEnd("TRIGGERING CATEGORIES AUTO SCRA*PER, took: ")
+
+  // trigger a scrape for all category pages
+  await fetch(`${baseUrl}/api/trigger-categories-auto-scraper`)
+
+  console.time("[Performance] FETCHING FROM DB: homepage")
   const categories = [
     "Egypt",
     "Politics",
@@ -118,8 +123,7 @@ export async function getStaticProps() {
     data[`${category}Articles`] = articles
   }
 
-  console.timeEnd("Fetching for homepage")
-  console.log("done fetching")
+  console.timeEnd("[Performance] FETCHING FROM DB: homepage")
 
   return {
     props: { data },
