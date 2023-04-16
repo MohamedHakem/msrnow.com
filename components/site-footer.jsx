@@ -1,8 +1,17 @@
+import Image from "next/image"
 import Link from "next/link"
+import footerImg from "@/public/assets/images/footer-img.png"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-10 border-t border-slate-300 bg-white dark:border-slate-700 dark:bg-[#353d50] dark:text-gray-400">
+    <footer className="relative mt-10 border-0 border-slate-300 bg-[#f8f8f8] dark:border-slate-700 dark:bg-[#353d50] dark:text-gray-400">
+      <div className="footerImgStyle relative overflow-hidden">
+        <Image
+          className="m-auto mb-9"
+          src={footerImg}
+          alt={"MsrNow.com - مصر الان لجميع الاخبار حول الساعة"}
+        />
+      </div>
       {/* <section className="m-auto flex h-auto items-center justify-center bg-[#f9f9f9] py-10 text-center">
         <div className="py-9 px-4 2xl:container md:py-12 md:px-6 lg:px-20 2xl:mx-auto">
           <div className="mb-8 text-center">
@@ -275,7 +284,7 @@ export function SiteFooter() {
         </div>
       </section> */}
 
-      <div className="border-b border-slate-300 dark:border-slate-700">
+      <div className="border-0 border-slate-300 dark:border-slate-700">
         <div className="container my-8">
           <h3 className="text-6xl font-black">مصر الان</h3>
           {/* <svg width="124" height="32" xmlns="http://www.w3.org/2000/svg">
