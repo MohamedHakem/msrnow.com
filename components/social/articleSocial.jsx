@@ -5,7 +5,7 @@ export default function ArticleSocial() {
     <div className="news-item mb-6 box-content rounded-lg border bg-white">
       <div className="bg-[#f8f8f8]">
         <div className="p-2">
-          <div className="m-auto flex h-fit w-fit flex-col justify-around gap-4 text-center md:flex-row md:gap-16">
+          <div className="m-auto flex h-fit w-fit flex-col justify-around gap-4 text-center md:flex-row md:gap-20">
             <a
               className="my-auto flex h-fit w-fit flex-row gap-x-2"
               title="تابع صفحتنا على فيسبوك"
@@ -15,7 +15,7 @@ export default function ArticleSocial() {
               <div className="my-auto h-12 w-12 rounded-xl bg-[#3b5998]">
                 <Icons.whiteFacebook className="m-auto h-full w-6 p-1 text-white" />
               </div>
-              <p className="m-auto mr-1 h-fit w-[80px] text-right text-lg">
+              <p className="m-auto mr-1 h-fit w-[110px] text-right text-lg">
                 تابع صفحتنا على فيسبوك
               </p>
             </a>
@@ -29,7 +29,7 @@ export default function ArticleSocial() {
               <div className="my-auto h-12 w-12 rounded-xl bg-[#1c9be9]">
                 <Icons.whiteTwitter className="m-auto h-full w-9 p-1 text-white" />
               </div>
-              <p className="m-auto mr-1 h-fit w-[80px] text-right text-lg">
+              <p className="m-auto mr-1 h-fit w-[110px] text-right text-lg">
                 تابع صفحتنا على تويتر
               </p>
             </a>
