@@ -96,7 +96,7 @@ const ArticlePage = ({ articleData }) => {
   return (
     <Layout>
       <Head>
-        <title>{`${articleData.title} - ${process.env.SITE_NAME_AR}`}</title>
+        <title>{`${articleData.title} - MsrNow.com`}</title>
         <link
           rel="canonical"
           href={`https://msrnow.com/news/${articleData.slug}`}
