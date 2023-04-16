@@ -9,6 +9,7 @@ import Link from "next/link"
 // import Balancer from "react-wrap-balancer"
 
 import { Icons } from "@/components/icons"
+import ArticleSocial from "./social/articleSocial"
 import { VerticalShare } from "./stickyVerticalShare"
 
 const ArticleRenderer = dynamic(
@@ -128,6 +129,7 @@ export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
               }
             }}
           />
+          <ArticleSocial />
           <>
             {!articleData.content ? (
               <div className="w-full overflow-hidden">
