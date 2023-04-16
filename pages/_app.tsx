@@ -40,18 +40,6 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gtag.GA_TRACKING_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
         <title>
           مصر الان - البوابة العربية للأخبار، مصدرك الأول للأخبار باللغة العربية
         </title>
@@ -89,6 +77,19 @@ export default function App({ Component, pageProps }) {
         ></meta>
         <meta name="theme-color" content="#ffffff"></meta>
       </Head>
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gtag.GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+        }}
+      />
 
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script

@@ -10,3 +10,44 @@
     ),
     linear-gradient(5deg, rgb(255 200 0/13%) 5%, rgb(255 212 0/0) 15%);
 } */
+
+.inverted-border-radius {
+  position: relative; /* Add position relative so the pseudo element will origin off this with position absolute */
+  background-color: #f6f8fc;
+  /* border-radius: 25px 25px 25px 0; */
+}
+
+.inverted-border-radius::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  top: -1px;
+  left: -197px;
+  height: 20px;
+  width: 17px;
+  border-top-left-radius: 50%;
+  box-shadow: 0 -11px 0 0 #f6f8fc;
+  transform: rotate(90deg);
+}
+
+.inverted-border-radius::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: -15px;
+  right: 5px;
+  height: 20px;
+  width: 10px;
+  border-top-left-radius: 15px;
+  box-shadow: 0 -8px 0 0 #f6f8fc;
+  transform: rotate(90deg);
+}
+
+.text-container {
+  transition: transform 0.5s ease-out;
+}
+
+.text-container.appear {
+  transform: translateY(50px);
+}
