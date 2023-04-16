@@ -4,7 +4,7 @@ export default function ArticleSocial() {
   return (
     <div className="news-item mb-6 box-content rounded-lg border bg-white">
       <div className="bg-[#f8f8f8]">
-        <div className="p-2">
+        <div className="p-4">
           <div className="m-auto flex h-fit w-fit flex-col justify-around gap-4 text-center md:flex-row md:gap-20">
             <a
               className="my-auto flex h-fit w-fit flex-row gap-x-2"
