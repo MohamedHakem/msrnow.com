@@ -7,6 +7,7 @@ import { getBase64 } from "@/utils/old/imagePlaceholderBase64.js"
 import Cardx360 from "@/components/cards/cardx360"
 import { Icons } from "@/components/icons"
 import { Layout } from "@/components/layout"
+import Head from "next/head"
 
 export default function IndexPage({ data }) {
   const categories = [
@@ -21,6 +22,17 @@ export default function IndexPage({ data }) {
 
   return (
     <Layout>
+      {/* <!-- Google tag (gtag.js) --> */}
+      <Head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZER997T3T"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-8ZER997T3T');
+        </script>
+      </Head>
       <section className="container grid items-center gap-6 px-0 pt-6 pb-8 md:px-[10px] md:py-10 lg:px-4">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           {categories.map((category, index) => (
