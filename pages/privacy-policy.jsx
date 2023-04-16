@@ -11,9 +11,9 @@ const PrivacyPage = () => {
           <h1 className="mb-6 text-4xl">سياسة الخصوصية</h1>
         </div>
         <div className="mx-2 mt-10 mb-4">
-          <article class="main-content mb">
-            <div class="entry-content clearfix">
-              <div class="text extended">
+          <article className="main-content mb">
+            <div className="entry-content clearfix">
+              <div className="text extended">
                 <p className="mb-4">مصرالان.كوم | المحتوى من كل المصادر.</p>
                 <p className="mb-4">
                   الأخبار على الموقع هي من مصادر خارجية وعلى مسؤولية مقدم

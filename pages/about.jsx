@@ -11,10 +11,10 @@ const AboutPage = () => {
           <h1 className="mb-6 text-4xl">عن الموقع</h1>
         </div>
         <div className="mx-2 mt-10 mb-4">
-          <article class="main-content mb">
+          <article className="main-content mb">
             {/* <h2 className="text-4xl mt-12 mb-6">
               <span
-                class="translation_missing"
+                className="translation_missing"
                 title="translation missing: ar.v2.common.page_titles.static.privacy"
               >
                 عن الموقع

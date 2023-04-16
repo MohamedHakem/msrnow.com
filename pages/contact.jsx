@@ -13,7 +13,7 @@ const ContactUsPage = () => {
           <h1 className="mb-6 text-4xl">اتصل بنا</h1>
         </div>
         <div className="mx-2 mt-10 mb-4">
-          <article class="main-content mb">
+          <article className="main-content mb">
             <p>
               يمكنك إرسال اقتراحاتك أو استفساراتك عن أي شيء يخص الموقع والخدمات
               التي نقدمها أو الإبلاغ عن محتوى غير لائق نشره أحد المصادر الموجودة
