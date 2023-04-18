@@ -168,6 +168,13 @@ const ArticlePage = ({ articleData }) => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* script for MsrnowMultitag */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          (function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://inklinkor.com/tag.min.js',5882660,document.body||document.documentElement)`,
+          }}
+        />
       </Head>
 
       <NewsArticle
