@@ -76,6 +76,7 @@ export default function App({ Component, pageProps }) {
           content="/mstile-144x144.png"
         ></meta>
         <meta name="theme-color" content="#ffffff"></meta>
+        <meta name="monetag" content="4f6fe42797ed2adccda6311fe6247141"></meta>
       </Head>
 
       <script
