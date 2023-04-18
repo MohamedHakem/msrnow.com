@@ -77,10 +77,23 @@ export default function App({ Component, pageProps }) {
         ></meta>
         <meta name="theme-color" content="#ffffff"></meta>
         <meta name="monetag" content="4f6fe42797ed2adccda6311fe6247141"></meta>
-        {/* <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://inklinkor.com/tag.min.js',5882660,document.body||document.documentElement)</script> */}
       </Head>
 
-      <Script src="/sw.js" />
+      {/* <Script src="/sw.js" /> */}
+
+      {/* for the msrnowpushnotifads */}
+      {/* <Script
+        data-cfasync="false"
+        type="text/javascript"
+        src="/msrnowpushnotifads.js"
+      />
+      <Script
+        src="//rauvoaty.net/ntfc.php?p=5882666"
+        data-cfasync="false"
+        async
+        onError={_cmqvi()}
+        onLoad={_bhggfgrb()}
+      /> */}
 
       <script
         dangerouslySetInnerHTML={{

@@ -1,4 +1,5 @@
 import { Head, Html, Main, NextScript } from "next/document"
+import Script from "next/script"
 
 export default function Document() {
   return (
@@ -11,6 +12,13 @@ export default function Document() {
       >
         <Main />
         <NextScript />
+        {/* script for MsrnowMultitag */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          (function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://inklinkor.com/tag.min.js',5882660,document.body||document.documentElement)`,
+          }}
+        />
       </body>
     </Html>
   )
