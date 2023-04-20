@@ -11,12 +11,16 @@ import { NewsArticle } from "../../components/newsArticle"
 
 const ArticlePage = ({ articleData }) => {
   console.log("articleData: ", articleData ? true : false)
-  let editThumbRes
+  const imgWidth = 811
+  let editThumbRes, newWidth, newHeight
   let updatedArticle
   if (articleData) {
-    editThumbRes = editThumb(articleData, 900)
+    editThumbRes = editThumb(articleData, imgWidth)
     updatedArticle = editThumbRes.obj
+    newWidth = editThumbRes.newWidth
+    newHeight = editThumbRes.newHeight
   }
+  console.log("newWidth: ", newWidth, " newHeight: ", newHeight)
   const [imgSrc, set_imgSrc] = useState(updatedArticle?.google_thumb)
 
   const sections = {
@@ -159,6 +163,7 @@ const ArticlePage = ({ articleData }) => {
       <NewsArticle
         articleData={updatedArticle}
         imgSrc={imgSrc}
+        imgSize={{newWidth, newHeight}}
         set_imgSrc={set_imgSrc}
         getBase64={getBase64}
       />
