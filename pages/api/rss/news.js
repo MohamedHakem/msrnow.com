@@ -1,16 +1,22 @@
 import prisma from "@/lib/prisma"
-
 // import scrapeRss from "../../utils/rss/scrapeRss"
 
 export default async function handler(req, res) {
   res.statusCode = 200
   res.setHeader("Content-Type", "text/xml")
 
+  console.log("Request to /api/rss/news")
+
   // Instructing the Vercel edge to cache the file (for 1 hour) // for 5 min
   // res.setHeader("Cache-control", "stale-while-revalidate, s-maxage=360")
 
   // for now, all article to fb, later, filter with main-category (grouped-similar categories, in /api/rss-category-name) for each fb page
   const data = await prisma.Article.findMany({
+    where: {
+      categoryId: {
+        in: [1, 3, 4, 5],
+      },
+    },
     select: {
       title: true,
       short_slug: true,
@@ -20,7 +26,7 @@ export default async function handler(req, res) {
     orderBy: {
       published_at: "desc",
     },
-    take: 15,
+    take: 30,
   })
 
   // generate rss feed

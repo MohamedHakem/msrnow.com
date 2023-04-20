@@ -169,6 +169,7 @@ const ArticlePage = ({ articleData }) => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {/* script for MsrnowMultitag */}
+        {/* this is not active, since all news goes to /news/[slug] */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
