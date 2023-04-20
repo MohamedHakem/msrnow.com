@@ -180,6 +180,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { articleData: formattedData },
+    revalidate: 1800,
   }
 }
 
