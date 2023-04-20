@@ -28,7 +28,7 @@ model Article {
   wa_shares          Int?     @default(0) @db.UnsignedInt
   ln_shares          Int?     @default(0) @db.UnsignedInt
   keywords           String?  @default("") @db.VarChar(1000)
-  short_slug         String   @default("") @db.VarChar(5)
+  short_slug         String   @unique @default("") @db.VarChar(5)
   categoryId         Int      @default(0) @db.UnsignedInt
   sourceId           Int      @default(0) @db.UnsignedInt
   published_at       DateTime @default(now()) @db.Timestamp(0)
