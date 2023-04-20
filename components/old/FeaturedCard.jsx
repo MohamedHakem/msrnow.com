@@ -17,7 +17,8 @@ export default function FeaturedCard({ article, getBase64, category }) {
           <div className="absolute bottom-0 z-10 h-3/5 w-full overflow-hidden bg-gradient-to-t from-black via-slate-900 to-transparent opacity-60"></div>
           {/* vercel limit on optimized source images using Image component, add unoptimized to opt-out */}
           <Image
-            src={imgSrc}
+            // src={imgSrc}
+            src={`${imgSrc}&format=jpg`}
             alt={updatedArticle.title}
             placeholder={"blur"}
             blurDataURL={getBase64()}

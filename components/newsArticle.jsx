@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
+import fallbackImage from "@/public/assets/images/fallbackImage.svg"
 
 // import Link from "next/link"
 
@@ -19,23 +20,26 @@ const ArticleRenderer = dynamic(
   }
 )
 
-export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
-  console.log(
-    "articleData.article_source_url: ",
-    articleData.article_source_url
-  )
+const myLoader = ({ src, width, quality }) => {
+  return `${src}`
+}
 
+export const NewsArticle = ({
+  articleData,
+  imgSrc,
+  imgSize,
+  set_imgSrc,
+  getBase64,
+}) => {
   const [textSize, setTextSize] = useState(0)
 
   useEffect(() => {
-    console.log("textSize in useEffect: ", textSize)
     if (textSize === 0) {
       setTextSize(0)
     } else {
       setTextSize(textSize)
     }
   }, [textSize])
-  console.log("textSize out: ", textSize)
 
   const date = new Date(articleData.published_at)
   const options = {
@@ -98,8 +102,7 @@ export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
             </div>
           </div>
         </div>
-        {/* <div className="col-span-12 h-full w-full lg:col-span-7 lg:border-[4px] lg:border-dashed lg:p-8 dark:lg:border-[6px] dark:lg:border-neutral-800"> */}
-        <div className="col-span-12 h-full w-full lg:col-span-8 lg:border-[0px] lg:border-dashed lg:p-8 dark:lg:border-[0px] dark:lg:border-neutral-800">
+        <div className="col-span-12 box-border h-full w-full lg:col-span-8 lg:border-[0px] lg:border-dashed lg:p-8 dark:lg:border-[0px] dark:lg:border-neutral-800">
           <div className="bg-transparent">
             <h1
               className="m-auto mb-12 max-w-fit text-center text-[24px] font-black leading-[45px] text-black
@@ -116,13 +119,17 @@ export const NewsArticle = ({ articleData, imgSrc, set_imgSrc, getBase64 }) => {
           <Image
             unoptimized
             priority
+            loader={myLoader}
             className="relative z-0 my-8 w-full object-cover"
-            src={imgSrc}
+            src={`${imgSrc}&format=jpg`}
             alt={articleData.title}
-            width={896}
-            height={538}
+            width={imgSize.newWidth}
+            height={imgSize.newHeight}
             placeholder={"blur"}
             blurDataURL={getBase64()}
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1024px) 50vw,
+            33vw"
             onLoadingComplete={(result) => {
               if (result.naturalWidth === 0) {
                 set_imgSrc(fallbackImage)

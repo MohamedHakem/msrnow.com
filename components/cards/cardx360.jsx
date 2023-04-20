@@ -22,7 +22,8 @@ export default function Cardx360({ article, getBase64, category }) {
         <Image
           unoptimized
           className="relative z-0 mx-auto box-content h-[180px] w-[368px] rounded-xl object-cover md:w-[300px] lg:h-[200px] lg:w-[322px]" // h-[280px] w-full
-          src={imgSrc}
+          // src={imgSrc}
+          src={`${imgSrc}&format=jpg`}
           alt={updatedArticle.title}
           width={360}
           height={180}

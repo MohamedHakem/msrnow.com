@@ -25,7 +25,7 @@ async function scrapeArticle(params) {
   const content_selector = source.source.content_selector
   // this content_selector, in particular the :not() is not working anymore
   // #body-text > *:not(.advertisement-wrapper):not(.feed-card.ar)
-  console.log("content_selector: ", content_selector)
+  // console.log("content_selector: ", content_selector)
   console.log(`article.article.title: ${article.article.title}`)
 
   const isScrapable = source.source.scrapable

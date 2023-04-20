@@ -23,6 +23,7 @@
     "prisma:db:push:generate:pscale:DR:create": "npx prisma db push && npx prisma generate && pscale deploy-request create msrnowdb dev"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.8.0",
     "@octokit/core": "^4.2.0",
     "@prisma/client": "^4.11.0",
     "@radix-ui/react-accessible-icon": "^1.0.1",
