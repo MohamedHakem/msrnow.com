@@ -80,7 +80,7 @@ export function VerticalShare({ articleData }) {
               target={"_blank"}
               rel="noopener noreferrer"
               title="Share on Facebook"
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://news-4.vercel.app/${articleData.short_slug}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://www.msrnow.com/${articleData.short_slug}`}
             >
               <Icons.facebook className="py-3 px-[18px]" />
             </Link>
@@ -96,7 +96,7 @@ export function VerticalShare({ articleData }) {
               target={"_blank"}
               rel="noopener noreferrer"
               title="Share on Facebook"
-              href={`https://api.whatsapp.com/send?text=https://news-4.vercel.app/${articleData.short_slug} ${articleData.title}`}
+              href={`https://api.whatsapp.com/send?text=https://www.msrnow.com/${articleData.short_slug} ${articleData.title}`}
             >
               <Icons.whatsapp className="h-[58px] w-full py-3 px-[8px]" />
             </Link>
@@ -111,7 +111,7 @@ export function VerticalShare({ articleData }) {
               target={"_blank"}
               rel="noopener nofollow noreferrer"
               title="Share on Twitter"
-              href={`https://twitter.com/intent/tweet?via=msrnowcom&text=${articleData.title}&url=https://news-4.vercel.app/${articleData.short_slug}`}
+              href={`https://twitter.com/intent/tweet?via=msrnowcom&text=${articleData.title}&url=https://www.msrnow.com/${articleData.short_slug}`}
             >
               <Icons.twitter className="p-3" />
             </Link>
@@ -127,8 +127,8 @@ export function VerticalShare({ articleData }) {
               target={"_blank"}
               rel="noopener nofollow noreferrer"
               title="Share on Twitter"
-              // href={`https://www.linkedin.com/sharing/share-offsite/?url=https://news-4.vercel.app/${articleData.short_slug}&via=@msrnowcom&text=${title}`}
-              href={`https://www.linkedin.com/shareArticle?mini=true&url=https://news-4.vercel.app/${articleData.short_slug}&title=${articleData.title}`}
+              // href={`https://www.linkedin.com/sharing/share-offsite/?url=https://www.msrnow.com/${articleData.short_slug}&via=@msrnowcom&text=${title}`}
+              href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.msrnow.com/${articleData.short_slug}&title=${articleData.title}`}
             >
               <Icons.linkedin className="h-[58px] w-full p-3 px-[12px]" />
             </Link>
