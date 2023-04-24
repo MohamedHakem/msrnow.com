@@ -32,7 +32,7 @@ export default function Cardx360({ article, getBase64, category, topBorder }) {
       })
       .catch((err) => {
         console.log("img err: ", err)
-        set_imgSrc(fallbackImage)
+        set_imgSrc(smallFallbackImage)
       })
   }
 
