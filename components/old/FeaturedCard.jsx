@@ -17,7 +17,8 @@ export default function FeaturedCard({ article, getBase64, category }) {
           <div className="absolute bottom-0 z-10 h-3/5 w-full overflow-hidden bg-gradient-to-t from-black via-slate-900 to-transparent opacity-60"></div>
           {/* vercel limit on optimized source images using Image component, add unoptimized to opt-out */}
           <Image
-            // src={imgSrc}
+            unoptimized
+            priority={true}
             src={`${imgSrc}&format=jpg`}
             alt={updatedArticle.title}
             placeholder={"blur"}
@@ -28,13 +29,11 @@ export default function FeaturedCard({ article, getBase64, category }) {
               }
             }}
             onError={() => set_imgSrc(fallbackImage)}
-            priority
             sizes="(max-width: 768px) 100vw,
           (max-width: 1024px) 50vw,
           33vw"
             className="h-72 w-full object-cover object-center md:h-auto"
             fill="True"
-            unoptimized
           />
 
           <div className="absolute inset-x-0 bottom-0 z-10 h-20 w-full backdrop-blur-sm"></div>

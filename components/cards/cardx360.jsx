@@ -7,7 +7,13 @@ import smallFallbackImage from "@/public/assets/images/smallFallbackImage.svg"
 
 import { editThumb } from "../../utils/old/editThumb"
 
-export default function Cardx360({ article, getBase64, category, topBorder }) {
+export default function Cardx360({
+  article,
+  getBase64,
+  category,
+  topBorder,
+  priority = false,
+}) {
   const editThumbRes = editThumb(article, 300, false, false)
   const updatedArticle = editThumbRes.obj
   const [imgSrc, set_imgSrc] = useState(updatedArticle.google_thumb)
@@ -41,6 +47,7 @@ export default function Cardx360({ article, getBase64, category, topBorder }) {
       <Link href={`/news/${updatedArticle.slug}`} className="overflow-hidden">
         <Image
           unoptimized
+          priority={priority}
           className="relative z-0 mx-auto box-content h-[180px] w-[368px] rounded-xl object-cover md:w-[300px] lg:h-[200px] lg:w-[322px]" // h-[280px] w-full
           src={imgSrc}
           // src={imgSrc || imgSrc.src}

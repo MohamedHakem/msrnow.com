@@ -43,13 +43,17 @@ export default function IndexPage({ data }) {
                 </div>
                 <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 lg:grid-cols-4 xl:grid-cols-4">
                   {data[`${category.objName}Articles`].map(
-                    (article: { title: string; slug: Key, topBorder: boolean }, index) => (
+                    (
+                      article: { title: string; slug: Key; topBorder: boolean },
+                      i
+                    ) => (
                       <Cardx360
-                        key={index}
+                        priority={index === 0 && i < 4 ? true : false}
+                        key={i}
                         article={article}
                         getBase64={getBase64}
                         category={category}
-                        topBorder={index < 7}
+                        topBorder={i < 7}
                       />
                     )
                   )}
