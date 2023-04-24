@@ -48,7 +48,7 @@ export default function IndexPage({ data }) {
                       i
                     ) => (
                       <Cardx360
-                        // priority={index === 0 && i < 4 ? true : false}
+                        priority={index === 0 && i === 0 ? true : false}
                         key={i}
                         article={article}
                         getBase64={getBase64}
