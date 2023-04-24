@@ -36,20 +36,18 @@ export default function EgyptNewsPage({ formattedData, category }) {
           <div className="mb-10 mt-4 md:mx-2">
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-4">
               {formattedData.map(
-                (article: { title: string; slug: Key }, i: number) =>
+                (
+                  article: { title: string; slug: Key; topBorder: boolean },
+                  i: number
+                ) =>
                   i >= 4 ? (
-                    <Fragment key={article.slug}>
-                      <Cardx360
-                        article={article}
-                        getBase64={getBase64}
-                        category={category}
-                      />
-                      {i < 39 ? (
-                        <div className="mx-2 mt-1 border-t-2 border-slate-200 pt-3 dark:border-slate-600 md:hidden"></div>
-                      ) : (
-                        <div className="my-2"></div>
-                      )}
-                    </Fragment>
+                    <Cardx360
+                      key={article.slug}
+                      article={article}
+                      getBase64={getBase64}
+                      category={category}
+                      topBorder={i < 39}
+                    />
                   ) : null
               )}
             </ul>

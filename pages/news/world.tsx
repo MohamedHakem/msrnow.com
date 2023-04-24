@@ -36,13 +36,17 @@ export default function WorldNewsPage({ formattedData, category }) {
           <div className="mb-10 mt-4 md:mx-2">
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4 xl:grid-cols-4">
               {formattedData.map(
-                (article: { title: string; slug: Key }, i: number) =>
+                (
+                  article: { title: string; slug: Key; topBorder: boolean },
+                  i: number
+                ) =>
                   i >= 4 ? (
                     <Cardx360
                       key={article.slug}
                       article={article}
                       getBase64={getBase64}
                       category={category}
+                      topBorder={i < 39}
                     />
                   ) : null
               )}
