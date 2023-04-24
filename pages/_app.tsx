@@ -77,7 +77,13 @@ export default function App({ Component, pageProps }) {
           content="/mstile-144x144.png"
         ></meta>
         <meta name="theme-color" content="#ffffff"></meta>
-        {/* <meta name="monetag" content="4f6fe42797ed2adccda6311fe6247141"></meta> // uncomment when you configure on monetag.com */}
+        <link rel="preload" href="https://www.msrnow.com"></link>
+        <link rel="preload" href="https://vitals.vercel-insights.com"></link>
+        <link rel="preload" href="https://www.googletagmanager.com"></link>
+        <link rel="preload" href="https://imagecdn.app"></link>
+        <link rel="preload" href="https://lh3.googleusercontent.com"></link>
+        {/* uncomment the below line when you configure on monetag.com */}
+        {/* <meta name="monetag" content="4f6fe42797ed2adccda6311fe6247141"></meta> */}
       </Head>
 
       {/* <Script src="/sw.js" /> */}
