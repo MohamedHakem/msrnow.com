@@ -1,6 +1,7 @@
 import { Toaster } from "react-hot-toast"
 
 import { SiteFooter } from "@/components/site-footer"
+import { Footer } from "@/components/newFooter"
 import { SiteHeader } from "@/components/site-header"
 
 interface LayoutProps {
@@ -15,7 +16,8 @@ export function Layout({ children }: LayoutProps) {
       </div>
       <SiteHeader />
       <main className="mb-auto">{children}</main>
-      <SiteFooter />
+      {/* <SiteFooter /> */}
+      <Footer />
       {/* <div className="min-w-screen homeBg fixed inset-0 z-0 flex w-full flex-col justify-center"></div> */}
       {/* <div
         style={{
