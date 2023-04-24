@@ -9,12 +9,13 @@ import { useEffect } from "react"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import Script from "next/script"
-import LogRocket from "logrocket"
 
-const isProduction = process.env.NODE_ENV === "production"
+// import LogRocket from "logrocket"
+
+// const isProduction = process.env.NODE_ENV === "production"
 
 // add the LogRocket guys
-isProduction && LogRocket.init("dadbiq/msrnow")
+// isProduction && LogRocket.init("dadbiq/msrnow") // it's  +800 kb in size, fck it
 
 // handle the font
 const fontSans = FontSans({
@@ -76,7 +77,7 @@ export default function App({ Component, pageProps }) {
           content="/mstile-144x144.png"
         ></meta>
         <meta name="theme-color" content="#ffffff"></meta>
-        <meta name="monetag" content="4f6fe42797ed2adccda6311fe6247141"></meta>
+        {/* <meta name="monetag" content="4f6fe42797ed2adccda6311fe6247141"></meta> // uncomment when you configure on monetag.com */}
       </Head>
 
       {/* <Script src="/sw.js" /> */}
@@ -110,6 +111,7 @@ export default function App({ Component, pageProps }) {
 
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
+        defer
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />

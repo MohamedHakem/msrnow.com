@@ -13,7 +13,7 @@ const BundleAnalyzer = withBundleAnalyzer({
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    nextScriptWorkers: true,
+    // nextScriptWorkers: true,
     fontLoaders: [
       {
         loader: "@next/font/google",
