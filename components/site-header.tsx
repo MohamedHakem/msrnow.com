@@ -9,7 +9,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-b-slate-200 bg-white dark:border-b-slate-700 dark:bg-[#353d50]">
       <div className="container flex h-20 items-center justify-between gap-6 sm:space-x-0">
-        <Link href="/" className="h-full items-center md:flex">
+        <Link href="/" className="h-full items-center md:flex" aria-label="msrnow.com-logo">
           <Icons.logo className="h-full w-[80%]" name="msrnow-logo" />
         </Link>
         <MainNav items={siteConfig.mainNav} />
