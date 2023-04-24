@@ -19,7 +19,7 @@ export function SiteFooter() {
               تابعنا علي فيسبوك
             </h2>
           </div>
-          <div className="lg:grap-8 mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+          <div className="lg:gap-8 mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
             <div className="group relative">
               <img
                 src="https://i.pinimg.com/564x/5e/85/35/5e8535e4d9520cd8d973211871cd9720.jpg"

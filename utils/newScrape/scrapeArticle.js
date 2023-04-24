@@ -62,6 +62,9 @@ async function scrapeArticle(params) {
       content = $article(`${content_selector}`).html().trim()
     }
 
+    // clean the content
+    content = content.replace("&nbsp;", " ")
+
     keywords =
       $article('meta[name="keywords"]')?.attr("content")?.trim() ||
       $article('meta[name="news_keywords"]')?.attr("content")?.trim()

@@ -1,4 +1,4 @@
-import { Fragment, Key } from "react"
+import { Key } from "react"
 import Link from "next/link"
 import getCategoryArticles from "@/services/homepage/getArticles"
 import { formatArrayDatetimeSince } from "@/utils/old/formatArrayDatetimeSince"
@@ -44,18 +44,13 @@ export default function IndexPage({ data }) {
                 <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-6 lg:grid-cols-4 xl:grid-cols-4">
                   {data[`${category.objName}Articles`].map(
                     (article: { title: string; slug: Key }, index) => (
-                      <Fragment key={article.slug}>
-                        <Cardx360
-                          article={article}
-                          getBase64={getBase64}
-                          category={category}
-                        />
-                        {index < 7 ? (
-                          <div className="mx-2 mt-1 border-t-2 border-slate-200 pt-3 dark:border-slate-600 md:hidden"></div>
-                        ) : (
-                          <div className="my-2"></div>
-                        )}
-                      </Fragment>
+                      <Cardx360
+                        key={index}
+                        article={article}
+                        getBase64={getBase64}
+                        category={category}
+                        topBorder={index < 7}
+                      />
                     )
                   )}
                 </ul>
@@ -74,19 +69,6 @@ export async function getStaticProps() {
   const baseUrl = isProduction
     ? "https://www.msrnow.com"
     : "http://localhost:3000"
-
-  // console.time("TRIGGERING CATEGORIES AUTO SCRA*PER, took: ")
-  // console.log(
-  //   `await fetch("${baseUrl}/sports"): `,
-  //   await fetch(`${baseUrl}/sports`).then((t) => t.statusText)
-  // )
-  // await fetch(`${baseUrl}/news/egypt`)
-  // await fetch(`${baseUrl}/news/arts`)
-  // await fetch(`${baseUrl}/news/world`)
-  // await fetch(`${baseUrl}/news/politics`)
-  // await fetch(`${baseUrl}/news/local`)
-  // await fetch(`${baseUrl}/finance`)
-  // console.timeEnd("TRIGGERING CATEGORIES AUTO SCRA*PER, took: ")
 
   // trigger a scrape for all category pages
   await fetch(`${baseUrl}/api/trigger-categories-auto-scraper`)

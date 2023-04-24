@@ -20,7 +20,6 @@ const ArticlePage = ({ articleData }) => {
     newWidth = editThumbRes.newWidth
     newHeight = editThumbRes.newHeight
   }
-  console.log("newWidth: ", newWidth, " newHeight: ", newHeight)
   const [imgSrc, set_imgSrc] = useState(updatedArticle?.google_thumb)
 
   const sections = {
@@ -163,7 +162,7 @@ const ArticlePage = ({ articleData }) => {
       <NewsArticle
         articleData={updatedArticle}
         imgSrc={imgSrc}
-        imgSize={{newWidth, newHeight}}
+        imgSize={{ newWidth, newHeight }}
         set_imgSrc={set_imgSrc}
         getBase64={getBase64}
       />
