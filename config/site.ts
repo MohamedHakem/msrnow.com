@@ -1,11 +1,13 @@
-import { NavItem } from "@/types/nav"
-import { Icons } from "../components/icons"
+import { SocialNavItem, NavItem } from "@/types/nav"
+
+// import { Icons } from "../components/icons"
 
 interface SiteConfig {
   name: string
   description: string
   mainNav: NavItem[]
-  socialNav: NavItem[]
+  socialNav: SocialNavItem[]
+  darkSocialNav: SocialNavItem[]
   legalNav: NavItem[]
   links: {
     twitter: string
@@ -75,17 +77,47 @@ export const siteConfig: SiteConfig = {
   ],
   socialNav: [
     {
-      title: "roundedFacebook",
-      href: "/",
+      title: "Facebook",
+      component: "whiteRoundedFacebook",
+      href: "https://www.facebook.com/msrnowcom",
     },
     {
-      title: "instagram",
-      href: "/",
+      title: "Instagram",
+      component: "whiteInstagram",
+      href: "https://www.instagram.com/msrnowcom",
     },
     {
-      title: "roundedTwitter",
-      href: "/",
+      title: "Twitter",
+      component: "whiteRoundedTwitter",
+      href: "https://www.twitter.com/msrnowcom",
     },
+    // {
+    //   title: "Linkedin",
+    //   component: "whiteLinkedin",
+    //   href: "https://www.linkedin.com/msrnowcom",
+    // },
+  ],
+  darkSocialNav: [
+    {
+      title: "Facebook",
+      component: "roundedFacebook",
+      href: "https://www.facebook.com/msrnowcom",
+    },
+    {
+      title: "Instagram",
+      component: "instagram",
+      href: "https://www.instagram.com/msrnowcom",
+    },
+    {
+      title: "Twitter",
+      component: "roundedTwitter",
+      href: "https://www.twitter.com/msrnowcom",
+    },
+    // {
+    //   title: "Linkedin",
+    //   component: "whiteLinkedin",
+    //   href: "https://www.linkedin.com/msrnowcom",
+    // },
   ],
   legalNav: [
     {

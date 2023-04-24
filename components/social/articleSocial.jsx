@@ -2,8 +2,8 @@ import { Icons } from "@/components/icons"
 
 export default function ArticleSocial() {
   return (
-    <div className="news-item mb-6 box-content rounded-lg border bg-white">
-      <div className="bg-[#f8f8f8]">
+    <div className="news-item mb-6 box-content rounded-lg border bg-white dark:border-[#353d50] dark:bg-transparent">
+      <div className="bg-[#f8f8f8] dark:bg-transparent">
         <div className="p-4">
           <div className="m-auto flex h-fit w-fit flex-col justify-around gap-4 text-center md:flex-row md:gap-20">
             <a

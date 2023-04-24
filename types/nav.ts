@@ -4,3 +4,9 @@ export interface NavItem {
   disabled?: boolean
   external?: boolean
 }
+
+export interface SocialNavItem {
+  title: string
+  component: string
+  href?: string
+}

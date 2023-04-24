@@ -123,6 +123,7 @@ export default function App({ Component, pageProps }) {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5845793699253001"
         crossOrigin="anonymous"
       /> */}
+
       {/* Add global font to the root */}
       <style jsx global>{`
 				:root {
@@ -130,7 +131,7 @@ export default function App({ Component, pageProps }) {
 				}
 			}`}</style>
 
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <Component {...pageProps} />
         <div className="homeBg fixed inset-0 z-0"></div>
         <Analytics />

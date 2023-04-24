@@ -38,21 +38,21 @@ export function ThemeToggle() {
           className="hover:cursor-pointer"
         >
           <Icons.sun className="ml-2 h-6 w-6" />
-          <span>Light</span>
+          <span>نهار</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
           className="hover:cursor-pointer"
         >
           <Icons.moon className="ml-2 h-6 w-6" />
-          <span>Dark</span>
+          <span>ليلي</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
           className="hover:cursor-pointer"
         >
           <Icons.laptop className="ml-2 h-6 w-6" />
-          <span>System</span>
+          <span>جهازك</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
