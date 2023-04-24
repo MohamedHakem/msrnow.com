@@ -22,7 +22,7 @@ import { NewsArticle } from "../../components/newsArticle"
 // )
 
 const ArticlePage = ({ articleData }) => {
-  console.log("articleData: ", articleData ? true : false)
+  // console.log("articleData: ", articleData ? true : false)
   let editThumbRes
   let updatedArticle
   if (articleData) {

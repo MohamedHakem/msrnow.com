@@ -10,7 +10,7 @@ import { Layout } from "@/components/layout"
 import { NewsArticle } from "../../components/newsArticle"
 
 const ArticlePage = ({ articleData }) => {
-  console.log("articleData: ", articleData ? true : false)
+  // console.log("articleData: ", articleData ? true : false)
   const imgWidth = 811
   let editThumbRes, newWidth, newHeight
   let updatedArticle

@@ -6,7 +6,7 @@ const ArticleRenderer = ({ html, origin }) => {
   html = html.replace(/&amp;nbsp;/g, " ")
 
   useEffect(() => {
-    console.log("html: ", html)
+    // console.log("html: ", html)
     html.replace("nbsp;", " ")
     const parser = new DOMParser()
     const doc = parser.parseFromString(html, "text/html")

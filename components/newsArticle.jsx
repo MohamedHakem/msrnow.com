@@ -20,10 +20,6 @@ const ArticleRenderer = dynamic(
   }
 )
 
-const myLoader = ({ src, width, quality }) => {
-  return `${src}`
-}
-
 export const NewsArticle = ({
   articleData,
   imgSrc,
@@ -55,7 +51,30 @@ export const NewsArticle = ({
     locale: "ar-EG",
   }
   const formattedDate = new Date(date).toLocaleString("ar-EG", options)
-
+  const imgHandle = () => {
+    console.log("[imgHandle] optimized img failed, fetching original img...")
+    const googleImgUrl = articleData.google_thumb.slice(30, -21)
+    console.log("[imgHandle] googleImgUrl: ", googleImgUrl) // log the URL to check if it is correct
+    fetch(`${googleImgUrl}`)
+      .then((res) => {
+        console.log("[imgHandle] fetch response: ", res) // log the response to check if it is successful
+        if (res.ok) {
+          console.log("[imgHandle]: original img being set...")
+          set_imgSrc(googleImgUrl)
+        } else {
+          console.log(
+            "[imgHandle]: original is not available, setting the fallback: ",
+            googleImgUrl
+          )
+          set_imgSrc(fallbackImage)
+        }
+      })
+      .catch((err) => {
+        console.log("img err: ", err)
+        set_imgSrc(fallbackImage)
+      })
+  }
+  console.log("imgSrc: ", imgSrc)
   return (
     <div
       dir="rtl"
@@ -119,9 +138,8 @@ export const NewsArticle = ({
           <Image
             unoptimized
             priority
-            loader={myLoader}
-            className="relative z-0 my-8 w-full object-cover"
-            src={`${imgSrc}&format=jpg`}
+            className="relative z-0 my-8 h-[487px] w-full object-cover"
+            src={imgSrc}
             alt={articleData.title}
             width={imgSize.newWidth}
             height={imgSize.newHeight}
@@ -130,11 +148,8 @@ export const NewsArticle = ({
             sizes="(max-width: 768px) 100vw,
             (max-width: 1024px) 50vw,
             33vw"
-            onLoadingComplete={(result) => {
-              if (result.naturalWidth === 0) {
-                set_imgSrc(fallbackImage)
-              }
-            }}
+            // onError={() => set_imgSrc(fallbackImage)}
+            onError={() => imgHandle()}
           />
           <ArticleSocial />
           <>

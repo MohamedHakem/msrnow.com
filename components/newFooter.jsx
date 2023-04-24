@@ -6,7 +6,7 @@ import { Icons } from "./icons"
 export const Footer = () => {
   return (
     <footer aria-label="Site Footer" className="bg-gray-100">
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-teal-600">
           <Link href="/" rel="noreferrer" target="_blank" className="h-24 w-24">
             <span className="sr-only">Msrnow.com</span>
