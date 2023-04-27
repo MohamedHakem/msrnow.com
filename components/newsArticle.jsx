@@ -74,7 +74,7 @@ export const NewsArticle = ({
         set_imgSrc(fallbackImage)
       })
   }
-  console.log("imgSrc: ", imgSrc)
+
   return (
     <div
       dir="rtl"

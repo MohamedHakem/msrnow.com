@@ -10,7 +10,6 @@ import { Layout } from "@/components/layout"
 import { NewsArticle } from "../../components/newsArticle"
 
 const ArticlePage = ({ articleData }) => {
-  // console.log("articleData: ", articleData ? true : false)
   const imgWidth = 811
   let editThumbRes, newWidth, newHeight
   let updatedArticle
@@ -86,7 +85,7 @@ const ArticlePage = ({ articleData }) => {
     image: {
       "@type": "ImageObject",
       representativeOfPage: true,
-      url: updatedArticle?.thumb,
+      url: updatedArticle.google_thumb,
       width: editThumbRes.newWidth,
       height: editThumbRes.newHeight,
     },
