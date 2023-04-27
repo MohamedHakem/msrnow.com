@@ -2,7 +2,7 @@ import getCategory from "@/services/category/getCategory"
 
 import prisma from "@/lib/prisma"
 
-export default async function getCategoryArticles(category, num) {
+async function getCategoryArticles(category, num) {
   try {
     const categories = await getCategory("homepage", "", "").then(
       (c) => c.categories
@@ -39,3 +39,5 @@ export default async function getCategoryArticles(category, num) {
     return `error occured while fetching getCategoryArticles, category [${category}], num [${num}], error: ${error}`
   }
 }
+
+export { getCategoryArticles }

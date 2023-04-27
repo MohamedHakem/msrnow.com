@@ -25,7 +25,7 @@ const fontSans = FontSans({
   weight: ["300", "400", "700", "800"],
 })
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   // handle google googletagmanager (gtag) (GSC)
   const router = useRouter()
   useEffect(() => {
@@ -77,11 +77,11 @@ export default function App({ Component, pageProps }) {
           content="/mstile-144x144.png"
         ></meta>
         <meta name="theme-color" content="#ffffff"></meta>
-        <link rel="preload" href="https://www.msrnow.com"></link>
-        <link rel="preload" href="https://vitals.vercel-insights.com"></link>
-        <link rel="preload" href="https://www.googletagmanager.com"></link>
-        <link rel="preload" href="https://imagecdn.app"></link>
-        <link rel="preload" href="https://lh3.googleusercontent.com"></link>
+        <link rel="preconnect" href="https://www.msrnow.com"></link>
+        <link rel="preconnect" href="https://vitals.vercel-insights.com"></link>
+        <link rel="preconnect" href="https://www.googletagmanager.com"></link>
+        <link rel="preconnect" href="https://imagecdn.app"></link>
+        <link rel="preconnect" href="https://lh3.googleusercontent.com"></link>
         {/* uncomment the below line when you configure on monetag.com */}
         {/* <meta name="monetag" content="4f6fe42797ed2adccda6311fe6247141"></meta> */}
       </Head>
@@ -145,3 +145,5 @@ export default function App({ Component, pageProps }) {
     </>
   )
 }
+
+export default App

@@ -130,7 +130,10 @@ export const NewsArticle = ({
               {articleData.title}
             </h1>
             <div className="my-2 flex h-8 w-full text-sm">
-              <span className="flex-end float-left w-full">
+              <span
+                className="flex-end float-left w-full"
+                dateTime={articleData.published_at}
+              >
                 {formattedDate}
               </span>
             </div>

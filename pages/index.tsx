@@ -1,30 +1,36 @@
-import { Key } from "react"
+import { Key, useMemo } from "react"
 import Link from "next/link"
-import getCategoryArticles from "@/services/homepage/getArticles"
-import { formatArrayDatetimeSince } from "@/utils/old/formatArrayDatetimeSince"
+// import getCategoryArticles from "@/services/homepage/getArticles"
+// import { formatArrayDatetimeSince } from "@/utils/old/formatArrayDatetimeSince"
 import { getBase64 } from "@/utils/old/imagePlaceholderBase64.js"
+import memoize from "fast-memoize"
 
 import Cardx360 from "@/components/cards/cardx360"
 import { Icons } from "@/components/icons"
 import { Layout } from "@/components/layout"
 
-export default function IndexPage({ data }) {
-  const categories = [
-    { name: "أخبار مصر", slug: "/news/egypt", objName: "Egypt" },
-    { name: "الرياضة", slug: "/sports", objName: "Sports" },
-    { name: "فن ومشاهير", slug: "/news/arts", objName: "Arts" },
-    { name: "مال وأعمال", slug: "/finance", objName: "Finance" },
-    { name: "خارج الحدود", slug: "/news/world", objName: "World" },
-    { name: "أخبار سياسية", slug: "/news/politics", objName: "Politics" },
-    { name: "أخبار محلية", slug: "/news/local", objName: "Local" },
-  ]
+const getBase64Memoized = memoize(getBase64)
+
+function IndexPage({ data }) {
+  const categories = useMemo(
+    () => [
+      { name: "أخبار مصر", slug: "/news/egypt", objName: "Egypt" },
+      { name: "الرياضة", slug: "/sports", objName: "Sports" },
+      { name: "فن ومشاهير", slug: "/news/arts", objName: "Arts" },
+      { name: "مال وأعمال", slug: "/finance", objName: "Finance" },
+      { name: "خارج الحدود", slug: "/news/world", objName: "World" },
+      { name: "أخبار سياسية", slug: "/news/politics", objName: "Politics" },
+      { name: "أخبار محلية", slug: "/news/local", objName: "Local" },
+    ],
+    []
+  )
 
   return (
     <Layout>
       <section className="container grid items-center gap-6 px-0 pt-6 pb-8 md:px-[10px] md:py-10 lg:px-4">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
           {categories.map((category, index) => (
-            <div key={index} className="mb-10 mt-4 md:mx-2">
+            <div key={category.objName} className="mb-10 mt-4 md:mx-2">
               <div className="w-full rounded-3xl bg-white px-1 dark:border-neutral-800 dark:bg-[#353d50] md:border-0 md:py-[14px] lg:p-4">
                 <div className="w-full border-gray-300 dark:border-slate-500 md:mb-6 md:border-b">
                   <h2
@@ -51,7 +57,7 @@ export default function IndexPage({ data }) {
                         priority={index === 0 && i < 2 ? true : false}
                         key={i}
                         article={article}
-                        getBase64={getBase64}
+                        getBase64={getBase64Memoized}
                         category={category}
                         topBorder={i < 7}
                       />
@@ -67,8 +73,18 @@ export default function IndexPage({ data }) {
   )
 }
 
-// spread, map, filter the 3 are performance killers, avoid them
+export default IndexPage
+
+// spread operator, map, filter the 3 are performance killers, avoid them
 export async function getStaticProps() {
+  // Load the module dynamically
+  const { getCategoryArticles } = await import(
+    "@/services/homepage/getArticles"
+  )
+  const { formatArrayDatetimeSince } = await import(
+    "@/utils/old/formatArrayDatetimeSince"
+  )
+
   const isProduction = process.env.NODE_ENV === "production"
   const baseUrl = isProduction
     ? "https://www.msrnow.com"
@@ -113,7 +129,6 @@ export async function getStaticProps() {
 
   return {
     props: { data },
-    revalidate: 1800,
+    revalidate: 900,
   }
-  // props: { category, data },
 }

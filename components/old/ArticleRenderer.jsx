@@ -8,6 +8,7 @@ const ArticleRenderer = ({ html, origin }) => {
   useEffect(() => {
     // console.log("html: ", html)
     html.replace("nbsp;", " ")
+    html.replace("&ndash;", " ")
     const parser = new DOMParser()
     const doc = parser.parseFromString(html, "text/html")
 

@@ -5,7 +5,7 @@ export default function Video() {
     <Layout>
       <div
         dir="rtl"
-        className="m-auto my-auto mb-10 min-h-screen w-[952px] items-center justify-center align-middle"
+        className="m-auto mb-10 min-h-screen w-[952px] items-center justify-center align-middle"
       >
         <div className="my-10">
           <h1 className="my-14 text-4xl">
