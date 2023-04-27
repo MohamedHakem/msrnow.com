@@ -31,9 +31,26 @@ const nextConfig = {
         source: "/rss",
         destination: "/api/rss",
       },
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap/",
+      },
+      {
+        source: "/sitemap",
+        destination: "/api/sitemap/",
+      },
+      {
+        source: "/sitemap/:year/:month/:day",
+        destination: "/api/sitemap/:year/:month/:day",
+      },
     ]
   },
 }
 
 // export default nextConfig // for dev
 export default BundleAnalyzer(nextConfig) // for prod
+
+// {
+//   source: "/:date",
+//   destination: "/sitemap/:date",
+// },

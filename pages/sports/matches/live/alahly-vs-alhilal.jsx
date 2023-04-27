@@ -5,7 +5,7 @@ export default function Video() {
     <Layout>
       <div
         dir="rtl"
-        className="min-h-screen w-[952px] my-auto justify-center items-center align-middle m-auto mb-10"
+        className="m-auto mb-10 min-h-screen w-[952px] items-center justify-center align-middle"
       >
         <div className="my-10">
           <h1 className="my-14 text-4xl">
@@ -27,7 +27,7 @@ export default function Video() {
             </p>
 
             <h2 className="text-3xl">
-              {' '}
+              {" "}
               القنوات الناقلة لمباراة الأهلي و الهلال
             </h2>
             <p>
@@ -40,10 +40,10 @@ export default function Video() {
           </div>
         </div>
         <div
-          className="w-[952px] h-[500px] m-auto align-middle flex justify-center items-center"
+          className="m-auto flex h-[500px] w-[952px] items-center justify-center align-middle"
           style={{
-            msTransform: 'translate(-50%, -50%)',
-            transform: 'translateY(-50%, -50%)'
+            msTransform: "translate(-50%, -50%)",
+            transform: "translateY(-50%, -50%)",
           }}
         >
           <iframe
@@ -56,18 +56,7 @@ export default function Video() {
             width="100%"
           ></iframe>
         </div>
-        {/* <div className="w-[952px] h-[500px] m-auto align-middle flex justify-center items-center mt-8">
-        <iframe
-          id="iframeMatch"
-          allowFullScreen="true"
-          frameBorder="0"
-          height="500px"
-          scrolling="1"
-          src="https://korabase.online/albaplayer/1081/"
-          width="100%"
-        ></iframe>
-      </div> */}
       </div>
     </Layout>
-  );
+  )
 }
