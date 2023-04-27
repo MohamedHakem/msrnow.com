@@ -42,12 +42,12 @@ const ArticlePage = ({ articleData }) => {
     headline: articleData.title,
     datePublished: articleData.published_at,
     dateModified: articleData.published_at,
-    mainEntityOfPage: `https://msrnow.com/news/${articleData.category}/${slugifiedDate}/${articleData.titleSlug}`,
+    mainEntityOfPage: `https://www.msrnow.com/news/${articleData.category}/${slugifiedDate}/${articleData.titleSlug}`,
     publisher: {
       "@type": "NewsMediaOrganization",
-      name: "Msr Now - مصر الآن",
-      alternateName: "Msr Now",
-      url: "https://msrnow.com",
+      name: "MsrNow - مصر الآن",
+      alternateName: "MsrNow",
+      url: "https://www.msrnow.com",
       sameAs: [
         "https://twitter.com/msrnow",
         "https://www.youtube.com/msrnow",
@@ -65,9 +65,9 @@ const ArticlePage = ({ articleData }) => {
     description: articleData.description || articleData.title,
     author: {
       "@type": "NewsMediaOrganization",
-      name: "Msr Now - مصر الآن",
-      alternateName: "Msr Now",
-      url: "https://msrnow.com",
+      name: "MsrNow - مصر الآن",
+      alternateName: "MsrNow",
+      url: "https://www.msrnow.com",
       sameAs: [
         "https://twitter.com/msrnow",
         "https://www.youtube.com/msrnow",
@@ -101,7 +101,7 @@ const ArticlePage = ({ articleData }) => {
         <title>{`${articleData.title} - MsrNow.com`}</title>
         <link
           rel="canonical"
-          href={`https://msrnow.com/news/${articleData.slug}`}
+          href={`https://www.msrnow.com/news/${articleData.slug}`}
         ></link>
         <meta name="description" content={desc} />
         <meta name="keywords" content={articleData?.keywords}></meta>
@@ -111,7 +111,7 @@ const ArticlePage = ({ articleData }) => {
         <meta name="twitter:domain" content="msrnow.com"></meta>
         <meta
           name="twitter:url"
-          content={`https://msrnow.com/news/${articleData.short_slug}`}
+          content={`https://www.msrnow.com/news/${articleData.short_slug}`}
         ></meta>
         <meta
           name="twitter:image"
@@ -125,7 +125,7 @@ const ArticlePage = ({ articleData }) => {
         <meta name="og:updated_time" content={articleData.published_at}></meta>
         <meta
           name="og:url"
-          content={`https://msrnow.com/news/${articleData.slug}`}
+          content={`https://www.msrnow.com/news/${articleData.slug}`}
         ></meta>
         <meta property="og:image" content={updatedArticle?.google_thumb}></meta>
         <meta property="og:image:width" content={editThumbRes.newWidth}></meta>
