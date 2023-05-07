@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma"
+
 // import scrapeRss from "../../utils/rss/scrapeRss"
 
 export default async function handler(req, res) {
@@ -14,7 +15,7 @@ export default async function handler(req, res) {
   const data = await prisma.Article.findMany({
     where: {
       categoryId: {
-        in: [1, 3, 4, 5],
+        in: [1, 3, 4, 5, 6, 7], // add 6, 7 (finance, arts) as well to main page
       },
     },
     select: {
