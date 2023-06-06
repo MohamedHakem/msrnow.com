@@ -1,4 +1,4 @@
-import { Fragment, Key } from "react"
+import { Key } from "react"
 // import Head from "next/head"
 import getCategory from "@/services/category/getCategory"
 import { getLastDateOnGithub } from "@/utils/newGet/getLastDateOnGithub"
@@ -8,17 +8,22 @@ import { scrapeLatestNews } from "@/utils/newScrape/scrapeLatestNews"
 import { formatArrayDatetimeSince } from "@/utils/old/formatArrayDatetimeSince"
 import { getBase64 } from "@/utils/old/imagePlaceholderBase64.js"
 
+// import { For, block } from "million/react"
+
 import prisma from "@/lib/prisma"
 import Cardx360 from "@/components/cards/cardx360"
 import { Layout } from "@/components/layout"
 import { FeaturedCard } from "@/components/old/index"
 
+// const FeaturedCardBlock = block(FeaturedCard)
+// const Cardx360Block = block(Cardx360)
+
 export default function EgyptNewsPage({ formattedData, category }) {
   return (
     <Layout>
-      <section className="container grid items-center gap-6 px-4 pt-6 pb-8 md:py-10">
+      <section className="container grid items-center gap-6 px-4 pb-8 pt-6 md:py-10">
         <div dir="rtl" className="m-auto w-full items-center justify-center">
-          <div className="mt-10 mb-12 md:mx-2">
+          <div className="mb-12 mt-10 md:mx-2">
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2 lg:grid-cols-2 xl:grid-cols-2">
               {formattedData.map(
                 (article: { title: string; slug: Key }, i: number) =>
@@ -58,6 +63,9 @@ export default function EgyptNewsPage({ formattedData, category }) {
   )
 }
 
+// const EgyptNewsPageBlock = block(EgyptNewsPage)
+// export default EgyptNewsPageBlock
+
 export async function getStaticProps() {
   console.log("========== SCRAPING =========")
   // specify category
@@ -65,9 +73,11 @@ export async function getStaticProps() {
 
   // get last date
   const lastDate = await getLastDateOnGithub(category)
-
+  console.log("[debugging - /news/egypt] lastDate: ", lastDate)
   // scrape
   const { newLastDate, articles } = await scrapeLatestNews(lastDate, category)
+  console.log("[debugging - /news/egypt] newLastDate: ", newLastDate)
+  console.log("[debugging - /news/egypt] articles: ", articles)
 
   // update the last-date AND save scraped articles, if scraped > 0 articles
   if (articles.length > 0) {
@@ -102,6 +112,8 @@ export async function getStaticProps() {
     },
     take: 40,
   })
+
+  console.log("[debugging - /news/egypt] data[0]: ", data[0])
 
   // Convert the `createdAt`, `updatedAt`, and `published_at` fields of each item to a JSON-serializable format
   let formattedData = data.map(
