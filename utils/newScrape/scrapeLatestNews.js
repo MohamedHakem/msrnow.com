@@ -49,8 +49,9 @@ async function scrapeLatestNews(date, category) {
         return hasImage
       })
       .map(async (i, article) => {
+        // const currentSource = $(article).find(".vr1PYe").text().trim() // for testing
         const sourceId = sources.filter(
-          (s) => s.name === $(article).find("span.vr1PYe").text().trim()
+          (s) => s.name === $(article).find(".vr1PYe").text().trim()
         )[0].id
         const title = $(article).find("h4").text().trim()
         const articleObj = {
