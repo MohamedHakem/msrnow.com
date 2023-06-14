@@ -36,7 +36,7 @@ async function scrapeLatestNews(date, category) {
           }
           if (isRecent) {
             const verifiedSource = isVerifiedSource(
-              $(article).find("span.vr1PYe").text().trim()
+              $(article).find(".vr1PYe").text().trim()
             )
             if (verifiedSource) {
               return true
