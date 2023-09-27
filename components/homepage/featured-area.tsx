@@ -78,15 +78,15 @@ export default async function FeaturedArea() {
           ))}
         </div>
       </div>
-      <div className="p-4 mt-4">
+      <div className="p-4 container:pl-0 mt-4">
         <div className="flex flex-col gap-2 border-2 border-black p-4">
-          <h2 className="text-3xl font-bold md:-mt-9 md:bg-white md:w-fit md:px-2 ">أهم العناوين</h2>
+          <h2 className="text-3xl font-bold -mt-9 bg-white w-fit px-2 ">أهم العناوين</h2>
           <div className="grid grid-cols-1 divide-y-2 divide-gray-100 tablet:grid-cols-2 laptop:grid-cols-1 gap-2 tablet:gap-4 tablet:min-w-[180px] desktop:min-w-[220px]">
             {articles.slice(6).map((a, i) => (
               <Link
                 href={`/news/${a.short_slug}`}
                 key={i}
-                className="flex flex-row w-full tablet:flex-col pt-4 tablet:gap-0"
+                className="flex flex-row w-full tablet:flex-col pt-4 gap-3 tablet:gap-0"
               >
                 <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
                   <NextImage article={a} width={width / 2} />
