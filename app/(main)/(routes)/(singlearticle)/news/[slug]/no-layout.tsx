@@ -1,4 +1,4 @@
-import PromoteSidebar from '@/components/promote-sidebar';
+// import PromoteSidebar from '@/components/promote-sidebar';
 import { Suspense } from 'react';
 
 export default async function ArticleLayout({ children }: { children: React.ReactNode }) {

@@ -9,7 +9,7 @@ import NextImage from '@/components/NextImage';
 
 export default async function FeaturedArea() {
   const articles = await getTopHeadlineArticles(10);
-  articles.map((a) => console.log('articles a.published_at: ', a.published_at));
+  // articles.map((a) => console.log('articles a.published_at: ', a.published_at));
 
   const latestArticle = articles[0];
   const width = 768; // 750;
@@ -81,7 +81,7 @@ export default async function FeaturedArea() {
       <div className="p-4 container:pl-0 mt-4">
         <div className="flex flex-col gap-2 border-2 border-black p-4">
           <h2 className="text-3xl font-bold -mt-9 bg-white w-fit px-2 ">أهم العناوين</h2>
-          <div className="grid grid-cols-1 divide-y-2 divide-gray-100 tablet:grid-cols-2 laptop:grid-cols-1 gap-2 tablet:gap-4 tablet:min-w-[180px] desktop:min-w-[220px]">
+          <div className="grid grid-cols-1 laptop:divide-y-2 laptop:divide-gray-100 tablet:grid-cols-2 laptop:grid-cols-1 gap-2 tablet:gap-4 tablet:min-w-[180px] desktop:min-w-[220px]">
             {articles.slice(6).map((a, i) => (
               <Link
                 href={`/news/${a.short_slug}`}

@@ -16,54 +16,59 @@ export default async function RelatedTimeline({
   short_slug: string;
   categoryId: number;
 }) {
-  // console.log('🚀 related-timeline categoryId:', categoryId);
-  // console.log('🚀 related-timeline short_slug:', short_slug);
-  // console.log('🚀 related-timeline related_coverage_tweets:', related_coverage_tweets);
-  // console.log('🚀 related-timeline related_coverage_article:', related_coverage_article);
-  // console.log('🚀 related-timeline related_coverage_url:', related_coverage_url);
+
+  // imitate delay
+  // await new Promise((resolve) => setTimeout(resolve, 13000));
 
   let relatedArticles: relatedArticleType[] = [];
   let relatedTweets: string[] | null = [];
 
   related_coverage_article === null
-    ? console.log('related_coverage_article is null')
+    ? console.log('related_coverage_article is null. Exiting RelatedTimeline')
     : related_coverage_article === ''
     ? console.log("related_coverage_article is '' ")
     : null;
 
   // SCRAPE IF you don't have the related_coverage_article and you have related_coverage_url
-  if (related_coverage_url && related_coverage_article == '') {
-    console.log('[Start] Ive got related_coverage_url, ScrapeRelatedArticles...');
-    console.time('[TIME] ScrapeRelatedArticles');
-    relatedArticles = await ScrapeRelatedArticles(related_coverage_url, short_slug, categoryId);
-    console.timeEnd('[TIME] ScrapeRelatedArticles');
-    console.log('relatedArticles[0]: ', relatedArticles[0]);
-    // relatedTweets = relatedArticles[0].related_coverage_tweets.split(',');
-    relatedTweets = relatedArticles[0].related_coverage_tweets
-      ? relatedArticles[0].related_coverage_tweets.split(',')
-      : null;
-    console.log('[DONE] ScrapeRelatedArticles... FINISHED');
-    // console.log('🚀 ~ file: related-timeline.tsx:24 ~ relatedTweets:', relatedTweets, ' - ', relatedTweets?.length);
-  } else {
-    console.log('getRelatedArticle from db...');
-    // get the articles from db, and just format the tweets from string to string[]
-    console.time('[TIME] getRelatedArticles from db');
-    const relatedArticleFromDb = related_coverage_article
-      ? await getRelatedArticles(related_coverage_article.split(','))
-      : [];
-    console.timeEnd('[TIME] getRelatedArticles from db');
 
+  // if related_coverage_article is null or empty (there are no related articles in the db for this article)
+  if (related_coverage_article == '' || related_coverage_article == null) {
+    // scrape them, if possible
+    if (related_coverage_url) {
+      console.log('related_coverage_url exist, but related_coverage_article is empty, ScrapeRelatedArticles...');
+      console.log('[START] ScrapeRelatedArticles...');
+      console.time('[TIME] ScrapeRelatedArticles');
+      relatedArticles = await ScrapeRelatedArticles(related_coverage_url, short_slug, categoryId);
+      console.timeEnd('[TIME] ScrapeRelatedArticles');
+      console.log('relatedArticles[0]: ', relatedArticles[0]);
+      console.log('[FINISH] ScrapeRelatedArticles');
+      relatedTweets = relatedArticles[0].related_coverage_tweets
+        ? relatedArticles[0].related_coverage_tweets.split(',')
+        : null;
+    } else {
+      // they can't be scraped
+      return null;
+    }
+  } else {
+    // related_coverage_article exists (there are related articles in the db for this article), get them from db
+    console.log('[START] getRelatedArticles from db...');
+    console.time('[TIME] getRelatedArticles from db');
+    const relatedArticleFromDb = await getRelatedArticles(related_coverage_article.split(','));
+    console.timeEnd('[TIME] getRelatedArticles from db');
+    console.log('[FINISH] getRelatedArticles from db...');
+    // if db returned them successfully
     if (relatedArticleFromDb) {
       relatedArticles = relatedArticleFromDb.filter(
         (a) => relatedArticleFromDb[0].published_at.getMonth() === a.published_at.getMonth()
       );
-      console.log('🚀 ~ file: related-timeline.tsx:89 ~ relatedArticles:', relatedArticles.length);
-
       relatedTweets = relatedArticles[0].related_coverage_tweets
         ? relatedArticles[0].related_coverage_tweets.split(',')
         : related_coverage_tweets
         ? related_coverage_tweets.split(',')
         : null;
+      console.log('[Result] relatedArticles:', relatedArticles.length, ' relatedTweets: ', relatedTweets?.length || 0);
+    } else {
+      return null;
     }
   }
 
@@ -73,3 +78,39 @@ export default async function RelatedTimeline({
     return null;
   }
 }
+
+// if (
+//   (related_coverage_url && related_coverage_article == '') ||
+//   (related_coverage_url && related_coverage_article == null)
+// ) {
+//   console.log('related_coverage_url exist, but related_coverage_article is empty, ScrapeRelatedArticles...');
+//   console.log('[START] ScrapeRelatedArticles...');
+//   console.time('[TIME] ScrapeRelatedArticles');
+//   relatedArticles = await ScrapeRelatedArticles(related_coverage_url, short_slug, categoryId);
+//   console.timeEnd('[TIME] ScrapeRelatedArticles');
+//   console.log('relatedArticles[0]: ', relatedArticles[0]);
+//   console.log('[FINISH] ScrapeRelatedArticles');
+//   relatedTweets = relatedArticles[0].related_coverage_tweets
+//     ? relatedArticles[0].related_coverage_tweets.split(',')
+//     : null;
+// } else {
+//   console.log('[START] getRelatedArticles from db...');
+//   console.time('[TIME] getRelatedArticles from db');
+//   const relatedArticleFromDb = related_coverage_article
+//     ? await getRelatedArticles(related_coverage_article.split(','))
+//     : [];
+//   console.timeEnd('[TIME] getRelatedArticles from db');
+//   console.log('[FINISH] getRelatedArticles from db...');
+
+//   if (relatedArticleFromDb) {
+//     relatedArticles = relatedArticleFromDb.filter(
+//       (a) => relatedArticleFromDb[0].published_at.getMonth() === a.published_at.getMonth()
+//     );
+//     relatedTweets = relatedArticles[0].related_coverage_tweets
+//       ? relatedArticles[0].related_coverage_tweets.split(',')
+//       : related_coverage_tweets
+//       ? related_coverage_tweets.split(',')
+//       : null;
+//     console.log('[Result] relatedArticles:', relatedArticles.length, ' relatedTweets: ', relatedTweets?.length);
+//   }
+// }

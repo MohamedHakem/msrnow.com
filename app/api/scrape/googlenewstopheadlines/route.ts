@@ -62,7 +62,7 @@ export async function GET() {
   let updatedSourcesFromDB: sourceType[] = [];
 
   const updateCurrentSources = (allSources: sourceType[]) => {
-    console.log('[updateCurrentSources] allSources: ', allSources[0], ' - ', allSources.length);
+    console.log('[updateCurrentSources] allSources: ', allSources.length);
     updatedSourcesFromDB = allSources;
     console.log(
       '[updateCurrentSources] updatedSourcesFromDB: ',
@@ -142,9 +142,9 @@ export async function GET() {
   );
 
   console.log('[After] newLastDate: ', newLastDate);
-  console.log('coverage_url_arr: ', coverage_url_arr, ' - ', coverage_url_arr.length);
+  console.log('coverage_url_arr[0] and length: ', coverage_url_arr[0], ' - ', coverage_url_arr.length);
 
-  articles.map((a) => console.log('a.sourceId: ', a.sourceId)); // check if all have sourceId and not sourceName
+  // articles.map((a) => console.log('a.sourceId: ', a.sourceId)); // check if all have sourceId and not sourceName
 
   type articleType = {
     scraped_from: string;
@@ -167,7 +167,7 @@ export async function GET() {
     return { ...a, sourceId: sourceId };
   });
 
-  articlesWithSourceid.map((a) => console.log('a.sourceId: ', a.sourceId)); // check if all have sourceId and not sourceName
+  // articlesWithSourceid.map((a) => console.log('a.sourceId: ', a.sourceId)); // check if all have sourceId and not sourceName
   console.log('articlesWithSourceid: ', articlesWithSourceid[0], ' - ', articlesWithSourceid.length);
 
   // call with prisma, are there any article with any of these slugs or any of these published_at dates?

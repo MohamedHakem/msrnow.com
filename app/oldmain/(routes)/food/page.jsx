@@ -12,19 +12,9 @@ export default function Food() {
     'حواوشي'
   ];
 
-  const pasta = [
-    'كشري',
-    'مكرونة وعدس',
-    'مكرونة وتونة',
-    'مكرونة وبانية',
-    'مكرونة بشاميل'
-  ];
+  const pasta = ['كشري', 'مكرونة وعدس', 'مكرونة وتونة', 'مكرونة وبانية', 'مكرونة بشاميل'];
 
-  const tagen = [
-    'طاجن مكرونة وبانية قلاية',
-    'طاجن مكرونة وكبدة',
-    'طاجن مرونة ولحمة مفرومة'
-  ];
+  const tagen = ['طاجن مكرونة وبانية قلاية', 'طاجن مكرونة وكبدة', 'طاجن مرونة ولحمة مفرومة'];
 
   const hoomCook = ['رز بامية وبطاطس محمرة', 'معجنات جبنة ولحمة مفرومة'];
 
@@ -34,17 +24,11 @@ export default function Food() {
 
   const randomize = () => {
     const meat1 = meat[Math.floor(Math.random() * meat.length)];
-    const meat2 = meat.filter((m) => m != meat1)[
-      Math.floor(Math.random() * (meat.length - 1))
-    ];
+    const meat2 = meat.filter((m) => m != meat1)[Math.floor(Math.random() * (meat.length - 1))];
     const pasta1 = pasta[0];
-    const pasta2 = pasta.filter((m) => m != pasta1)[
-      Math.floor(Math.random() * (pasta.length - 1))
-    ];
+    const pasta2 = pasta.filter((m) => m != pasta1)[Math.floor(Math.random() * (pasta.length - 1))];
     const tagen1 = tagen[Math.floor(Math.random() * tagen.length)];
-    const tagen2 = tagen.filter((m) => m != tagen1)[
-      Math.floor(Math.random() * (tagen.length - 1))
-    ];
+    const tagen2 = tagen.filter((m) => m != tagen1)[Math.floor(Math.random() * (tagen.length - 1))];
 
     setCurrentMeat([meat1, meat2]);
     setCurrentPasta([pasta1, pasta2]);
@@ -53,7 +37,11 @@ export default function Food() {
 
   useEffect(() => {
     randomize();
-  }, []);
+  });
+
+  // useEffect(() => {
+  //   randomize();
+  // }, []);
 
   return (
     <div dir="rtl" className="flex flex-col justify-center gap-4 items-center">
@@ -61,9 +49,7 @@ export default function Food() {
         اختر لحمة
       </button>
       <div className="m-2 border p-2 w-[300px]">
-        <h2 className="border text-center bg-black text-white text-3xl text-bold p-2 mb-2">
-          اكل اسبوع
-        </h2>
+        <h2 className="border text-center bg-black text-white text-3xl text-bold p-2 mb-2">اكل اسبوع</h2>
 
         {/* // 2 days */}
         <div className="bg-red-600 p-2">

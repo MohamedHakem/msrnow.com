@@ -42,7 +42,7 @@ export default async function TimelineNewsCard({
                 // fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 alt={article.title}
-                className="object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+                className="object-cover"
               />
             </AspectRatio>
             <div className="h-full flex flex-col justify-between p-2 pb-0">

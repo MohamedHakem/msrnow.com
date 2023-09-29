@@ -129,7 +129,7 @@ export async function GET(request: NextRequest, params: { params: { category: st
   console.log('[After] newLastDate: ', newLastDate);
   console.log('coverage_url_arr: ', coverage_url_arr, ' - ', coverage_url_arr.length);
 
-  articles.map((a) => console.log('a.sourceId: ', a.sourceId));
+  // articles.map((a) => console.log('a.sourceId: ', a.sourceId));
 
 
   // call with prisma, are there any article with any of these slugs or any of these published_at dates?

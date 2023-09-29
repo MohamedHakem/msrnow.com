@@ -69,7 +69,7 @@ export default async function ScrapeRelatedArticles(
       content_selector: string | null;
     }[]
   ) => {
-    console.log('[updateCurrentSources] allSources: ', allSources[0], ' - ', allSources.length);
+    console.log('[updateCurrentSources] allSources: ', allSources.length);
     updatedSourcesFromDB = allSources;
     console.log(
       '[updateCurrentSources] updatedSourcesFromDB: ',

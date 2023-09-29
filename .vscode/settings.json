@@ -1,4 +1,6 @@
 {
   "WillLuke.nextjs.addTypesOnSave": true,
   "WillLuke.nextjs.hasPrompted": true
+  // "terminal.integrated.shellIntegration.enabled": false,
+  // "terminal.integrated.opacity": 0.5
 }
