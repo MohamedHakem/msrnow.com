@@ -16,12 +16,15 @@ export default async function RelatedTimeline({
   short_slug: string;
   categoryId: number;
 }) {
-
   // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 13000));
 
   let relatedArticles: relatedArticleType[] = [];
   let relatedTweets: string[] | null = [];
+
+  // const Is_fetch_related_tweets = process.env.is_fetch_related_tweets === 'false' ? false : true;
+  const Is_fetch_related_tweets = false;
+  console.log('🚀 ~ file: related-timeline.tsx:25 ~ Is_fetch_related_tweets:', Is_fetch_related_tweets);
 
   related_coverage_article === null
     ? console.log('related_coverage_article is null. Exiting RelatedTimeline')
@@ -42,8 +45,10 @@ export default async function RelatedTimeline({
       console.timeEnd('[TIME] ScrapeRelatedArticles');
       console.log('relatedArticles[0]: ', relatedArticles[0]);
       console.log('[FINISH] ScrapeRelatedArticles');
-      relatedTweets = relatedArticles[0].related_coverage_tweets
-        ? relatedArticles[0].related_coverage_tweets.split(',')
+      relatedTweets = Is_fetch_related_tweets
+        ? relatedArticles[0].related_coverage_tweets
+          ? relatedArticles[0].related_coverage_tweets.split(',')
+          : null
         : null;
     } else {
       // they can't be scraped
@@ -61,10 +66,12 @@ export default async function RelatedTimeline({
       relatedArticles = relatedArticleFromDb.filter(
         (a) => relatedArticleFromDb[0].published_at.getMonth() === a.published_at.getMonth()
       );
-      relatedTweets = relatedArticles[0].related_coverage_tweets
-        ? relatedArticles[0].related_coverage_tweets.split(',')
-        : related_coverage_tweets
-        ? related_coverage_tweets.split(',')
+      relatedTweets = Is_fetch_related_tweets
+        ? relatedArticles[0].related_coverage_tweets
+          ? relatedArticles[0].related_coverage_tweets.split(',')
+          : related_coverage_tweets
+          ? related_coverage_tweets.split(',')
+          : null
         : null;
       console.log('[Result] relatedArticles:', relatedArticles.length, ' relatedTweets: ', relatedTweets?.length || 0);
     } else {
@@ -78,39 +85,3 @@ export default async function RelatedTimeline({
     return null;
   }
 }
-
-// if (
-//   (related_coverage_url && related_coverage_article == '') ||
-//   (related_coverage_url && related_coverage_article == null)
-// ) {
-//   console.log('related_coverage_url exist, but related_coverage_article is empty, ScrapeRelatedArticles...');
-//   console.log('[START] ScrapeRelatedArticles...');
-//   console.time('[TIME] ScrapeRelatedArticles');
-//   relatedArticles = await ScrapeRelatedArticles(related_coverage_url, short_slug, categoryId);
-//   console.timeEnd('[TIME] ScrapeRelatedArticles');
-//   console.log('relatedArticles[0]: ', relatedArticles[0]);
-//   console.log('[FINISH] ScrapeRelatedArticles');
-//   relatedTweets = relatedArticles[0].related_coverage_tweets
-//     ? relatedArticles[0].related_coverage_tweets.split(',')
-//     : null;
-// } else {
-//   console.log('[START] getRelatedArticles from db...');
-//   console.time('[TIME] getRelatedArticles from db');
-//   const relatedArticleFromDb = related_coverage_article
-//     ? await getRelatedArticles(related_coverage_article.split(','))
-//     : [];
-//   console.timeEnd('[TIME] getRelatedArticles from db');
-//   console.log('[FINISH] getRelatedArticles from db...');
-
-//   if (relatedArticleFromDb) {
-//     relatedArticles = relatedArticleFromDb.filter(
-//       (a) => relatedArticleFromDb[0].published_at.getMonth() === a.published_at.getMonth()
-//     );
-//     relatedTweets = relatedArticles[0].related_coverage_tweets
-//       ? relatedArticles[0].related_coverage_tweets.split(',')
-//       : related_coverage_tweets
-//       ? related_coverage_tweets.split(',')
-//       : null;
-//     console.log('[Result] relatedArticles:', relatedArticles.length, ' relatedTweets: ', relatedTweets?.length);
-//   }
-// }
