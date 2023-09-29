@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "app/api/scrape/**/*.ts": {
+      "memory": 512,
+      "maxDuration": 10
+    }
+  }
+}

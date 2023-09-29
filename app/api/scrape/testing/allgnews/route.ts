@@ -46,7 +46,7 @@ export async function GET() {
       }
     })
     .filter((d) => d !== null && d !== undefined);
-  console.log('fetchesData: ', fetchesData);
+  // console.log('fetchesData: ', fetchesData);
   console.timeEnd('[2] fetchesData');
 
   console.log('END Fetching...');
@@ -56,7 +56,7 @@ export async function GET() {
   /////////////////////////////////////////////////////////////////////////////////////////
 
   // START of testing new way area
-  console.log('\n\nNEW WAY:\n');
+  // console.log('\n\nNEW WAY:\n');
   console.time('Processing');
   console.log('START Processing');
 

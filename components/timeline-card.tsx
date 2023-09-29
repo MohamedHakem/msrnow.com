@@ -8,18 +8,21 @@ function isTweetsArray(item: timelineArrayType): item is tweetsArrayType {
 
 export default async function TimelineCard({ item }: { item: timelineArrayType }) {
   if (isTweetsArray(item)) {
+    console.log('tweet item.id: ', item.id);
     return (
       <div>
-        <Tweet id={item.id} />
+        <Tweet id={`${item.id}`} fallback={<></>} />
+      </div>
+    );
+  } else {
+    return (
+      // <div className="w-[50dvw] tablet:w-80 max-w-xs border p-0 rounded-lg mt-4">
+      // <div className="tablet:w-full max-w-xs border p-0 rounded-lg mt-4">
+      <div className="tablet:w-full max-w-xs border p-0 rounded-lg mt-4">
+        <TimelineNewsCard article={item} />
       </div>
     );
   }
-  return (
-    // <div className="w-[50dvw] tablet:w-80 max-w-xs border p-0 rounded-lg mt-4">
-    <div className="w-[50dvw] tablet:w-full max-w-xs border p-0 rounded-lg mt-4">
-      <TimelineNewsCard article={item} />
-    </div>
-  );
 }
 
 // <div className="p-4 mt-4 border"><p>{item.title}</p></div>;

@@ -54,7 +54,7 @@ export default async function Section({ category }: { category: string }) {
 
   if (!news) return null;
 
-  news.map((a) => console.log('news a.published_at: ', a.published_at));
+  // news.map((a) => console.log('news a.published_at: ', a.published_at));
 
   return (
     <section className="flex flex-col w-full gap-4 px-4 container:px-0">

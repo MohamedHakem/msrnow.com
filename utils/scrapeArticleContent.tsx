@@ -1,55 +1,35 @@
 // import { db } from '@/lib/db';
 import { db } from '@/lib/db';
 import * as cheerio from 'cheerio';
-import { sources } from '@/data/static/sources';
+// import { sources } from '@/data/static/sources';
 import UpdateArticle from '@/utils/updateArticle';
-import { singleArticleType, sourceType } from '@/types';
+// import { singleArticleType, sourceType } from '@/types';
+import { singleArticleType } from '@/types';
 
 export default async function ScrapeArticleContent(article: singleArticleType) {
-  console.time('[Time] Scrape Article GET Route');
-  console.log('[ScrapeArticleContent] ScrapeArticleContent...');
-  console.log(
-    '[ScrapeArticleContent] article.short_slug: ',
-    article.short_slug,
-    '\n   ',
-    'article.article_source_url: ',
-    article.article_source_url,
-    '\n   ',
-    'article.content: ',
-    article.content
-  );
+  console.log('[START] ScrapeArticleContent... article.short_slug: ', article.short_slug);
+  console.time('[Time] ScrapeArticleContent Route');
 
   if (!article) {
     console.log('[ScrapeArticleContent] Article not found! (!article is true)... Exiting');
-    // return { status: 404, message: 'article is empty.' };
     return article;
   }
   if (!article.slug) {
     console.log('[ScrapeArticleContent] Article slug not found! (!article.slug is true)... Exiting');
-    // return { status: 404, message: 'slug is empty.' };
     return article;
   }
   if (article?.content ? article?.content?.length > 5 : false) {
-    console.log('[ScrapeArticleContent] article?.content?.length > 5 is true!... Exiting');
-    // console.timeEnd('[Time] Scrape Article GET Route');
+    console.log('[ScrapeArticleContent] article?.content?.length > 5 is true, content exists already! Exiting...');
     return article;
   }
-  // if article_source_url already exist, meaning it's unscrapable, return the full article
+  // if article_source_url already exist, meaning it's scraped before and got only article_source_url and no content, meaning it's unscrapable, return article
   if (article?.article_source_url ? article?.article_source_url?.length > 5 : false) {
-    console.log('[ScrapeArticleContent] article?.article_source_url?.length > 5 is true!... Exiting');
-    console.timeEnd('[Time] Scrape Article GET Route');
+    console.log('[ScrapeArticleContent] article?.article_source_url?.length > 5 is true, scraped before. Exiting...');
     return article;
   }
 
   // const currentSource: sourceType | undefined = sources.find((c) => c.id === article.sourceId);
   const currentSource = await db.source.findUnique({ where: { id: article.sourceId } });
-  // | {
-  //     id: number;
-  //     name: string;
-  //     url: null;
-  //     scrapable: number;
-  //     content_selector: string | null;
-  //   }
 
   // if source is not one of the acceptable sources, return the article (this shouldn't be possible considering the scraping filter)
   if (!currentSource) {
@@ -60,7 +40,6 @@ export default async function ScrapeArticleContent(article: singleArticleType) {
   const article_source_url_page = await fetch(article.article_google_url).then((res) => res.text());
 
   const article_source_url = cheerio.load(article_source_url_page, { xmlMode: true })('div.m2L3rb > a').attr('href');
-  console.log('🚀 ScrapeArticleContent ~ article_source_url:', article_source_url);
 
   const MY_API_TOKEN = '39d217dc-36fd-4a41-83c3-55e9c30920fa';
   const browserless_api = `https://chrome.browserless.io/content?token=${MY_API_TOKEN}&blockAds&stealth`;
@@ -141,6 +120,6 @@ export default async function ScrapeArticleContent(article: singleArticleType) {
   console.log('[ScrapeArticleContent] updatedArticleRes: ', updatedArticleRes);
   updatedArticle = { ...article, ...data }; // or updatedArticleRes
 
-  console.timeEnd('[Time] Scrape Article GET Route');
+  console.timeEnd('[Time] ScrapeArticleContent Route');
   return updatedArticle;
 }

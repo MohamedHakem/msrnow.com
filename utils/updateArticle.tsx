@@ -18,7 +18,7 @@ export default async function UpdateArticle(data: updatedArticleType, slug: stri
       },
       data: data
     });
-    console.log('[updatedArticle()] updatedArticleRes.content?.length: ', updatedArticleRes.content?.length);
+    console.log('[updatedArticle()] updatedArticleRes: ', updatedArticleRes);
     return true;
   } catch (error: any) {
     console.log('FAILED updating article, prisma error code: ', error.code, '\n', 'full error', error);

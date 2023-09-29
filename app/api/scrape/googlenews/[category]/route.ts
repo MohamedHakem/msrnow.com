@@ -73,7 +73,7 @@ export async function GET(request: NextRequest, params: { params: { category: st
   );
 
   console.log('[After] newLastDate: ', newLastDate);
-  console.log('coverage_url_arr: ', coverage_url_arr, ' - ', coverage_url_arr.length);
+  console.log('coverage_url_arr[0] and length ', coverage_url_arr[0], ' - ', coverage_url_arr.length);
 
   // check that there are new articles, and newLastDate has the updated last_date
   if (newLastDate && last_date && newLastDate > new Date(last_date) && articles.length > 0) {

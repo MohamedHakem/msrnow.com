@@ -66,7 +66,7 @@ export default async function ArticleRendererSSR({ html }: { html: string | null
     // console.timeEnd('ArticleRenderer');
 
     return (
-      <div className="flex flex-col w-full gap-2 m-auto" dangerouslySetInnerHTML={{ __html: styledHtml }} />
+      <div className="flex flex-col w-full gap-2 m-auto animate-fadeIn" dangerouslySetInnerHTML={{ __html: styledHtml }} />
     );
   }
 

@@ -34,7 +34,7 @@ export default async function NextImage({
   const userAgent = headersInsance.get('user-agent');
   // console.log('userAgent: ', userAgent);
   const isMobile = userAgent && userAgent.includes('Mobi');
-  console.log('isMobile: ', isMobile);
+  // console.log('isMobile: ', isMobile);
   // if (isMobile) {}
 
   if (width) {
