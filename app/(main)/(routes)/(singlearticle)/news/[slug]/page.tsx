@@ -53,7 +53,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
               </Suspense>
             </div>
           </div>
-          <div className="flex flex-col w-[calc(100dvh - 34px)] laptop:w-1/3">
+          <div className="flex flex-col w-[calc(100dvh - 34px)] laptop:w-1/3 laptop:h-[1200px]">
             {/* {console.time('RelatedTimeline') as React.ReactNode} */}
             <Suspense fallback={<div className="w-full h-screen p-4 mx-auto bg-gray-200 animate-pulse"></div>}>
               <RelatedTimeline
