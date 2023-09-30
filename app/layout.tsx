@@ -22,7 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {/* <body className={cn(font.className, 'bg-white dark:bg-[#302E2B]')}> */}
       {/* <body className={cn(font.className, 'bg-white dark:bg-[#000]')}> */}
       <body className={`${font.className} bg-white dark:bg-[#000]`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem storageKey="msrnow-theme">
+        {/* <ThemeProvider attribute="class" defaultTheme="light" enableSystem storageKey="msrnow-theme"> */}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
         </ThemeProvider>
       </body>
