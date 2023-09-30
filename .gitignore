@@ -1,7 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# use bun in local development, but pnpm for vercel (to avoid throwing an error about pages/_document.js in Vercel build step.
+# use bun in local development (my cat likes it), but pnpm for Vercel
+# to avoid throwing an error about pages/_document.js in Vercel build step.
+# Next.js 13.5.* "pages is no longer shown when there is no pages output in next build" causes this.
 bun.lockb
+prod-pnpm-lock.yaml
 
 # dependencies
 /node_modules
