@@ -52,6 +52,7 @@ model Article {
 model Category {
   id              Int       @id @default(autoincrement())
   name            String    @unique @db.VarChar(100)
+  name_ar         String?   @unique @db.VarChar(100)
   google_news_url String    @default("") @db.VarChar(400)
   last_date       String?   @db.VarChar(100)
   createdAt       DateTime  @default(now()) @db.Timestamp(0)

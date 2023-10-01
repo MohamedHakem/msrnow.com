@@ -28,6 +28,7 @@ export default async function FeaturedArea() {
                 alt={latestArticle.title}
                 width={1024}
                 height={614}
+                priority={true}
                 // className={`min-w-full md:top-1/2 md:absolute md:-mt-56 laptop:h-80`}
                 // className={`min-w-full md:px-4 h-48 md:h-72`}
                 className={`min-w-full md:px-4 h-48 md:h-72 laptop:h-[460px]`}
@@ -46,7 +47,7 @@ export default async function FeaturedArea() {
               className="flex flex-col w-full mobilemd:flex-row md:w-1/2 md:flex-col gap-3 md:gap-0"
             >
               <div className="w-full mobilemd:w-1/2 md:w-full">
-                <NextImage article={a} width={width / 2} />
+                <NextImage article={a} width={width / 2} index={i} />
               </div>
               <div className="flex flex-col w-full mobilemd:w-1/2 md:w-full px-4 mobilemd:px-0">
                 <p className="md:pt-2 pb-0 text-[14px] md:text-[22px] font-bold hover:text-red-500">{a.title}</p>
@@ -69,7 +70,7 @@ export default async function FeaturedArea() {
               className="flex flex-row w-full tablet:flex-col gap-3 tablet:gap-0"
             >
               <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
-                <NextImage article={a} width={width / 3} />
+                <NextImage article={a} width={width / 3} index={i} />
               </div>
               <p className="flex items-center w-3/5 tablet:w-full tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
                 {a.title}
@@ -89,7 +90,7 @@ export default async function FeaturedArea() {
                 className="flex flex-row w-full tablet:flex-col pt-4 gap-3 tablet:gap-0"
               >
                 <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
-                  <NextImage article={a} width={width / 2} />
+                  <NextImage article={a} width={width / 2} index={i} />
                 </div>
                 <p className="flex items-center w-3/5 tablet:w-full tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
                   {a.title}

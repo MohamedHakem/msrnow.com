@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image';
+// import Image from 'next/image';
 import { headers } from 'next/headers';
 
 type featuredArticleType = {
@@ -25,10 +25,12 @@ type newsType = {
 
 export default async function NextImage({
   article,
-  width
+  width,
+  index
 }: {
   article: featuredArticleType | newsType;
   width: number | undefined | null;
+  index: number | undefined | null;
 }) {
   const headersInsance = headers();
   const userAgent = headersInsance.get('user-agent');
@@ -49,6 +51,7 @@ export default async function NextImage({
         width={width}
         height={height}
         srcSet={srcset}
+        fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
         className="min-w-full min-h-full bg-gray-100"
         // className="w-1/2 md:w-full"
       />
@@ -66,6 +69,7 @@ export default async function NextImage({
         srcSet={srcset}
         alt={article.title}
         src={imgUrl}
+        fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
       />
     );
   }
