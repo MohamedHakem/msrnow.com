@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getLatestCategoryArticles } from '@/data/getArticles';
-import NextImage from '@/components/NextImage';
+import NextImage from '@/components/news/NextImage';
 import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
 import AdSection from '@/components/news/ad-section';
 // import { Tweet } from 'react-tweet';

@@ -1,20 +1,11 @@
-// import ViewCounter from '@/components/view-counter';
 import getArticle from '@/data/getArticle';
-// import MostViewedArticles from '@/components/most-viewed-articles';
-// import IncrementViewCounter from '@/components/increment-view-counter';
-// import Image from 'next/image';
-// import SingleArticle from '@/components/articlepage/single-article';
-// import ScrapeArticleContent from '@/utils/scrapeArticleContent';
-// import { Await } from '@/components/await';
 import { Suspense } from 'react';
 import SingleArticleSkeleton from '@/components/skeletons/single-article-skeleton';
 import RelatedTimeline from '@/components/news/articlepage/related-timeline';
-// import ArticleRendererSSR from '@/components/article-renderer-ssr';
 import ArticleSettingSidebar from '@/components/news/articlepage/article-settings-sidebar';
 import ArticleHeader from '@/components/news/articlepage/article-header';
 import IncrementViewCounter from '@/components/news/increment-view-counter';
 import ArticleBody from '@/components/news/articlepage/article-body';
-// import RelatedTimeline from '@/components/articlepage/related-timeline';
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
   const { slug } = params;
@@ -28,7 +19,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
   // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 50000));
-
   console.log('article rendered!');
 
   return (
