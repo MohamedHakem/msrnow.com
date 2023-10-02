@@ -113,15 +113,17 @@ export async function getTopHeadlineArticles(num: number) {
   });
 }
 
-export async function getLatestCategoryArticles(category: string, num: number) {
+export async function getLatestCategoryArticles(category: string, num: number, excludeRelated?: boolean) {
   return await db.category.findMany({
     where: { name: category },
     include: {
       articles: {
         where: {
-          NOT: {
-            related_coverage_url: ''
-          }
+          ...(excludeRelated && {
+            NOT: {
+              related_coverage_url: ''
+            }
+          })
         },
         select: {
           title: true,
@@ -141,15 +143,3 @@ export async function getLatestCategoryArticles(category: string, num: number) {
     }
   });
 }
-
-// : Promise<{
-//   articles: {
-//     title: string;
-//     google_thumb: string;
-//     views: number | null;
-//     likes: number | null;
-//     short_slug: string;
-//     categoryId: number;
-//     published_at: Date;
-//   }[];
-// }>

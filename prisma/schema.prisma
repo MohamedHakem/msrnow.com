@@ -50,15 +50,16 @@ model Article {
 }
 
 model Category {
-  id              Int       @id @default(autoincrement())
-  name            String    @unique @db.VarChar(100)
-  name_ar         String?   @unique @db.VarChar(100)
-  google_news_url String    @default("") @db.VarChar(400)
-  last_date       String?   @db.VarChar(100)
-  createdAt       DateTime  @default(now()) @db.Timestamp(0)
-  updatedAt       DateTime  @default(now()) @updatedAt @db.Timestamp(0)
-  articles        Article[]
-  source          Source[]
+  id                 Int       @id @default(autoincrement())
+  name               String    @unique @db.VarChar(100)
+  name_ar            String?   @unique @db.VarChar(100)
+  parent_category_id Int?       @default(0) @db.UnsignedInt
+  google_news_url    String    @default("") @db.VarChar(400)
+  last_date          String?   @db.VarChar(100)
+  createdAt          DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt          DateTime  @default(now()) @updatedAt @db.Timestamp(0)
+  articles           Article[]
+  source             Source[]
 }
 
 model Source {

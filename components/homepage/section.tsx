@@ -36,10 +36,12 @@ type topHeadlineType = {
 
 export default async function Section({
   categoryName,
-  categoryNameAr
+  categoryNameAr,
+  parent_category_id
 }: {
   categoryName: string;
   categoryNameAr: string | undefined | null;
+  parent_category_id: number | null;
 }) {
   let news: newsType[] | topHeadlineType[] | null = null;
   // const categoryInEnglish = getEnglishCategoryName(category);
@@ -53,7 +55,7 @@ export default async function Section({
   if (categoryName === 'top-headline') {
     return;
   } else {
-    news = await getLatestCategoryArticles(categoryName, 6).then((res) => res[0].articles);
+    news = await getLatestCategoryArticles(categoryName, 6, !parent_category_id).then((res) => res[0].articles);
   }
 
   if (!news || news.length < 6) return null;
