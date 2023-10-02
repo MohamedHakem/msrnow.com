@@ -1,6 +1,6 @@
-import AdSection from '@/components/ad-section';
-import FeaturedArea from '@/components/homepage/featured-area';
-import Section from '@/components/homepage/section';
+import AdSection from '@/components/news/ad-section';
+import FeaturedArea from '@/components/news/homepage/featured-area';
+import Section from '@/components/news/homepage/section';
 import { db } from '@/lib/db';
 // import PromoteSidebar from '@/components/promote-sidebar';
 

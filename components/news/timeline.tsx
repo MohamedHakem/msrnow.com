@@ -1,19 +1,9 @@
 import { relatedArticleType, timelineArrayType, tweetsArrayType } from '@/types';
-// import getLocalArabicFromTimestamp from '@/utils/convertTimestampToCustomLocalArabicTime';
 // import { Tweet } from 'react-tweet';
-import Datetime from '@/components/datetime';
-import TimelineCard from '@/components/timeline-card';
-// import { ScrollArea } from '@/components/ui/scroll-area';
-import TimelineSkeleton from './skeletons/timeline-skeleton';
+import Datetime from '@/components/news/datetime';
+import TimelineCard from '@/components/news/timeline-card';
+import TimelineSkeleton from '@/components/skeletons/timeline-skeleton';
 import { Suspense } from 'react';
-
-// interface TimelineItemProps {
-//   completed: boolean;
-//   title: string;
-//   deliver: boolean;
-// }
-
-// export default function Timeline() {
 
 function isTweetsArray(item: timelineArrayType): item is tweetsArrayType {
   return 'id' in item && 'published_at' in item;

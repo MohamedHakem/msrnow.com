@@ -8,12 +8,12 @@ import getArticle from '@/data/getArticle';
 // import { Await } from '@/components/await';
 import { Suspense } from 'react';
 import SingleArticleSkeleton from '@/components/skeletons/single-article-skeleton';
-import RelatedTimeline from '@/components/articlepage/related-timeline';
+import RelatedTimeline from '@/components/news/articlepage/related-timeline';
 // import ArticleRendererSSR from '@/components/article-renderer-ssr';
-import ArticleSettingSidebar from '@/components/articlepage/article-settings-sidebar';
-import ArticleHeader from '@/components/articlepage/article-header';
-import IncrementViewCounter from '@/components/increment-view-counter';
-import ArticleBody from '@/components/articlepage/article-body';
+import ArticleSettingSidebar from '@/components/news/articlepage/article-settings-sidebar';
+import ArticleHeader from '@/components/news/articlepage/article-header';
+import IncrementViewCounter from '@/components/news/increment-view-counter';
+import ArticleBody from '@/components/news/articlepage/article-body';
 // import RelatedTimeline from '@/components/articlepage/related-timeline';
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {

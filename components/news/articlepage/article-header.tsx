@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import ViewCounter from '@/components/view-counter';
+import ViewCounter from '@/components/news/view-counter';
 // import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Image from 'next/image';
 import { singleArticleType } from '@/types';

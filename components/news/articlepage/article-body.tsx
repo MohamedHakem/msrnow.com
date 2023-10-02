@@ -1,4 +1,4 @@
-import ArticleRendererSSR from '@/components/article-renderer-ssr';
+import ArticleRendererSSR from '@/components/news/article-renderer-ssr';
 import { singleArticleType } from '@/types';
 import ScrapeArticleContent from '@/utils/scrapeArticleContent';
 

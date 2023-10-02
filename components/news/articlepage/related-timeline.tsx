@@ -1,5 +1,5 @@
 import ScrapeRelatedArticles from '@/utils/scrapeRelatedNews';
-import Timeline from '@/components/timeline';
+import Timeline from '@/components/news/timeline';
 import { relatedArticleType } from '@/types';
 import { getRelatedArticles } from '@/data/getArticles';
 

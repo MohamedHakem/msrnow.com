@@ -1,11 +1,11 @@
-import IncrementViewCounter from '@/components/increment-view-counter';
+import IncrementViewCounter from '@/components/news/increment-view-counter';
 // import ViewCounter from '@/components/view-counter';
 // import Image from 'next/image';
 // import { AspectRatio } from '@/components/ui/aspect-ratio';
 // import ArticleRenderer from '@/components/article-renderer';
-import RelatedTimeline from '@/components/articlepage/related-timeline';
+import RelatedTimeline from '@/components/news/articlepage/related-timeline';
 import { singleArticleType } from '@/types';
-import ArticleRendererSSR from '@/components/article-renderer-ssr';
+import ArticleRendererSSR from '@/components/news/article-renderer-ssr';
 import { Suspense } from 'react';
 // import TimelineSkeleton from '@/components/skeletons/timeline-skeleton';
 import ArticleSettingSidebar from './article-settings-sidebar';

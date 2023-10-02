@@ -5,7 +5,7 @@ import Link from 'next/link';
 // import LikesCounter from '@/components/likes-counter';
 // import CategorySectionSidebar from '@/components/category-section-sidebar';
 import { getTopHeadlineArticles } from '@/data/getArticles';
-import NextImage from '@/components/NextImage';
+import NextImage from '@/components/news/NextImage';
 
 export default async function FeaturedArea() {
   const articles = await getTopHeadlineArticles(10);

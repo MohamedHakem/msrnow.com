@@ -3,7 +3,7 @@ import { increment } from '@/app/actions';
 import { ArrowBigUp, ArrowUpSquare, ChevronUpSquare, Heart, Triangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import LoadingDots from '@/components/loading-dots';
+import LoadingDots from '@/components/news/loading-dots';
 import confetti from 'canvas-confetti';
 
 // call increment action in the article's single page, this is just a RSC views counter for display (check leerob's approach)
