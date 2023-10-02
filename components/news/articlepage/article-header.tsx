@@ -8,6 +8,8 @@ export default async function ArticleHeader({ article }: { article: singleArticl
   // // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
+  console.log("ArticleHeader rendered!");
+
   const width = 650;
   const height = 390;
   const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width}`).replace(/-h\d+/, `-h${height}`);
@@ -35,6 +37,7 @@ export default async function ArticleHeader({ article }: { article: singleArticl
           height={height}
           alt={article.title}
           className="animate-fadeIn"
+          priority={true}
           // className='m-auto'
           // sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           // className="m-auto hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden"

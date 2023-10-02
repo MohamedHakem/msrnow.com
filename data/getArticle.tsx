@@ -4,8 +4,6 @@ export const revalidate = 300 * 12; // 1hour cache
 
 export default async function getArticle(slug: string) {
   slug = decodeURIComponent(slug);
-  // const article = await db.article.update({
-  // data: { views: { increment: 1 } },
   try {
     const article = await db.article.findUnique({
       where: {
@@ -35,7 +33,6 @@ export default async function getArticle(slug: string) {
     return article;
   } catch (error) {
     console.log(`[getArticle] [Error] slug: ${slug}, error: ${error}`);
-
     return null;
   }
 }

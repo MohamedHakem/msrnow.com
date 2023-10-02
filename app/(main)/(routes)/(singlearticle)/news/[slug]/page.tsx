@@ -29,6 +29,8 @@ export default async function ArticlePage({ params }: { params: { slug: string }
   // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 50000));
 
+  console.log('article rendered!');
+
   return (
     <div className="flex flex-col desktop:flex-row rounded-md gap-4 py-10 px-4 container:px-0 scroll-m-0">
       {console.time('Article Page') as React.ReactNode}
@@ -54,7 +56,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             </div>
           </div>
           <div className="flex flex-col w-[calc(100dvh - 34px)] laptop:w-1/3 laptop:h-[1200px]">
-            {/* {console.time('RelatedTimeline') as React.ReactNode} */}
             <Suspense fallback={<div className="w-full h-screen p-4 mx-auto bg-gray-200 animate-pulse"></div>}>
               <RelatedTimeline
                 related_coverage_url={article.related_coverage_url}
@@ -64,8 +65,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
                 categoryId={article.categoryId}
               />
             </Suspense>
-            {/* <div className="w-full h-52 border bg-gray-300 animate-pulse"></div> */}
-            {/* {console.timeEnd('RelatedTimeline') as React.ReactNode} */}
           </div>
         </div>
       </div>
