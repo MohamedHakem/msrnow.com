@@ -1,13 +1,7 @@
-// import SingleArticleSkeleton from '@/components/skeletons/single-article-skeleton';
-// import { Suspense } from 'react';
-
 import TimelineSkeleton from '@/components/skeletons/timeline-skeleton';
 
 export default function Loading() {
-  console.log('loading file...');
-
   return (
-    // <div className="flex flex-col w-full max-w-6xl m-auto gap-4 pt-0 pb-10 md:py-12 laptop:pt-4 container:px-0 scroll-m-0">
     <div className="flex flex-col gap-4 py-8 px-4">
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
         <div className="h-full pb-4 lg:col-span-2">
@@ -23,11 +17,6 @@ export default function Loading() {
                 <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-ful">
                   <div className="w-full md:w-1/2 h-[340px] bg-gray-100 animate-pulse"></div>
                   <div className="w-full md:w-1/2 h-[340px] bg-gray-100 animate-pulse"></div>
-                  {/* <div className="flex flex-col w-full md:w-1/2 h-[340px] gap-3">
-                    <div className="w-full h-[215px] bg-gray-100 animate-pulse"></div>
-                    <div className="w-full h-[100px] bg-gray-100 animate-pulse"></div>
-                    <div className="w-full h-[16px] bg-gray-100 animate-pulse"></div>
-                  </div> */}
                 </div>
               </li>
               {[1, 2, 3].map((article, i) => (
@@ -50,6 +39,5 @@ export default function Loading() {
         </div>
       </div>
     </div>
-    // </div>
   );
 }
