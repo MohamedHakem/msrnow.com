@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import ViewCounter from '@/components/view-counter';
+import ViewCounter from '@/components/news/view-counter';
 import { Share2 } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
-import LikesCounter from '@/components/likes-counter';
+import LikesCounter from '@/components/news/likes-counter';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 
 export default async function FeaturedNewsCard({

@@ -1,4 +1,4 @@
-import NewsCard from '@/components/cards/news-card';
+import NewsCard from '@/components/news/cards/news-card';
 // most viewed articles of all time, include another argument for period "day", or "week", or "month" and take it to the prisma call to filter based on it now-day/now-week/now-month
 export default async function NewsList({
   newsArticles

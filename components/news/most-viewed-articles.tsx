@@ -1,5 +1,5 @@
 import { getMostViewedArticles } from '@/data/getArticles';
-import NewsList from './news-list';
+import NewsList from '@/components/news/news-list';
 // most viewed articles of all time, include another argument for period "day", or "week", or "month" and take it to the prisma call to filter based on it now-day/now-week/now-month
 
 export default async function MostViewedArticles({ num }: { num: number }) {
