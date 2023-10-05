@@ -7,7 +7,8 @@ const sections = [
   { title: 'رياضة', url: 'sports' },
   { title: 'فيديو', url: 'videos' },
   { title: 'أكلات', url: 'food' },
-  { title: 'بيع واشتري ببلاش', url: 'marketplace' }
+  { title: 'بيع واشتري ببلاش', url: 'marketplace-1' },
+  // { title: 'بيع واشتري ببلاش', url: 'marketplace' }
 ];
 
 export const Navbar = () => {
