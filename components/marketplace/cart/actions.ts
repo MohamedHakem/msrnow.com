@@ -1,6 +1,6 @@
 'use server';
 
-import { addToCart, createCart, getCart, removeFromCart, updateCart } from 'lib/shopify';
+// import { addToCart, createCart, getCart, removeFromCart, updateCart } from 'lib/shopify';
 import { cookies } from 'next/headers';
 
 export const addItem = async (variantId: string | undefined): Promise<String | undefined> => {
@@ -8,13 +8,13 @@ export const addItem = async (variantId: string | undefined): Promise<String | u
   let cart;
 
   if (cartId) {
-    cart = await getCart(cartId);
+    // cart = await getCart(cartId);
   }
 
   if (!cartId || !cart) {
-    cart = await createCart();
-    cartId = cart.id;
-    cookies().set('cartId', cartId);
+    // cart = await createCart();
+    // cartId = cart.id;
+    // cookies().set('cartId', cartId);
   }
 
   if (!variantId) {
@@ -22,7 +22,7 @@ export const addItem = async (variantId: string | undefined): Promise<String | u
   }
 
   try {
-    await addToCart(cartId, [{ merchandiseId: variantId, quantity: 1 }]);
+    // await addToCart(cartId, [{ merchandiseId: variantId, quantity: 1 }]);
   } catch (e) {
     return 'Error adding item to cart';
   }
@@ -35,7 +35,7 @@ export const removeItem = async (lineId: string): Promise<String | undefined> =>
     return 'Missing cart ID';
   }
   try {
-    await removeFromCart(cartId, [lineId]);
+    // await removeFromCart(cartId, [lineId]);
   } catch (e) {
     return 'Error removing item from cart';
   }
@@ -56,13 +56,13 @@ export const updateItemQuantity = async ({
     return 'Missing cart ID';
   }
   try {
-    await updateCart(cartId, [
-      {
-        id: lineId,
-        merchandiseId: variantId,
-        quantity
-      }
-    ]);
+    // await updateCart(cartId, [
+    //   {
+    //     id: lineId,
+    //     merchandiseId: variantId,
+    //     quantity
+    //   }
+    // ]);
   } catch (e) {
     return 'Error updating item quantity';
   }
