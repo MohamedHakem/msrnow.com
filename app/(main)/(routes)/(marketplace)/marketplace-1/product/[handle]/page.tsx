@@ -120,7 +120,7 @@ export default async function ProductPage({ params }: { params: { handle: string
           </div>
 
           <div className="basis-full lg:basis-2/6">
-            <ProductDescription product={product} />
+            {/* <ProductDescription product={product} /> */}
           </div>
         </div>
         {/* <Suspense>
