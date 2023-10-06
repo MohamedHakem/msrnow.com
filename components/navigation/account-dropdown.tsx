@@ -33,22 +33,28 @@ export default function AccountDropdown() {
     return data.roles;
   }, [userEmail]);
 
+  const assignRoles = useCallback(async () => {
+    if (userEmail) {
+      const updatedUser = await assignRole(userEmail, 'reader');
+      return updatedUser;
+    }
+  }, [userEmail]);
+
   useEffect(() => {
     if (session.status === 'authenticated' && userEmail) {
       getRoles().then((roles) => {
         console.log('[AccountDropdown] roles: ', roles);
-        console.log('roles.length < 1: ', roles.length < 1);
+        console.log('[AccountDropdown] roles.length < 1: ', roles.length < 1);
         if (roles.length < 1) {
-          assignRole(userEmail, 'reader');
-          getRoles().then((roles) => {
-            console.log('User updated roles: ', roles);
+          assignRoles().then((updatedUser) => {
+            if (updatedUser) {
+              console.log('[AccountDropdown] updatedUser.roles: ', updatedUser.roles);
+            }
           });
-          // console.log('assigned default role to user: ', userRoles);
-          // const userRoles = assignRole(userEmail, 'reader');
         }
       });
     }
-  }, [getRoles, session.status, userEmail]);
+  }, [assignRoles, getRoles, session.status, userEmail]);
 
   return (
     <div>
@@ -82,18 +88,18 @@ export default function AccountDropdown() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <Link href={'/dashboard'} className="flex flex-row gap-2">
-                <DropdownMenuItem>
+                <DropdownMenuItem className="flex flex-row gap-2">
                   <LayoutDashboard strokeWidth="1px" />
                   <div>حسابي</div>
                 </DropdownMenuItem>
               </Link>
               <Link href={'/profile'} className="flex flex-row gap-2">
-                <DropdownMenuItem>
+                <DropdownMenuItem className="flex flex-row gap-2">
                   <UserCircle strokeWidth="1px" />
                   <div>الصفحة الشخصية</div>
                 </DropdownMenuItem>
               </Link>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="flex flex-row gap-2">
                 <div onClick={() => signOut({ redirect: false })} className="flex flex-row gap-2">
                   <LogOut strokeWidth="1px" />
                   خروج
