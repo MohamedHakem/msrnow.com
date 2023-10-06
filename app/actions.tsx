@@ -17,7 +17,8 @@ export async function increment(slug: string, type: string) {
 }
 
 export async function assignRole(userEmail: string, roleName: string) {
-  return await db.user.update({
+  console.log('assigning default role to: ', userEmail);
+  const user = await db.user.update({
     where: {
       email: userEmail
     },
@@ -25,6 +26,8 @@ export async function assignRole(userEmail: string, roleName: string) {
       roles: { connect: { name: roleName } }
     }
   });
+  console.log('assigned default role to: ', userEmail);
+  return user;
 }
 
 // add default role (reader) to the user

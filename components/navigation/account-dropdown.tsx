@@ -37,6 +37,7 @@ export default function AccountDropdown() {
     if (session.status === 'authenticated' && userEmail) {
       getRoles().then((roles) => {
         console.log('[AccountDropdown] roles: ', roles);
+        console.log('roles.length < 1: ', roles.length < 1);
         if (roles.length < 1) {
           assignRole(userEmail, 'reader');
         }
