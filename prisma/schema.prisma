@@ -101,7 +101,7 @@ model Account {
   id                String  @id @default(cuid())
   userId            String
   type              String
-  provider          String  @unique
+  provider          String
   providerAccountId String  @unique
   refresh_token     String? @db.Text
   access_token      String? @db.Text
