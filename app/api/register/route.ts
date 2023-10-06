@@ -11,12 +11,12 @@ export async function POST(request: Request) {
       return new NextResponse('[/api/register] MissingInfo', { status: 400 });
     }
 
-    const hashed_password = await bcrypt.hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const user = await db.user.create({
       data: {
         email,
-        hashed_password
+        hashedPassword
       }
     });
 

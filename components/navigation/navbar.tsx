@@ -1,29 +1,37 @@
 import Link from 'next/link';
 import { MobileNav } from '@/components/navigation/mobile-nav';
 import MsrnowSVGLogo from '@/components/logo/msrnow-svg-logo';
+// import { Button } from '@/components/ui/button';
+// import { useEffect } from 'react';
+// import { useSession } from 'next-auth/react';
+// import { useRouter } from 'next/navigation';
+import AccountDropdown from '@/components/navigation/account-dropdown';
 
 const sections = [
   { title: 'أخبار', url: '' },
   { title: 'رياضة', url: 'sports' },
   { title: 'فيديو', url: 'videos' },
   { title: 'أكلات', url: 'food' },
-  { title: 'بيع واشتري ببلاش', url: 'marketplace-1' },
+  { title: 'بيع واشتري ببلاش', url: 'marketplace-1' }
   // { title: 'بيع واشتري ببلاش', url: 'marketplace' }
 ];
 
 export const Navbar = () => {
+
   return (
     <header className="flex flex-row px-4 w-full z-50">
       <div className="flex flex-row items-center w-full max-w-6xl m-auto animate-fadeIn transition-all duration-50 ease-in-out">
-        <div className="flex items-center gap-x-3 w-[36px] animate-fadeIn">
+        <div className="flex items-center gap-x-3 w-auto animate-fadeIn">
           <MobileNav />
+          <AccountDropdown />
         </div>
         <div className="hidden md:flex flex-auto flex-row justify-center m-auto animate-fadeIn">
           {sections.map((s) => (
             <Link
               key={s.title}
               href={`/${s.url}`}
-              className="text-lg font-bold px-4 py-2 rounded-md hover:bg-gray-50 hover:text-red-500 active:scale-90 transition-all duration-50 ease-in-out animate-fadeIn"
+              className="text-lg font-bold px-4 py-2 rounded-md hover:bg-gray-50 hover:text-red-500 
+              active:scale-90 transition-all duration-50 ease-in-out animate-fadeIn"
             >
               <span className="animate-fadeIn">{s.title}</span>
             </Link>

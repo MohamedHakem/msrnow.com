@@ -15,3 +15,22 @@ export async function increment(slug: string, type: string) {
     select: { likes: true, shares: true, views: true }
   });
 }
+
+export async function assignRole(userEmail: string, roleName: string) {
+  return await db.user.update({
+    where: {
+      email: userEmail
+    },
+    data: {
+      roles: { connect: { name: roleName } }
+    }
+  });
+}
+
+// add default role (reader) to the user
+// if (user.email) {
+//     db.user.update({
+//       where: { email: user.email },
+//       data: { roles: { connect: { name: 'reader' } } }
+//     });
+// }

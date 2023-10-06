@@ -76,19 +76,20 @@ model Source {
 }
 
 model User {
-  id              String   @id @default(cuid())
-  email           String   @unique
-  hashed_password String
-  username        String?  @unique
-  name            String?
-  profile_img     String?
-  isBuyer         Boolean  @default(false)
-  isSeller        Boolean  @default(false)
-  isWriter        Boolean  @default(false)
-  isQuizzMaker    Boolean  @default(false)
-  isRecipeMaker   Boolean  @default(false)
-  createdAt       DateTime @default(now()) @db.Timestamp(0)
-  updatedAt       DateTime @default(now()) @updatedAt @db.Timestamp(0)
+  id             String    @id @default(cuid())
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  hashedPassword String?
+  username       String?   @unique
+  image          String?
+  isBuyer        Boolean   @default(false)
+  isSeller       Boolean   @default(false)
+  isWriter       Boolean   @default(false)
+  isQuizzMaker   Boolean   @default(false)
+  isRecipeMaker  Boolean   @default(false)
+  createdAt      DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt      DateTime  @default(now()) @updatedAt @db.Timestamp(0)
 
   liked_articles Article[]
   roles          Role[]
@@ -97,22 +98,22 @@ model User {
 }
 
 model Account {
-  id                  String  @id @default(cuid())
-  userId              String
-  type                String
-  provider            String  @unique
-  provider_account_id String  @unique
-  refresh_token       String? @db.Text
-  access_token        String? @db.Text
-  expires_at          Int?
-  token_type          String?
-  scope               String?
-  id_token            String? @db.Text
-  session_state       String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String  @unique
+  providerAccountId String  @unique
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, provider_account_id])
+  @@unique([provider, providerAccountId])
   @@index([userId])
 }
 

@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client'; // for non-edge (server)
+import { PrismaClient } from '@prisma/client/edge'; // for edge runtimes (Vercel, etc)
 
 declare global {
   var prisma: PrismaClient | undefined;
