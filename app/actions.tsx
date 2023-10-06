@@ -24,9 +24,12 @@ export async function assignRole(userEmail: string, roleName: string) {
     },
     data: {
       roles: { connect: { name: roleName } }
+    },
+    include: {
+      roles: true
     }
   });
-  console.log('assigned default role to: ', userEmail);
+  console.log('[assignRole] user: ', user);
   return user;
 }
 

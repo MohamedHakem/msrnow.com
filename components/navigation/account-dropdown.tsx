@@ -40,6 +40,11 @@ export default function AccountDropdown() {
         console.log('roles.length < 1: ', roles.length < 1);
         if (roles.length < 1) {
           assignRole(userEmail, 'reader');
+          getRoles().then((roles) => {
+            console.log('User updated roles: ', roles);
+          });
+          // console.log('assigned default role to user: ', userRoles);
+          // const userRoles = assignRole(userEmail, 'reader');
         }
       });
     }
