@@ -15,7 +15,9 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import AuthSocialButton from './AuthSocialButton';
-import { BsGoogle } from 'react-icons/bs';
+// import { BsGoogle } from 'react-icons/bs';
+import { FcGoogle } from 'react-icons/fc';
+import LoadingDots from '../news/loading-dots';
 // import { createUrl } from '@/lib/marketplace/utils';
 // import Image from 'next/image';
 
@@ -102,7 +104,7 @@ export function ProfileForm() {
   const socialAction = (action: string) => {
     setIsLoading(true);
 
-    signIn(action, { redirect: false })
+    signIn(action, { callbackUrl: '/marketplace-1' })
       .then((callback) => {
         if (callback?.error) {
           toast.error('خطأ ببيانات تسجيل الدخول. تأكد من بياناتك وحاول مرة أخري!');
@@ -128,7 +130,7 @@ export function ProfileForm() {
     return <div className=" w-full h-[400px] animate-blink bg-gray-200"></div>;
   } else {
     return (
-      <div className="w-full">
+      <div className={`w-full mx-4 ${isLoading ? 'opacity-50' : ''}`}>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
             <FormField
@@ -175,7 +177,7 @@ export function ProfileForm() {
               )}
             />
             <Button className="w-full text-base" type="submit" disabled={isLoading}>
-              {variant === 'LOGIN' ? 'دخول' : 'تسجيل'}
+              {isLoading ? <LoadingDots className="bg-white dark:bg-black" /> : variant === 'LOGIN' ? 'دخول' : 'تسجيل'}
             </Button>
           </form>
         </Form>
@@ -185,17 +187,24 @@ export function ProfileForm() {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">أو من خلال</span>
+              <span className="bg-white px-2 text-base font-semibold text-gray-500">أو من خلال</span>
             </div>
           </div>
           <div className="mt-6 flex gap-2">
-            <AuthSocialButton icon={BsGoogle} onClick={() => socialAction('google')} disabled={isLoading} />
+            {isLoading ? (
+              <div className="w-full border rounded-md"><LoadingDots className="bg-black dark:bg-white" /></div>
+            ) : (
+              <AuthSocialButton icon={FcGoogle} onClick={() => socialAction('google')} disabled={isLoading} />
+            )}
           </div>
         </div>
         <div className="flex flex-col gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-center items-center text-base">
             <div>{variant === 'LOGIN' ? 'أول مرة؟' : 'عندك حساب؟'}</div>
-            <div onClick={toggleVariant} className="underline cursor-pointer">
+            <div
+              onClick={toggleVariant}
+              className="underline underline-offset-8 text-base font-semibold cursor-pointer"
+            >
               {variant === 'LOGIN' ? 'سجل حساب الان' : 'دخول'}
             </div>
           </div>
