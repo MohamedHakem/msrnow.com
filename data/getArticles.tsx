@@ -1,8 +1,9 @@
 import { db } from '@/lib/db';
 
-// export const revalidate = 300; // 5min cache
-const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+export const revalidate = 300; // 5min cache
+
+// const dynamic = 'force-dynamic';
+// export const runtime = 'edge';
 
 export async function getLatestArticles(num: number) {
   try {
@@ -86,8 +87,7 @@ export async function getRelatedArticles(short_slugs: string[]) {
         categoryId: true,
         sourceId: true,
         scraped_from: true
-      },
-      cacheStrategy: { ttl: 3600, swr: 3600 }
+      }
     });
 
     return res;

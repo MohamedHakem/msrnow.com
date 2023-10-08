@@ -2,16 +2,18 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { getLatestCategoryArticles } from '@/data/getArticles';
 import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
-// import NextImage from '../NextImage';
-const NextImage = dynamic(() => import('../NextImage'));
+// import dynamic from 'next/dynamic';
+// const NextImage = dynamic(() => import('../NextImage'));
+// const NextImage = dynamic(() => import('../NextImage'), { ssr: false });
+import NextImage from '../NextImage';
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import AdSection from '../ad-section';
 import { newsType, topHeadlineType } from '@/types';
-import dynamic from 'next/dynamic';
 
-// const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+// export const runtime = 'edge';
+// export const dynamic = 'force-dynamic';
+export const revalidate = 300;
 
 export default async function Section({
   categoryName,

@@ -7,6 +7,8 @@ import ArticleHeader from '@/components/news/articlepage/article-header';
 import IncrementViewCounter from '@/components/news/increment-view-counter';
 import ArticleBody from '@/components/news/articlepage/article-body';
 
+export const revalidate = 'force-cache'; 
+
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   console.log('[ArticlePage] slug:', decodeURIComponent(slug));

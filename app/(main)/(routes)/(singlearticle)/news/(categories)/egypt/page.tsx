@@ -4,12 +4,14 @@ import NextImage from '@/components/news/NextImage';
 import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
 import AdSection from '@/components/news/ad-section';
 
-const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+// const dynamic = 'force-dynamic';
+export const revalidate = 300
+// export const runtime = 'edge';
 
 export default async function EgyptNewsPage() {
   console.time('getLatestCategoryArticles');
   const news = await getLatestCategoryArticles('egypt', 30).then((res) => res[0].articles);
+  console.log("news[0]: ", news[0]);
   console.timeEnd('getLatestCategoryArticles');
   console.log('inside EgyptNewsPage');
   if (!news) return null;

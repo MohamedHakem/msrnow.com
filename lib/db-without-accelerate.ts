@@ -1,6 +1,6 @@
-// // import { PrismaClient } from '@prisma/client'; // for non-edge (server)
-// import { PrismaClient } from '@prisma/client/edge'; // for edge runtimes (Vercel, etc)
-// import { withAccelerate } from '@prisma/extension-accelerate'
+// import { PrismaClient } from '@prisma/client'; // for non-edge
+// // import { PrismaClient } from '@prisma/client/edge'; // for edge runtimes
+// // import { withAccelerate } from '@prisma/extension-accelerate' // for edge runtimes
 
 // declare global {
 //   var prisma: PrismaClient | undefined;

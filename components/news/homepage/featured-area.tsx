@@ -7,8 +7,9 @@ import Link from 'next/link';
 import { getTopHeadlineArticles } from '@/data/getArticles';
 import NextImage from '@/components/news/NextImage';
 
-const dynamic = 'force-dynamic';
-export const runtime = 'edge'; 
+// const dynamic = 'force-dynamic';
+export const revalidate = 300
+// export const runtime = 'edge'; 
 
 export default async function FeaturedArea() {
   const articles = await getTopHeadlineArticles(9);

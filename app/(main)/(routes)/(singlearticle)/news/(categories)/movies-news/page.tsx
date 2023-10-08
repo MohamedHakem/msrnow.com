@@ -4,7 +4,9 @@ import NextImage from '@/components/news/NextImage';
 import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
 import AdSection from '@/components/news/ad-section';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
+export const revalidate = 300
+
 
 export default async function MovieNewsPage() {
   console.time('getLatestCategoryArticles');

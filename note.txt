@@ -9,7 +9,10 @@
 
 - When do you start optimizing, avoid premature optimizing from day one? 
       You can start optimizing when the app is fairly stable, 
-      and you know what is your most importnat queries, your bottle necks,
+      and you know what is your most important queries, your bottle necks,
       etc, then you can optimize for those specific queries with indexes for example, 
       or cache them for longer periods based on how frequent the data change of those bottle neck queries, 
       or remove them entirely to a static data (file) if they're rarely changing (e.g. categories)
+
+- When to use --no-engine for prisma generate? 
+      when using prisma on the edge / with accelerate

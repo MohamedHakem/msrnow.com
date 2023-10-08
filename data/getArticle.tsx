@@ -28,7 +28,7 @@ export default async function getArticle(slug: string) {
         sourceId: true,
         categoryId: true
       },
-      cacheStrategy: { ttl: 3600, swr: 3600 }
+      // cacheStrategy: { ttl: 3600, swr: 3600 }
     });
 
     return article;

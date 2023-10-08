@@ -3,8 +3,9 @@ import FeaturedArea from '@/components/news/homepage/featured-area';
 import Section from '@/components/news/homepage/section';
 import { homepageSections } from '@/data/static/49-categories-for-homepage';
 
-const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+// export const runtime = 'edge';
+// const dynamic = 'force-dynamic';
+export const revalidate = 300
 
 export default async function Page() {
   return (
