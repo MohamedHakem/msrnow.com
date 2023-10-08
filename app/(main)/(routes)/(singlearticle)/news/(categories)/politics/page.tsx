@@ -7,11 +7,11 @@ import AdSection from '@/components/news/ad-section';
 // import { tweetsArrayType } from '@/types';
 // import RelatedTimeline from '@/components/articlepage/related-timeline';
 
-export default async function PoloticsNewsPage() {
+export default async function PoliticsNewsPage() {
   console.time('getLatestCategoryArticles');
   const news = await getLatestCategoryArticles('politics', 30).then((res) => res[0].articles);
   console.timeEnd('getLatestCategoryArticles');
-  console.log('inside PoloticsNewsPage');
+  console.log('inside PoliticsNewsPage');
   if (!news) return null;
 
   return (

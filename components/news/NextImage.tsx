@@ -12,11 +12,13 @@ import Image from 'next/image';
 export default function NextImage({
   article,
   width,
-  index
+  index,
+  loading
 }: {
   article: featuredArticleType | newsType;
   width: number | undefined | null;
   index: number | undefined | null;
+  loading?: "eager" | "lazy" | undefined;
 }) {
   const [backup, setBackup] = useState(false);
 
@@ -49,7 +51,7 @@ export default function NextImage({
 
     if (backup) {
       return (
-        <div className="bg-gray-100 animate-pulse w-full h-[166px]">
+        <div className="bg-gray-100 animate-pulse w-full h-auto">
           <Image
             unoptimized
             src={msrnowCoverImage}
@@ -65,11 +67,12 @@ export default function NextImage({
           srcSet={srcset}
           alt={article.title}
           src={imgUrl}
-          fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
+          loading={loading || "lazy"}
+          // fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
           onError={handleImage}
         />
       );
-    }
+    } 
   }
 }
 

@@ -8,7 +8,7 @@ import { getTopHeadlineArticles } from '@/data/getArticles';
 import NextImage from '@/components/news/NextImage';
 
 const dynamic = 'force-dynamic';
-export const runtime = 'edge';
+export const runtime = 'edge'; 
 
 export default async function FeaturedArea() {
   const articles = await getTopHeadlineArticles(9);
@@ -81,7 +81,7 @@ export default async function FeaturedArea() {
               className="flex flex-row w-full tablet:flex-col gap-3 tablet:gap-0"
             >
               <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
-                <NextImage article={a} width={width / 3} index={i} />
+                <NextImage article={a} width={width / 3} index={i} loading={"eager"} />
               </div>
               <div className="flex flex-col w-3/5 tablet:w-full">
                 <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
@@ -109,7 +109,7 @@ export default async function FeaturedArea() {
                 className="flex flex-row w-full tablet:flex-col pt-4 gap-3 tablet:gap-0"
               >
                 <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
-                  <NextImage article={a} width={width / 2} index={i} />
+                  <NextImage article={a} width={width / 2} index={i} loading={"eager"} />
                 </div>
                 <div className="w-3/5 tablet:w-full">
                   <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
