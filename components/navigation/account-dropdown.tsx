@@ -3,58 +3,96 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { signOut, useSession } from 'next-auth/react';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react'; 
 import LoadingDots from '../news/loading-dots';
-import { assignRole } from '@/app/actions';
+// import { assignRole } from '@/app/actions';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { LayoutDashboard, LogOut, User2, UserCircle } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { LayoutDashboard, LogOut, User2, UserCircle } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function AccountDropdown() {
   const session = useSession();
   const pathname = usePathname();
   const router = useRouter();
-  const userEmail = session.data?.user?.email;
+  // const userEmail = session.data?.user?.email;
   const userImage = session.data?.user?.image;
 
-  if (session.status === 'unauthenticated' && pathname === '/dashboard') {
-    router.push('/login');
-  }
+  // type roles = {
+  //   roles: {
+  //     name: string;
+  //   }[];
+  // };
 
-  const getRoles = useCallback(async () => {
-    const response = await fetch(`/api/user/get-user/${userEmail}`);
-    const data = await response.json();
-    return data.roles;
-  }, [userEmail]);
+  // type roles = {
+  //   name: string;
+  // }[];
 
-  const assignRoles = useCallback(async () => {
-    if (userEmail) {
-      const updatedUser = await assignRole(userEmail, 'reader');
-      return updatedUser;
-    }
-  }, [userEmail]);
+  // const getRoles = useCallback(async (email: string) => {
+  //   const response = await fetch(`/api/user/get-user/${email}`);
+  //   const data: roles = await response.json().then((roles) => roles.roles);
+  //   return data;
+  // }, []);
+
+  // const assignRoles = useCallback(async (email: string) => {
+  //   if (email) {
+  //     const updatedUser = await assignRole(email, 'reader');
+  //     console.log('🚀 ~ file: account-dropdown.tsx:39 ~ assignRoles ~ updatedUser:', updatedUser);
+  //     return updatedUser;
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   if (session.status === 'authenticated' && userEmail) {
+  //     getRoles().then((roles) => {
+  //       console.log('[AccountDropdown] roles: ', roles);
+  //       if (roles.length < 1) {
+  //         assignRoles().then((updatedUser) => {
+  //           if (updatedUser) {
+  //             console.log('[AccountDropdown] updatedUser.roles: ', updatedUser.roles);
+  //           }
+  //         });
+  //       }
+  //     });
+  //   }
+  // }, [assignRoles, getRoles, session.status, userEmail]);
 
   useEffect(() => {
-    if (session.status === 'authenticated' && userEmail) {
-      getRoles().then((roles) => {
-        console.log('[AccountDropdown] roles: ', roles);
-        console.log('[AccountDropdown] roles.length < 1: ', roles.length < 1);
-        if (roles.length < 1) {
-          assignRoles().then((updatedUser) => {
-            if (updatedUser) {
-              console.log('[AccountDropdown] updatedUser.roles: ', updatedUser.roles);
-            }
-          });
-        }
-      });
+    if (pathname === '/dashboard' && session.status === 'unauthenticated') {
+      toast.error('سجل دخول أولا ليمكنك الدخول الي لوحة التحكم');
+      router.push('/login');
     }
-  }, [assignRoles, getRoles, session.status, userEmail]);
+
+    // const fetchRolesAndUpdate = async () => {
+    //   console.log('fetchRolesAndUpdate() ...');
+    //   if (session.status === 'authenticated') {
+    //     console.log('user authenticated');
+    //     if (userEmail !== undefined && userEmail !== null) {
+    //       console.log('userEmail exist, getRoles() ...');
+    //       const roles = await getRoles(userEmail);
+    //       console.log('[AccountDropdown] roles: ', roles);
+
+    //       if (roles.length < 1) {
+    //         console.log('roles are < 1');
+    //         const updatedUser = await assignRoles(userEmail);
+    //         if (updatedUser) {
+    //           console.log('[AccountDropdown] updatedUser.roles: ', updatedUser.roles);
+    //         }
+    //       }
+    //     }
+    //   }
+    // };
+
+    // fetchRolesAndUpdate(); // I don't need to add the "reader" role, it has no value since everyone has it by default
+    // forget it and act as if every user is a "reader" and only check for session, if authed then they're a reader.
+    // }, [assignRoles, getRoles, session.status, userEmail, pathname, router]);
+  }, [session.status, pathname, router]);
 
   return (
     <div>

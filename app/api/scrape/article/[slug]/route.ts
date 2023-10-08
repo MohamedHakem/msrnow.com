@@ -1,39 +1,7 @@
-////
-////
-////
-////
-////
-////
-////
-////
-////
-////
-// Adapt this code to scrape  , check current code on Github
-// 1- get short_slug
-// 2- get article google_url (and source_url if there)
-// 3- scrape source_url
-// 4- scrape content and keywords from source_url
-// 5- save content and keywords in db
-////
-////
-////
-////
-////
-////
-////
-////
-////
-////
-////
 import { NextResponse, NextRequest } from 'next/server';
 import * as cheerio from 'cheerio';
 import { db } from '@/lib/db';
-// import { sanitizeTitle } from '@/utils/sanitizeTitle';
-// import { sanitizeSlug } from '@/utils/sanitizeSlug';
-// import { categoriesAndSources } from '@/data/static/staticCategoriesAndSources';
-// import generateShortSlugs from '@/utils/generateShortSlugs';
-// import SaveArticles from '@/utils/saveArticles';
-// import updateLastDate from '@/utils/updateLastDate';
+
 import { sources } from '@/data/static/sources';
 import UpdateArticle from '@/utils/updateArticle';
 
@@ -41,17 +9,10 @@ export const runtime = 'nodejs';
 export const fetchCache = 'force-no-store';
 
 export async function GET(request: NextRequest, params: { params: { slug: string } }) {
-  ///////
-  // replace all the return errors into a useful return at least with the article data and the source url for using in an iframe
-  ///////
-  // also, use different API_KEY when requests to this one (Browserless) reject (free Qouta reached)
-  ///////
-
   console.time('[Time] Scrape Article GET Route');
 
   // 1- get short_slug (or slug for now)
   const { slug } = params.params;
-  // console.log('🚀 ~ file: route.ts:36 ~ GET ~ slug:', slug);
   if (!slug) {
     return new NextResponse('slug is empty.', { status: 404 });
   }
@@ -75,7 +36,6 @@ export async function GET(request: NextRequest, params: { params: { slug: string
   });
   console.timeEnd('article');
 
-  // console.log('🚀 ~ file: route.ts:63 ~ GET ~ article:', article);
   if (!article) {
     return new NextResponse('Article not found in db.', { status: 404 });
   }
@@ -96,7 +56,6 @@ export async function GET(request: NextRequest, params: { params: { slug: string
   const currentSource = sources.find((c) => c.id === article.sourceId);
   console.timeEnd('currentSource');
 
-  // console.log('🚀 ~ file: route.ts:69 ~ GET ~ currentSource:', currentSource);
   if (!currentSource) {
     return new NextResponse('Unsupported source.', { status: 404 });
   }
@@ -108,7 +67,6 @@ export async function GET(request: NextRequest, params: { params: { slug: string
   console.time('article_source_url');
   const article_source_url = cheerio.load(article_source_url_page, { xmlMode: true })('div.m2L3rb > a').attr('href');
   console.timeEnd('article_source_url');
-  // console.log('🚀 ~ file: route.ts:88 ~ GET ~ article_source_url:', article_source_url);
 
   const MY_API_TOKEN = '39d217dc-36fd-4a41-83c3-55e9c30920fa';
   const browserless_api = `https://chrome.browserless.io/content?token=${MY_API_TOKEN}&blockAds&stealth`;
@@ -120,11 +78,6 @@ export async function GET(request: NextRequest, params: { params: { slug: string
   if (!article_source_url) {
     return new NextResponse('article_source_url not a valid url.', { status: 404 });
   }
-
-  // if (article?.content ? article?.content?.length > 5 : false) {
-  //   return NextResponse.json({ status: 200, article });
-  // }
-  // if (article?.content ? (article?.content.length > 5 ? false : true) : true)
 
   let article_page;
   let data;

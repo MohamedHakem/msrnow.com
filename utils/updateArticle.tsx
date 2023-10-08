@@ -1,13 +1,5 @@
 import { db } from '@/lib/db';
-// import { newArticlesType } from '@/types';
-
-type updatedArticleType = {
-  article_source_url: string;
-  keywords: string | null | undefined;
-  description: string | null | undefined;
-  content: string | null | undefined;
-};
-// | { article_source_url: string };
+import { updatedArticleType } from '@/types';
 
 export default async function UpdateArticle(data: updatedArticleType, slug: string): Promise<Boolean> {
   console.log('data: ', data);

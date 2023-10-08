@@ -62,3 +62,67 @@ export type sourceType = {
   scrapable: number | null;
   content_selector: string | null;
 };
+
+export type newsType = {
+  title: string;
+  slug: string;
+  google_thumb: string;
+  article_google_url: string;
+  article_source_url: string | null;
+  likes: number | null;
+  shares: number | null;
+  short_slug: string;
+  published_at: Date;
+};
+
+export type featuredArticleType = {
+  title: string;
+  google_thumb: string;
+  views: number | null;
+  likes: number | null;
+  short_slug: string;
+  published_at: Date;
+};
+
+export type currentCategory = {
+  id: number;
+  name: string;
+  google_news_url: string;
+  source: { id: number; name: string; url: null; scrapable: number; content_selector: string | null }[];
+};
+
+export type Category = {
+  id: number;
+  name: string;
+  google_news_url: string;
+};
+
+export type articleType = {
+  scraped_from: string;
+  title: string;
+  google_thumb: string | undefined;
+  article_google_url: string;
+  related_coverage_url: string;
+  slug: string;
+  published_at: string | undefined;
+  sourceId: string | number;
+  categoryId: number;
+  short_slug: string;
+  top_headline: boolean;
+};
+
+export type topHeadlineType = {
+  title: string;
+  google_thumb: string;
+  views: number | null;
+  likes: number | null;
+  short_slug: string;
+  published_at: Date;
+};
+
+export type updatedArticleType = {
+  article_source_url: string;
+  keywords: string | null | undefined;
+  description: string | null | undefined;
+  content: string | null | undefined;
+};

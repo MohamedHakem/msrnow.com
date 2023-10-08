@@ -4,19 +4,18 @@ import NextImage from '@/components/news/NextImage';
 import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
 import AdSection from '@/components/news/ad-section';
 
-const dynamic = 'force-dynamic';
 export const runtime = 'edge';
 
-export default async function EgyptNewsPage() {
+export default async function CelebritiesNewsPage() {
   console.time('getLatestCategoryArticles');
-  const news = await getLatestCategoryArticles('egypt', 30).then((res) => res[0].articles);
+  const news = await getLatestCategoryArticles('celebrities', 30).then((res) => res[0].articles);
   console.timeEnd('getLatestCategoryArticles');
-  console.log('inside EgyptNewsPage');
+  console.log('inside CelebritiesNewsPage');
   if (!news) return null;
 
   return (
     <div className="flex flex-col gap-4 py-8 px-4">
-      <h1 className="text-3xl font-bold animate-fadeIn">أخبار مصر</h1>
+      <h1 className="text-3xl font-bold animate-fadeIn">أخبار المشاهير</h1>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
         <div className="h-full pb-4 lg:col-span-2">
           <div className="w-full overflow-hidden rounded-lg">
@@ -31,7 +30,7 @@ export default async function EgyptNewsPage() {
                       <h4 className="text-sm md:text-lg laptop:text-xl font-bold text-gray-900 leading-5 hover:text-red-500 animate-fadeIn">
                         {article.title}
                       </h4>
-                      <div className="mt-1 text-xs text-gray-400 z-10">
+                      <div className="mt-1 text-xs text-gray-400">
                         <time>{getTimeAgo(article.published_at, false, true)}</time>
                       </div>
                     </div>

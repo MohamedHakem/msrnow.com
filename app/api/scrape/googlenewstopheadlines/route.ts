@@ -7,7 +7,7 @@ import { categoriesAndSources } from '@/data/static/staticCategoriesAndSources';
 import generateShortSlugs from '@/utils/generateShortSlugs';
 import SaveArticles from '@/utils/saveArticles';
 import updateLastDate from '@/utils/updateLastDate';
-import { sourceType } from '@/types';
+import { articleType, sourceType } from '@/types';
 // const util = require('util');
 
 export const runtime = 'nodejs';
@@ -145,20 +145,6 @@ export async function GET() {
   console.log('coverage_url_arr[0] and length: ', coverage_url_arr[0], ' - ', coverage_url_arr.length);
 
   // articles.map((a) => console.log('a.sourceId: ', a.sourceId)); // check if all have sourceId and not sourceName
-
-  type articleType = {
-    scraped_from: string;
-    title: string;
-    google_thumb: string | undefined;
-    article_google_url: string;
-    related_coverage_url: string;
-    slug: string;
-    published_at: string | undefined;
-    sourceId: string | number;
-    categoryId: number;
-    short_slug: string;
-    top_headline: boolean;
-  };
 
   let currentSlugs: string[] = [];
   const articlesWithSourceid = articles.map((a: articleType, i) => {

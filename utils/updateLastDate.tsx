@@ -1,17 +1,5 @@
 import { db } from '@/lib/db';
-
-type currentCategory = {
-  id: number;
-  name: string;
-  google_news_url: string;
-  source: { id: number; name: string; url: null; scrapable: number; content_selector: string | null }[];
-};
-
-type Category = {
-  id: number;
-  name: string;
-  google_news_url: string;
-};
+import { Category, currentCategory } from '@/types';
 
 export default async function updateLastDate({
   newLastDate,

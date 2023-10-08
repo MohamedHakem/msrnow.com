@@ -17,7 +17,6 @@ const sections = [
 ];
 
 export const Navbar = () => {
-
   return (
     <header className="flex flex-row px-4 w-full z-50">
       <div className="flex flex-row items-center w-full max-w-6xl m-auto animate-fadeIn transition-all duration-50 ease-in-out">

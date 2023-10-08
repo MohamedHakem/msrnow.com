@@ -1,6 +1,8 @@
 import { db } from '@/lib/db';
 
-export const revalidate = 300; // 5min cache
+// export const revalidate = 300; // 5min cache
+const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export async function getLatestArticles(num: number) {
   try {
@@ -84,7 +86,8 @@ export async function getRelatedArticles(short_slugs: string[]) {
         categoryId: true,
         sourceId: true,
         scraped_from: true
-      }
+      },
+      cacheStrategy: { ttl: 3600, swr: 3600 }
     });
 
     return res;
@@ -95,7 +98,7 @@ export async function getRelatedArticles(short_slugs: string[]) {
 }
 
 export async function getTopHeadlineArticles(num: number) {
-  return await db.article.findMany({
+  const articles = await db.article.findMany({
     where: { top_headline: true },
     select: {
       title: true,
@@ -111,20 +114,46 @@ export async function getTopHeadlineArticles(num: number) {
     },
     take: num
   });
+  return articles;
 }
 
-export async function getLatestCategoryArticles(category: string, num: number, excludeRelated?: boolean) {
-  return await db.category.findMany({
+// export async function getLatestCategoryArticles(category: string, num: number, excludeRelated?: boolean) {
+//   const data = await db.category.findMany({
+//     where: { name: category },
+//     include: {
+//       articles: {
+//         where: {
+//           ...(excludeRelated && {
+//             NOT: {
+//               related_coverage_url: ''
+//             }
+//           })
+//         },
+//         select: {
+//           title: true,
+//           short_slug: true,
+//           likes: true,
+//           views: true,
+//           published_at: true,
+//           google_thumb: true,
+//           categoryId: true,
+//           related_coverage_tweets: true,
+//           related_coverage_article: true,
+//           related_coverage_url: true
+//         },
+//         orderBy: { published_at: 'desc' },
+//         take: num
+//       }
+//     }
+//   });
+//   return data;
+// }
+
+export async function getLatestCategoryArticles(category: string, num: number) {
+  const data = await db.category.findMany({
     where: { name: category },
     include: {
       articles: {
-        where: {
-          ...(excludeRelated && {
-            NOT: {
-              related_coverage_url: ''
-            }
-          })
-        },
         select: {
           title: true,
           short_slug: true,
@@ -142,4 +171,5 @@ export async function getLatestCategoryArticles(category: string, num: number, e
       }
     }
   });
+  return data;
 }

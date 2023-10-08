@@ -4,8 +4,7 @@ import { db } from '@/lib/db';
 
 export async function increment(slug: string, type: string) {
   slug = decodeURIComponent(slug);
-
-  return await db.article.update({
+  const data = await db.article.update({
     where: {
       ...(slug.length < 5 ? { short_slug: slug } : { slug: slug })
     },
@@ -14,23 +13,29 @@ export async function increment(slug: string, type: string) {
     },
     select: { likes: true, shares: true, views: true }
   });
+
+  return data;
 }
 
 export async function assignRole(userEmail: string, roleName: string) {
   console.log('assigning default role to: ', userEmail);
-  const user = await db.user.update({
-    where: {
-      email: userEmail
-    },
-    data: {
-      roles: { connect: { name: roleName } }
-    },
-    include: {
-      roles: true
-    }
-  });
-  console.log('[assignRole] user: ', user);
-  return user;
+  try {
+    const user = await db.user.update({
+      where: {
+        email: userEmail
+      },
+      data: {
+        roles: { connect: { name: roleName } }
+      },
+      include: {
+        roles: true
+      }
+    });
+    console.log('[assignRole] user: ', user);
+    return user;
+  } catch (e) {
+    console.log('assignRole action error: ', e);
+  }
 }
 
 // add default role (reader) to the user

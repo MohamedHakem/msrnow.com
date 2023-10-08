@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
 
-export const revalidate = 300 * 12; // 1hour cache
+export const revalidate = 86400; // 1 day cache
 
 export default async function getArticle(slug: string) {
   slug = decodeURIComponent(slug);
@@ -27,7 +27,8 @@ export default async function getArticle(slug: string) {
         published_at: true,
         sourceId: true,
         categoryId: true
-      }
+      },
+      cacheStrategy: { ttl: 3600, swr: 3600 }
     });
 
     return article;

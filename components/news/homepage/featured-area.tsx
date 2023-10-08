@@ -7,8 +7,11 @@ import Link from 'next/link';
 import { getTopHeadlineArticles } from '@/data/getArticles';
 import NextImage from '@/components/news/NextImage';
 
+const dynamic = 'force-dynamic';
+export const runtime = 'edge';
+
 export default async function FeaturedArea() {
-  const articles = await getTopHeadlineArticles(10);
+  const articles = await getTopHeadlineArticles(9);
   // articles.map((a) => console.log('articles a.published_at: ', a.published_at));
 
   const latestArticle = articles[0];
@@ -31,12 +34,20 @@ export default async function FeaturedArea() {
                 priority={true}
                 // className={`min-w-full md:top-1/2 md:absolute md:-mt-56 laptop:h-80`}
                 // className={`min-w-full md:px-4 h-48 md:h-72`}
-                className={`min-w-full md:px-4 h-48 md:h-72 laptop:h-[460px]`}
+                className={`min-w-full md:px-4 h-48 md:h-72 laptop:h-[460px] laptop:max-w-[765px]`}
               />
             </figure>
-            <p className="pt-2 pb-2 px-4 text-[22px] md:text-3xl laptop:text-3xl font-extrabold md:leading-[48px] hover:text-red-500">
-              {latestArticle.title}
-            </p>
+            <div>
+              <p className="pt-2 pb-2 px-4 text-[22px] md:text-3xl laptop:text-3xl font-extrabold md:leading-[48px] hover:text-red-500">
+                {latestArticle.title}
+              </p>
+              <span
+                className="px-4 text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
+                title={getTimeAgo(latestArticle.published_at, true, false)}
+              >
+                {getTimeAgo(latestArticle.published_at, false, true)}
+              </span>
+            </div>
           </Link>
         </div>
         <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-4 mobilemd:px-4">
@@ -72,14 +83,22 @@ export default async function FeaturedArea() {
               <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
                 <NextImage article={a} width={width / 3} index={i} />
               </div>
-              <p className="flex items-center w-3/5 tablet:w-full tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
-                {a.title}
-              </p>
+              <div className="flex flex-col w-3/5 tablet:w-full">
+                <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
+                  {a.title}
+                </p>
+                <span
+                  className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
+                  title={getTimeAgo(a.published_at, true, false)}
+                >
+                  {getTimeAgo(a.published_at, false, true)}
+                </span>
+              </div>
             </Link>
           ))}
         </div>
       </div>
-      <div className="p-4 container:pl-0 mt-4">
+      <div className="p-4 laptop:col-span-1 container:pl-0 mt-2">
         <div className="flex flex-col gap-2 border-2 border-black p-4">
           <h2 className="text-3xl font-bold -mt-9 bg-white w-fit px-2 ">أهم العناوين</h2>
           <div className="grid grid-cols-1 laptop:divide-y-2 laptop:divide-gray-100 tablet:grid-cols-2 laptop:grid-cols-1 gap-2 tablet:gap-4 tablet:min-w-[180px] desktop:min-w-[220px]">
@@ -92,9 +111,17 @@ export default async function FeaturedArea() {
                 <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
                   <NextImage article={a} width={width / 2} index={i} />
                 </div>
-                <p className="flex items-center w-3/5 tablet:w-full tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
-                  {a.title}
-                </p>
+                <div className="w-3/5 tablet:w-full">
+                  <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
+                    {a.title}
+                  </p>
+                  <span
+                    className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
+                    title={getTimeAgo(a.published_at, true, false)}
+                  >
+                    {getTimeAgo(a.published_at, false, true)}
+                  </span>
+                </div>
               </Link>
             ))}
             {/* <CategorySectionSidebar /> */}

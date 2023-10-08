@@ -1,10 +1,11 @@
-// import { PrismaClient } from '@prisma/client'; // for non-edge (server)
-import { PrismaClient } from '@prisma/client/edge'; // for edge runtimes (Vercel, etc)
+import { PrismaClient } from '@prisma/client/edge';
+import { withAccelerate } from '@prisma/extension-accelerate';
 
-declare global {
-  var prisma: PrismaClient | undefined;
+function createPrisma() {
+  return new PrismaClient().$extends(withAccelerate());
 }
+const globalForPrisma = global as unknown as { prisma: ReturnType<typeof createPrisma> };
+const db = globalForPrisma.prisma || createPrisma();
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db;
 
-export const db = globalThis.prisma || new PrismaClient();
-
-if (process.env.NODE_ENV !== 'production') globalThis.prisma = db;
+export { db };

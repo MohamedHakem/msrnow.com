@@ -1,29 +1,15 @@
+'use client';
+
+import { featuredArticleType, newsType } from '@/types';
 /* eslint-disable @next/next/no-img-element */
 // import Image from 'next/image';
-import { headers } from 'next/headers';
+// import { headers } from 'next/headers';
+import { useState } from 'react';
 
-type featuredArticleType = {
-  title: string;
-  google_thumb: string;
-  views: number | null;
-  likes: number | null;
-  short_slug: string;
-  published_at: Date;
-};
+import msrnowCoverImage from '@/public/images/msrnow-waiting-logo-optimized.jpg';
+import Image from 'next/image';
 
-type newsType = {
-  title: string;
-  slug: string;
-  google_thumb: string;
-  article_google_url: string;
-  article_source_url: string | null;
-  likes: number | null;
-  shares: number | null;
-  short_slug: string;
-  published_at: Date;
-};
-
-export default async function NextImage({
+export default function NextImage({
   article,
   width,
   index
@@ -32,12 +18,7 @@ export default async function NextImage({
   width: number | undefined | null;
   index: number | undefined | null;
 }) {
-  const headersInsance = headers();
-  const userAgent = headersInsance.get('user-agent');
-  // console.log('userAgent: ', userAgent);
-  const isMobile = userAgent && userAgent.includes('Mobi');
-  // console.log('isMobile: ', isMobile);
-  // if (isMobile) {}
+  const [backup, setBackup] = useState(false);
 
   if (width) {
     const height = Math.floor(width * (3 / 5));
@@ -53,7 +34,6 @@ export default async function NextImage({
         srcSet={srcset}
         fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
         className="min-w-full min-h-full bg-gray-100"
-        // className="w-1/2 md:w-full"
       />
     );
   } else {
@@ -63,14 +43,45 @@ export default async function NextImage({
     const src2x = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width * 2}`).replace(/-h\d+/, `-h${height * 2}`);
     const srcset = `${imgUrl} 1x, ${src2x} 2x`;
 
-    return (
-      <img
+    const handleImage = () => {
+      setBackup(true);
+    };
+
+    if (backup) {
+      return (
+        <div className="bg-gray-100 animate-pulse w-full h-[166px]">
+          <Image
+            unoptimized
+            src={msrnowCoverImage}
+            alt={article.title}
+            className="h-auto w-full object-cover text-transparent"
+          />
+        </div>
+      );
+    } else {
+      return (
+        <img
+          className="h-auto w-full object-cover bg-gray-100 text-transparent"
+          srcSet={srcset}
+          alt={article.title}
+          src={imgUrl}
+          fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
+          onError={handleImage}
+        />
+      );
+    }
+  }
+}
+
+{
+  /* <div className="bg-gray-100 animate-blink w-full h-auto"></div>) : (
+        <img
         className="h-auto w-full object-cover bg-gray-100 text-transparent"
         srcSet={srcset}
         alt={article.title}
         src={imgUrl}
         fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
-      />
-    );
-  }
+        // onError={() => setBackup(true)} />
+      )}
+    ) */
 }

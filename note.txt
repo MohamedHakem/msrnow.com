@@ -6,3 +6,10 @@
 - When to use a util or data function instead? 
       when you need to grab some data from the db or any internal process for the website, even scraping, but not triggered by an external source.
       like a function to get all the posts from the db, or to scrape article content or related articles of an article. 
+
+- When do you start optimizing, avoid premature optimizing from day one? 
+      You can start optimizing when the app is fairly stable, 
+      and you know what is your most importnat queries, your bottle necks,
+      etc, then you can optimize for those specific queries with indexes for example, 
+      or cache them for longer periods based on how frequent the data change of those bottle neck queries, 
+      or remove them entirely to a static data (file) if they're rarely changing (e.g. categories)

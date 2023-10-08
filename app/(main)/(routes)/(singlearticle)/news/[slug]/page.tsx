@@ -17,10 +17,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     return <SingleArticleSkeleton />;
   }
 
-  // imitate delay
-  // await new Promise((resolve) => setTimeout(resolve, 50000));
-  console.log('article rendered!');
-
   return (
     <div className="flex flex-col desktop:flex-row rounded-md gap-4 py-10 px-4 container:px-0 scroll-m-0">
       {console.time('Article Page') as React.ReactNode}
@@ -62,3 +58,5 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     </div>
   );
 }
+
+// imitate delay // await new Promise((resolve) => setTimeout(resolve, 50000));
