@@ -3,7 +3,10 @@ import { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { db } from '@/lib/db';
+import { PrismaClient } from '@prisma/client/edge';
+// import { db } from '@/lib/db';
+
+const db = new PrismaClient(); // a new instance of PrismaClient that's no extended with accelerate
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(db),
@@ -56,6 +59,6 @@ export const authOptions: AuthOptions = {
   session: {
     strategy: 'jwt'
   },
-  secret: process.env.NEXTAUTH_SECRET,
-  // callbacks: 
+  secret: process.env.NEXTAUTH_SECRET
+  // callbacks:
 };

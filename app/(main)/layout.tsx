@@ -1,5 +1,5 @@
-import { BottomNavbar } from '@/components/navigation/bottom-navbar';
-import { Navbar } from '@/components/navigation/navbar';
+import { BottomNavbar } from '@/app/(main)/components/navigation/bottom-navbar';
+import { Navbar } from '@/app/(main)/components/navigation/navbar';
 // import { Sidebar } from '@/components/navigation/sidebar';
 // import { ScrollArea } from '@/components/ui/scroll-area';
 // import { WideModeToggle } from '@/components/wide-mode-toggle';

@@ -6,11 +6,11 @@ import AdSection from '@/components/news/ad-section';
 
 export const runtime = 'edge';
 
-export default async function BelBesNewsPage() {
+export default async function MovieNewsPage() {
   console.time('getLatestCategoryArticles');
-  const news = await getLatestCategoryArticles('belbes', 30).then((res) => res[0].articles);
+  const news = await getLatestCategoryArticles('movies-news', 30).then((res) => res[0].articles);
   console.timeEnd('getLatestCategoryArticles');
-  console.log('inside BelBesNewsPage');
+  console.log('inside MovieNewsPage');
   if (!news) return null;
 
   return (
