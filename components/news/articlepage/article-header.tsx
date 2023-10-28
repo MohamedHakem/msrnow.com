@@ -8,7 +8,7 @@ export default async function ArticleHeader({ article }: { article: singleArticl
   // // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  console.log("ArticleHeader rendered!");
+  // console.log("ArticleHeader rendered!");
 
   const width = 650;
   const height = 390;

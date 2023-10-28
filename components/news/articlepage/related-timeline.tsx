@@ -26,7 +26,7 @@ export default async function RelatedTimeline({
 
   // const Is_fetch_related_tweets = process.env.is_fetch_related_tweets === 'false' ? false : true;
   const Is_fetch_related_tweets = false;
-  console.log('🚀 ~ file: related-timeline.tsx:25 ~ Is_fetch_related_tweets:', Is_fetch_related_tweets);
+  // console.log('🚀 ~ file: related-timeline.tsx:25 ~ Is_fetch_related_tweets:', Is_fetch_related_tweets);
 
   related_coverage_article === null
     ? console.log('related_coverage_article is null. Exiting RelatedTimeline')

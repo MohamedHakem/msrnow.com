@@ -6,7 +6,7 @@ export default async function ArticleBody({ article }: { article: singleArticleT
   // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 10000));
 
-  console.log("ArticleBody rendered!");
+  // console.log("ArticleBody rendered!");
 
   // if article_source_url is empty/null/less-than-5-chars, go SCRAPE it and scrape the content
   if (article.article_source_url ? article.article_source_url.length < 5 : true) {

@@ -34,7 +34,6 @@ export default async function Page() {
       <div className="flex flex-col w-full max-w-6xl m-auto gap-4 pt-0 pb-10 md:py-12 laptop:pt-4 container:px-0 scroll-m-0">
         <div className="flex flex-col flex-auto gap-8 items-center">
           <FeaturedArea />
-          <AdSection size={'large'} />
           {homepageSections.map((section, i) => (
             <Suspense key={i} fallback={<div>loading a section...</div>}>
               <Section

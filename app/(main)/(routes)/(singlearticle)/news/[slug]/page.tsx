@@ -88,10 +88,10 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     return notFound()
   }
 
-  console.log("article.published_at: ", article.published_at)
+  // console.log("article.published_at: ", article.published_at)
 
   const articleCanonicalURL = `https://www.msrnow.com/news/${article.slug}`
-  console.log("🚀 articleCanonicalURL:", articleCanonicalURL)
+  // console.log("🚀 articleCanonicalURL:", articleCanonicalURL)
 
   const articleJsonLd = {
     "@context": "https://schema.org",
