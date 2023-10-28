@@ -47,7 +47,7 @@ export default async function CheckoutPage() {
                 </div>
               </div>
               }> */}
-              <CheckoutForm />
+              {/* <CheckoutForm /> */}
               {/* </Suspense> */}
             </div>
             <div className="w-full laptop:w-2/5 animate-fadeIn">
