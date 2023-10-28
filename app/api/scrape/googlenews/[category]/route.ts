@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { db } from '@/lib/db';
 import { sanitizeTitle } from '@/utils/sanitizeTitle';
 import { sanitizeSlug } from '@/utils/sanitizeSlug';
-import { categoriesAndSources } from '@/data/static/staticCategoriesAndSources';
+// import { categoriesAndSources } from '@/data/static/staticCategoriesAndSources';
 import generateShortSlugs from '@/utils/generateShortSlugs';
 import SaveArticles from '@/utils/saveArticles';
 import updateLastDate from '@/utils/updateLastDate';
@@ -15,6 +15,21 @@ export const fetchCache = 'force-no-store';
 export async function GET(request: NextRequest, params: { params: { category: string } }) {
   console.time('[Time] GET Route');
   const { category } = params.params;
+
+  const categoriesAndSources = await db.category.findMany({
+    include: {
+      source: {
+        select: {
+          id: true,
+          name: true,
+          url: true,
+          scrapable: true,
+          content_selector: true
+        }
+      }
+    }
+  });
+
   const currentCategory = categoriesAndSources.find((c) => c.name === category);
   if (!currentCategory) {
     return new NextResponse('UnSupported Category. If new, add it locally/statically', { status: 415 });

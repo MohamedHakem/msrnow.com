@@ -28,6 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/(main)/(routes)/page.tsx",
+    "app/**/*.tsx",
     "components/article-renderer.jsx",
     "pages/api/claps.js",
     "components/clap-comp.jsx"

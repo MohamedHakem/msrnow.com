@@ -8,7 +8,7 @@ const sections = [
   { title: 'رياضة', url: 'sports' },
   { title: 'فيديو', url: 'videos' },
   { title: 'أكلات', url: 'food' },
-  { title: 'بيع واشتري ببلاش', url: 'marketplace-1' }
+  { title: 'بيع واشتري ببلاش', url: 'marketplace' }
 ];
 
 export const Navbar = () => {
@@ -17,7 +17,7 @@ export const Navbar = () => {
       <div className="flex flex-row items-center w-full max-w-6xl m-auto animate-fadeIn transition-all duration-50 ease-in-out">
         <div className="flex items-center gap-x-3 w-auto animate-fadeIn">
           <MobileNav />
-          <HeaderAccount />
+          <HeaderAccount size={40} />
         </div>
         <div className="hidden md:flex flex-auto flex-row justify-center m-auto animate-fadeIn">
           {sections.map((s) => (

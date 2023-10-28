@@ -15,21 +15,14 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import AuthSocialButton from './AuthSocialButton';
-// import { BsGoogle } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import LoadingDots from '../news/loading-dots';
-// import { createUrl } from '@/lib/marketplace/utils';
-// import Image from 'next/image';
 
-export function ProfileForm() {
-  // const loginParams = useSearchParams();
-  // const newParams = useMemo(() => new URLSearchParams(loginParams.toString()), [loginParams]);
-
+export function AuthForm() {
   const session = useSession();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [variant, setVariant] = useState('LOGIN');
-  // const [email, setEmail] = useState(newParams.get('email') || '');
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
@@ -75,7 +68,7 @@ export function ProfileForm() {
           }
 
           if (callback?.ok) {
-            router.push('/marketplace-1');
+            router.push('/marketplace');
           }
         })
         .catch(() => toast.error('حدث خطأ! حاول مرة أخري 🙏'))
@@ -93,7 +86,7 @@ export function ProfileForm() {
           }
 
           if (callback?.ok) {
-            router.push('/marketplace-1');
+            router.push('/marketplace');
           }
         })
         .finally(() => setIsLoading(false));
@@ -104,14 +97,14 @@ export function ProfileForm() {
   const socialAction = (action: string) => {
     setIsLoading(true);
 
-    signIn(action, { callbackUrl: '/marketplace-1' })
+    signIn(action, { callbackUrl: '/marketplace' })
       .then((callback) => {
         if (callback?.error) {
           toast.error('خطأ ببيانات تسجيل الدخول. تأكد من بياناتك وحاول مرة أخري!');
         }
 
         if (callback?.ok) {
-          router.push('/marketplace-1');
+          router.push('/marketplace');
         }
       })
       .finally(() => setIsLoading(false));
@@ -127,7 +120,7 @@ export function ProfileForm() {
   }, [variant]);
 
   if (isLoading) {
-    return <div className=" w-full h-[400px] animate-blink bg-gray-200"></div>;
+    return <div className="w-full h-[400px] animate-blink bg-gray-200"></div>;
   } else {
     return (
       <div className={`w-full mx-4 ${isLoading ? 'opacity-50' : ''}`}>
@@ -147,10 +140,10 @@ export function ProfileForm() {
                       placeholder="ادخل بريدك الالكتروني"
                       disabled={isLoading}
                       {...field}
-                      // value={email}
-                      // onChange={(event) => field.onChange(setEmail(event.target.value.toString()))}
-                      // defaultValue={email}
-                      // onChange={setEmail((event) => field.event.target.value)}
+                    // value={email}
+                    // onChange={(event) => field.onChange(setEmail(event.target.value.toString()))}
+                    // defaultValue={email}
+                    // onChange={setEmail((event) => field.event.target.value)}
                     />
                   </FormControl>
                   <FormMessage />
@@ -184,7 +177,8 @@ export function ProfileForm() {
         <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
+              {/* <div className="w-full border- border-gray-300" /> */}
+              <div className="w-full" />
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="bg-white px-2 text-base font-semibold text-gray-500">أو من خلال</span>
@@ -192,7 +186,10 @@ export function ProfileForm() {
           </div>
           <div className="mt-6 flex gap-2">
             {isLoading ? (
-              <div className="w-full border rounded-md"><LoadingDots className="bg-black dark:bg-white" /></div>
+              // <div className="w-full border rounded-md">
+              <div className="w-full rounded-md">
+                <LoadingDots className="bg-black dark:bg-white" />
+              </div>
             ) : (
               <AuthSocialButton icon={FcGoogle} onClick={() => socialAction('google')} disabled={isLoading} />
             )}

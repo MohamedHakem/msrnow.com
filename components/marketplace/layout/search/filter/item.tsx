@@ -37,11 +37,15 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const active = searchParams.get('sort') === item.slug;
-  const q = searchParams.get('q');
+  // const q = searchParams.get('q');
+  const size = searchParams.get('size')
+  const color = searchParams.get('color')
   const href = createUrl(
     pathname,
     new URLSearchParams({
-      ...(q && { q }),
+      // ...(q && { q }),
+      ...(size && { size }),
+      ...(color && { color }),
       ...(item.slug && item.slug.length && { sort: item.slug })
     })
   );

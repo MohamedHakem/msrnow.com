@@ -8,6 +8,7 @@ datasource db {
   relationMode = "prisma"
 }
 
+// news models
 model Article {
   id                       Int      @id @default(autoincrement())
   title                    String   @default("") @db.VarChar(150)
@@ -74,6 +75,7 @@ model Source {
   category         Category[]
 }
 
+// auth models
 model User {
   id              String   @id @default(cuid())
   username        String   @unique
@@ -144,6 +146,7 @@ model Role {
   users User[]
 }
 
+// marketplace models
 model Product {
   id          Int         @id @default(autoincrement())
   name        String

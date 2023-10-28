@@ -1,3 +1,5 @@
+import { OrderStatus } from '@prisma/client';
+
 export type newArticlesType = {
   scraped_from: string;
   title: string;
@@ -125,4 +127,137 @@ export type updatedArticleType = {
   keywords: string | null | undefined;
   description: string | null | undefined;
   content: string | null | undefined;
+};
+
+// marketplace tables types
+
+// export type dataTableProductType = {
+//   رمز: string;
+//   العنوان: string;
+//   السعر: number;
+//   الكمية: number;
+//   الفئة: productCategory;
+//   الاوردرات: number;
+//   التقييم: number;
+//   الشحن: boolean;
+//   الحالة: published_status;
+//   slug: string;
+// };
+
+export type dataTableProductType = {
+  رمز: number;
+  العنوان: string;
+  رابط: string;
+  السعر: number;
+  الكمية: number;
+  الفئة: productCategory;
+  الاوردرات: number;
+  التقييم: string;
+  الحالة: boolean;
+};
+
+enum productCategory {
+  'أحذية'
+}
+
+// enum published_status {
+//   'معروض',
+//   'مؤرشف'
+// }
+
+export type dataTableOrderType = {
+  رمز: number;
+  المنتج: string;
+  المقاس: string;
+  اللون: string;
+  رابط: string;
+  الهاتف: string;
+  العنوان: string;
+  العميل: string;
+  السعر: number;
+  الحالة: OrderStatus;
+  التاريخ: string; // created at
+  // نشاط: string; // last status change at
+};
+
+export type AddProductType = {
+  title: string;
+  price: number;
+  stockQuantity: number;
+  productCategoryId: number;
+  free_shipping: boolean;
+  published_status: boolean;
+  is_used: boolean;
+};
+
+export type marketplaceProductType = {
+  id: number;
+  title: string;
+  price: number;
+  stockQuantity: number;
+  slug: string | null;
+  description: string | null;
+  rating: number | null;
+  brand: string | null;
+  sku: string | null;
+  discountPrice: number | null;
+  free_shipping: Boolean | null;
+  published_status: Boolean | null;
+  is_used: Boolean | null;
+  is_exchangeable: Boolean | null;
+  for_donation: Boolean | null;
+  productCategoryId: number;
+  images: marketPlaceProductImageType[];
+  ProductSizes?: marketPlaceProductSizeType[];
+  ProductColors?: marketPlaceProductColorType[];
+  selectedSize?: string;
+  selectedColor?: string;
+};
+
+type marketPlaceProductImageType = {
+  url: string;
+  alt?: string | null;
+};
+type marketPlaceProductSizeType = {
+  name: string;
+};
+type marketPlaceProductColorType = {
+  name: string;
+};
+
+// cart types
+export type Cart = {
+  id: string;
+  totalAmount: Money;
+  // lines: Connection<CartItem>;
+  totalQuantity: number;
+};
+
+export type Money = {
+  amount: string;
+  currencyCode: string;
+};
+
+export type Connection<T> = {
+  edges: Array<Edge<T>>;
+};
+
+export type Edge<T> = {
+  node: T;
+};
+
+export type CartItem = {
+  id: string;
+  quantity: number;
+  totalAmount: Money;
+  product: marketplaceProductType;
+  // merchandise: {
+  //   id: string;
+  //   title: string;
+  //   selectedOptions: {
+  //     name: string;
+  //     value: string;
+  //   }[];
+  //   product: marketplaceProductType;
+  // };
 };

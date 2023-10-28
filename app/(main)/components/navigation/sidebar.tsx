@@ -3,27 +3,28 @@ import { Button } from '@/components/ui/button';
 import { Home } from 'lucide-react';
 import Link from 'next/link';
 
+// export function Sidebar({insideSheet?: boolean}) {
 export function Sidebar() {
   const items = ['الرئيسية', 'أخبار مصر', 'رياضة', 'أخبار محلية', 'فن ومشاهير', 'مال وأعمال', 'خارج الحدود', 'سياسة'];
   return (
-    <ScrollArea dir="rtl" className="w-4">
-      <div>
-        <div className="space-y-4 py-4 justify-between">
-          <div className="pl-3 py-2">
-            <h2 className="mb-2 px-4 text-2xl font-semibold tracking-tight">أكتشف</h2>
-            <div className="space-y-1">
-              {items.map((item, i) => ( 
-                <Link href="/" key={i}>
-                  <Button variant="ghost" className="w-full flex flex-row gap-1 text-lg justify-start">
-                    <Home />
-                    <span>{item}</span>
-                  </Button>
+    // <ScrollArea dir="rtl" className="w-4">
+    <div>
+      <div className="space-y-4 py-4 justify-between">
+        <div className="pl-3 py-2">
+          <h2 className="mb-2 px-4 text-2xl font-semibold tracking-tight">أكتشف</h2>
+          <div className="space-y-1">
+            {items.map((item, i) => (
+              <Button key={i} type="submit" variant="ghost" className="w-full flex flex-row gap-1 text-lg justify-start">
+                <Link href="/">
+                  <Home />
                 </Link>
-              ))}
-            </div>
+                <span>{item}</span>
+              </Button>
+            ))}
           </div>
         </div>
       </div>
-    </ScrollArea>
+    </div>
+    // </ScrollArea>
   );
 }

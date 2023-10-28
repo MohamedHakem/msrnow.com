@@ -1,33 +1,31 @@
 import { GridTileImage } from '@/components/marketplace/grid/tile';
+import { db } from '@/lib/db';
 // import { getCollectionProducts } from 'lib/shopify';
 import type { Product } from '@/lib/marketplace/types';
+import { marketplaceProductType } from '@/types';
 import Link from 'next/link';
 
-function ThreeItemGridItem({ item, size, priority }: { item: any; size: 'full' | 'half'; priority?: boolean }) {
-  // console.log('item: ', item);
-  return (
-    <div className={size === 'full' ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2 md:row-span-1'}>
-      {/* <Link className="relative block aspect-square h-full w-full" href={`/product/${item.handle}`}> */}
-      <Link className="relative block aspect-square h-full w-full" href={`/marketplace-1`}>
-        <GridTileImage
-          src={item.featuredImage.url}
-          fill
-          sizes={size === 'full' ? '(min-width: 768px) 66vw, 100vw' : '(min-width: 768px) 33vw, 100vw'}
-          priority={priority}
-          alt={item.title}
-          label={{
-            position: size === 'full' ? 'center' : 'bottom',
-            title: item.title as string,
-            amount: item.priceRange.maxVariantPrice.amount,
-            currencyCode: item.priceRange.maxVariantPrice.currencyCode
-          }}
-        />
-      </Link>
-    </div>
-  );
-}
+// type marketplaceProductType =  {
+//   id: 6,
+//   title: 'عنوان كوتشي 4',
+//   price: 310,
+//   stockQuantity: 1,
+//   slug: 'عنوان-كوتشي-4-6',
+//   description: 'وصف كوتشي 4',
+//   rating: null,
+//   brand: null,
+//   sku: null,
+//   discountPrice: null,
+//   free_shipping: false,
+//   published_status: true,
+//   is_used: false,
+//   is_exchangeable: true,
+//   for_donation: null,
+//   productCategoryId: 1,
+//   images: [ [Object] ]
+// }
 
-export async function ThreeItemGrid() {
+export async function ThreeItemGrid({ products }: { products: marketplaceProductType[] }) {
   // Collections that start with `hidden-*` are hidden from the search page.
   // const homepageItems = await getCollectionProducts({
   //   collection: 'hidden-homepage-featured-items'
@@ -143,13 +141,54 @@ export async function ThreeItemGrid() {
     }
   ];
 
-  const [firstProduct, secondProduct, thirdProduct] = homepageItems;
+  // const marketplaceHomeProducts = await db.product.findMany({
+  //   include: {
+  //     images: {
+  //       select: { url: true, alt: true }
+  //     }
+  //   }
+  // })
+  // console.log("marketplaceHomeProducts: ", marketplaceHomeProducts)
+  // console.log("marketplaceHomeProducts[0].images: ", marketplaceHomeProducts[0].images)
+
+
+  // const [firstProduct, secondProduct, thirdProduct] = homepageItems;
+  // const [firstProduct, secondProduct, thirdProduct] = marketplaceHomeProducts;
+  const [firstProduct, secondProduct, thirdProduct] = products;
 
   return (
-    <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2">
+    <section className="mx-auto grid max-w-screen-2xl gap-4 pb-4 md:grid-cols-6 md:grid-rows-2">
       <ThreeItemGridItem size="full" item={firstProduct} priority={true} />
       <ThreeItemGridItem size="half" item={secondProduct} priority={true} />
       <ThreeItemGridItem size="half" item={thirdProduct} priority={true} />
     </section>
+  );
+}
+
+
+function ThreeItemGridItem({ item, size, priority }: { item: marketplaceProductType; size: 'full' | 'half'; priority?: boolean }) {
+  // console.log('[ThreeIte[ThreeItemGridItem] item.images[0].url:mGridItem] item.images[0].url: ', item.images[0].url);
+  return (
+    <div className={size === 'full' ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2 md:row-span-1'}>
+      {/* <Link className="relative block aspect-square h-full w-full" href={`/product/${item.handle}`}> */}
+      <Link className="relative block aspect-square h-full w-full" href={`/marketplace`}>
+        <GridTileImage
+          src={item.images[0].url}
+          fill
+          sizes={size === 'full' ? '(min-width: 768px) 66vw, 100vw' : '(min-width: 768px) 33vw, 100vw'}
+          priority={priority}
+          alt={item.title}
+          label={{
+            position: size === 'full' ? 'center' : 'bottom',
+            title: item.title as string,
+            // amount: item.priceRange.maxVariantPrice.amount,
+            amount: item.price.toString(),
+            // currencyCode: item.priceRange.maxVariantPrice.currencyCode
+            // currencyCode: item.priceRange.maxVariantPrice.currencyCode
+            currencyCode: "EGP"
+          }}
+        />
+      </Link>
+    </div>
   );
 }

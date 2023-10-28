@@ -4,7 +4,7 @@ import * as cheerio from 'cheerio';
 import { sanitizeTitle } from '@/utils/sanitizeTitle';
 import { sanitizeSlug } from '@/utils/sanitizeSlug';
 import generateShortSlugs from '@/utils/generateShortSlugs';
-import { sources } from '@/data/static/sources';
+// import { sources } from '@/data/static/sources';
 // const util = require('util');
 
 export const revalidate = 86400; // 1 day cache

@@ -1,9 +1,11 @@
 {
   "WillLuke.nextjs.addTypesOnSave": true,
   "WillLuke.nextjs.hasPrompted": true,
-  "cSpell.words": [
-    "NEXTAUTH"
-  ]
+  "cSpell.words": ["NEXTAUTH"],
+  // "editor.codeActionsOnSave": {
+  //   "source.organizeImports": true,
+    // "source.sortImports": "explicit"
+  // }
   // "terminal.integrated.shellIntegration.enabled": false,
   // "terminal.integrated.opacity": 0.5
 }

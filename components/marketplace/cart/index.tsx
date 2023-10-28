@@ -1,12 +1,15 @@
+"use client"
+
 // import { getCart } from 'lib/shopify';
-import { cookies } from 'next/headers';
+import useCart from '@/hooks/use-cart';
 import CartModal from './modal';
 
-export default async function Cart() {
+export default function Cart() {
   // const cookie = cookies();
   // const cartId = cookie ? cookies().get('cartId')?.value : null;
+  const cart = useCart()
   // const cartId = cookies().get('cartId')?.value;
-  let cart;
+  // let cart;
 
   // if (cartId) {
   // cart = await getCart(cartId);

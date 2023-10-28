@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { db } from '@/lib/db';
 import { sanitizeTitle } from '@/utils/sanitizeTitle';
 import { sanitizeSlug } from '@/utils/sanitizeSlug';
-import { categoriesAndSources } from '@/data/static/staticCategoriesAndSources';
+// import { categoriesAndSources } from '@/data/static/staticCategoriesAndSources';
 import generateShortSlugs from '@/utils/generateShortSlugs';
 import SaveArticles from '@/utils/saveArticles';
 import updateLastDate from '@/utils/updateLastDate';

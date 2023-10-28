@@ -19,7 +19,7 @@ export default async function RelatedTimeline({
   // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 13000));
 
-  console.log("RelatedTimeline rendered!");
+  // console.log("RelatedTimeline rendered!");
 
   let relatedArticles: relatedArticleType[] = [];
   let relatedTweets: string[] | null = [];

@@ -6,23 +6,20 @@ import clsx from 'clsx';
 import { removeItem } from '@/components/marketplace/cart/actions';
 import type { CartItem } from '@/lib/marketplace/types';
 import { useTransition } from 'react';
+import useCart from '@/hooks/use-cart';
+import { marketplaceProductType } from '@/types';
 
-export default function DeleteItemButton({ item }: { item: CartItem }) {
+export default function DeleteItemButton({ item }: { item: marketplaceProductType }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const cart = useCart()
 
   return (
     <button
       aria-label="Remove cart item"
       onClick={() => {
         startTransition(async () => {
-          const error = await removeItem(item.id);
-
-          if (error) {
-            // Trigger the error boundary in the root error.js
-            throw new Error(error.toString());
-          }
-
+          cart.removeItem(item.id.toString());
           router.refresh();
         });
       }}

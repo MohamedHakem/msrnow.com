@@ -21,11 +21,11 @@ export const addItem = async (variantId: string | undefined): Promise<String | u
     return 'Missing product variant ID';
   }
 
-  try {
-    // await addToCart(cartId, [{ merchandiseId: variantId, quantity: 1 }]);
-  } catch (e) {
-    return 'Error adding item to cart';
-  }
+  // try {
+  //   // await addToCart(cartId, [{ merchandiseId: variantId, quantity: 1 }]);
+  // } catch (e) {
+  return 'Error adding item to cart';
+  // }
 };
 
 export const removeItem = async (lineId: string): Promise<String | undefined> => {
@@ -34,11 +34,11 @@ export const removeItem = async (lineId: string): Promise<String | undefined> =>
   if (!cartId) {
     return 'Missing cart ID';
   }
-  try {
-    // await removeFromCart(cartId, [lineId]);
-  } catch (e) {
-    return 'Error removing item from cart';
-  }
+  // try {
+  // await removeFromCart(cartId, [lineId]);
+  // } catch (e) {
+  return 'Error removing item from cart';
+  // }
 };
 
 export const updateItemQuantity = async ({
@@ -55,15 +55,15 @@ export const updateItemQuantity = async ({
   if (!cartId) {
     return 'Missing cart ID';
   }
-  try {
-    // await updateCart(cartId, [
-    //   {
-    //     id: lineId,
-    //     merchandiseId: variantId,
-    //     quantity
-    //   }
-    // ]);
-  } catch (e) {
-    return 'Error updating item quantity';
-  }
+  // try {
+  // await updateCart(cartId, [
+  //   {
+  //     id: lineId,
+  //     merchandiseId: variantId,
+  //     quantity
+  //   }
+  // ]);
+  // } catch (e) {
+  return 'Error updating item quantity';
+  // }
 };

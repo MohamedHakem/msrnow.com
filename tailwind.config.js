@@ -1,7 +1,8 @@
 const plugin = require('tailwindcss/plugin');
+const { withUt } = require("uploadthing/tw");
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withUt({
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -20,13 +21,16 @@ module.exports = {
     },
     extend: {
       screens: {
+        mobilesm: '360px',
         mobilemd: '375px',
         mobilelg: '425px',
         tablet: '640px',
+        md: '768px',
         laptop: '1024px',
         container: '1184px',
         desktop: '1280px',
-        large: '1384px'
+        large: '1384px',
+        largePC: '1920px'
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -113,7 +117,7 @@ module.exports = {
         carousel: 'marquee 60s linear infinite',
         blink: 'blink 1.4s both infinite',
         ping: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite'
-      }
+      },
     }
   },
   plugins: [
@@ -133,4 +137,4 @@ module.exports = {
       );
     })
   ]
-};
+});

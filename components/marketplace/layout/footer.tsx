@@ -15,14 +15,14 @@ export default async function Footer() {
   const copyrightName = COMPANY_NAME || SITE_NAME || '';
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
+    <footer dir="rtl" className="text-sm text-neutral-500 dark:text-neutral-400">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 px-6 py-12 text-sm dark:border-neutral-700 md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
-        <div>
+        {/* <div>
           <Link className="flex items-center gap-2 text-black dark:text-white md:pt-1" href="/">
             <LogoSquare size="sm" />
             <span className="uppercase">{SITE_NAME}</span>
           </Link>
-        </div>
+        </div> */}
         {/* <Suspense 
           fallback={
             <div className="flex h-[188px] w-[200px] flex-col gap-2">
@@ -39,27 +39,43 @@ export default async function Footer() {
         <div className="md:ml-auto">
           <a
             className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
-            aria-label="Deploy on Vercel"
-            href="https://vercel.com/templates/next.js/nextjs-commerce"
+            aria-label="تحدث الي صفحة مصر الان"
+            href="https:fb.com/msrnowcom"
+            target={'_blank'}
           >
-            <span className="px-3">▲</span>
+            {/* <span className="px-3">▲</span> */}
             <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
-            <span className="px-3">Deploy</span>
+            <span className="px-3">كلمنا</span>
           </a>
+          {/* <a
+            className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
+            aria-label="Deploy on Vercel"
+            href="https:fb.com/msrnowcom"
+          >
+            <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
+            <span className="px-3">اقتراحات وترشيح محتوي</span>
+          </a>
+          <a
+            className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
+            aria-label="Deploy on Vercel"
+            href="https:fb.com/msrnowcom"
+          >
+            <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
+            <span className="px-3">شكاوي</span>
+          </a> */}
         </div>
       </div>
       <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
           <p>
             &copy; {copyrightDate} {copyrightName}
-            {copyrightName.length && !copyrightName.endsWith('.') ? '.' : ''} All rights reserved.
+            {copyrightName.length && !copyrightName.endsWith('.') ? '.' : ''} كل الحقوق محفوظة.
           </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>Designed in California</p>
-          <p className="md:ml-auto">
-            Crafted by{' '}
-            <a href="https://vercel.com" className="text-black dark:text-white">
-              ▲ Vercel
+          <hr className="mx-4 hidden h-4 w-[1px] border-r border-neutral-400 md:inline-block" />
+          <p>صنع في الارض</p>
+          <p className="md:mr-auto">
+            <a href="https://www.msrnow.com" className="text-black dark:text-white">
+              مصرالان
             </a>
           </p>
         </div>

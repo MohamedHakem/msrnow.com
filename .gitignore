@@ -33,6 +33,8 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+.env.ubuntu
+.env.win10
 
 # vercel
 .vercel
@@ -42,3 +44,5 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+certificates

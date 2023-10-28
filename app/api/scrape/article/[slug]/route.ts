@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from 'next/server';
 import * as cheerio from 'cheerio';
 import { db } from '@/lib/db';
 
-import { sources } from '@/data/static/sources';
+// import { sources } from '@/data/static/sources';
 import UpdateArticle from '@/utils/updateArticle';
 
 export const runtime = 'nodejs';
@@ -52,11 +52,21 @@ export async function GET(request: NextRequest, params: { params: { slug: string
     return NextResponse.json({ status: 200, article });
   }
 
+  // const sources = await db.source.findMany({
+  //   select: {
+  //     id: true,
+  //     name: true,
+  //     scrapable: true,
+  //     content_selector: true
+  //   }
+  // });
+
   console.time('currentSource');
-  const currentSource = sources.find((c) => c.id === article.sourceId);
+  // const currentSource = sources.find((c) => c.id === article.sourceId);
+  const currentSource = await db.source.findUnique({ where: { id: article.sourceId } });
   console.timeEnd('currentSource');
 
-  if (!currentSource) {
+  if (currentSource === null) {
     return new NextResponse('Unsupported source.', { status: 404 });
   }
 

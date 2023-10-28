@@ -51,7 +51,7 @@ export default function Timeline({
 
   const events = sortedArray ? sortedArray : relatedArticles;
 
-  console.log('Timeline rendered!');
+  // console.log('Timeline rendered!');
 
   return (
     <div className="flex flex-col mt-4 laptop:max-w-md border rounded-xl animate-fadeIn">
@@ -71,7 +71,7 @@ const TimelineList = async ({ events }: { events: timelineArrayType[] }) => {
   // imitate delay
   // await new Promise((resolve) => setTimeout(resolve, 30000));
 
-  console.log('TimelineList rendered!');
+  // console.log('TimelineList rendered!');
 
   return (
     <div

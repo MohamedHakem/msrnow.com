@@ -1,9 +1,12 @@
-import './globals.css';
+import AuthContext from '@/providers/AuthContext';
+import ToasterContext from '@/providers/ToasterContext';
+import { ThemeProvider } from '@/providers/theme-provider';
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import type { Metadata } from 'next';
+import { extractRouterConfig } from 'uploadthing/server';
+import { ourFileRouter } from './api/uploadthing/core';
+import './globals.css';
 import { Cairo } from 'next/font/google';
-import { ThemeProvider } from '@/components/providers/theme-provider';
-import AuthContext from '@/components/providers/AuthContext';
-import ToasterContext from '@/components/providers/ToasterContext';
 
 const font = Cairo({
   subsets: ['arabic'],
@@ -18,9 +21,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ar" suppressHydrationWarning>
-      <body className={`${font.className} bg-white dark:bg-[#000]`}>
+      {/* <body className={`${font.className} bg-white dark:bg-[#000]`}> */}
+      <body className={`${font.className}  bg-white dark:bg-[#000]`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <AuthContext>
+            <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
             <ToasterContext />
             {children}
           </AuthContext>

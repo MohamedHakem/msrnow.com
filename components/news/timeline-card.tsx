@@ -1,5 +1,5 @@
 import { timelineArrayType, tweetsArrayType } from '@/types';
-import { Tweet } from 'react-tweet';
+// import { Tweet } from 'react-tweet';
 import TimelineNewsCard from '@/components/news/cards/timeline-news-card';
 
 function isTweetsArray(item: timelineArrayType): item is tweetsArrayType {
@@ -11,7 +11,7 @@ export default async function TimelineCard({ item }: { item: timelineArrayType }
     console.log('tweet item.id: ', item.id);
     return (
       <div>
-        <Tweet id={`${item.id}`} fallback={<></>} />
+        {/* <Tweet id={`${item.id}`} fallback={<></>} /> */}
       </div>
     );
   } else {

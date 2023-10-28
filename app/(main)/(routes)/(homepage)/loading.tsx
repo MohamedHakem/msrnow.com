@@ -2,7 +2,7 @@ import TimelineSkeleton from '@/components/skeletons/timeline-skeleton';
 
 export default function Loading() {
   return (
-    <div className="flex flex-col gap-4 py-8 px-4">
+    <div className="flex max-w-6xl m-auto flex-col gap-4 py-8 px-4">
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
         <div className="h-full pb-4 lg:col-span-2">
           <div className="w-full overflow-hidden rounded-lg">

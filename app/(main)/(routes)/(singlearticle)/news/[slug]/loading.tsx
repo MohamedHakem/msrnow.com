@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="flex flex-col desktop:flex-row rounded-md gap-4 py-10 px-4 container:px-0 scroll-m-0 h-full">
+    <div className="flex flex-col w-full max-w-6xl m-auto desktop:flex-row rounded-md gap-4 py-10 px-4 container:px-0 scroll-m-0 h-full">
       <div
         dir="rtl"
         className="flex flex-col flex-auto laptop:flex-row w-full items-center
