@@ -36,7 +36,7 @@ export default async function Page() {
           <FeaturedArea />
           <AdSection size={'large'} />
           {homepageSections.map((section, i) => (
-            <Suspense key={i} fallback={<>loading a section...</>}>
+            <Suspense key={i} fallback={<div>loading a section...</div>}>
               <Section
                 categoryName={section.name}
                 categoryNameAr={section.name_ar}

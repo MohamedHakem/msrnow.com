@@ -11,12 +11,12 @@ import {
 
 export const الحالة = [
   {
-    value: true,
+    value: "true",
     label: "معروض",
     icon: CheckCircledIcon
   },
   {
-    value: false,
+    value: "false",
     label: "مؤرشف",
     icon: CrossCircledIcon,
   },

@@ -110,7 +110,7 @@ export const columns: ColumnDef<dataTableProductType>[] = [
       const published_status: ReactNode = row.getValue("الحالة")
       return (
         <div className="text-right font-medium w-fit">
-          {published_status === true ? (
+          {published_status === "true" ? (
             <div className="flex gap-1 items-center font-semibold text-green-500 bg-green-100 rounded-md py-1 px-2">
               <CheckCircledIcon />
               <span>معروض</span>

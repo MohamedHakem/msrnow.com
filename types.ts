@@ -153,7 +153,7 @@ export type dataTableProductType = {
   الفئة: productCategory;
   الاوردرات: number;
   التقييم: string;
-  الحالة: boolean;
+  الحالة: string;
 };
 
 enum productCategory {
