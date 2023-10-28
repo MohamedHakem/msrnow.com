@@ -72,7 +72,7 @@ export default function NextImage({
           onError={handleImage}
         />
       );
-    } 
+    }
   }
 }
 

@@ -34,6 +34,7 @@ export default async function TimelineNewsCard({
           <CardContent className="relative p-0 rounded-lg">
             <AspectRatio ratio={5 / 3} className="overflow-hidden rounded-t-lg">
               <Image
+                unoptimized
                 // src={article.google_thumb}
                 src={imgUrl}
                 // width={280}

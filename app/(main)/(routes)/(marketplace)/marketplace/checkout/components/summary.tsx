@@ -92,6 +92,7 @@ const Summary = () => {
                           <Link href={merchandiseUrl} className="z-30 flex flex-row gap-2">
                             <div className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
                               <Image
+                                unoptimized
                                 className="h-full w-full object-cover"
                                 width={64}
                                 height={64}
@@ -104,9 +105,9 @@ const Summary = () => {
                               {item.selectedSize || item.selectedColor ? (
                                 <div className="flex flex-row gap-2 mt-2">
                                   {item.selectedSize ? (
-                                  <p className="text-sm font-semibold text-neutral-500 dark:text-neutral-400 border border-blue-600 rounded-full px-2 py-1">
-                                    {item.selectedSize}
-                                  </p>) : null}
+                                    <p className="text-sm font-semibold text-neutral-500 dark:text-neutral-400 border border-blue-600 rounded-full px-2 py-1">
+                                      {item.selectedSize}
+                                    </p>) : null}
                                   {item.selectedColor ? (
                                     <p className="text-sm font-semibold text-neutral-500 dark:text-neutral-400 border border-blue-600 rounded-full px-2 py-1">
                                       {item.selectedColor}

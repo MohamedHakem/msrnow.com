@@ -32,16 +32,17 @@ export default async function ArticleHeader({ article }: { article: singleArticl
       {/* {console.time('Header Image') as React.ReactNode} */}
       <Suspense fallback={<div className="h-[390px] w-full bg-gray-100 animate-pulse"></div>}>
         <Image
+          unoptimized
           src={imgUrl}
           width={width}
           height={height}
           alt={article.title}
           className="animate-fadeIn"
           priority={true}
-          // className='m-auto'
-          // sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          // className="m-auto hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden"
-          // quality={100}
+        // className='m-auto'
+        // sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        // className="m-auto hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden"
+        // quality={100}
         />
       </Suspense>
       {/* {console.timeEnd('Header Image') as React.ReactNode} */}

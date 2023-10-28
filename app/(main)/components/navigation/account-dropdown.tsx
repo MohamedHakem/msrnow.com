@@ -45,6 +45,7 @@ export default function HeaderAccount({ size }: { size: number }) {
               <Button variant={'outline'} className={`w-[${size}px] h-auto p-0 m-0 rounded-full`}>
                 {userImage !== undefined && userImage !== null ? (
                   <Image
+                    unoptimized
                     className="w-full h-full rounded-full"
                     src={userImage}
                     width={size || 40}
@@ -60,8 +61,8 @@ export default function HeaderAccount({ size }: { size: number }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <div className="flex flex-col gap-2 p-2 border-b mb-2">
-                  <div>{session.data?.user.name}</div>
-                  <div>{session.data?.user.email}</div>
+                <div>{session.data?.user.name}</div>
+                <div>{session.data?.user.email}</div>
               </div>
               <Link href={'/dashboard/purchases'} className="flex flex-row gap-2">
                 <DropdownMenuItem className="flex flex-row gap-2 w-full">

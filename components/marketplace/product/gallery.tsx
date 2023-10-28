@@ -31,6 +31,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
       <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden">
         {images[imageIndex] && (
           <Image
+            unoptimized
             className="h-full w-full object-contain"
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"

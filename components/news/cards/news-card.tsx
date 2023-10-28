@@ -29,6 +29,7 @@ export default async function NewsCard({
           <CardContent className="relative p-0 rounded-lg">
             <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-t-lg">
               <Image
+                unoptimized
                 src={article.google_thumb}
                 // width={280}
                 // height={168}
