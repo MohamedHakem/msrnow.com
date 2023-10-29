@@ -25,7 +25,7 @@ export default async function FeaturedArea() {
   const latestArticle = articles[0];
   const width = 768; // 750;
   const height = 460; // 450;
-  console.log("latestArticle: ", latestArticle)
+  // console.log("latestArticle: ", latestArticle)
   const imgUrl = latestArticle.google_thumb.replace(/=s0-w\d+/, `=s0-w${1024}`).replace(/-h\d+/, `-h${614}`);
 
   return (

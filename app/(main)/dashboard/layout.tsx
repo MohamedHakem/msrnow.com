@@ -7,8 +7,20 @@ import { ReactNode } from 'react';
 // import { Sidebar } from '../components/navigation/sidebar';
 import DashboardSidebar from '@/components/dashboard/dashboard-sidebar';
 import ForwardButton from '@/components/shared/forward-button';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/auth';
+import { AuthForm } from '@/components/shared/AuthForm';
+import GrayBG from '@/components/logo/gray-ish-bg';
+import { redirect } from 'next/navigation'
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default async function DashboardLayout({ children }: { children: ReactNode }) {
+  const session = await getServerSession(authOptions)
+  console.log("DashboardLayout ~ session:", session)
+  if (session === null) {
+    console.log("redirecting to /login")
+    redirect('/login')
+  }
+
   return (
     <div className="flex flex-col flex-auto gap-2 h-full m-auto">
       <div className="flex flex-col w-full h-full">
@@ -18,7 +30,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           </div>
           <div className="flex flex-col flex-auto gap-4 laptop:gap-8 h-full laptop:pl-4 animate-fadeIn pt-12 laptop:pt-0">
             <div className="flex flex-row gap-1 px-4 laptop:pl-4">
-              <BackButton /> 
+              <BackButton />
               <ForwardButton />
             </div>
             {children}

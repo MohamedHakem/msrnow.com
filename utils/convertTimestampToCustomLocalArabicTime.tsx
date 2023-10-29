@@ -66,31 +66,31 @@ function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boole
     return timeAgo;
   }
 
-  console.log("🚀 published_at: ", published_at)
-  const date = new Date(published_at);
-  console.log("🚀 date: ", date)
-  const currentTimeWithWeekday = date.toLocaleString('ar-EG', options)
-  console.log("🚀 currentTimeWithWeekday: ", currentTimeWithWeekday)
+  // console.log("🚀 published_at: ", published_at)
+  // const date = new Date(published_at);
+  // console.log("🚀 date: ", date)
+  // const currentTimeWithWeekday = date.toLocaleString('ar-EG', options)
+  // console.log("🚀 currentTimeWithWeekday: ", currentTimeWithWeekday)
   // return currentTimeWithWeekday.replace(/،/g, ' · ');
 
-  const customOptions: Intl.DateTimeFormatOptions & { locale: string; } = {
-    weekday: "short",
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    numberingSystem: 'latn',
-    hour12: true,
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    locale: "ar-EG"
-  }
+  // const customOptions: Intl.DateTimeFormatOptions & { locale: string; } = {
+  //   weekday: "short",
+  //   year: 'numeric',
+  //   month: 'numeric',
+  //   day: 'numeric',
+  //   hour: 'numeric',
+  //   minute: 'numeric',
+  //   numberingSystem: 'latn',
+  //   hour12: true,
+  //   timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  //   locale: "ar-EG"
+  // }
 
-  console.log("Intl.DateTimeFormat().resolvedOptions().timeZone: ", Intl.DateTimeFormat().resolvedOptions().timeZone);
-  const customDate = new Date(published_at);
-  console.log("🚀 customDate: ", customDate)
-  const customCurrentTimeWithWeekday = new Date(customDate).toLocaleString('ar-EG', customOptions)
-  console.log("🚀 customCurrentTimeWithWeekday: ", customCurrentTimeWithWeekday)
+  // console.log("Intl.DateTimeFormat().resolvedOptions().timeZone: ", Intl.DateTimeFormat().resolvedOptions().timeZone);
+  // const customDate = new Date(published_at);
+  // console.log("🚀 customDate: ", customDate)
+  // const customCurrentTimeWithWeekday = new Date(customDate).toLocaleString('ar-EG', customOptions)
+  // console.log("🚀 customCurrentTimeWithWeekday: ", customCurrentTimeWithWeekday)
 
   const publishedAt = new Date(published_at);
   // const datefnsCurrentTimeWithWeekday = format(publishedAt, 'EEEE, dd/MM/yyyy, HH:mm', {
@@ -98,7 +98,7 @@ function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boole
   // } as FormatOptionsWithTimeZone);
 
   const datefnsCurrentTimeWithWeekday = format(publishedAt, 'EEEE, dd/MM/yyyy, HH:mm', { locale: locale });
-  console.log("datefnsCurrentTimeWithWeekday: ", datefnsCurrentTimeWithWeekday);
+  // console.log("datefnsCurrentTimeWithWeekday: ", datefnsCurrentTimeWithWeekday);
 
   return datefnsCurrentTimeWithWeekday.replace(/،/g, ' · ');
 }
