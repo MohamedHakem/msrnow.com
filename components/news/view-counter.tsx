@@ -12,7 +12,7 @@ export default async function ViewCounter({ slug }: { slug: string }) {
   return typeof views === 'string' ? (
     <></>
   ) : (
-    <span className="dark:text-neutral-400 flex flex-row gap-[2px] pl-0 rounded-md text-[#6b6b6b]/60 hover:text-[#6b6b6b] animate-fadeIn">
+    <span className="dark:text-neutral-400 flex flex-row gap-[2px] items-center pl-0 rounded-md text-[#6b6b6b]/60 hover:text-[#6b6b6b] animate-fadeIn">
       <Suspense fallback={<div className="w-14 h-5 bg-gray-100 animate-pulse"></div>}>
         <Eye strokeWidth={1.25} size={20} className="h-auto" />
         <span className="text-sm">{views}</span>

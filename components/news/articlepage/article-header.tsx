@@ -1,15 +1,11 @@
 import { Suspense } from 'react';
 import ViewCounter from '@/components/news/view-counter';
-// import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Image from 'next/image';
 import { singleArticleType } from '@/types';
+import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
+
 
 export default async function ArticleHeader({ article }: { article: singleArticleType }) {
-  // // imitate delay
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  // console.log("ArticleHeader rendered!");
-
   const width = 650;
   const height = 390;
   const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width}`).replace(/-h\d+/, `-h${height}`);
@@ -24,9 +20,13 @@ export default async function ArticleHeader({ article }: { article: singleArticl
       </Suspense>
       {/* {console.timeEnd('H1') as React.ReactNode} */}
       {/* {console.time('ViewCounter') as React.ReactNode} */}
-      <Suspense fallback={<div className="w-14 h-5 bg-gray-100 animate-pulse"></div>}>
-        <ViewCounter slug={article.slug} />
-      </Suspense>
+      <div className="flex justify-between">
+        <p>{getTimeAgo(article.published_at, true, false)}</p>
+        <Suspense fallback={<div className="w-14 h-5 bg-gray-100 animate-pulse"></div>}>
+          <ViewCounter slug={article.slug} />
+        </Suspense>
+
+      </div>
       {/* {console.timeEnd('ViewCounter') as React.ReactNode} */}
       {/* <AspectRatio ratio={5 / 3} className="overflow-hidden m-auto"> */}
       {/* {console.time('Header Image') as React.ReactNode} */}
