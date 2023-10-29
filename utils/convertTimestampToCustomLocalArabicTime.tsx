@@ -1,15 +1,6 @@
 function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boolean, isTimeAgo: boolean) {
-  const weekdayOptions: Intl.DateTimeFormatOptions = {
-    weekday: 'short',
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    numberingSystem: 'latn',
-    hour12: true
-  };
   const options: Intl.DateTimeFormatOptions = {
+    weekday: weekday ? "short" : undefined,
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
@@ -20,20 +11,13 @@ function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boole
   };
 
   if (isTimeAgo) {
-    // console.log('isTimeAgo: ', isTimeAgo);
     const date = typeof published_at == 'number' ? published_at : new Date(published_at).getTime();
     const currentTime = new Date().getTime();
     const timeDifference = currentTime - date;
-
     const minutesDifference = Math.floor(timeDifference / (60 * 1000));
-    // console.log('minutesDifference: ', minutesDifference);
     const hoursDifference = Math.floor(minutesDifference / 60);
-    // console.log('hoursDifference: ', hoursDifference);
     const daysDifference = Math.floor(hoursDifference / 24);
-    // console.log('daysDifference: ', daysDifference);
     const weeksDifference = Math.floor(daysDifference / 7);
-    // console.log('weeksDifference: ', weeksDifference);
-
     let timeAgo;
     if (minutesDifference < 60) {
       timeAgo =
@@ -72,17 +56,11 @@ function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boole
               ? `قبل ${weeksDifference} أسابيع`
               : `قبل ${weeksDifference} اسبوع`;
     }
-
     return timeAgo;
   }
 
-  // const currentTimeWithWeekday = weekday
-  //   ? new Date(published_at).toLocaleString('ar', weekdayOptions)
-  // : new Date(published_at).toLocaleString('ar', options);
-  const currentTimeWithWeekday = weekday
-    ? new Date(published_at).toLocaleString('ar-EG', weekdayOptions)
-    : new Date(published_at).toLocaleString('ar-EG', options);
-
+  const date = new Date(published_at);
+  const currentTimeWithWeekday = date.toLocaleString('ar-EG', options)
   return currentTimeWithWeekday.replace(/،/g, ' · ');
 }
 
