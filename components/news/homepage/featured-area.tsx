@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { getTopHeadlineArticles } from '@/data/getArticles';
 import NextImage from '@/components/news/NextImage';
 import AdSection from '../ad-section';
+import LocalDatetime from '@/components/shared/localedateTime';
 
 // const dynamic = 'force-dynamic';
 export const revalidate = 300
@@ -49,12 +50,13 @@ export default async function FeaturedArea() {
                 <p className="pt-2 pb-2 px-4 text-[22px] md:text-3xl laptop:text-3xl font-extrabold md:leading-[48px] hover:text-red-500">
                   {latestArticle.title}
                 </p>
-                <span
+                <LocalDatetime date={latestArticle.published_at} showTimeAgo={true} />
+                {/* <span
                   className="px-4 text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
                   title={getTimeAgo(latestArticle.published_at, true, false)}
                 >
                   {getTimeAgo(latestArticle.published_at, false, true)}
-                </span>
+                </span> */}
               </div>
             </Link>
           </div>

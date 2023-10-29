@@ -3,6 +3,7 @@ import ViewCounter from '@/components/news/view-counter';
 import Image from 'next/image';
 import { singleArticleType } from '@/types';
 import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
+import LocalDatetime from '@/components/shared/localedateTime';
 
 
 export default async function ArticleHeader({ article }: { article: singleArticleType }) {
@@ -21,7 +22,8 @@ export default async function ArticleHeader({ article }: { article: singleArticl
       {/* {console.timeEnd('H1') as React.ReactNode} */}
       {/* {console.time('ViewCounter') as React.ReactNode} */}
       <div className="flex justify-between">
-        <p>{getTimeAgo(article.published_at, true, false)}</p>
+        {/* <p>{getTimeAgo(article.published_at, true, false)}</p> */}
+        <LocalDatetime date={article.published_at} />
         <Suspense fallback={<div className="w-14 h-5 bg-gray-100 animate-pulse"></div>}>
           <ViewCounter slug={article.slug} />
         </Suspense>
