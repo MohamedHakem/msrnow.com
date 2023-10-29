@@ -55,7 +55,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // );
 
 export async function middleware(request: NextRequest) {
-  console.log('middleware');
+  // console.log('middleware');
   if (request.nextUrl.pathname.match(/^\/(?:[a-zA-Z0-9]{3})$/)) {
     const url = request.nextUrl.clone();
     url.pathname = `/news${url.pathname}`;

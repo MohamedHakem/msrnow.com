@@ -15,7 +15,7 @@ export default async function EnergyNewsPage() {
   if (!news) return null;
 
   return (
-    <div className="flex flex-col gap-4 py-8 px-4">
+    <div className="flex flex-col w-full max-w-6xl m-auto gap-4 py-8 px-4">
       <h1 className="text-3xl font-bold animate-fadeIn">أخبار الطاقة</h1>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
         <div className="h-full pb-4 lg:col-span-2">
