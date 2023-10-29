@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import AdSection from '../ad-section';
 import { newsType, topHeadlineType } from '@/types';
+import LocalDatetime from '@/components/shared/localedateTime';
 
 // export const runtime = 'edge';
 // export const dynamic = 'force-dynamic';
@@ -50,7 +51,10 @@ export default async function Section({
                           {article.title}
                         </h4>
                         <div className="mt-1 text-xs text-gray-400">
-                          <time>{getTimeAgo(article.published_at, false, true)}</time>
+                          <time>
+                            <LocalDatetime date={article.published_at} showTimeAgo={true} />
+                          </time>
+                          {/* <time>{getTimeAgo(article.published_at, false, true)}</time> */}
                         </div>
                       </div>
                     </Link>

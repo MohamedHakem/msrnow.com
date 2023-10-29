@@ -8,6 +8,7 @@ import { getTopHeadlineArticles } from '@/data/getArticles';
 import NextImage from '@/components/news/NextImage';
 import AdSection from '../ad-section';
 import LocalDatetime from '@/components/shared/localedateTime';
+import { Suspense } from 'react';
 
 // const dynamic = 'force-dynamic';
 export const revalidate = 300
@@ -50,7 +51,11 @@ export default async function FeaturedArea() {
                 <p className="pt-2 pb-2 px-4 text-[22px] md:text-3xl laptop:text-3xl font-extrabold md:leading-[48px] hover:text-red-500">
                   {latestArticle.title}
                 </p>
-                <LocalDatetime date={latestArticle.published_at} showTimeAgo={true} />
+                {/* <Suspense fallback={<div className="w-10 h-10 animate-pulse bg-slate-300"></div>}> */}
+                  <div className="pr-4">
+                    <LocalDatetime date={latestArticle.published_at} showTimeAgo={true} />
+                    </div>
+                {/* </Suspense> */}
                 {/* <span
                   className="px-4 text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
                   title={getTimeAgo(latestArticle.published_at, true, false)}
@@ -72,12 +77,14 @@ export default async function FeaturedArea() {
                 </div>
                 <div className="flex flex-col w-full mobilemd:w-1/2 md:w-full px-4 mobilemd:px-0">
                   <p className="md:pt-2 pb-0 text-[14px] md:text-[22px] font-bold hover:text-red-500">{a.title}</p>
-                  <span
+                  <LocalDatetime date={a.published_at} showTimeAgo={true} />
+
+                  {/* <span
                     className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
                     title={getTimeAgo(a.published_at, true, false)}
                   >
                     {getTimeAgo(a.published_at, false, true)}
-                  </span>
+                  </span> */}
                 </div>
               </Link>
             ))}
@@ -97,12 +104,13 @@ export default async function FeaturedArea() {
                   <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
                     {a.title}
                   </p>
-                  <span
+                  <LocalDatetime date={a.published_at} showTimeAgo={true} />
+                  {/* <span
                     className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
                     title={getTimeAgo(a.published_at, true, false)}
                   >
                     {getTimeAgo(a.published_at, false, true)}
-                  </span>
+                  </span> */}
                 </div>
               </Link>
             ))}
@@ -125,12 +133,13 @@ export default async function FeaturedArea() {
                     <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
                       {a.title}
                     </p>
-                    <span
+                    <LocalDatetime date={a.published_at} showTimeAgo={true} />
+                    {/* <span
                       className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
                       title={getTimeAgo(a.published_at, true, false)}
                     >
                       {getTimeAgo(a.published_at, false, true)}
-                    </span>
+                    </span> */}
                   </div>
                 </Link>
               ))}
