@@ -1,5 +1,7 @@
 function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boolean, isTimeAgo: boolean) {
-  const options: Intl.DateTimeFormatOptions = {
+  const options: Intl.DateTimeFormatOptions & {
+    locale: string;
+  } = {
     weekday: weekday ? "short" : undefined,
     year: 'numeric',
     month: 'numeric',
@@ -7,7 +9,8 @@ function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boole
     hour: 'numeric',
     minute: 'numeric',
     numberingSystem: 'latn',
-    hour12: true
+    hour12: true,
+    locale: "ar-EG"
   };
 
   if (isTimeAgo) {
@@ -64,6 +67,27 @@ function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boole
   console.log("🚀 date: ", date)
   const currentTimeWithWeekday = date.toLocaleString('ar-EG', options)
   console.log("🚀 currentTimeWithWeekday: ", currentTimeWithWeekday)
+  // return currentTimeWithWeekday.replace(/،/g, ' · ');
+
+  const customOptions: Intl.DateTimeFormatOptions & {
+    locale: string;
+  } = {
+    weekday: "short",
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    numberingSystem: 'latn',
+    hour12: true,
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    locale: "ar-EG"
+  }
+  const customDate = new Date(published_at);
+  console.log("🚀 customDate: ", customDate)
+  const customCurrentTimeWithWeekday = new Date(customDate).toLocaleString('ar-EG', customOptions)
+  console.log("🚀 customCurrentTimeWithWeekday: ", customCurrentTimeWithWeekday)
+
   return currentTimeWithWeekday.replace(/،/g, ' · ');
 }
 
