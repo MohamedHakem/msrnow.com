@@ -59,8 +59,11 @@ function getLocalArabicFromTimestamp(published_at: number | Date, weekday: boole
     return timeAgo;
   }
 
+  console.log("🚀 published_at: ", published_at)
   const date = new Date(published_at);
+  console.log("🚀 date: ", date)
   const currentTimeWithWeekday = date.toLocaleString('ar-EG', options)
+  console.log("🚀 currentTimeWithWeekday: ", currentTimeWithWeekday)
   return currentTimeWithWeekday.replace(/،/g, ' · ');
 }
 
