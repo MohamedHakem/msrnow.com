@@ -8,6 +8,19 @@ import { Suspense } from 'react';
 // const dynamic = 'force-dynamic';
 export const revalidate = 300
 
+export const metadata = {
+  title: 'مصر الآن | الأخبار',
+  description: 'مصر الآن | الأخبار',
+  openGraph: {
+    title: 'مصر الآن | الأخبار',
+    description: 'مصر الآن | الأخبار',
+    locale: "ar, EG",
+    siteName: "مصر الآن",
+    url: "https://www.msrnow.com",
+    countryName: "ُمصر",
+  },
+};
+
 export default async function Page() {
   const newsHomepageJsonLd = {
     "@context": "https://schema.org",

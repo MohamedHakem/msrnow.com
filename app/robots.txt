@@ -2,3 +2,4 @@ userAgent: *
 allow: /
 disallow: /dashboard/
 sitemap: https://www.msrnow.com/sitemap.xml
+Allow: /api/og/*

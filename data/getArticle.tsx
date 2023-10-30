@@ -1,35 +1,17 @@
 import { db } from '@/lib/db';
+import { cache } from 'react';
 
 export const revalidate = 86400; // 1 day cache
 
-export default async function getArticle(slug: string) {
+// export default async function getArticle(slug: string) {
+export const getArticle = cache(async (slug: string) => {
   slug = decodeURIComponent(slug);
   try {
     const article = await db.article.findUnique({
       where: {
         ...(slug.length < 5 ? { short_slug: slug } : { slug: slug })
       },
-      // select: {
-      //   title: true,
-      //   short_slug: true,
-      //   slug: true,
-      //   content: true,
-      //   google_thumb: true,
-      //   article_google_url: true,
-      //   article_source_url: true,
-      //   related_coverage_url: true,
-      //   related_coverage_article: true,
-      //   related_coverage_tweets: true,
-      //   keywords: true,
-      //   description: true,
-      //   likes: true,
-      //   shares: true,
-      //   published_at: true,
-      //   sourceId: true,
-      //   categoryId: true
-      // },
       include: { source: { select: { name: true } } }
-      // cacheStrategy: { ttl: 3600, swr: 3600 }
     });
 
     return article;
@@ -37,4 +19,4 @@ export default async function getArticle(slug: string) {
     console.log(`[getArticle] [Error] slug: ${slug}, error: ${error}`);
     return null;
   }
-}
+})

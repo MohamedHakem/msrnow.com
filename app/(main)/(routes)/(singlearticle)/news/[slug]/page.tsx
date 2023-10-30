@@ -1,4 +1,4 @@
-import getArticle from '@/data/getArticle';
+import { getArticle } from '@/data/getArticle';
 import { Suspense } from 'react';
 // import SingleArticleSkeleton from '@/components/skeletons/single-article-skeleton';
 import RelatedTimeline from '@/components/news/articlepage/related-timeline';
@@ -7,8 +7,54 @@ import ArticleHeader from '@/components/news/articlepage/article-header';
 import IncrementViewCounter from '@/components/news/increment-view-counter';
 import ArticleBody from '@/components/news/articlepage/article-body';
 import { notFound } from 'next/navigation';
+import { Metadata, ResolvingMetadata } from 'next';
 
 export const revalidate = 'force-cache';
+
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+
+export async function generateMetadata(
+  { params, searchParams }: Props, parent: ResolvingMetadata
+): Promise<Metadata> {
+
+  const { slug } = params
+  const article = await getArticle(decodeURIComponent(slug));
+
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  if (!article) { return { title: "مصر الان | أخبار" }; }
+
+  return {
+    title: article.title,
+    description: article.description,
+    keywords: article.keywords,
+    twitter: {
+      card: 'summary_large_image',
+      site: "https://www.msrnow.com",
+      description: article.description || undefined,
+      title: article.title
+    },
+    alternates: {
+      canonical: article.slug,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.description || undefined,
+      locale: "ar, EG",
+      siteName: "مصر الآن",
+      url: article.short_slug,
+      tags: article.keywords,
+      countryName: "ُمصر",
+      images: [{ url: new URL(article.google_thumb) }],
+    },
+  }
+}
+
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
   const { slug } = params;

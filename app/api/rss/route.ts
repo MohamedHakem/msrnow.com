@@ -47,6 +47,7 @@ async function getRSS() {
     },
     select: {
       title: true,
+      slug: true,
       short_slug: true,
       published_at: true,
       google_thumb: true
@@ -71,7 +72,7 @@ async function getRSS() {
     xml += `
       <item>
       <title>${item.title}</title>
-      <link>https://www.msrnow.com/${item.short_slug}</link>
+      <link>https://www.msrnow.com/${item.slug}</link>
       <guid isPermaLink="false">${item.short_slug}</guid>
       <pubDate>${formatDate(item.published_at)}</pubDate>
       <content:encoded><![CDATA[ <img 
