@@ -7,6 +7,10 @@ import { extractRouterConfig } from 'uploadthing/server';
 import { ourFileRouter } from './api/uploadthing/core';
 import './globals.css';
 import { Cairo } from 'next/font/google';
+// import { Suspense } from 'react';
+// import Analytics from './analytics';
+import { GoogleTagManager } from '@next/third-parties/google'
+
 
 const font = Cairo({
   subsets: ['arabic'],
@@ -27,7 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AuthContext>
             <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
             <ToasterContext />
+            {/* <Suspense>
+              <Analytics />
+            </Suspense> */}
             {children}
+            <GoogleTagManager gtmId="GTM-MCQZ8JPF" />
           </AuthContext>
         </ThemeProvider>
       </body>
