@@ -167,6 +167,12 @@ export default function AddNewItemForm({ itemKind, itemInAr }: { itemKind: strin
       value: "10",
       icon: CheckCircledIcon
     },
+    {
+      label: "بني",
+      value: "11",
+      icon: CheckCircledIcon
+    },
+
   ]
 
   useEffect(() => {

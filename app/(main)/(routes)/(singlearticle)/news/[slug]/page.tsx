@@ -51,6 +51,7 @@ export async function generateMetadata(
       tags: article.keywords,
       countryName: "ُمصر",
       images: [{ url: new URL(article.google_thumb) }],
+      type: "article"
     },
   }
 }
