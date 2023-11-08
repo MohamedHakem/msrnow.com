@@ -22,9 +22,9 @@ export const MobileNav = () => {
     { title: 'أخبار المشاهير', url: "/news/celebrities" },
     { title: 'أخبار الطاقة', url: "/news/energy-news" },
     { title: 'أخبار القاهرة', url: "/news/cairo" },
-    { title: 'أخبار محلية - الجيزة', url: "/news/giza" },
-    { title: 'أخبار محلية - الفيوم', url: "/news/faiyum" },
-    { title: 'أخبار محلية - بلبيس', url: "/news/belbes" },
+    // { title: 'أخبار محلية - الجيزة', url: "/news/giza" },
+    // { title: 'أخبار محلية - الفيوم', url: "/news/faiyum" },
+    // { title: 'أخبار محلية - بلبيس', url: "/news/belbes" },
   ];
 
   return (
