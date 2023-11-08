@@ -214,6 +214,33 @@ export type marketplaceProductType = {
   selectedColor?: string;
 };
 
+export type marketplaceSingleProductType = {
+  id: number;
+  title: string;
+  price: number;
+  stockQuantity: number;
+  slug: string | null;
+  description: string | null;
+  rating: number | null;
+  brand: string | null;
+  sku: string | null;
+  discountPrice: number | null;
+  free_shipping: Boolean | null;
+  published_status: Boolean | null;
+  is_used: Boolean | null;
+  is_exchangeable: Boolean | null;
+  for_donation: Boolean | null;
+  productCategoryId: number;
+  images: marketPlaceProductImageType[];
+  ProductSizes?: marketPlaceProductSizeType[];
+  ProductColors?: marketPlaceProductColorType[];
+  selectedSize?: string;
+  selectedColor?: string;
+  reviews: productReviewType[];
+};
+
+export type productReviewType = { review_text: string };
+
 type marketPlaceProductImageType = {
   url: string;
   alt?: string | null;
@@ -223,6 +250,7 @@ type marketPlaceProductSizeType = {
 };
 type marketPlaceProductColorType = {
   name: string;
+  value: string;
 };
 
 // cart types

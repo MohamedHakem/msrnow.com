@@ -49,6 +49,8 @@ export default async function ProductsPage() {
   const session = await getServerSession(authOptions)
   if (!session) return null
   const myProducts = await getProducts(session.user.id)
+  console.log("🚀 ~ file: page.tsx:53 ~ ProductsPage ~ session.user.id:", session.user.id)
+  console.log("🚀 ~ file: page.tsx:52 ~ ProductsPage ~ myProducts[0]:", myProducts[0])
   const formattedProducts = myProducts.length > 0 ? replaceKeyNames(myProducts) : []
 
   return (

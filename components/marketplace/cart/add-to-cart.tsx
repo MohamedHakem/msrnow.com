@@ -17,6 +17,13 @@ export function AddToCart({ variant, availableForSale }: { variant: marketplaceP
   const color = searchParams.get('color')
   const size = searchParams.get('size')
   const currentVariant = { ...variant, selectedSize: size ? size : undefined, selectedColor: color ? color : undefined }
+  const canCheckout =
+    variant.ProductSizes ?
+      size ?
+        variant.ProductColors ? color ? true : false : true
+        : false
+      : variant.ProductColors ? color ? true : false : true
+
   // console.log("variant: ", variant);
   // console.log("currentVariant: ", currentVariant);
   // console.log("color, size: ", color, ' - ', size)
@@ -25,36 +32,43 @@ export function AddToCart({ variant, availableForSale }: { variant: marketplaceP
   const cart = useCart()
 
   return (
-    <button
-      aria-label="Add item to cart"
-      disabled={isPending || !availableForSale}
-      title={currentVariant.title}
-      onClick={() => {
-        // Safeguard in case someone messes with `disabled` in devtools.
-        if (!availableForSale || !currentVariant.id) return;
+    <div className="px-0">
+      <button
+        aria-label="Add item to cart"
+        disabled={isPending || !availableForSale || !canCheckout}
+        title={currentVariant.title}
+        onClick={() => {
+          // Safeguard in case someone messes with `disabled` in devtools.
+          if (!availableForSale || !currentVariant.id) return;
 
-        startTransition(async () => {
-          // const error = await cart.addItem(currentVariant.id.toString());
-          const error = cart.addItem(currentVariant);
-          // if (error) {
-          //   // Trigger the error boundary in the root error.js
-          //   throw new Error(error.toString());
-          // }
-          router.refresh();
-        });
-      }}
-      className={clsx(
-        'relative flex w-full laptop:w-1/2 items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white hover:opacity-90',
-        {
-          'cursor-not-allowed opacity-60 hover:opacity-60': !availableForSale || !currentVariant.id,
-          'cursor-not-allowed': isPending
-        }
-      )}
-    >
-      <div className="absolute left-0 ml-4">
-        {!isPending ? <PlusIcon className="h-5" /> : <LoadingDots className="mb-3 bg-white" />}
-      </div>
-      <span>{availableForSale ? 'اضف الي العربة' : 'Out Of Stock'}</span>
-    </button>
+          startTransition(async () => {
+            // const error = await cart.addItem(currentVariant.id.toString());
+            const error = cart.addItem(currentVariant);
+            // if (error) {
+            //   // Trigger the error boundary in the root error.js
+            //   throw new Error(error.toString());
+            // }
+            router.refresh();
+          });
+        }}
+        className={clsx(
+          'relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white hover:opacity-90',
+          {
+            'cursor-not-allowed opacity-60 hover:opacity-60': !availableForSale || !currentVariant.id || !canCheckout,
+            'cursor-not-allowed': isPending
+          }
+        )}
+      >
+        <div className="absolute left-0 ml-4">
+          {!isPending ? <PlusIcon className="h-5" /> : <LoadingDots className="mb-3 bg-white" />}
+        </div>
+        <span>{availableForSale ? 'اضف الي العربة' : 'Out Of Stock'}</span>
+      </button>
+      <p className="text-center text-orange-500 mt-1">
+        {canCheckout ? null : " اختر "}
+        {!canCheckout && variant.ProductSizes ? size ? "" : "مقاس " : ""}
+        {!canCheckout && variant.ProductColors ? color ? "" : !canCheckout && variant.ProductSizes ? size ? "لون" : "ولون" : "" : ""}
+      </p>
+    </div>
   );
 }

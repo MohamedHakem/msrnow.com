@@ -44,13 +44,12 @@ export default async function SearchPage({
   const products = await getProducts({ sortKey, reverse, size, color });
 
   const sizes = ["40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53"]
-  const colors = ["أسود", "رمادي", "فضي", "أبيض", "أحمر", "أخضر", "لموني", "برتقالي", "أصفر", "أزرق"]
+  const colors = ["أسود", "رمادي", "فضي", "أبيض", "أحمر", "أخضر", "لموني", "برتقالي", "أصفر", "أزرق", "بني"]
 
   return (
     <>
       <Suspense fallback={<div>جاري البحث...</div>}>
-        <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-black dark:text-white md:flex-row">
-          {/* <div className="order-none w-fill flex flex-col md:order-last md:w-[150px] gap-2"> */}
+        <div className="mx-auto flex max-w-screen-2xl flex-col gap-2 p-4 text-black dark:text-white md:flex-row">
           <div className="order-first w-full flex flex-col gap-2 md:max-w-[150px]">
             <div className="w-full"><FilterList list={sorting} title="ترتيب" /></div>
             <MarketplaceFilter sizes={sizes} colors={colors} />
@@ -64,15 +63,8 @@ export default async function SearchPage({
               ) : null}
             </div>
           </Suspense>
-          {/* <div className="order-none w-fill flex flex-col md:order-last md:w-[150px] gap-2"> */}
-          {/* <div className="order-none w-fill flex flex-col md:order-last md:w-[150px] gap-2">
-            <div className="w-full"><FilterList list={sorting} title="ترتيب" /></div>
-            <MarketplaceFilter sizes={sizes} colors={colors} />
-          </div> */}
 
-          {/* <div className="order-first w-full flex-none md:max-w-[150px]"> */}
           <div className="order-none w-fill flex flex-col md:order-last md:w-[150px] gap-2">
-            {/* product categories, get them from db */}
             <Collections />
           </div>
         </div>
@@ -81,58 +73,3 @@ export default async function SearchPage({
     </>
   );
 }
-
-// {products.length > 0 ? (
-//   <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-//     <ProductGridItems products={products} />
-//   </Grid>
-// ) : null}
-
-
-
-
-// import Grid from '@/components/marketplace/grid';
-// import ProductGridItems from '@/components/marketplace/layout/product-grid-items';
-// import { db } from '@/lib/db';
-// import { defaultSort, sorting } from '@/lib/marketplace/constants';
-
-// export const metadata = {
-//   title: 'أحذية مقاسات خاصة - بيع واشتري مجانا',
-//   description: 'بيع واشتري مجانا. أحذية مقاسات خاصة'
-// };
-
-// async function getProducts(sortKey: string, reverse: boolean, filterKey: string) {
-//   console.log("[getProducts] sortKey: ", sortKey, ', reverse: ', reverse);
-//   // filter by: color or size
-//   return await db.product.findMany({
-//     orderBy: { [sortKey]: reverse ? 'asc' : 'desc' },
-//     include: {
-//       images: {
-//         select: { url: true, alt: true }
-//       }
-//     }
-//   })
-// }
-
-// export default async function MarketplacePage({
-//   searchParams
-// }: {
-//   searchParams?: { [key: string]: string | string[] | undefined };
-// }) {
-//   const { sort, filter } = searchParams as { [key: string]: string };
-//   const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
-//   console.log("sort, filter: ", sort, ' - ', filter);
-//   console.log("sortKey: ", sortKey);
-
-//   const products = await getProducts(sortKey, reverse, filter)
-
-//   return (
-//     <>
-//       {products.length > 0 ? (
-//         <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-//           <ProductGridItems products={products} />
-//         </Grid>
-//       ) : null}
-//     </>
-//   );
-// }

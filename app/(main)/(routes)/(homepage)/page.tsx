@@ -44,7 +44,9 @@ export default async function Page() {
           __html: JSON.stringify(newsHomepageJsonLd)
         }}
       />
-      <div className="flex flex-col w-full max-w-6xl m-auto gap-4 pt-0 pb-10 md:py-12 laptop:pt-4 container:px-0 scroll-m-0">
+      <div className="flex flex-col w-full max-w-6xl m-auto gap-4 pt-0 pb-10 md:py-12 
+                      laptop:pt-4 container:px-0 scroll-m-0 animate-fadeIn"
+      >
         <div className="flex flex-col flex-auto gap-8 items-center">
           <FeaturedArea />
           {homepageSections.map((section, i) => (

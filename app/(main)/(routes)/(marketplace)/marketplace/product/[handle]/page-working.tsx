@@ -1,13 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Gallery } from '@/components/marketplace/product/gallery';
-// import { ProductDescription } from '@/components/marketplace/product/product-description';
+import { ProductDescription } from '@/components/marketplace/product/product-description';
 import getProduct from '@/utils/marketplace/getProduct';
-import { Star } from 'lucide-react';
-import { ColorSizeSelector } from '@/components/marketplace/product/color-size-selector';
-import { AddToCart } from '@/components/marketplace/cart/add-to-cart';
-import { ProductDetails } from '@/components/marketplace/product/product-details';
+
+// export const runtime = 'edge';
 
 export async function generateMetadata({
   params
@@ -48,8 +45,36 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {
-  const product = await getProduct(params.handle)
-  if (!product) return notFound()
+  const product = await getProduct(params.handle);
+
+  if (!product) return notFound();
+
+
+  // add the reviews (with review author), and aggregateRatings
+  // https://developers.google.com/search/docs/appearance/structured-data/product
+  // {
+  //   "@context": "https://schema.org/",
+  //   "@type": "Product",
+  //   "name": "Executive Anvil",
+  //   "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
+  //   "review": {
+  //     "@type": "Review",
+  //     "reviewRating": {
+  //       "@type": "Rating",
+  //       "ratingValue": 4,
+  //       "bestRating": 5
+  //     },
+  //     "author": {
+  //       "@type": "Person",
+  //       "name": "Fred Benson"
+  //     }
+  //   },
+  //   "aggregateRating": {
+  //     "@type": "AggregateRating",
+  //     "ratingValue": 4.4,
+  //     "reviewCount": 89
+  //   }
+  // }
   const productJsonLd = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
@@ -75,41 +100,28 @@ export default async function ProductPage({ params }: { params: { handle: string
           __html: JSON.stringify(productJsonLd)
         }}
       />
-
-      <div className="bg-white laptop:px-4">
-        <nav aria-label="Breadcrumb" className="hidden laptop:block mt-2 laptop:mt-0">
-          <ol role="list" className="flex max-w-2xl items-center space-x-2 pl-4 lg:max-w-7xl">
-            <li>
-              <div className="flex items-center">
-                <a href="#" className="text-sm font-medium text-gray-900">أحذية</a>
-                <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true" className="h-5 w-4 text-gray-300">
-                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                </svg>
-              </div>
-            </li>
-
-            <li className="text-sm">
-              <a href="#" aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">{product.title}</a>
-            </li>
-          </ol>
-        </nav>
-
-        <div className="flex flex-col laptop:flex-row gap-4 laptop:gap-8">
-          {/* right side: images */}
-          {/* <div className="flex flex-col laptop:flex-row gap-4 laptop:w-[60%] py-6"> */}
+      <div className="mx-auto max-w-screen-2xl px-4 animate-fadeIn">
+        <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8">
+          <div className="h-full w-full basis-full lg:basis-3/6">
             <Gallery
               images={product.images.map((image: { url: string }) => ({
                 src: image.url,
                 altText: product.title
               }))}
             />
-          {/* </div> */}
+          </div>
 
-          {/* left side: details */}
-          <ProductDetails product={product} />
+          <div className="basis-full lg:basis-3/6">
+            <ProductDescription product={product} />
+          </div>
         </div>
+        {/* <Suspense>
+          <RelatedProducts id={product.id} />
+        </Suspense> */}
       </div>
-
+      {/* <Suspense>
+        <Footer />
+      </Suspense> */}
     </>
-  )
+  );
 }

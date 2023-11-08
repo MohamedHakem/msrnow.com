@@ -27,12 +27,12 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
     'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center';
 
   return (
-    <>
-      <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden">
+    <div dir="ltr" className="flex flex-col laptop:flex-row gap-4 laptop:w-[60%] pb-1 laptop:pt-4">
+      <div className="w-full flex-1 laptop:w-8/10 relative aspect-square h-full max-h-full overflow-hidden">
         {images[imageIndex] && (
           <Image
             unoptimized
-            className="h-full w-full object-contain"
+            className="h-auto w-full object-cover"
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"
             alt={images[imageIndex]?.altText as string}
@@ -41,7 +41,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
           />
         )}
 
-        {images.length > 1 ? (
+        {/* {images.length > 1 ? (
           <div className="absolute bottom-[5px] flex w-full justify-center">
             <div className="mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur dark:border-black dark:bg-neutral-900/80">
               <Link
@@ -63,15 +63,14 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
               </Link>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
 
       {images.length > 1 ? (
-        <ul className="mt-10 mb-6 laptop:mt-12 laptop:mb-0 flex items-center justify-center gap-2 overflow-auto py-1">
+        <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-auto pb-1 laptop:pt-1 justify-center laptop:justify-start">
           {images.map((image, index) => {
             const isActive = index === imageIndex;
             const imageSearchParams = new URLSearchParams(searchParams.toString());
-
             imageSearchParams.set('image', index.toString());
 
             return (
@@ -95,6 +94,6 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
           })}
         </ul>
       ) : null}
-    </>
+    </div>
   );
 }

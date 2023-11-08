@@ -245,6 +245,9 @@ export default function AddNewItemForm({ itemKind, itemInAr }: { itemKind: strin
     setLoading(false);
   }
 
+
+  console.log("productImages: ", productImages)
+  
   return (
     <div className="py-4">
       <div className="flex flex-col gap-4 w-full">
