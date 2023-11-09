@@ -40,24 +40,25 @@ export default function MarketplaceFilter({ sizes, colors }: { sizes: string[], 
   }
 
   return (
-    <div className="flex flex-row laptop:flex-col gap-2 w-full">
-      <Select dir="rtl" value={searchParams.get('size') || ""} onValueChange={handleSize}>
-        <SelectTrigger className="line-clamp-1 w-1/2 laptop:w-[140px] truncate">
-          <SelectValue placeholder="المقاس" />
-        </SelectTrigger>
-        <SelectContent>
-          {sizes.map((size, i) => (
-            <SelectItem key={i} value={size} className="cursor-pointer">{size}</SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+    // <div dir="ltr" className="flex flex-row laptop:flex-col gap-2 w-full">
+    <div dir="ltr" className="flex flex-row gap-2 w-full">
       <Select dir="rtl" value={searchParams.get('color') || ""} onValueChange={handleColor}>
-        <SelectTrigger className="line-clamp-1 w-1/2 laptop:w-[140px] truncate">
+        <SelectTrigger className="line-clamp-1 laptop:w-[140px] truncate max-w-[80px]">
           <SelectValue placeholder="اللون" />
         </SelectTrigger>
         <SelectContent>
           {colors.map((color, i) => (
             <SelectItem key={i} value={color} className="cursor-pointer">{color}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      <Select dir="rtl" value={searchParams.get('size') || ""} onValueChange={handleSize}>
+        <SelectTrigger className="line-clamp-1 laptop:w-[140px] truncate w-[100px] max-w-[100px]">
+          <SelectValue placeholder="المقاس" />
+        </SelectTrigger>
+        <SelectContent>
+          {sizes.map((size, i) => (
+            <SelectItem key={i} value={size} className="cursor-pointer">{size}</SelectItem>
           ))}
         </SelectContent>
       </Select>

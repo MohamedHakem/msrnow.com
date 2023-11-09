@@ -141,7 +141,7 @@ export default function CartModal({ cart }: { cart: CartStore }) {
                                     width={64}
                                     height={64}
                                     alt={item.images[0].alt || item.title}
-                                    src={item.images[0].url}
+                                    src={`https://imagecdn.app/v2/image/${item.images[0].url}?width=62&height=62`}
                                   />
                                 </div>
                               )}

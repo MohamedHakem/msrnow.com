@@ -32,6 +32,6 @@
     "components/article-renderer.jsx",
     "pages/api/claps.js",
     "components/clap-comp.jsx"
-  ],
+, "app/(main)/(routes)/images/page.jsx"  ],
   "exclude": ["node_modules"]
 }

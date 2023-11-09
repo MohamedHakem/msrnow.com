@@ -68,7 +68,7 @@ export default async function ProductPage({ params }: { params: { handle: string
   };
 
   return (
-    <>
+    <div className="max-w-screen-xl mx-auto">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -94,7 +94,8 @@ export default async function ProductPage({ params }: { params: { handle: string
           </ol>
         </nav>
 
-        <div className="flex flex-col laptop:flex-row gap-4 laptop:gap-8">
+        {/* <div className="flex flex-col laptop:flex-row gap-4 laptop:gap-8"> */}
+        <div className="flex flex-col gap-4 laptop:flex-row laptop:justify-between">
           {/* right side: images */}
           {/* <div className="flex flex-col laptop:flex-row gap-4 laptop:w-[60%] py-6"> */}
             <Gallery
@@ -110,6 +111,6 @@ export default async function ProductPage({ params }: { params: { handle: string
         </div>
       </div>
 
-    </>
+    </div>
   )
 }

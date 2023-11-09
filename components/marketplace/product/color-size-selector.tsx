@@ -43,14 +43,14 @@ export function ColorSizeSelector({ sizes, colors }: {
         </div>
         <RadioGroup dir='rtl' onValueChange={e => handleSelected("size", e)} defaultValue={"false"} className="p-2 pr-0">
           <legend className="sr-only">اختر مقاس</legend>
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-1">
             {sizes.map((shoeSize, i) => (
               <Fragment key={i}>
                 <RadioGroupItem value={shoeSize.name} className="sr-only" id={shoeSize.name} />
                 <Label htmlFor={shoeSize.name} className={`group relative flex items-center justify-center rounded-md 
-                py-3 px-3 text-sm font-medium uppercase hover:bg-gray-50 sm:flex-1 sm:py-3 max-w-[100px]
+                py-3 px-3 laptop:px-0 w-auto text-sm font-medium uppercase hover:bg-gray-50 flex-1 sm:py-3 max-w-[70px]
                 focus:outline-none cursor-pointer ${size === shoeSize.name ? "border-2 border-blue-600" : "border"}`}>
-                  <span className="block w-full text-center text-base font-semibold">{shoeSize.name}</span>
+                  <span className="block text-center text-base font-semibold">{shoeSize.name}</span>
                 </Label>
               </Fragment>
             ))}

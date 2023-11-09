@@ -27,20 +27,24 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
     'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center';
 
   return (
+    // <div dir="ltr" className="flex flex-col laptop:flex-row gap-4 laptop:w-[60%] pb-1 laptop:pt-4">
     <div dir="ltr" className="flex flex-col laptop:flex-row gap-4 laptop:w-[60%] pb-1 laptop:pt-4">
-      <div className="w-full flex-1 laptop:w-8/10 relative aspect-square h-full max-h-full overflow-hidden">
+      {/* <div className="w-full flex-1 laptop:w-8/10 relative aspect-square h-full max-h-full overflow-hidden"> */}
+      <div className="h-auto w-full laptop:w-[650px] flex-1 laptop:w-8/10 relative aspect-square max-h-full overflow-hidden">
         {images[imageIndex] && (
           <Image
             unoptimized
-            className="h-auto w-full object-cover"
+            // className="h-auto w-full object-cover"
+            className="h-auto w-[650px] object-cover"
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"
             alt={images[imageIndex]?.altText as string}
-            src={images[imageIndex]?.src as string}
+            src={`https://imagecdn.app/v2/image/${images[imageIndex]?.src as string}?width=650&height=650`}
             priority={true}
           />
         )}
 
+        {/* arrows */}
         {/* {images.length > 1 ? (
           <div className="absolute bottom-[5px] flex w-full justify-center">
             <div className="mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur dark:border-black dark:bg-neutral-900/80">
@@ -83,7 +87,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
                 >
                   <GridTileImage
                     alt={image.altText}
-                    src={image.src}
+                    src={`https://imagecdn.app/v2/image/${image.src}?width=80&height=80`}
                     width={80}
                     height={80}
                     active={isActive}

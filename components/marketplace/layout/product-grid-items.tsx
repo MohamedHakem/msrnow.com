@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function ProductGridItems({ products }: { products: any[] }) {
   return (
     <>
-      {products.map((product) => (
+      {products.map((product, i) => (
         <Grid.Item key={product.id} className="animate-fadeIn">
           <Link className="relative inline-block h-full w-full" href={`/marketplace/product/${product.slug}`}>
             <GridTileImage
@@ -16,8 +16,9 @@ export default function ProductGridItems({ products }: { products: any[] }) {
                 amount: product.price,
                 currencyCode: "EGP"
               }}
-              src={product.images[0]?.url}
+              src={`https://imagecdn.app/v2/image/${product.images[0]?.url}?width=395&height=395`}
               fill
+              priority={i < 3 ? true : false}
               sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
             />
           </Link>
