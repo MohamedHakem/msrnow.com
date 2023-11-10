@@ -16,29 +16,20 @@ export default async function RelatedTimeline({
   short_slug: string;
   categoryId: number;
 }) {
-  // imitate delay
-  // await new Promise((resolve) => setTimeout(resolve, 13000));
-
-  // console.log("RelatedTimeline rendered!");
-
+  
   let relatedArticles: relatedArticleType[] = [];
   let relatedTweets: string[] | null = [];
 
-  // const Is_fetch_related_tweets = process.env.is_fetch_related_tweets === 'false' ? false : true;
   const Is_fetch_related_tweets = false;
-  // console.log('🚀 ~ file: related-timeline.tsx:25 ~ Is_fetch_related_tweets:', Is_fetch_related_tweets);
-
+  
   related_coverage_article === null
     ? console.log('related_coverage_article is null. Exiting RelatedTimeline')
     : related_coverage_article === ''
     ? console.log("related_coverage_article is '' ")
     : null;
 
-  // SCRAPE IF you don't have the related_coverage_article and you have related_coverage_url
-
-  // if related_coverage_article is null or empty (there are no related articles in the db for this article)
+  
   if (related_coverage_article == '' || related_coverage_article == null) {
-    // scrape them, if possible
     if (related_coverage_url) {
       console.log('related_coverage_url exist, but related_coverage_article is empty, ScrapeRelatedArticles...');
       console.log('[START] ScrapeRelatedArticles...');
@@ -53,17 +44,14 @@ export default async function RelatedTimeline({
           : null
         : null;
     } else {
-      // they can't be scraped
       return null;
     }
   } else {
-    // related_coverage_article exists (there are related articles in the db for this article), get them from db
     console.log('[START] getRelatedArticles from db...');
     console.time('[TIME] getRelatedArticles from db');
     const relatedArticleFromDb = await getRelatedArticles(related_coverage_article.split(','));
     console.timeEnd('[TIME] getRelatedArticles from db');
     console.log('[FINISH] getRelatedArticles from db...');
-    // if db returned them successfully
     if (relatedArticleFromDb) {
       relatedArticles = relatedArticleFromDb.filter(
         (a) => relatedArticleFromDb[0].published_at.getMonth() === a.published_at.getMonth()

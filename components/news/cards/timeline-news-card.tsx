@@ -25,6 +25,8 @@ export default async function TimelineNewsCard({
   const width = 560;
   const height = 336;
   const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width}`).replace(/-h\d+/, `-h${height}`);
+  const optimizedImgUrl = `https://wsrv.nl/?url=${imgUrl}&default=${imgUrl}&l=9&af=''&il=''&n=-1&w=${width}&h=${height}&output=webp`
+
   // console.log('article.google_thumb: \n', article.google_thumb);
   // console.log('imgUrl: \n', imgUrl);
   return (
@@ -36,7 +38,8 @@ export default async function TimelineNewsCard({
               <Image
                 unoptimized
                 // src={article.google_thumb}
-                src={imgUrl}
+                // src={imgUrl}
+                src={optimizedImgUrl}
                 // width={280}
                 width={560}
                 height={336}

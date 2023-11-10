@@ -68,11 +68,6 @@ export default function Timeline({
 }
 
 const TimelineList = async ({ events }: { events: timelineArrayType[] }) => {
-  // imitate delay
-  // await new Promise((resolve) => setTimeout(resolve, 30000));
-
-  // console.log('TimelineList rendered!');
-
   return (
     <div
       dir="rtl"
@@ -85,9 +80,8 @@ const TimelineList = async ({ events }: { events: timelineArrayType[] }) => {
             <div className={`flex flex-row items-center gap-[10px] -mr-[4px]`}>
               <div className="flex items-center space-x-4 laptop:space-x-reverse">
                 <div
-                  className={`flex items-center justify-center w-3 h-3 rounded-full laptop:order-1 animate-pulse ${
-                    isTweetsArray(item) ? 'bg-sky-500' : 'bg-emerald-500'
-                  }`}
+                  className={`flex items-center justify-center w-3 h-3 rounded-full laptop:order-1 animate-pulse ${isTweetsArray(item) ? 'bg-sky-500' : 'bg-emerald-500'
+                    }`}
                 ></div>
               </div>
               <div className="text-slate-500">

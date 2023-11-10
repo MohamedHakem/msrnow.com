@@ -64,14 +64,9 @@ export default async function ArticlePage({ params }: { params: { slug: string }
   let article = await getArticle(decodeURIComponent(params.slug));
   if (article === null) {
     console.log('[ArticlePage] article === null is true');
-    // return <SingleArticleSkeleton />;
     return notFound()
   }
-
-  // console.log("article.published_at: ", article.published_at)
-
   const articleCanonicalURL = `https://www.msrnow.com/news/${article.slug}`
-  // console.log("🚀 articleCanonicalURL:", articleCanonicalURL)
 
   const articleJsonLd = {
     "@context": "https://schema.org",
