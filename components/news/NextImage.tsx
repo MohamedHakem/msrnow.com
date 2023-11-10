@@ -23,13 +23,22 @@ export default function NextImage({
   const [backup, setBackup] = useState(false);
 
   if (width) {
+    const imgWidth = Math.floor(width)
     const height = Math.floor(width * (3 / 5));
-    const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width}`).replace(/-h\d+/, `-h${height}`);
-    const src2x = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width * 2}`).replace(/-h\d+/, `-h${height * 2}`);
-    const srcset = `${imgUrl} 1x, ${src2x} 2x`;
+    const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${imgWidth}`).replace(/-h\d+/, `-h${height}`);
+    // const optimizeImgUrl = `https://imagecdn.app/v2/image/${imgUrl}?width=${imgWidth}&height=${height}`
+    // const src2x = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width * 2}`).replace(/-h\d+/, `-h${height * 2}`);
+    const optimizedImgUrl = `https://wsrv.nl/?url=${imgUrl}&default=${imgUrl}&l=9&af=''&il=''&n=-1&w=${imgWidth}&h=${height}&output=webp`
+    const src2x = optimizedImgUrl.replace(/=s0-w\d+/, `=s0-w${width * 2}`).replace(/-h\d+/, `-h${height * 2}`);
+    const srcset = `${optimizedImgUrl} 1x, ${src2x} 2x`;
+
+    // const newOptimized = `https://wsrv.nl/?url=${article.google_thumb}&default=${article.google_thumb}&l=9&af=''&il=''&n=-1&w=${imgWidth}&h=${height}&output=webp`
+    // console.log("🚀 ~ file: NextImage.tsx:55 ~ newOptimized:", newOptimized)
+
     return (
       <img
-        src={imgUrl}
+        // src={imgUrl}
+        src={optimizedImgUrl}
         alt={article.title}
         width={width}
         height={height}
@@ -39,11 +48,14 @@ export default function NextImage({
       />
     );
   } else {
-    const width = 280;
-    const height = Math.floor(width * (3 / 5));
-    const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width}`).replace(/-h\d+/, `-h${height}`);
-    const src2x = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width * 2}`).replace(/-h\d+/, `-h${height * 2}`);
-    const srcset = `${imgUrl} 1x, ${src2x} 2x`;
+    const imgWidth = 280;
+    const height = Math.floor(imgWidth * (3 / 5));
+    const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${imgWidth}`).replace(/-h\d+/, `-h${height}`);
+    // const optimizeImgUrl = `https://imagecdn.app/v2/image/${imgUrl}?width=${width}&height=${height}`
+    // const src2x = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width * 2}`).replace(/-h\d+/, `-h${height * 2}`);
+    const optimizedImgUrl = `https://wsrv.nl/?url=${imgUrl}&default=${imgUrl}&l=9&af=''&il=''&n=-1&w=${imgWidth}&h=${height}&output=webp`
+    const src2x = optimizedImgUrl.replace(/=s0-w\d+/, `=s0-w${imgWidth * 2}`).replace(/-h\d+/, `-h${height * 2}`);
+    const srcset = `${optimizedImgUrl} 1x, ${src2x} 2x`;
 
     const handleImage = () => {
       setBackup(true);
@@ -66,25 +78,11 @@ export default function NextImage({
           className="h-auto w-full object-cover bg-gray-100 text-transparent"
           srcSet={srcset}
           alt={article.title}
-          src={imgUrl}
+          src={optimizedImgUrl}
           loading={loading || "lazy"}
-          // fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
           onError={handleImage}
         />
       );
     }
   }
-}
-
-{
-  /* <div className="bg-gray-100 animate-blink w-full h-auto"></div>) : (
-        <img
-        className="h-auto w-full object-cover bg-gray-100 text-transparent"
-        srcSet={srcset}
-        alt={article.title}
-        src={imgUrl}
-        fetchPriority={index ? (index < 2 ? 'high' : 'low') : 'auto'}
-        // onError={() => setBackup(true)} />
-      )}
-    ) */
 }

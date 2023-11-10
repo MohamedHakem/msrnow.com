@@ -23,7 +23,7 @@ export const suggestedCreations = [
 ];
 
 export const MarketplaceNavItems = [
-  { title: 'أخبار', url: '/' },
+  { title: 'أخبار', url: 'news' },
   { title: 'رياضة', url: 'sports' },
   { title: 'فيديو', url: 'videos' },
   { title: 'أكلات', url: 'food' },

@@ -16,7 +16,7 @@ export default function ProductGridItems({ products }: { products: any[] }) {
                 amount: product.price,
                 currencyCode: "EGP"
               }}
-              src={`https://imagecdn.app/v2/image/${product.images[0]?.url}?width=395&height=395`}
+              src={`https://imagecdn.app/v2/image/${product.images[0]?.url}?width=490&height=490`}
               fill
               priority={i < 3 ? true : false}
               sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"

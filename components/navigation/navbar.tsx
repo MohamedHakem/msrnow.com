@@ -1,62 +1,41 @@
-import HeaderAccount from '@/app/(main)/components/navigation/account-dropdown';
-import { MobileNav } from '@/app/(main)/components/navigation/mobile-nav';
 import Link from 'next/link';
-// import MsrnowSVGLogo from '@/components/logo/msrnow-svg-logo';
-import MsrnowSVGLogo from '@/components/logo/msrnow-new-svg-logo';
-import Cart from '@/components/marketplace/cart';
-import OpenCart from '@/components/marketplace/cart/open-cart';
-import { MarketplaceNavItems } from '@/data/static/marketplace';
-import { ShoppingCart } from 'lucide-react';
-import { Suspense } from 'react';
+import { MobileNav } from '@/components/navigation/mobile-nav';
+import HeaderAccount from '@/components/navigation/account-dropdown';
+import MsrnowSVGLogo from '@/components/logo/msrnow-svg-logo';
+
+const sections = [
+  { title: 'أخبار', url: '' },
+  { title: 'رياضة', url: 'sports' },
+  { title: 'فيديو', url: 'videos' },
+  { title: 'أكلات', url: 'food' },
+  { title: 'بيع واشتري ببلاش', url: 'marketplace' }
+];
 
 export const Navbar = () => {
   return (
-    <header className="flex flex-row px-2 md:px-4 w-full z-50">
-      {/* <div className="flex flex-row items-center w-full max-w-screen-largePC m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out"> */}
-      <div className="flex flex-row items-center w-full m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out">
-        <div className="flex items-center gap-x-2 md:gap-x-4 w-auto animate-fadeIn h-13 laptop:h-14 z-10">
+    <header className="flex flex-row px-4 w-full z-50">
+      <div className="flex flex-row items-center w-full max-w-6xl m-auto animate-fadeIn transition-all duration-50 ease-in-out">
+        <div className="flex items-center gap-x-3 w-auto animate-fadeIn">
           <MobileNav />
-          <div className="flex h-full md:px-2 m-auto">
-            <Link href="/" className="flex flex-row m-auto justify-center items-center">
-              <div className="animate-fadeIn">
-                <MsrnowSVGLogo color={"black"} width={50} height={50} />
-              </div>
-              <p className="w-fit h-fit text-3xl font-bold pl-2 animate-fadeIn">مصر الان</p>
+          <HeaderAccount size={40} />
+        </div>
+        <div className="hidden md:flex flex-auto flex-row justify-center m-auto animate-fadeIn">
+          {sections.map((s) => (
+            <Link
+              key={s.title}
+              href={`/${s.url}`}
+              className="text-lg font-bold px-4 py-2 rounded-md hover:bg-gray-50 hover:text-red-500 
+              active:scale-90 transition-all duration-50 ease-in-out animate-fadeIn"
+            >
+              <span className="animate-fadeIn">{s.title}</span>
             </Link>
-          </div>
+          ))}
         </div>
-        <div className="hidden laptop:flex flex-auto animate-fadeIn h-13 laptop:h-14 absolute w-[100dvw]">
-          <div className="laptop:flex flex-row justify-center m-auto">
-            {MarketplaceNavItems.map((s) => (
-              <Link key={s.title} href={`/${s.url}`}
-                className="text-lg font-bold px-4 py-2 rounded-md hover:bg-gray-50 hover:text-red-500 active:scale-90 transition-all duration-50 ease-in-out animate-fadeIn">
-                <span className="animate-fadeIn">{s.title}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-        <div className="flex w-auto animate-fadeIn h-13 laptop:h-14 z-10 gap-4">
-          <div className="w-full m-auto">
-            <Suspense fallback={<div className="w-4 h-4 border rounded-md"></div>}>
-              <HeaderAccount size={40} />
-            </Suspense>
-          </div>
-          <div className="pl-2 md:pr-2 w-fit m-auto">
-            {/* <Link href={"/marketplace/cart"}>
-              <ShoppingCart />
-            </Link> */}
-            {/* <div className="flex justify-end md:w-1/3"> */}
-            <div className="flex">
-              <Suspense fallback={<OpenCart />}>
-                <Cart />
-              </Suspense>
-            </div>
-          </div>
-          {/* <div className="flex justify-end md:w-1/3">
-            <Suspense fallback={<OpenCart />}>
-              <Cart />
-            </Suspense>
-          </div> */}
+        {/* <div className="flex w-[170px] h-[30px] laptop:h-[45px] m-auto animate-fadeIn"> */}
+        <div className="flex w-auto h-[30px] laptop:h-[45px] m-auto animate-fadeIn">
+          <Link href="/" className="mr-[-20px] md:mr-0">
+            <MsrnowSVGLogo />
+          </Link>
         </div>
       </div>
     </header>

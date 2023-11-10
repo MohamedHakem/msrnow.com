@@ -1,49 +1,43 @@
-// import { db } from '@/lib/db';
-import { getLocalArabicFromTimestamp as getTimeAgo } from '@/utils/convertTimestampToCustomLocalArabicTime';
 import Image from 'next/image';
 import Link from 'next/link';
-// import LikesCounter from '@/components/likes-counter';
-// import CategorySectionSidebar from '@/components/category-section-sidebar';
 import { getTopHeadlineArticles } from '@/data/getArticles';
 import NextImage from '@/components/news/NextImage';
 import AdSection from '../ad-section';
 import LocalDatetime from '@/components/shared/localedateTime';
-import { Suspense } from 'react';
 
-// const dynamic = 'force-dynamic';
 export const revalidate = 300
-// export const runtime = 'edge'; 
 
 export default async function FeaturedArea() {
   const articles = await getTopHeadlineArticles(9);
-  // articles.map((a) => console.log('articles a.published_at: ', a.published_at));
 
   if (articles.length === 0) {
     return null
   }
 
   const latestArticle = articles[0];
-  const width = 768; // 750;
-  const height = 460; // 450;
-  // console.log("latestArticle: ", latestArticle)
-  const imgUrl = latestArticle.google_thumb.replace(/=s0-w\d+/, `=s0-w${1024}`).replace(/-h\d+/, `-h${614}`);
+  // const width = 768;
+  const width = 733;
+  const height = 460;
+  // const imgUrl = latestArticle.google_thumb.replace(/=s0-w\d+/, `=s0-w${1024}`).replace(/-h\d+/, `-h${614}`);
+  const imgUrl = latestArticle.google_thumb.replace(/=s0-w\d+/, `=s0-w${width}`).replace(/-h\d+/, `-h${height}`);
+  // const optimizedFeaturedImg = `https://imagecdn.app/v2/image/${imgUrl}?width=${width}&height=${height}`
+  const optimizedFeaturedImg = `https://wsrv.nl/?url=${imgUrl}&default=${imgUrl}&l=9&af=''&il=''&n=-1&w=${width}&h=${height}&output=webp`
 
   return (
     <>
       <section dir="rtl" className="grid grid-cols-1 gap-4 laptop:grid-cols-3 laptop:gap-2 w-full h-auto">
-        <div className="grid laptop:col-span-2 gap-4 md:gap-6 laptop:gap-10 h-fit">
+        {/* <div className="grid laptop:col-span-2 gap-4 md:gap-6 laptop:gap-10 h-fit"> */}
+        <div className="laptop:col-span-2 gap-4 md:gap-6 laptop:gap-10 h-fit max-w-[765px]">
           <div className="flex flex-col w-full">
             <Link href={`/news/${latestArticle.short_slug}`}>
               <figure className="relative overflow-hidden w-full h-fit laptop:h-auto">
                 <Image
                   unoptimized
-                  src={imgUrl}
+                  src={optimizedFeaturedImg}
                   alt={latestArticle.title}
                   width={1024}
                   height={614}
                   priority={true}
-                  // className={`min-w-full md:top-1/2 md:absolute md:-mt-56 laptop:h-80`}
-                  // className={`min-w-full md:px-4 h-48 md:h-72`}
                   className={`min-w-full md:px-4 h-48 md:h-72 laptop:h-[460px] laptop:max-w-[765px]`}
                 />
               </figure>
@@ -51,17 +45,9 @@ export default async function FeaturedArea() {
                 <p className="pt-2 pb-2 px-4 text-[22px] md:text-3xl laptop:text-3xl font-extrabold md:leading-[48px] hover:text-red-500">
                   {latestArticle.title}
                 </p>
-                {/* <Suspense fallback={<div className="w-10 h-10 animate-pulse bg-slate-300"></div>}> */}
-                  <div className="pr-4">
-                    <LocalDatetime date={latestArticle.published_at} showTimeAgo={true} />
-                    </div>
-                {/* </Suspense> */}
-                {/* <span
-                  className="px-4 text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
-                  title={getTimeAgo(latestArticle.published_at, true, false)}
-                >
-                  {getTimeAgo(latestArticle.published_at, false, true)}
-                </span> */}
+                <div className="pr-4">
+                  <LocalDatetime date={latestArticle.published_at} showTimeAgo={true} />
+                </div>
               </div>
             </Link>
           </div>
@@ -78,13 +64,6 @@ export default async function FeaturedArea() {
                 <div className="flex flex-col w-full mobilemd:w-1/2 md:w-full px-4 mobilemd:px-0">
                   <p className="md:pt-2 pb-0 text-[14px] md:text-[22px] font-bold hover:text-red-500">{a.title}</p>
                   <LocalDatetime date={a.published_at} showTimeAgo={true} />
-
-                  {/* <span
-                    className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
-                    title={getTimeAgo(a.published_at, true, false)}
-                  >
-                    {getTimeAgo(a.published_at, false, true)}
-                  </span> */}
                 </div>
               </Link>
             ))}
@@ -94,7 +73,6 @@ export default async function FeaturedArea() {
               <Link
                 href={`/news/${a.short_slug}`}
                 key={i}
-                // className="flex flex-row w-full tablet:flex-col tablet:w-1/3 gap-3 tablet:gap-0"
                 className="flex flex-row w-full tablet:flex-col gap-3 tablet:gap-0"
               >
                 <div className="w-2/5 tablet:w-full overflow-hidden rounded-sm">
@@ -105,17 +83,12 @@ export default async function FeaturedArea() {
                     {a.title}
                   </p>
                   <LocalDatetime date={a.published_at} showTimeAgo={true} />
-                  {/* <span
-                    className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
-                    title={getTimeAgo(a.published_at, true, false)}
-                  >
-                    {getTimeAgo(a.published_at, false, true)}
-                  </span> */}
                 </div>
               </Link>
             ))}
           </div>
         </div>
+
         <div className="p-4 laptop:col-span-1 container:pl-0 mt-2">
           <div className="flex flex-col gap-2 border-2 border-black p-4">
             <h2 className="text-3xl font-bold -mt-9 bg-white w-fit px-2 ">أهم العناوين</h2>
@@ -134,16 +107,9 @@ export default async function FeaturedArea() {
                       {a.title}
                     </p>
                     <LocalDatetime date={a.published_at} showTimeAgo={true} />
-                    {/* <span
-                      className="text-[12px] md:text-xs text-gray-400 font-semibold mt-1"
-                      title={getTimeAgo(a.published_at, true, false)}
-                    >
-                      {getTimeAgo(a.published_at, false, true)}
-                    </span> */}
                   </div>
                 </Link>
               ))}
-              {/* <CategorySectionSidebar /> */}
             </div>
           </div>
         </div>

@@ -116,7 +116,7 @@ module.exports = withUt({
         fadeIn: 'fadeIn .3s ease-in-out',
         carousel: 'marquee 60s linear infinite',
         blink: 'blink 1.4s both infinite',
-        ping: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite'
+        ping: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
     }
   },
