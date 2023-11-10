@@ -31,7 +31,7 @@ export default function HeaderAccount({ size }: { size: number }) {
     <div className={`w-auto h-auto p-[1px] transition-all duration-300 ease-in-out animate-fadeIn`}>
       {session?.status === 'loading' || session?.status === 'unauthenticated' ? (
         <Link href={'/login'} className="animate-out transition-all duration-300 ease-in-out">
-          <Button>دخول</Button>
+          <Button size={'sm'} >دخول</Button>
         </Link>
       ) : session?.status === 'authenticated' ? (
         <div className={`w-[${size}px] flex items-center md:order-2 text-xl font-semibold animate-fadeIn`}>

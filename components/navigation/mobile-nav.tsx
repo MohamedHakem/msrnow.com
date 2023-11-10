@@ -28,7 +28,8 @@ export const MobileNav = () => {
   return (
     <Sheet >
       <SheetTrigger>
-        <Menu size={30} color="#a9a9a9" className="block"></Menu>
+        {/* <Menu size={30} color="#a9a9a9" className="block"></Menu> */}
+        <Menu size={26} color="#000" className="block"></Menu>
       </SheetTrigger>
       <SheetContent className="w-full">
         <ScrollArea dir="rtl" className="w-4">
