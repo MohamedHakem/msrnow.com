@@ -10,8 +10,9 @@ export default async function ArticleHeader({ article }: { article: singleArticl
   const width = 650;
   const height = 390;
   const imgUrl = article.google_thumb.replace(/=s0-w\d+/, `=s0-w${width}`).replace(/-h\d+/, `-h${height}`);
-  const optimizedImgUrl = `https://imagecdn.app/v2/image/${imgUrl}?width=${width}&height=${height}`
-
+  // const optimizedImgUrl = `https://imagecdn.app/v2/image/${imgUrl}?width=${width}&height=${height}`
+  const optimizedImgUrl = `https://wsrv.nl/?url=${imgUrl}?default=${imgUrl}&l=9&af=''&il=''&n=-1&w=${width}&h=${height}&output=webp`
+  
   return (
     <div className="flex flex-col gap-4 max-w-3xl">
       {console.time('ArticleHeader') as React.ReactNode}
