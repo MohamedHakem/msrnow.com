@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { AuthOptions, Session, DefaultUser, DefaultSession, Awaitable } from 'next-auth';
+import { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';

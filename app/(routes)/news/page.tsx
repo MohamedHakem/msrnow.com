@@ -1,11 +1,9 @@
-import AdSection from '@/components/news/ad-section';
+
 import FeaturedArea from '@/components/news/homepage/featured-area';
 import Section from '@/components/news/homepage/section';
-import { homepageMainSections, homepageSections } from '@/data/static/49-categories-for-homepage';
+import { homepageSections } from '@/data/static/49-categories-for-homepage';
 import { Suspense } from 'react';
 
-// export const runtime = 'edge';
-// const dynamic = 'force-dynamic';
 export const revalidate = 300
 
 export const metadata = {
