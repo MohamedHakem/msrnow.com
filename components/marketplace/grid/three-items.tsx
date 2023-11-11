@@ -179,7 +179,6 @@ function ThreeItemGridItem({ item, size, priority }: { item: marketplaceProductT
           priority={priority}
           alt={item.title}
           label={{
-            position: size === 'full' ? 'center' : 'bottom',
             title: item.title as string,
             // amount: item.priceRange.maxVariantPrice.amount,
             amount: item.price.toString(),
