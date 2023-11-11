@@ -21,6 +21,7 @@ import Link from "next/link";
 import Image from "next/image";
 import DeleteItemButton from "@/components/marketplace/cart/delete-item-button";
 import { createUrl } from "@/lib/utils";
+import { useSession } from "next-auth/react";
 
 
 const Summary = () => {
@@ -35,6 +36,11 @@ const Summary = () => {
   const [value, setValue] = useState("summary-list");
 
   // console.log("size.width && size.width >= 1024 ? 'summary-list' : '' ??", size.width && size.width >= 1024 ? 'summary-list' : "")
+
+  const session = useSession();
+  console.log("[Summary] session: ", session);
+
+
 
   useEffect(() => {
     setIsMounted(true);

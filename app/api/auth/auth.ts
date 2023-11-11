@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import { compare } from 'bcrypt';
 import { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
@@ -32,7 +32,7 @@ export const authOptions: AuthOptions = {
         if (!user || !user?.hashedPassword) {
           throw new Error('Invalid credentials');
         }
-        const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword);
+        const isCorrectPassword = await compare(credentials.password, user.hashedPassword);
         if (!isCorrectPassword) {
           throw new Error('Invalid credentials');
         }

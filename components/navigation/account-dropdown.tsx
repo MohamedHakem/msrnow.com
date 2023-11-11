@@ -14,16 +14,25 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import toast from 'react-hot-toast';
+import { useEffect } from 'react';
 
 export default function HeaderAccount({ size }: { size: number }) {
   const router = useRouter();
   const pathname = usePathname();
   const session = useSession();
 
-  if (pathname === '/dashboard' && session.status === 'unauthenticated') {
-    toast.error('سجل دخول أولا ليمكنك الدخول الي لوحة التحكم');
-    router.push('/login');
-  }
+  useEffect(() => {
+    if (pathname === '/dashboard' && session.status === 'unauthenticated' ||
+      pathname.startsWith('/dashboard') && session.status === 'unauthenticated') {
+      toast.error('سجل دخول أولا ليمكنك الدخول الي لوحة التحكم');
+      router.push('/login');
+    }
+
+    if (pathname === '/marketplace/checkout' && session.status === 'unauthenticated') {
+      toast.error('سجل دخول أولا ليمكنك عمل الاوردر');
+      router.push('/login');
+    }
+  }, [pathname, router, session.status])
 
   const userImage = session.data?.user?.image;
 

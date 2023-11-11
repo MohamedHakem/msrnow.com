@@ -21,7 +21,8 @@ import useCart from '@/hooks/use-cart';
 // import { useSession } from 'next-auth/react';
 import { OrderStatus } from '@prisma/client';
 import { useRouter } from 'next/navigation';
-import confetti from 'canvas-confetti';
+// import confetti from 'canvas-confetti';
+const confetti = require('canvas-confetti');
 import { User } from 'next-auth';
 
 export default function CheckoutForm(user: User) {

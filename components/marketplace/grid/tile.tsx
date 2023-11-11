@@ -3,13 +3,16 @@ import Image from 'next/image';
 import Label from '../label';
 
 export function GridTileImage({
-   label,
+  src,
+  width,
+  height,
+  label,
   alt,
-  ...props
 }: {
-  isInteractive?: boolean;
-  active?: boolean;
   alt: string;
+  src: string;
+  width: number;
+  height: number;
   label?: {
     title: string;
     amount: string;
@@ -18,7 +21,7 @@ export function GridTileImage({
 } & React.ComponentProps<typeof Image>) {
   return (
     <>
-      {props.src ? <Image unoptimized className="relative h-full w-full object-contain" alt={alt} {...props} /> : null}
+      {src ? <Image unoptimized className="relative h-full w-full object-contain" alt={alt} src={src} width={width} height={height} /> : null}
       {label ? <Label title={label.title} amount={label.amount} currencyCode={"EGP"} /> : null}
     </>
   );

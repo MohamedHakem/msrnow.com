@@ -4,7 +4,8 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', '@heroicons/react', '@headlessui/react']
+    optimizePackageImports: ['lucide-react', '@heroicons/react', '@headlessui/react'],
+    // serverComponentsExternalPackages: ["bcrypt"]
   },
   images: {
     remotePatterns: [

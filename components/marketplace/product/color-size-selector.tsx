@@ -31,7 +31,7 @@ export function ColorSizeSelector({ sizes, colors }: {
   }, [href, router, size, color])
 
   const handleSelected = (type: string, e: string) => {
-    console.log("choose a size, e: ", e)
+    console.log(`choose a ${type === "size" ? "size" : "color"}: `, e)
     // router.replace(optionUrl, { scroll: false });
     if (type === "size") setSize(e)
     if (type === "color") setColor(e)

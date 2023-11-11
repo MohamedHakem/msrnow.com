@@ -20,6 +20,10 @@ export const revalidate = 0;
 export default async function CheckoutPage() {
   const session = await getServerSession(authOptions)
   if (!session) return null
+  // if (!session) {
+  //   router.redirect('/login')
+  // }
+  
   const user = session.user
 
   return (

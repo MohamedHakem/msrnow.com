@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import { hash } from 'bcrypt';
 import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
 
@@ -11,7 +11,7 @@ export async function POST(request: Request) {
       return new NextResponse('[/api/register] MissingInfo', { status: 400 });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = await hash(password, 12);
 
     const user = await db.user.create({
       data: {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(user);
   } catch (error: any) {
-    console.log("[/api/register] REGISTRATION_ERROR: ", error);
+    console.log('[/api/register] REGISTRATION_ERROR: ', error);
     return new NextResponse('[/api/register] Internal Error', { status: 500 });
   }
 }
