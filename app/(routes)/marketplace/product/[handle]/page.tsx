@@ -87,30 +87,21 @@ export default async function ProductPage({ params }: { params: { handle: string
                 </svg>
               </div>
             </li>
-
             <li className="text-sm">
               <a href="#" aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">{product.title}</a>
             </li>
           </ol>
         </nav>
-
-        {/* <div className="flex flex-col laptop:flex-row gap-4 laptop:gap-8"> */}
         <div className="flex flex-col gap-4 laptop:flex-row laptop:justify-between">
-          {/* right side: images */}
-          {/* <div className="flex flex-col laptop:flex-row gap-4 laptop:w-[60%] py-6"> */}
-            <Gallery
-              images={product.images.map((image: { url: string }) => ({
-                src: image.url,
-                altText: product.title
-              }))}
-            />
-          {/* </div> */}
-
-          {/* left side: details */}
+          <Gallery
+            images={product.images.map((image: { url: string }) => ({
+              src: image.url,
+              altText: product.title
+            }))}
+          />
           <ProductDetails product={product} />
         </div>
       </div>
-
     </div>
   )
 }

@@ -4,7 +4,6 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    serverActions: true,
     optimizePackageImports: ['lucide-react', '@heroicons/react', '@headlessui/react']
   },
   images: {

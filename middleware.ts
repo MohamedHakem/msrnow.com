@@ -15,4 +15,11 @@ export async function middleware(request: NextRequest) {
     url.pathname = `/news${url.pathname}`;
     return NextResponse.redirect(url);
   }
+
+
+  if (request.nextUrl.pathname === '/dashboard') {
+    const url = request.nextUrl.clone();
+    url.pathname = `/dashboard/purchases`;
+    return NextResponse.redirect(url);
+  }
 }

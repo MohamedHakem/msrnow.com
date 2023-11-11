@@ -16,18 +16,17 @@ export const Header = () => {
       <header className="flex flex-row px-2 md:px-4 w-full z-50">
         <div className="flex flex-row items-center w-full m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out">
           <div className="flex items-center gap-x-2 md:gap-x-4 w-auto animate-fadeIn h-full z-10">
-            {/* <MobileNav /> */}
             <div className="flex h-full md:px-2 m-auto">
               <Link href="/" className="flex flex-row m-auto justify-center items-center">
                 <div className="animate-fadeIn">
-                  {/* <MsrnowSVGLogo color={"black"} width={50} height={50} /> */}
                   <Image
                     priority
                     width={60}
                     height={52}
                     src={msrnowLogo}
                     alt="msrnow logo"
-                    className="w-[55px] h-[45px] md:w-[60px] md:h-[52px] pl-2"
+                    // className="w-[55px] h-[45px] md:w-[60px] md:h-[52px] pl-2"
+                    className="w-[55px] h-[45px] pl-2"
                   />
                 </div>
                 <HeaderSiteSectionName />
@@ -52,7 +51,6 @@ export const Header = () => {
                 <HeaderAccount size={40} />
               </Suspense>
             </div>
-            {/* <div className="pl-2 md:pr-2 w-fit m-auto"> */}
             <div className="w-fit m-auto">
               <div className="flex gap-3">
                 <Suspense fallback={<OpenCart />}>
