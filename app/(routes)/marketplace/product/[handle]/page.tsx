@@ -50,6 +50,7 @@ export async function generateMetadata({
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const product = await getProduct(params.handle)
   if (!product) return notFound()
+ 
   const productJsonLd = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
@@ -68,14 +69,13 @@ export default async function ProductPage({ params }: { params: { handle: string
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto">
-      <script
+    <div className="w-full laptop:max-w-screen-xl mx-auto h-full">
+      {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(productJsonLd)
         }}
-      />
-
+      /> */}
       <div className="bg-white laptop:px-4">
         <nav aria-label="Breadcrumb" className="hidden laptop:block mt-2 laptop:mt-0">
           <ol role="list" className="flex max-w-2xl items-center space-x-2 pl-4 lg:max-w-7xl">
@@ -92,6 +92,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             </li>
           </ol>
         </nav>
+
         <div className="flex flex-col gap-4 laptop:flex-row laptop:justify-between">
           <Gallery
             images={product.images.map((image: { url: string }) => ({
