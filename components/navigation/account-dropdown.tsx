@@ -51,7 +51,7 @@ export default function HeaderAccount({ size }: { size: number }) {
                   <Image
                     unoptimized
                     className="w-full h-full rounded-full"
-                    src={`https://imagecdn.app/v2/image/${userImage}?width=40&height=40`}
+                    src={`https://imagecdn.app/v2/image/${userImage}?width=${size}&height=${size}`}
                     width={size || 40}
                     height={size || 40}
                     alt="user profile image"
