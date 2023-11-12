@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   {/* <section className="flex flex-row flex-auto"> */}
                   <section className="flex flex-row my-16">
                     {/* <div className="flex flex-col flex-auto gap-2 m-auto h-full animate-fadeIn"> */}
-                    <div className="flex flex-col gap-2 m-auto h-full animate-fadeIn">
+                    <div className="flex flex-col gap-2 m-auto h-full animate-fadeIn w-full">
                       {children}
                     </div>
                   </section>
