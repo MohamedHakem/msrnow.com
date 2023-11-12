@@ -14,7 +14,7 @@ export default function ProductGridItems({ products }: { products: any[] }) {
               unoptimized width={490} height={490} alt={product.title} priority={i < 3 ? true : false}
               src={`https://wsrv.nl/?url=${product.images[0]?.url}&default=${product.images[0]?.url}&l=9&af=''&il=''&n=-1&w=490&h=460&output=webp`}
               sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="relative h-full w-full object-contain rounded-xl"
+              className="relative h-full w-full object-contain rounded-lg"
             />
             <Label title={product.title} amount={product.price} currencyCode={"EGP"} />
           </Link>
