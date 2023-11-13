@@ -74,8 +74,8 @@ export default function HeaderAccount({ size }: { size: number }) {
                   <div>حسابي</div>
                 </DropdownMenuItem>
               </Link>
-              <DropdownMenuItem className="flex flex-row gap-2">
-                <div onClick={() => signOut({ redirect: true, callbackUrl: "/" })} className="flex flex-row gap-2">
+              <DropdownMenuItem className="flex flex-row gap-2 w-full h-full">
+                <div onClick={() => signOut({ redirect: true, callbackUrl: "/" })} className="flex flex-row gap-2 w-full h-full">
                   <LogOut strokeWidth="1px" />
                   خروج
                 </div>
