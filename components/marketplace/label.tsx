@@ -15,9 +15,10 @@ const Label = ({
     <div className="flex w-full">
       {/* <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white"> */}
       <div className="w-full flex items-center bg-white/70 pt-[2px] pb-2 px-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
-        <h3 className="line-clamp-2 flex-grow pl-2 text-base">{title}</h3>
+        <h3 className="line-clamp-2 flex-grow pl-2 text-lg">{title}</h3>
         <Price
-          className="flex-none gap-1 rounded-full bg-blue-600 p-2 text-white"
+          // className="flex-none gap-1 rounded-full bg-blue-600 p-2 text-white"
+          className="flex-none gap-1 p-2 text-green-700 text-lg font-semibold"
           amount={amount}
           currencyCode={currencyCode}
         />

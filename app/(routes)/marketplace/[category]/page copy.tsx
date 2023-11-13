@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
 
-// import Prose from '@/components/marketplace/prose';
-// import { getPage } from 'lib/shopify';
 import { notFound } from 'next/navigation';
 
 export const runtime = 'edge';
-
-export const revalidate = 43200; // 12 hours in seconds
+export const revalidate = 60; 
 
 export async function generateMetadata({ params }: { params: { page: string } }): Promise<Metadata> {
   // const page = await getPage(params.page);

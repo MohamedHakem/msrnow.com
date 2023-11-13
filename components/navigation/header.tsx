@@ -10,8 +10,12 @@ import { MarketplaceNavItems } from '@/data/static/marketplace';
 // import msrnowLogo from '@/public/images/msrnow-logo-no-borders.png'
 import HeaderSiteSectionName from '@/components/navigation/site-section';
 import Banner from './announcement';
+import { db } from '@/lib/db';
+import MarketplaceSectionsNavbar from './marketplace-sections-navbar';
 
-export const Header = () => {
+export const Header = async () => {
+  const sectionsNames = await db.productCategory.findMany({ select: { name: true, url: true } })
+
   return (
     <nav className="fixed flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
       <header className="flex flex-row px-2 md:px-4 w-full h-16">
@@ -49,6 +53,7 @@ export const Header = () => {
       </header>
 
       <Banner />
+      <MarketplaceSectionsNavbar sectionsNames={sectionsNames} />
     </nav>
   );
 };
