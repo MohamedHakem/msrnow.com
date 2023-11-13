@@ -5,7 +5,7 @@ const f = createUploadthing();
 
 export const ourFileRouter = {
   productImageUploader: f({ 
-    image: { maxFileSize: '2MB', maxFileCount: 6 },
+    image: { maxFileSize: '4MB', maxFileCount: 10 },
     pdf: { maxFileSize: '2MB', maxFileCount: 1 }  
   })
     .middleware(({ req }) => auth({ req }, 'marketplace', 'productImage'))
