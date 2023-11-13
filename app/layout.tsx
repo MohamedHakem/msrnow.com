@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {/* <main className="grid grid-cols-[1fr] w-full relative overflow-x-hidden overflow-y-auto h-[calc(100dvh-96px)] mt-[120px]"> */}
                 <main className="flex flex-col w-full relative overflow-x-hidden overflow-y-auto h-[100vh]">
                   {/* <section className="flex flex-row flex-auto"> */}
-                  <section className="flex flex-row my-16">
+                  <section className="flex flex-row mb-16 mt-28">
                     {/* <div className="flex flex-col flex-auto gap-2 m-auto h-full animate-fadeIn"> */}
                     <div className="flex flex-col gap-2 m-auto h-full animate-fadeIn w-full">
                       {children}

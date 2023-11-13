@@ -24,14 +24,20 @@ import { UploadDropzone } from '@/lib/uploadthing';
 import { Separator } from '@/components/ui/separator';
 import { Palette, PencilRuler } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { db } from '@/lib/db';
 
-export default function AddNewItemForm({ itemKind, itemInAr }: { itemKind: string, itemInAr: string }) {
+export default function AddNewItemForm({ itemKind, itemInAr, productCategories }: {
+  itemKind: string,
+  itemInAr: string,
+  productCategories: { name: string, id: number }[]
+}) {
   const router = useRouter()
   const [isLoading, setLoading] = useState(false)
   const [productImages, setProductImages] = useState<string[]>([])
   const [selectedSizeValues, setSelectedSizeValues] = useState([""])
   const [selectedColorValues, setSelectedColorValues] = useState([""])
-  const productCategories = [{ label: "أحذية", value: 1 }]
+  // const productCategories = [{ label: "أحذية", value: 1 }]
+  // const productCategories;
   const shoeSizes = [
     {
       label: "40",
@@ -262,8 +268,8 @@ export default function AddNewItemForm({ itemKind, itemInAr }: { itemKind: strin
                         >
                           {field.value
                             ? productCategories.find(
-                              (category) => category.value === field.value
-                            )?.label
+                              (category) => category.id === field.value
+                            )?.name
                             : "اختر فئة"}
                           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                         </Button>
@@ -276,22 +282,22 @@ export default function AddNewItemForm({ itemKind, itemInAr }: { itemKind: strin
                         <CommandGroup>
                           {productCategories.map((category) => (
                             <CommandItem
-                              value={category.label}
-                              key={category.value}
+                              value={category.name}
+                              key={category.id}
                               onSelect={() => {
-                                form.setValue("productCategoryId", category.value)
+                                form.setValue("productCategoryId", category.id)
                               }}
                               className='cursor-pointer'
                             >
                               <CheckIcon
                                 className={cn(
                                   "ml-2 h-4 w-4",
-                                  category.value === field.value
+                                  category.id === field.value
                                     ? "opacity-100"
                                     : "opacity-0"
                                 )}
                               />
-                              {category.label}
+                              {category.name}
                             </CommandItem>
                           ))}
                         </CommandGroup>

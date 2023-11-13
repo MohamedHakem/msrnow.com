@@ -124,14 +124,52 @@ export function AuthForm() {
   } else {
     return (
       <div className={`w-full mx-4 ${isLoading ? 'opacity-50' : ''}`}>
+        <div className="flex flex-col gap-4">
+          {/* <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full" />
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-white px-2 text-base font-semibold text-gray-500">أو من خلال</span>
+            </div>
+          </div> */}
+          
+          <div className="relative">
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-white px-2 text-base font-semibold text-gray-500">سجل دخول عن طريق جوجل</span>
+            </div>
+          </div>
+
+          <div className="flex gap-2">
+            {isLoading ? (
+              <div className="w-full rounded-md">
+                <LoadingDots className="bg-black dark:bg-white" />
+              </div>
+            ) : (
+              <AuthSocialButton icon={FcGoogle} onClick={() => socialAction('google')} disabled={isLoading} />
+            )}
+          </div>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border border-gray-300" />
+              <div className="w-full" />
+              <div className="w-full border border-gray-300" />
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-white px-2 text-base font-semibold text-gray-500">أو</span>
+            </div>
+          </div>
+        </div>
+
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 mt-2">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>بريد إلكتروني</FormLabel>
+                  {/* <FormLabel>بريد إلكتروني</FormLabel> */}
                   <FormControl>
                     <Input
                       autoFocus
@@ -155,7 +193,7 @@ export function AuthForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>كلمة السر</FormLabel>
+                  {/* <FormLabel>كلمة السر</FormLabel> */}
                   <FormControl>
                     <Input
                       autoComplete={'true'.toString()}
@@ -174,33 +212,13 @@ export function AuthForm() {
             </Button>
           </form>
         </Form>
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              {/* <div className="w-full border- border-gray-300" /> */}
-              <div className="w-full" />
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-base font-semibold text-gray-500">أو من خلال</span>
-            </div>
-          </div>
-          <div className="mt-6 flex gap-2">
-            {isLoading ? (
-              // <div className="w-full border rounded-md">
-              <div className="w-full rounded-md">
-                <LoadingDots className="bg-black dark:bg-white" />
-              </div>
-            ) : (
-              <AuthSocialButton icon={FcGoogle} onClick={() => socialAction('google')} disabled={isLoading} />
-            )}
-          </div>
-        </div>
+
         <div className="flex flex-col gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
-          <div className="flex gap-2 justify-center items-center text-base">
-            <div>{variant === 'LOGIN' ? 'أول مرة؟' : 'عندك حساب؟'}</div>
+          <div className="flex gap-2 justify-center items-center text-sm">
+            <div>{variant === 'LOGIN' ? 'معندكش حساب؟' : 'عندك حساب؟'}</div>
             <div
               onClick={toggleVariant}
-              className="underline underline-offset-8 text-base font-semibold cursor-pointer"
+              className="underline underline-offset-8 text-sm font-semibold cursor-pointer"
             >
               {variant === 'LOGIN' ? 'سجل حساب الان' : 'دخول'}
             </div>

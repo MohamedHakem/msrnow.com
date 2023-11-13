@@ -9,25 +9,15 @@ import OpenCart from '@/components/marketplace/cart/open-cart';
 import { MarketplaceNavItems } from '@/data/static/marketplace';
 // import msrnowLogo from '@/public/images/msrnow-logo-no-borders.png'
 import HeaderSiteSectionName from '@/components/navigation/site-section';
+import Banner from './announcement';
 
 export const Header = () => {
   return (
-    // <nav className="fixed flex flex-row z-90 items-stretch h-14 laptop:h-16 border-b w-full z-50">
-    <nav className="fixed flex flex-row z-90 items-stretch h-16 border-b w-full z-50 bg-white">
-      <header className="flex flex-row px-2 md:px-4 w-full">
+    <nav className="fixed flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
+      <header className="flex flex-row px-2 md:px-4 w-full h-16">
         <div className="flex flex-row items-center w-full m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out">
           <HeaderSiteSectionName />
-          {/* <div className="flex items-center gap-x-2 md:gap-x-4 w-auto animate-fadeIn h-full z-10">
-            <div className="flex h-full md:px-2 m-auto">
-              <Link href="/" className="flex flex-row m-auto justify-center items-center">
-                <div className="animate-fadeIn">
-                  <Image priority width={60} height={52} src={msrnowLogo} alt="msrnow logo" className="w-[55px] h-[45px] pl-2" />
-                </div>
-              </Link>
-            </div>
-          </div> */}
 
-          {/* <div className="hidden laptop:flex flex-auto animate-fadeIn h-14 laptop:h-16 absolute w-[100dvw]"> */}
           <div className="hidden laptop:flex flex-auto animate-fadeIn h-16 absolute w-[100dvw]">
             <div className="laptop:flex flex-row justify-center m-auto">
               {MarketplaceNavItems.map((s) => (
@@ -54,8 +44,11 @@ export const Header = () => {
               </div>
             </div>
           </div>
+
         </div>
       </header>
+
+      <Banner />
     </nav>
   );
 };
