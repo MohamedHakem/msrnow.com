@@ -52,7 +52,7 @@ export default async function madeInEgyptPage() {
         <ul className="p-4 flex flex-col gap-4 my-8">
           {kinds.map((kind, i) => (
             <li key={i} className="w-full">
-              <Link href={`/${kind}`} className="w-full p-6 flex justify-center text-2xl font-semibold border rounded-lg hover:bg-gray-100 active:scale-95 duration-100 ease-in-out transition-all">
+              <Link href={`/made-in-egypt/${kind}`} className="w-full p-6 flex justify-center text-2xl font-semibold border rounded-lg hover:bg-gray-100 active:scale-95 duration-100 ease-in-out transition-all">
                 {kind}</Link>
             </li>
           ))}

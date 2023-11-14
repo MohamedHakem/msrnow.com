@@ -17,7 +17,7 @@ export function ProductSeller({ seller }: {
       <Accordion type="single" collapsible className="" value={open} onValueChange={setOpen}>
         <AccordionItem value="product-description">
           <AccordionTrigger className="text-lg h-[40px] py-0 hover:bg-gray-100 hover:no-underline rounded-md p-2 font-semibold no-underline">
-            <span>عن البائع</span>
+            <span className="text-xl font-bold">عن البائع</span>
           </AccordionTrigger>
           <AccordionContent className="pb-0 px-2" defaultChecked={true}>
             <div dir="ltr" className="flex h-full flex-row gap-4 overflow-hidden pt-4 p-2">

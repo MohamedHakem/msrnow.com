@@ -36,7 +36,7 @@ export function AddToCart({ variant, availableForSale }: { variant: marketplaceP
       <button
         aria-label="Add item to cart"
         disabled={isPending || !availableForSale || !canCheckout}
-        title={currentVariant.title}
+        title={"اضف الي العربة الان"}
         onClick={() => {
           // Safeguard in case someone messes with `disabled` in devtools.
           if (!availableForSale || !currentVariant.id) return;
@@ -62,9 +62,9 @@ export function AddToCart({ variant, availableForSale }: { variant: marketplaceP
         <div className="absolute left-0 ml-4">
           {!isPending ? <PlusIcon className="h-5" /> : <LoadingDots className="mb-3 bg-white" />}
         </div>
-        <span>{availableForSale ? 'اضف الي العربة' : 'Out Of Stock'}</span>
+        <span className="text-lg font-semibold">{availableForSale ? 'اضف الي العربة' : 'Out Of Stock'}</span>
       </button>
-      <p className="text-center text-orange-500 mt-1">
+      <p className="text-center text-red-600 mt-1">
         {canCheckout ? null : " اختر "}
         {!canCheckout && variant.ProductSizes ? size ? "" : "مقاس " : ""}
         {!canCheckout && variant.ProductColors ? color ? "" : !canCheckout && variant.ProductSizes ? size ? "لون" : "ولون" : "" : ""}

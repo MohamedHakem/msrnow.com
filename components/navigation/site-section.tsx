@@ -20,7 +20,7 @@ export default function HeaderSiteSectionName() {
             <Image priority width={60} height={52} src={msrnowLogo} alt="msrnow logo" className="w-[55px] h-[45px] pl-2" />
           </div>
           <p className="w-fit h-fit text-3xl font-bold pl-2 animate-fadeIn">
-            {MarketplaceHome ? "المتجر" : NewsHome ? "الأخبار" : "حسابك"}
+            {MarketplaceHome ? "المتجر" : NewsHome ? "الأخبار" : DashboardHome ? "حسابك" : "المتجر"}
           </p>
         </Link>
       </div>
