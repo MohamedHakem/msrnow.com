@@ -137,7 +137,7 @@ export default async function ProductPage({ params }: { params: { handle: string
           )}
 
           <div className={`basis-full ${!product.images[0] ? "laptop:basis-6/6" : "laptop:basis-2/6"}`}>
-            <ProductDescription product={product} />
+            {/* <ProductDescription product={product} /> */}
           </div>
         </div>
         {/* <Suspense>
