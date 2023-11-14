@@ -44,6 +44,7 @@ export const Header = async () => {
                 <Suspense fallback={<OpenCart />}>
                   <Cart />
                 </Suspense>
+                
                 <MobileNav />
               </div>
             </div>

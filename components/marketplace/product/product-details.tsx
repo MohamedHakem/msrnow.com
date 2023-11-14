@@ -2,59 +2,14 @@
 
 import { ColorSizeSelector } from './color-size-selector';
 import { AddToCart } from '@/components/marketplace/cart/add-to-cart';
-
 import { Star } from 'lucide-react';
 import { marketplaceSingleProductType } from '@/types';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
+import { ProductDescription } from './product-description';
+import { ProductSeller } from './product-seller';
 
 export function ProductDetails({ product }: { product: marketplaceSingleProductType }) {
-  // const pathname = usePathname();
-  // const selectedSize = searchParams.get('size')
-  // const selectedColor = searchParams.get('color')
-
-  // const router = useRouter()
-  // const searchParams = useSearchParams();
-  // const hasSize = product.ProductSizes && product.ProductSizes.length > 0
-  // const hasColor = product.ProductColors && product.ProductColors.length > 0
-  // const [selectedSize, setSelectedSize] = useState<string | null>(null)
-  // const [selectedColor, setSelectedColor] = useState<string | null>(null)
-  // const [canCheckout, setCanCheckout] = useState(false)
-
-  // useEffect(() => {
-  //   setSelectedSize(searchParams.get('size'))
-  //   setSelectedColor(searchParams.get('color'))
-
-  //   if (hasSize) {
-  //     if (selectedSize) {
-  //       if (hasColor) {
-  //         if (selectedColor) {
-  //           setCanCheckout(true)
-  //         } else {
-  //           toast.error("اختر لون")
-  //         }
-  //       } else {
-  //         setCanCheckout(true)
-  //       }
-  //     } else {
-  //       toast.error("اختر مقاس")
-  //     }
-  //   } else {
-  //     if (hasColor) {
-  //       if (selectedColor) {
-  //         setCanCheckout(true)
-  //       } else {
-  //         toast.error("اختر لون")
-  //       }
-  //     } else {
-  //       setCanCheckout(true)
-  //     }
-  //   }
-  // }, [hasColor, hasSize, router, searchParams, selectedColor, selectedSize])
 
   return (
-    // <div className="flex flex-col mx-auto laptop:w-[40%] max-w-2xl px-4 pb-16 pt-1 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-6 lg:pb-24 lg:pt-4">
     <div className="flex flex-col mx-auto laptop:w-[40%] max-w-2xl px-4 pb-16 pt-1 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-6 lg:pb-24 lg:pt-4">
       <div><h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.title}</h1></div>
       <div className="mt-4 lg:row-span-3 lg:mt-0">
@@ -78,21 +33,11 @@ export function ProductDetails({ product }: { product: marketplaceSingleProductT
         }
 
         <ColorSizeSelector sizes={product.ProductSizes} colors={product.ProductColors} />
-        {/* if it has a size, check if user selects, [[[[ then ]]]], if it has a color, check if user selects  */}
-        {/* {hasSize && selectedSize ?
-          hasColor && selectedColor ? <AddToCart variant={product} availableForSale={product.published_status ? true : false} /> : null
-          : null
-        } */}
-        
         <AddToCart variant={product} availableForSale={product.published_status ? true : false} />
       </div>
 
-      <div className="py-10 lg:col-span-2 lg:col-start-1 lg:pb-16 lg:pr-8 lg:pt-6">
-        <h3 className="sr-only">الوصف</h3>
-        <div className="space-y-6">
-          <p className="text-base text-gray-900">{product.description}</p>
-        </div>
-      </div>
+      <div className="pt-8 lg:col-span-2 lg:col-start-1">{product.description && <ProductDescription description={product.description} />}</div>
+      <div className="lg:col-span-2 lg:col-start-1"><ProductSeller seller={product.user} /></div>
     </div>
   );
 }

@@ -19,7 +19,8 @@ export default async function getProduct(slug: string) {
         ProductColors: {
           select: { name: true, value: true }
         },
-        reviews: { select: { review_text: true } }
+        reviews: { select: { review_text: true } },
+        user: { select: { name: true, image: true, phone_number: true } }
       }
     })
     return product

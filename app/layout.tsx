@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ar" suppressHydrationWarning>
       <body className={`${font.className}  bg-white dark:bg-[#000]`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        {/* <ThemeProvider attribute="class" defaultTheme="light" enableSystem> */}
           <AuthContext>
             <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
             <ToasterContext />
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <GoogleTagManager gtmId="GTM-MCQZ8JPF" />
           </AuthContext>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );

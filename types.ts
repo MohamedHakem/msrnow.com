@@ -237,6 +237,13 @@ export type marketplaceSingleProductType = {
   selectedSize?: string;
   selectedColor?: string;
   reviews: productReviewType[];
+  user: marketplaceProductSeller;
+};
+
+export type marketplaceProductSeller = {
+  name: string | null;
+  image: string | null;
+  phone_number: string | null;
 };
 
 export type productReviewType = { review_text: string };

@@ -45,11 +45,11 @@ export function ColorSizeSelector({ sizes, colors }: {
         <div className="flex items-center justify-between"><h3 className="text-sm font-medium text-gray-900">المقاس</h3></div>
         <RadioGroup dir='rtl' onValueChange={e => handleSelected("size", e)} defaultValue={"false"} className="p-2 pr-0 transition-all duration-300 ease-in-out">
           <legend className="sr-only">اختر مقاس</legend>
-          <div className="flex justify-between gap-1">
+          <div className="grid grid-cols-5 justify-between gap-3">
             {sizes.map((shoeSize, i) => (
               <Fragment key={i}>
                 <RadioGroupItem value={shoeSize.name} className="sr-only" id={shoeSize.name} />
-                <Label htmlFor={shoeSize.name} className={`group relative flex items-center justify-center rounded-md
+                <Label htmlFor={shoeSize.name} className={`group relative min-w-[60px] flex items-center justify-center rounded-md
                 py-3 px-3 laptop:px-0 w-auto text-sm font-medium uppercase hover:bg-gray-50 flex-1 sm:py-3 max-w-[70px]
                 focus:outline-none cursor-pointer ${size === shoeSize.name ? "border-2 border-blue-600" : "border"}`}>
                   <span className="block text-center text-base font-semibold">{shoeSize.name}</span>

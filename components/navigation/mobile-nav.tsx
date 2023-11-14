@@ -7,7 +7,8 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 export const MobileNav = () => {
   const items = [
     { title: 'الرئيسية', url: "/" },
-    { title: 'بيع واشتري أي حاجة مجانا`', url: "/marketplace" },
+    { title: 'المتجر - بيع واشتري أي حاجة`', url: "/marketplace" },
+    { title: 'دليل المنتج المصري', url: "/made-in-egypt" },
     { title: 'الكورة', url: "/news/sports" },
     { title: 'أهم عناوين الأخبار', url: "/news/top-headlines" },
     { title: 'أخر الأخبار', url: "/news/latest" },
@@ -17,9 +18,9 @@ export const MobileNav = () => {
     { title: 'مال وأعمال', url: "/news/finance" },
     { title: 'أخبار الفن', url: "/news/arts" },
     { title: 'أخبار الأفلام', url: "/news/movies-news" },
+    // { title: 'أخبار القاهرة', url: "/news/cairo" },
     { title: 'أخبار المشاهير', url: "/news/celebrities" },
-    { title: 'أخبار الطاقة', url: "/news/energy-news" },
-    { title: 'أخبار القاهرة', url: "/news/cairo" },
+    // { title: 'أخبار الطاقة', url: "/news/energy-news" },
     // { title: 'أخبار محلية - الجيزة', url: "/news/giza" },
     // { title: 'أخبار محلية - الفيوم', url: "/news/faiyum" },
     // { title: 'أخبار محلية - بلبيس', url: "/news/belbes" },
@@ -42,7 +43,7 @@ export const MobileNav = () => {
                     <Link href={`${item.url}`}>
                       <Button variant="ghost" className="w-full flex flex-row gap-1 text-lg justify-start">
                         {i === 0 ? <Home /> : i === 1 ? <Store /> : i === 2 ? null : <Newspaper />}
-                        <span>{i === 2 ? `⚽ ${item.title}` : `${item.title}`}</span>
+                        <span>{item.title === 'الكورة' ? `⚽ ${item.title}` : item.title === 'دليل المنتج المصري' ? `🇪🇬 ${item.title}` : `${item.title}`}</span>
                       </Button>
                     </Link>
                   </SheetClose>
