@@ -22,7 +22,7 @@ import useCart from '@/hooks/use-cart';
 import { OrderStatus } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 // import confetti from 'canvas-confetti';
-const confetti = require('canvas-confetti');
+// const confetti = require('canvas-confetti');
 import { User } from 'next-auth';
 
 export default function CheckoutForm(user: User) {
@@ -34,7 +34,35 @@ export default function CheckoutForm(user: User) {
   const [isMounted, setIsMounted] = useState(false);
   // const [user, setUser] = useState(session?.data?.user ? session.data.user : null);
   const shippingCountries = [{ label: "مصر", value: 1 }]
-  const shippingCities = [{ label: "القاهرة", value: 1 }]
+  const shippingCities = [
+    { label: "القاهرة", value: 1 },
+    { label: "الجيزة	", value: 2 },
+    { label: "الإسكندرية", value: 3 },
+    { label: "الإسماعيلية", value: 4 },
+    { label: "أسوان	", value: 5 },
+    { label: "أسيوط	", value: 6 },
+    { label: "الأقصر	", value: 7 },
+    { label: "البحر الأحمر	", value: 8 },
+    { label: "البحيرة	", value: 9 },
+    { label: "بني سويف	", value: 10 },
+    { label: "بورسعيد	", value: 11 },
+    { label: "جنوب سيناء	", value: 12 },
+    { label: "الدقهلية	", value: 13 },
+    { label: "دمياط	", value: 14 },
+    { label: "سوهاج	", value: 15 },
+    { label: "السويس	", value: 16 },
+    { label: "الشرقية	", value: 17 },
+    { label: "شمال سيناء	", value: 18 },
+    { label: "الغربية	", value: 19 },
+    { label: "الفيوم	", value: 20 },
+    { label: "القليوبية	", value: 21 },
+    { label: "قنا	", value: 22 },
+    { label: "كفر الشيخ	", value: 23 },
+    { label: "مطروح	", value: 24 },
+    { label: "المنوفية	", value: 25 },
+    { label: "المنيا	", value: 26 },
+    { label: "الوادي الجديد	", value: 27 }
+  ]
   const totalPrice = items.reduce((total, item) => {
     return total + Number(item.price)
   }, 0);
@@ -95,12 +123,12 @@ export default function CheckoutForm(user: User) {
       if (addOrderRes.status) {
         toast.success(addOrderRes.msg)
         cart.removeAll()
-        confetti({
-          particleCount: 50,
-          startVelocity: 10,
-          spread: 180,
-          gravity: 0.3,
-        });
+        // confetti({
+        //   particleCount: 50,
+        //   startVelocity: 10,
+        //   spread: 180,
+        //   gravity: 0.3,
+        // });
         router.back()
       } else {
         toast.error(addOrderRes.msg)

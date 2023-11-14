@@ -203,6 +203,8 @@ export async function AddOrder(values: OrderType,
       {id:8, name: "برتقالي"}, 
       {id: 9, name:"أصفر"}, 
       {id: 10, name:"أزرق"}, 
+      {id: 11, name:"بني"}, 
+      {id: 12, name:"جملي"}, 
     ]
 
     return colors.find(color => color.name === colorName)?.id || 0
