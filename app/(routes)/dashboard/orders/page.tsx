@@ -54,11 +54,9 @@ export default async function OrdersPage() {
         <h1 className="text-3xl font-bold">طلبات عملائك</h1>
       </div>
       <div className="">
-        {myOrders.length === 0 ? (<>لا يوجد طلبات حتي الان</>) : (
-          <ul dir="rtl" className="grid grid-cols-1">
-            <DataTable columns={columns} data={formattedOrders} />
-          </ul>
-        )}
+        <ul dir="rtl" className="grid grid-cols-1">
+          <DataTable columns={columns} data={formattedOrders} />
+        </ul>
       </div>
     </div>
   )

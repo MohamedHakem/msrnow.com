@@ -21,7 +21,7 @@ export function GridTileImage({
 } & React.ComponentProps<typeof Image>) {
   return (
     <>
-      {src ? <Image unoptimized className="relative h-full w-full object-contain rounded-lg" alt={alt} src={src} width={width} height={height} /> : null}
+      {src ? <Image unoptimized className="relative h-full w-full object-fill rounded-lg" alt={alt} src={src} width={width} height={height} /> : null}
       {label ? <Label title={label.title} amount={label.amount} currencyCode={"EGP"} /> : null}
     </>
   );

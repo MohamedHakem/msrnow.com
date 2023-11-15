@@ -51,6 +51,7 @@ export const columns: ColumnDef<dataTableProductType>[] = [
     header: "الفئة",
     cell: ({ row }) => {
       const product_category: ReactNode = row.getValue("الفئة")
+      console.log("product_category: ", product_category)
       return <div className="text-right font-medium w-fit"><div className="border rounded-md p-2">{product_category}</div></div>
     },
     filterFn: (row, id, value) => {
@@ -80,9 +81,10 @@ export const columns: ColumnDef<dataTableProductType>[] = [
     header: "الحالة",
     cell: ({ row }) => {
       const published_status: ReactNode = row.getValue("الحالة")
+      console.log("published_status: ", published_status)
       return (
         <div className="text-right font-medium w-fit">
-          {published_status === "true" ? (
+          {published_status === true ? (
             <div className="flex gap-1 items-center font-semibold text-green-500 bg-green-100 rounded-md py-1 px-2">
               <CheckCircledIcon />
               <span>معروض</span>

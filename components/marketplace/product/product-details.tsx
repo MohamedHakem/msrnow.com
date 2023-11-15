@@ -10,7 +10,7 @@ import { ProductSeller } from './product-seller';
 export function ProductDetails({ product }: { product: marketplaceSingleProductType }) {
 
   return (
-    <div className="flex flex-col mx-auto laptop:w-[40%] max-w-2xl px-4 pb-16 pt-1 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-6 lg:pb-24 lg:pt-4">
+    <div className="flex flex-col mx-auto laptop:w-[40%] max-w-2xl px-4 pt-1 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-6 lg:pt-4">
       <div><h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.title}</h1></div>
       <div className="mt-4 lg:row-span-3 lg:mt-0">
         <h2 className="sr-only">تفاصيل المنتج</h2>

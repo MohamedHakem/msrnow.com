@@ -49,32 +49,22 @@ export default async function SearchPage({
   return (
     <>
       <Suspense fallback={<div>جاري البحث...</div>}>
-        {/* <div className="mx-auto flex max-w-screen-2xl flex-col gap-2 p-4 text-black dark:text-white md:flex-row"> */}
         <div className="mx-auto flex max-w-screen-2xl flex-col gap-2 p-4 pt-2 text-black dark:text-white">
-          {/* <div className="order-first w-full flex flex-col gap-2 md:max-w-[150px]"> */}
-          {/* <div className="order-first w-full flex flex-row gap-2 md:max-w-[150px]"> */}
           <div className="w-full flex flex-row gap-2">
-            {/* <div className="w-full"><FilterList list={sorting} title="ترتيب" /></div> */}
             <FilterList list={sorting} title="ترتيب حسب" />
             <MarketplaceFilter sizes={sizes} colors={colors} />
           </div>
 
           <Suspense fallback={<div>جاري الترتيب...</div>}>
-            {/* <div className="order-last min-h-screen w-full md:order-none"> */}
             <div className="min-h-screen w-full">
               {products.length > 0 ? (
-                <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                   <ProductGridItems products={products} />
                 </Grid>
               ) : null}
             </div>
           </Suspense>
-
-          {/* <div className="order-none w-fill flex flex-col md:order-last md:w-[150px] gap-2">
-            <Collections />
-          </div> */}
         </div>
-        <Footer />
       </Suspense>
     </>
   );

@@ -33,7 +33,7 @@ export function DataTablePagination<TData>({
           </>) : (
           <>
             {table.getFilteredRowModel().rows.length}
-            <span className="mx-1">صفًا</span>
+            <span className="mx-1">صفً</span>
           </>)
         }
       </div>

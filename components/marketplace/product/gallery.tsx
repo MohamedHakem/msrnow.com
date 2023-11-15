@@ -28,7 +28,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
   const featuredImgWidth = 650
 
   return (
-    <div dir="ltr" className="flex flex-col laptop:flex-row gap-4 laptop:w-[60%] pb-1 laptop:pt-4">
+    <div dir="ltr" className="flex flex-col laptop:flex-row gap-2 laptop:w-[60%] pb-1 laptop:pt-4">
       <div className={`h-fit w-full laptop:w-[${featuredImgWidth}px] flex-1 laptop:w-8/10 relative aspect-square max-h-full overflow-hidden`}>
         {images[imageIndex] && (
           <Image

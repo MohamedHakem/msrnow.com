@@ -17,7 +17,8 @@ export const Header = async () => {
   const sectionsNames = await db.productCategory.findMany({ select: { name: true, url: true } })
 
   return (
-    <nav className="fixed flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
+    // <nav className="fixed flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
+    <nav className="sticky flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
       <Banner />
       <header className="flex flex-row px-2 md:px-4 w-full h-16">
         <div className="flex flex-row items-center w-full m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out">
@@ -27,7 +28,7 @@ export const Header = async () => {
             <div className="laptop:flex flex-row justify-center m-auto">
               {MarketplaceNavItems.map((s) => (
                 <Link key={s.title} href={`/${s.url}`}
-                  className="text-lg font-bold px-4 py-2 rounded-md hover:bg-gray-50 hover:text-red-500 active:scale-90 transition-all duration-50 ease-in-out animate-fadeIn">
+                  className="text-black text-lg font-bold px-4 py-2 rounded-md hover:bg-gray-50 hover:text-red-500 active:scale-90 transition-all duration-50 ease-in-out animate-fadeIn">
                   <span className="animate-fadeIn">{s.title}</span>
                 </Link>
               ))}

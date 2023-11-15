@@ -83,7 +83,7 @@ export default async function MarketplaceCategoryPage({
             <Collections />
           </div> */}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Suspense>
     </>
   );
