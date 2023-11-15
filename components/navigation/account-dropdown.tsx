@@ -68,10 +68,22 @@ export default function HeaderAccount({ size }: { size: number }) {
                 <div>{session.data?.user.name}</div>
                 <div>{session.data?.user.email}</div>
               </div>
+              <Link href={'/dashboard/my-info'} className="flex flex-row gap-2">
+                <DropdownMenuItem className="flex flex-row gap-2 w-full">
+                  <LayoutDashboard strokeWidth="1px" />
+                  <div>بياناتي</div>
+                </DropdownMenuItem>
+              </Link>
               <Link href={'/dashboard/purchases'} className="flex flex-row gap-2">
                 <DropdownMenuItem className="flex flex-row gap-2 w-full">
                   <LayoutDashboard strokeWidth="1px" />
-                  <div>حسابي</div>
+                  <div>مشترياتي</div>
+                </DropdownMenuItem>
+              </Link>
+              <Link href={'/dashboard/products'} className="flex flex-row gap-2">
+                <DropdownMenuItem className="flex flex-row gap-2 w-full">
+                  <LayoutDashboard strokeWidth="1px" />
+                  <div>متجري</div>
                 </DropdownMenuItem>
               </Link>
               <DropdownMenuItem className="flex flex-row gap-2 w-full h-full">

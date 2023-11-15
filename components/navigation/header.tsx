@@ -18,6 +18,7 @@ export const Header = async () => {
 
   return (
     <nav className="fixed flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
+      <Banner />
       <header className="flex flex-row px-2 md:px-4 w-full h-16">
         <div className="flex flex-row items-center w-full m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out">
           <HeaderSiteSectionName />
@@ -44,7 +45,7 @@ export const Header = async () => {
                 <Suspense fallback={<OpenCart />}>
                   <Cart />
                 </Suspense>
-                
+
                 <MobileNav />
               </div>
             </div>
@@ -53,7 +54,6 @@ export const Header = async () => {
         </div>
       </header>
 
-      <Banner />
       <MarketplaceSectionsNavbar sectionsNames={sectionsNames} />
     </nav>
   );
