@@ -6,7 +6,7 @@ import { signOut, useSession } from 'next-auth/react';
 import LoadingDots from '@/components/news/loading-dots';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { LayoutDashboard, LogOut, User2 } from 'lucide-react';
+import { LayoutDashboard, LogOut, User2, FolderEdit, ShoppingBasket, Store } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -65,26 +65,33 @@ export default function HeaderAccount({ size }: { size: number }) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <div className="flex flex-col gap-2 p-2 border-b mb-2">
+              <div dir="ltr" className="flex flex-col gap-2 px-6 py-2 border-b mb-2">
                 <div>{session.data?.user.name}</div>
                 <div>{session.data?.user.email}</div>
               </div>
-              <Link href={'/dashboard/my-info'} className="flex flex-row gap-2">
+              <Link href={'/dashboard/my-info'} className="flex flex-row gap-2 mb-1">
                 <DropdownMenuItem className="flex flex-row gap-2 w-full">
-                  <LayoutDashboard strokeWidth="1px" />
-                  <div>بياناتي</div>
+                  {/* <LayoutDashboard strokeWidth="1px" /> */}
+                  <FolderEdit strokeWidth="1px" />
+                  <div>
+                    بياناتي
+                  </div>
                 </DropdownMenuItem>
               </Link>
-              <Link href={'/dashboard/purchases'} className="flex flex-row gap-2">
+              <Link href={'/dashboard/purchases'} className="flex flex-row gap-2 mb-1">
                 <DropdownMenuItem className="flex flex-row gap-2 w-full">
-                  <LayoutDashboard strokeWidth="1px" />
-                  <div>مشترياتي</div>
+                  <ShoppingBasket strokeWidth="1px" />
+                  <div>
+                    مشترياتي
+                  </div>
                 </DropdownMenuItem>
               </Link>
-              <Link href={'/dashboard/products'} className="flex flex-row gap-2">
+              <Link href={'/dashboard/products'} className="flex flex-row gap-2 mb-1">
                 <DropdownMenuItem className="flex flex-row gap-2 w-full">
-                  <LayoutDashboard strokeWidth="1px" />
-                  <div>متجري</div>
+                  <Store strokeWidth="1px" />
+                  <div>
+                    متجري
+                  </div>
                 </DropdownMenuItem>
               </Link>
               <DropdownMenuItem className="flex flex-row gap-2 w-full h-full">
