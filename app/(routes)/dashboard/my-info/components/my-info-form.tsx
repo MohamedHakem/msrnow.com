@@ -176,7 +176,8 @@ export default function MyInfoForm({ itemKind, itemInAr, user }: {
                       <div className="grid grid-cols-2 px-2 gap-2">
                         {image !== "" ? (
                           <img
-                            src={image}
+                            // src={image}
+                            src={`https://wsrv.nl/?url=${image}&default=${image}&l=9&af=''&il=''&n=-1&w=96&h=96&output=webp`}
                             alt=""
                             width={96}
                             height={96}

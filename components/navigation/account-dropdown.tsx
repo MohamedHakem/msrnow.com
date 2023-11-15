@@ -51,7 +51,8 @@ export default function HeaderAccount({ size }: { size: number }) {
                   <Image
                     unoptimized
                     className="w-full h-full rounded-full"
-                    src={`https://imagecdn.app/v2/image/${userImage}?width=${size}&height=${size}`}
+                    // src={`https://imagecdn.app/v2/image/${userImage}?width=${size}&height=${size}`}
+                    src={`https://wsrv.nl/?url=${userImage}&default=${userImage}&l=9&af=''&il=''&n=-1&w=${size}&h=${size}&output=webp`}
                     width={size || 40}
                     height={size || 40}
                     alt="user profile image"

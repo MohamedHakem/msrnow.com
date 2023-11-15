@@ -103,7 +103,8 @@ const Summary = () => {
                                 width={64}
                                 height={64}
                                 alt={item.images[0].alt || item.title}
-                                src={item.images[0].url}
+                                // src={item.images[0].url}
+                                src={`https://wsrv.nl/?url=${item.images[0].url}&default=${item.images[0].url}&l=9&af=''&il=''&n=-1&w=62&h=62&output=webp`}
                               />
                             </div>
                             <div className="flex flex-1 flex-col text-base">
