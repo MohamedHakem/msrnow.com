@@ -636,7 +636,9 @@ export default function AddNewItemForm({ itemKind, itemInAr, productCategories }
                         {productImages.length > 0 ? productImages.map((image, i) => (
                           <img
                             key={i}
-                            src={image}
+                            // src={image}
+                            // src={image}
+                            src={`https://wsrv.nl/?url=${image}&default=${image}&l=9&af=''&il=''&n=-1&w=162&h=162&output=webp`}
                             alt=""
                             width={"auto"}
                             height={"auto"}
