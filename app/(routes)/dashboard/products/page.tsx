@@ -71,32 +71,3 @@ export default async function ProductsPage() {
     </div>
   );
 }
-
-
-{/* <ul className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-6"> */ }
-{/* {products.map((p, i) => (
-<Link href={`/dashboard/products/${p.id}`} key={i} className="border p-2 rounded-lg">
-  <li className="flex flex-col gap-2">
-    <img src={p.images[0].url} alt="some alt text" />
-    <p className="text-xl font-semibold">{p.title}</p>
-  </li>
-</Link>
-))} */}
-
-
-// const products = await db.product.findMany({
-//   select: { title: true, price: true, stockQuantity: true, id: true,
-//            orderItem: {_count: true }, product_category: {select: {name: true}} images: { select: { url: true }, } }
-// });
-// return mockProducts
-
-
-// select: {
-//   id: true,
-//   title: true,
-//   price: true,
-//   stockQuantity: true,
-//   product_category: true,
-//   published_status: true,
-//   slug: true
-// }

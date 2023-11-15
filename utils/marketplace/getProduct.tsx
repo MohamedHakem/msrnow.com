@@ -1,14 +1,10 @@
 import { db } from '@/lib/db';
-// import { marketplaceProductType } from '@/types';
 
-// export default async function getProduct(id: number) {
 export default async function getProduct(slug: string) {
-  // console.log("[getProduct] id: ", id)
   slug = decodeURIComponent(slug);
-
   try {
     const product = await db.product.findUnique({
-      where: { slug: slug },
+      where: { ...(slug.length < 5 ? { id: parseInt(slug) } : { slug: slug }) },
       include: {
         images: {
           select: { url: true }

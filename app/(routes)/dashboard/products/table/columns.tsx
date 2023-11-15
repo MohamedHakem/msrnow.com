@@ -111,7 +111,7 @@ export const columns: ColumnDef<dataTableProductType>[] = [
               <PenSquare strokeWidth={1} size={22} color={"#000"} />
             </Link>
           </Button>
-          <Button variant={"outline"} onClick={() => navigator.clipboard.writeText(product.رابط)} title="نسخ الرابط"
+          <Button variant={"outline"} onClick={() => navigator.clipboard.writeText(`https://www.msrnow.com/marketplace/product/${product.رابط}`)} title="نسخ الرابط"
             className="p-2  hover:border-black">
             <Copy strokeWidth={1} size={22} color={"#000"} />
           </Button>

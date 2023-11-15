@@ -1,9 +1,9 @@
 'use server';
 
 import { db } from '@/lib/db';
-import { AddProductType, marketplaceProductType } from '@/types';
+import { AddProductType } from '@/types';
 import { User, getServerSession } from 'next-auth';
-import { Order, OrderItem, OrderHistory, OrderStatus } from '@prisma/client';
+import { OrderStatus } from '@prisma/client';
 
 export async function increment(slug: string, type: string) {
   slug = decodeURIComponent(slug);
@@ -66,25 +66,6 @@ export async function AddProduct(productValues: AddProductType, product_images: 
   return false
 }
 
-// const createCategory = await prisma.post.create({
-//   data: {
-//     title: 'How to be Bob',
-//     categories: {
-//       create: [
-//         {
-//           assignedBy: 'Bob',
-//           assignedAt: new Date(),
-//           category: {
-//             create: {
-//               name: 'New category',
-//             },
-//           },
-//         },
-//       ],
-//     },
-//   },
-// })
-
 export async function AddProductSlug(slug: string, id: number) {
   const newProduct = db.product.update({
     where: {
@@ -98,7 +79,6 @@ export async function AddProductSlug(slug: string, id: number) {
 }
 
 type OrderType = {
-  // userId: string
   phone_number?: string
   shipping_country?: string
   shipping_city?: string
@@ -107,8 +87,6 @@ type OrderType = {
   shipping_info_toSellers_consent: boolean
   shipping_info_save_consent?: boolean
   status: OrderStatus
-  // orderItems: { quantity: number; productId: number }[]
-  // OrderHistory: { status: OrderStatus }
 }
 
 type productsArr = {
@@ -119,30 +97,12 @@ type productsArr = {
   color?: string
 }
 
-// orderItems: { quantity: number, orderId: number, productId: number }[]
-
-// enum OrderStatus = {
-//   PENDING,
-//     PROCESSING,
-//     SHIPPED,
-//     DELIVERED,
-//     CANCELLED,
-//     RETURNED,
-//     COMPLETED, // this is for analytics mostly, since delivered means that it's accepted and all good.
-// }
-
-// export async function AddOrder(values: OrderType[], orderItems: marketplaceProductType[]) {
-// export async function AddOrder(values: OrderType, userEmail: string, productIdArr: number[]) {
-// export async function AddOrder(values: Order, userEmail: string, productIdArr: number[]) {
-
-// export async function AddOrder(values: OrderType, userEmail: string, productIdArr: number[]) {
 export async function AddOrder(values: OrderType,
   productsArr: productsArr[],
   name: string, user: User, totalPrice: number
 ) {
   console.log("[AddOrder] values: ", values)
   console.log("[AddOrder] productsArr: ", productsArr)
-  // console.log("[AddOrder] getSizeIdBySizeName(productsArr[0].size)", getSizeIdBySizeName(productsArr[2].size ? productsArr[2].size : "40"))
 
   if (user && user.id) {
     const newOrder = await db.order.create({
@@ -191,6 +151,7 @@ function getSizeIdBySizeName(sizeName: string) {
 
   return sizes.find(size => size.name === sizeName)?.id || 0
 }
+
 function getColorIdByColorName(colorName: string) {
   const colors = [
     { id: 1, name: "أسود" },
@@ -209,73 +170,6 @@ function getColorIdByColorName(colorName: string) {
 
   return colors.find(color => color.name === colorName)?.id || 0
 }
-
-// create: [...(products.map(product => ({ quantity: 1, productId: 1 })))]
-
-// posts: {
-//   create: [
-//     { title: 'How to make an omelette' },
-//     { title: 'How to eat an omelette' },
-//   ],
-// },
-
-
-// add default role (reader) to the user
-// if (user.email) {
-//     db.user.update({
-//       where: { email: user.email },
-//       data: { roles: { connect: { name: 'reader' } } }
-//     });
-// }
-
-
-// export async function AddOrder(values: OrderType, productIdArr: number[]) {
-//   // const user = await db.user.findUnique({ where: { email: userEmail } })
-//   // let userId = "";
-//   // if (user) { userId = user.id }
-//   // const status = 'PENDING'
-//   console.log("[AddOrder] values: ", values)
-//   // console.log("[AddOrder] userEmail: ", userEmail)
-//   // console.log("[AddOrder] user: ", user)
-//   // console.log("[AddOrder] status: ", status)
-//   // console.log("[AddOrder] productIdArr: ", productIdArr)
-//   // const serverSession = await getServerSession()
-//   // console.log("[AddOrder] serverSession: ", serverSession)
-//   // 1- add the user "name" to the user model using userId
-//   // 2- add all order related info
-//   // const orderItemsArr = values
-
-//   // values.userId = userId
-//   // if (userId) {
-//   const newOrder = await db.order.create({
-//     data: {
-//       ...values,
-//       orderItems: {
-//         createMany: {
-//           data: [...(productIdArr.map(pId => ({ quantity: 1, productId: pId })))],
-//         },
-//       },
-//       OrderHistory: { create: { status: OrderStatus.PENDING } }
-//     }
-//     })
-
-//   // }
-
-//   //   // console.log("[AddOrder] newOrder: ", newOrder)
-//   //   return 0;
-//   // }
-//   }  
-
-
-// export async function AddOrder(values: OrderType) {
-//   // create order entry 
-//   const data = { ...values, shipping_info_toSellers_consent: values.shipping_info_toSellers_consent }
-//   const order = await db.order.create({
-//     data: {
-//       ...data
-//     }
-//   })
-// }
 
 type userType = {
   name: string | null;
