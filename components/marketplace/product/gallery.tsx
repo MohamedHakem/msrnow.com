@@ -40,13 +40,13 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
       </div>
 
       {images.length > 1 ? (
-        <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-auto pb-1 laptop:pt-1 justify-center laptop:justify-start">
+        <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-y-auto scroll-smooth pb-1 laptop:pt-1 justify-end px-4 laptop:px-0">
           {images.map((image, index) => {
             const imageSearchParams = new URLSearchParams(searchParams.toString());
             imageSearchParams.set('image', index.toString());
 
             return (
-              <li key={image.src} className="h-20 w-20">
+              <li key={image.src} className="h-20 w-20 min-w-[80px] border rounded-md">
                 <Link
                   aria-label="Enlarge product image"
                   href={createUrl(pathname, imageSearchParams)}
