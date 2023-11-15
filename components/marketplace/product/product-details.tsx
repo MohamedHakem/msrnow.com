@@ -37,7 +37,7 @@ export function ProductDetails({ product }: { product: marketplaceSingleProductT
       </div>
 
       <div className="pt-8 lg:col-span-2 lg:col-start-1">{product.description && <ProductDescription description={product.description} />}</div>
-      <div className="lg:col-span-2 lg:col-start-1"><ProductSeller seller={product.user} /></div>
+      <div className="lg:col-span-2 lg:col-start-1"><ProductSeller seller={product.user} productCount={product.user.Product.length} /></div>
     </div>
   );
 }

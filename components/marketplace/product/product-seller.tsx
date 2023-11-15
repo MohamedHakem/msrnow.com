@@ -1,15 +1,17 @@
 "use client"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
-export function ProductSeller({ seller }: {
+export function ProductSeller({ seller, productCount }: {
   seller: {
     name: string | null;
     image: string | null;
     phone_number: string | null;
-  }
+  },
+  productCount: number
 }) {
   const [open, setOpen] = useState("product-description")
   return (
@@ -32,7 +34,15 @@ export function ProductSeller({ seller }: {
                 />
               </div>}
 
-              <p className="flex-1 text-2xl truncate line-clamp-2 font-semibold pb-2">{seller.name}</p>
+              <div className="flex flex-col">
+                <p className="flex-1 text-2xl truncate line-clamp-2 font-semibold pb-2">{seller.name}</p>
+                <p className="flex flex-1 flex-row gap-1 text-2xl truncate line-clamp-2 font-semibold pb-2 items-center">
+                  <span>products: {" "}</span>
+                  <span className="text-green-600">{productCount}</span>
+                  <TrendingUp color={"#00c600"} />
+                  {/* TODO: add a chart of how many products published on what days/dates using chart2 lib */}
+                </p>
+              </div>
             </div>
           </AccordionContent>
         </AccordionItem>

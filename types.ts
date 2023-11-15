@@ -244,6 +244,7 @@ export type marketplaceProductSeller = {
   name: string | null;
   image: string | null;
   phone_number: string | null;
+  Product: {id: number}[]
 };
 
 export type productReviewType = { review_text: string };

@@ -16,7 +16,15 @@ export default async function getProduct(slug: string) {
           select: { name: true, value: true }
         },
         reviews: { select: { review_text: true } },
-        user: { select: { name: true, image: true, phone_number: true } }
+        user: { 
+          include: {
+            Product: {
+              select: {
+                id: true
+              }
+            }
+          }
+        }
       }
     })
     return product

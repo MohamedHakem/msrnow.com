@@ -16,14 +16,10 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
   const nextSearchParams = new URLSearchParams(searchParams.toString());
   const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
   nextSearchParams.set('image', nextImageIndex.toString());
-  const nextUrl = createUrl(pathname, nextSearchParams);
 
   const previousSearchParams = new URLSearchParams(searchParams.toString());
   const previousImageIndex = imageIndex === 0 ? images.length - 1 : imageIndex - 1;
   previousSearchParams.set('image', previousImageIndex.toString());
-  // const previousUrl = createUrl(pathname, previousSearchParams);
-
-  // const buttonClassName = 'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center';
 
   const featuredImgWidth = 650
 
@@ -33,11 +29,10 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
         {images[imageIndex] && (
           <Image
             unoptimized
-            className={`h-fit w-[${featuredImgWidth}px] object-cover laptop:rounded-lg`}
+            className={`h-fit w-[${featuredImgWidth}px] object-fill laptop:rounded-lg`}
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"
             alt={images[imageIndex]?.altText as string}
-            // src={`https://imagecdn.app/v2/image/${images[imageIndex]?.src as string}?width=650&height=650`}
             src={`https://wsrv.nl/?url=${images[imageIndex]?.src as string}?default=${images[imageIndex]?.src as string}&l=9&af=''&il=''&n=-1&w=${featuredImgWidth}&h=${featuredImgWidth}&output=webp`}
             priority={true}
           />
@@ -60,8 +55,6 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
                 >
                   <GridTileImage
                     alt={image.altText}
-                    // src={`https://imagecdn.app/v2/image/${image.src}?width=80&height=80`}
-                    // src={`https://imagecdn.app/v2/image/${image.src}?width=80&height=80`}
                     src={`https://wsrv.nl/?url=${image.src}?default=${image.src}&l=9&af=''&il=''&n=-1&w=${80}&h=${80}&output=webp`}
                     width={80}
                     height={80}
