@@ -1,12 +1,14 @@
 'use client';
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+// import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { GridTileImage } from '@/components/marketplace/grid/tile';
 import { createUrl } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { Share2 } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export function Gallery({ images }: { images: { src: string; altText: string }[] }) {
   const pathname = usePathname();
@@ -38,11 +40,21 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
             priority={true}
           />
         )}
+        <div className="absolute w-[52px] h-[52px] laptop:w-14 laptop:h-14 top-[12px] left-4 flex justify-center items-center border border-blue-100 rounded-full bg-white shadow-sm
+        hover:bg-gray-100 active:scale-90 transition-all duration-50 ease-in-out animate-fadeIn cursor-pointer"
+          onClick={() => {
+            navigator.clipboard.writeText(`https://www.msrnow.com/${pathname}`)
+            toast.success('تم نسخ الرابط')
+          }}>
+          <Share2 strokeWidth={2} className="-ml-1" size={28} />
+        </div>
       </div>
 
       {images.length > 1 ? (
         <ScrollArea dir="rtl" className="w-full whitespace-nowrap scroll-smooth">
-          <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-x-auto scroll-smooth pb-1 laptop:pt-1 laptop:justify-start px-4 laptop:px-0">
+          <ul className={`flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-x-auto scroll-smooth pb-1 laptop:pt-1 laptop:justify-start px-4 laptop:px-0 
+            ${images.length < 4 ? "justify-center" : ""}`}
+          >
             {images.map((image, index) => {
               const imageSearchParams = new URLSearchParams(searchParams.toString());
               imageSearchParams.set('image', index.toString());

@@ -9,7 +9,7 @@ export default function Banner() {
   return (
     // <div dir="rtl" className="relative isolate flex items-center justify-center gap-x-2 overflow-hidden bg-[#4f46e5] px-3 py-[6px] sm:px-3.5">
     // <div dir="rtl" className="relative isolate flex items-center justify-center gap-x-2 overflow-hidden bg-[#de6600] py-[2px]">
-    <div dir="rtl" className="relative isolate flex items-center justify-center gap-x-2 overflow-hidden bg-[#2563eb] py-[2px]">
+    <div dir="rtl" className="relative isolate flex items-center justify-center gap-x-2 overflow-hidden bg-[#2563eb] py-[2px] pt-1">
       {/* <div className="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
         <div className="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"></div>
       </div>
