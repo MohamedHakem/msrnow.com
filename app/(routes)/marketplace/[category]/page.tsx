@@ -72,7 +72,7 @@ export default async function MarketplaceCategoryPage({
             {/* <div className="order-last min-h-screen w-full md:order-none"> */}
             <div className="min-h-screen w-full">
               {products.length > 0 ? (
-                <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                   <ProductGridItems products={products} />
                 </Grid>
               ) : null}
