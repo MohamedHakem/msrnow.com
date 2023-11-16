@@ -27,7 +27,7 @@ export default async function FeaturedArea() {
     <>
       <section dir="rtl" className="grid grid-cols-1 gap-4 laptop:grid-cols-3 laptop:gap-2 w-full h-auto">
         {/* <div className="grid laptop:col-span-2 gap-4 md:gap-6 laptop:gap-10 h-fit"> */}
-        <div className="laptop:col-span-2 gap-4 md:gap-6 laptop:gap-10 h-fit max-w-[765px]">
+        <div className="grid laptop:col-span-2 gap-4 md:gap-6 laptop:gap-10 h-fit max-w-[765px]">
           <div className="flex flex-col w-full">
             <Link href={`/news/${latestArticle.short_slug}`}>
               <figure className="relative overflow-hidden w-full h-fit laptop:h-auto">
@@ -79,7 +79,7 @@ export default async function FeaturedArea() {
                   <NextImage article={a} width={width / 3} index={i} loading={"eager"} />
                 </div>
                 <div className="flex flex-col w-3/5 tablet:w-full">
-                  <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
+                  <p className="flex items-center tablet:pt-2 text-[14px] line-clamp-3 tablet:text-xl font-bold hover:text-red-500">
                     {a.title}
                   </p>
                   <LocalDatetime date={a.published_at} showTimeAgo={true} />
@@ -103,8 +103,8 @@ export default async function FeaturedArea() {
                     <NextImage article={a} width={width / 2} index={i} loading={"eager"} />
                   </div>
                   <div className="w-3/5 tablet:w-full">
-                    <p className="flex items-center tablet:pt-2 text-[14px] tablet:text-xl font-bold hover:text-red-500">
-                      {a.title}
+                    <p className="flex items-center tablet:pt-2 text-[14px] line-clamp-3 tablet:text-xl font-bold hover:text-red-500">
+                      {a.title.toString()}
                     </p>
                     <LocalDatetime date={a.published_at} showTimeAgo={true} />
                   </div>

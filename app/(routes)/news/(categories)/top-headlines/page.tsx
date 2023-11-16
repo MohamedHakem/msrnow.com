@@ -9,7 +9,7 @@ export const revalidate = 300
 
 export default async function TopheadlinesNewsPage() {
   console.time('getLatestCategoryArticles');
-  const news = await getLatestCategoryArticles('top-headline', 30).then((data) => data[0].articles);
+  const news = await getLatestCategoryArticles('top-headlines', 30).then((data) => data[0].articles);
   console.timeEnd('getLatestCategoryArticles');
   console.log('inside TopheadlinesNewsPage');
   if (!news) return null;

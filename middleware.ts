@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // import { authOptions } from '@/app/api/auth/auth';
 
 export async function middleware(request: NextRequest) {
-  console.log('middleware');
+  // console.log('middleware');
 
   if (request.nextUrl.pathname === '/') {
     const url = request.nextUrl.clone();

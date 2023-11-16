@@ -29,3 +29,10 @@ export const MarketplaceNavItems = [
   { title: 'أكلات', url: 'food' },
   { title: 'بيع واشتري ببلاش', url: 'marketplace' }
 ]
+
+export const SiteMainNavItems = [
+  { title: 'أهم الأخبار', url: 'news' },
+  { title: 'دليل المنتج المصري', url: 'made-in-egypt' },
+  { title: 'بيع واشتري', url: 'marketplace' }
+]
+
