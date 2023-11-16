@@ -18,7 +18,7 @@ export const Header = async () => {
 
   return (
     // <nav className="fixed flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
-    <nav className="sticky flex flex-col items-stretch h-fit border-b w-full bg-white z-50">
+    <nav className="sticky flex flex-col items-stretch h-fit border-b w-full bg-white z-50 shadow-sm">
       <Banner />
       <header className="flex flex-row px-2 md:px-4 w-full h-16">
         <div className="flex flex-row items-center w-full m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out">

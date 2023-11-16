@@ -6,6 +6,7 @@ import { createUrl } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 export function Gallery({ images }: { images: { src: string; altText: string }[] }) {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
   const featuredImgWidth = 650
 
   return (
-    <div dir="ltr" className="flex flex-col laptop:flex-row gap-2 laptop:w-[60%] pb-1 laptop:pt-4">
+    <div dir="ltr" className="flex flex-col laptop:flex-row gap-2 w-full laptop:w-[60%] pb-1 laptop:pt-4">
       <div className={`h-fit w-full laptop:w-[${featuredImgWidth}px] flex-1 laptop:w-8/10 relative aspect-square max-h-full overflow-hidden`}>
         {images[imageIndex] && (
           <Image
@@ -40,30 +41,33 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
       </div>
 
       {images.length > 1 ? (
-        <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-y-auto scroll-smooth pb-1 laptop:pt-1 justify-end laptop:justify-start px-4 laptop:px-0">
-          {images.map((image, index) => {
-            const imageSearchParams = new URLSearchParams(searchParams.toString());
-            imageSearchParams.set('image', index.toString());
+        <ScrollArea dir="rtl" className="w-full whitespace-nowrap scroll-smooth">
+          <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-x-auto scroll-smooth pb-1 laptop:pt-1 laptop:justify-start px-4 laptop:px-0">
+            {images.map((image, index) => {
+              const imageSearchParams = new URLSearchParams(searchParams.toString());
+              imageSearchParams.set('image', index.toString());
 
-            return (
-              <li key={image.src} className="h-20 w-20 min-w-[80px] border rounded-md">
-                <Link
-                  aria-label="Enlarge product image"
-                  href={createUrl(pathname, imageSearchParams)}
-                  scroll={false}
-                  className="h-full w-full"
-                >
-                  <GridTileImage
-                    alt={image.altText}
-                    src={`https://wsrv.nl/?url=${image.src}?default=${image.src}&l=9&af=''&il=''&n=-1&w=${80}&h=${80}&output=webp`}
-                    width={80}
-                    height={80}
-                  />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+              return (
+                <li key={image.src} className="h-20 w-20 min-w-[80px] border rounded-md">
+                  <Link
+                    aria-label="Enlarge product image"
+                    href={createUrl(pathname, imageSearchParams)}
+                    scroll={false}
+                    className="h-full w-full"
+                  >
+                    <GridTileImage
+                      alt={image.altText}
+                      src={`https://wsrv.nl/?url=${image.src}?default=${image.src}&l=9&af=''&il=''&n=-1&w=${80}&h=${80}&output=webp`}
+                      width={80}
+                      height={80}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       ) : null}
     </div>
   );

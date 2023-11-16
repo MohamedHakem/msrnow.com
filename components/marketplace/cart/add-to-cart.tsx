@@ -36,7 +36,7 @@ export function AddToCart({ variant, availableForSale }: { variant: marketplaceP
   console.log("canCheckout: ", canCheckout)
 
   return (
-    <div className="px-0 mt-6">
+    <div className="px-0 mt-2 laptop:mt-4">
       <button
         aria-label="Add item to cart"
         disabled={isPending || !availableForSale || !canCheckout}

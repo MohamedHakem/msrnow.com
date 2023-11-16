@@ -8,13 +8,16 @@ import { ProductDescription } from './product-description';
 import { ProductSeller } from './product-seller';
 
 export function ProductDetails({ product }: { product: marketplaceSingleProductType }) {
+  console.log("product: ", product)
+  console.log("product.ProductSizes && product.ProductSizes.length > 0 : ", product.ProductSizes && product.ProductSizes.length > 0)
+  console.log("product.ProductColors && product.ProductColors.length > 0 : ", product.ProductColors && product.ProductColors.length > 0)
 
   return (
-    <div className="flex flex-col mx-auto laptop:w-[40%] max-w-2xl px-4 pt-1 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-6 lg:pt-4">
+    <div className="flex flex-col w-full mx-auto laptop:w-[40%] max-w-2xl px-4 pt-1 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-6 lg:pt-4">
       <div><h1 className="text-2xl font-bold sm:leading-normal text-gray-900 sm:text-3xl">{product.title}</h1></div>
-      <div className="mt-4 lg:row-span-3 lg:mt-0">
+      <div className="mt-2 lg:row-span-3 lg:mt-0">
         <h2 className="sr-only">تفاصيل المنتج</h2>
-        <p className="text-3xl tracking-tight text-[#b12704] mt-2">{product.price} جنية </p>
+        <p className="text-3xl tracking-tight text-[#b12704] mt-0 laptop:mt-2">{product.price} جنية </p>
 
         {product.reviews.length > 0 ? (<div className="mt-6">
           <h3 className="sr-only">مراجعات العملاء</h3>
@@ -33,8 +36,9 @@ export function ProductDetails({ product }: { product: marketplaceSingleProductT
         }
 
         {product.ProductSizes && product.ProductSizes.length > 0
-          || product.ProductColors && product.ProductColors.length > 0 &&
+          || product.ProductColors && product.ProductColors.length > 0 ?
           < ColorSizeSelector sizes={product.ProductSizes} colors={product.ProductColors} />
+          : null
         }
 
         <AddToCart variant={product} availableForSale={product.published_status ? true : false} />

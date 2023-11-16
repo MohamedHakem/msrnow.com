@@ -37,7 +37,11 @@ export function ColorSizeSelector({ sizes, colors }: {
     if (type === "color") setColor(e)
   }
 
+  console.log("sizes: ", sizes, " - colors: ", colors)
+
   if (!sizes && !colors) return null
+
+
   return (
     <div className="flex flex-col gap-2 py-6">
 
