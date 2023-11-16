@@ -22,8 +22,8 @@ export default function Banner() {
           عندك منتج عايز تبيعه؟
         </p>
         <Link href={session.status === 'authenticated' ? "/dashboard/products" : "/login"}
-          className="flex flex-row gap-1 rounded-full px-4 py-[2px] text-sm font-bold text-white  
-           hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">
+          className="flex flex-row gap-1 px-4 py-[2px] text-sm font-bold text-white  
+          focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">
           ابدأ البيع مجانا
           <ArrowLeft color={"#fff"} className="font-bold" size={20} />
           {/* <span aria-hidden="true">&rarr;</span> */}

@@ -15,13 +15,14 @@ export default async function DashboardLayout({ children }: { children: ReactNod
   }
 
   return (
-    <div className="flex flex-col flex-auto gap-2 h-full mt-[-55px]">
+    // <div className="flex flex-col flex-auto gap-2 h-full mt-[-55px]">
+    <div className="flex flex-col flex-auto gap-2 h-full">
       <div className="flex flex-col w-full h-full">
         <div className="flex flex-col laptop:flex-row gap-2 laptop:gap-0 min-h-[calc(100dvh-88px)] transition-all duration-200 ease-in-out">
           <div className="laptop:border-l min-w-[200px] laptop:max-w-[200px] z-10">
             <DashboardSidebar />
           </div>
-          <div className="flex flex-col flex-auto gap-4 laptop:gap-8 h-full laptop:pl-4 animate-fadeIn pt-12 laptop:pt-0">
+          <div className="flex flex-col flex-auto gap-4 laptop:gap-4 h-full laptop:pl-4 animate-fadeIn">
             <div className="flex flex-row gap-1 px-4 laptop:pl-4">
               <BackButton />
               <ForwardButton />

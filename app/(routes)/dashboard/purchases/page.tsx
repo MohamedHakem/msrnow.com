@@ -40,11 +40,12 @@ export default async function MyPurchasesPage() {
   const myPurchases = await getMyPurchases(session.user.id)
 
   return (
-    <div className="w-full h-full flex flex-col gap-8 p-4">
+    // <div className="w-full max-w-screen-md m-auto h-full flex flex-col gap-8 p-4 laptop:mr-[calc((100vw - 768px) / 2 - 200px)]">
+    <div className="w-full max-w-screen-md mx-auto h-full flex flex-col gap-4 p-4 pt-0">
       <div className="flex flex-row justify-between">
         <h1 className="text-3xl font-bold">مشترياتك</h1>
       </div>
-      <div className="max-w-2xl">
+      <div className="max-w-full">
         <ul dir="rtl" className="grid grid-cols-1 gap-4">
           {myPurchases.length > 0 ?
             myPurchases.map((p, i) => (

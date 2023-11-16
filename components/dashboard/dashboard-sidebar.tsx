@@ -24,7 +24,8 @@ export default function DashboardSidebar() {
   }, [showMyShop])
 
   return (
-    <aside className="fixed top-18 right-0 w-full laptop:w-[199px] laptop:h-[calc(100vh-88px)] laptop:pt-4 border-b laptop:border-0 shadow-md laptop:shadow-none">
+    // <aside className="fixed top-18 right-0 w-full laptop:w-[199px] laptop:h-[calc(100vh-88px)] laptop:pt-4 border-b laptop:border-0 shadow-md laptop:shadow-none">
+    <aside className="sticky top-0 right-0 w-full laptop:w-[199px] laptop:pt-4 border-b laptop:border-0 shadow-md laptop:shadow-none">
       <div className="h-full laptop:px-4 laptop:pb-4 overflow-y-auto scroll-smooth no-scrollbar bg-white dark:bg-gray-800">
         <ul className="flex flex-row laptop:flex-col justify-between tablet:justify-start  gap-2 font-medium">
           <Link href={"/dashboard/purchases"}
