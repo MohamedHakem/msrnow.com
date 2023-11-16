@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export function ProductDescription({ description }: { description: string }) {
   const [open, setOpen] = useState("product-description")
-  console.log("description: ", description)
+  // console.log("description: ", description)
 
   return (
     <div className="mb-6 flex flex-col">

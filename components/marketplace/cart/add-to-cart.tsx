@@ -18,11 +18,11 @@ export function AddToCart({ variant, availableForSale }: { variant: marketplaceP
   const size = searchParams.get('size')
   const currentVariant = { ...variant, selectedSize: size ? size : undefined, selectedColor: color ? color : undefined }
   const canCheckout =
-    variant.ProductSizes ?
+    variant.ProductSizes && variant.ProductSizes.length > 0 ?
       size ?
         variant.ProductColors ? color ? true : false : true
         : false
-      : variant.ProductColors ? color ? true : false : true
+      : variant.ProductColors && variant.ProductColors.length > 0 ? color ? true : false : true
 
   // console.log("variant: ", variant);
   // console.log("currentVariant: ", currentVariant);
@@ -31,8 +31,12 @@ export function AddToCart({ variant, availableForSale }: { variant: marketplaceP
   // const defaultVariantId = variant.id;
   const cart = useCart()
 
+  console.log("isPending: ", isPending)
+  console.log("availableForSale: ", availableForSale)
+  console.log("canCheckout: ", canCheckout)
+
   return (
-    <div className="px-0">
+    <div className="px-0 mt-6">
       <button
         aria-label="Add item to cart"
         disabled={isPending || !availableForSale || !canCheckout}
