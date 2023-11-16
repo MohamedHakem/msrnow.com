@@ -40,7 +40,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
       </div>
 
       {images.length > 1 ? (
-        <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-y-auto scroll-smooth pb-1 laptop:pt-1 justify-end px-4 laptop:px-0">
+        <ul className="flex flex-row laptop:flex-col w-2/10 laptop:mb-0 gap-3 overflow-y-auto scroll-smooth pb-1 laptop:pt-1 justify-end laptop:justify-start px-4 laptop:px-0">
           {images.map((image, index) => {
             const imageSearchParams = new URLSearchParams(searchParams.toString());
             imageSearchParams.set('image', index.toString());
