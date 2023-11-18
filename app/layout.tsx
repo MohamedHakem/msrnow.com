@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </section>
                 <Footer />
               </main>
-              <BottomNavbar />
+              {/* <BottomNavbar /> */}
             </div>
           </div>
           <GoogleTagManager gtmId="GTM-MCQZ8JPF" />
