@@ -33,22 +33,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div dir="rtl" className="flex flex-col overflow-hidden">
             <div className="flex flex-col overflow-hidden h-screen">
               <Header />
-              {/* <main className="grid grid-cols-[1fr] w-full relative overflow-x-hidden overflow-y-auto h-[calc(100vh-88px)] mt-[56px]"> */}
-              {/* <main className="grid grid-cols-[1fr] w-full relative overflow-x-hidden overflow-y-auto h-screen mt-[64px]"> */}
-              {/* <main className="grid grid-cols-[1fr] w-full relative overflow-x-hidden overflow-y-auto h-[calc(100vh-96px)] mt-[64px]"> */}
-              {/* <main className="grid grid-cols-[1fr] w-full relative overflow-x-hidden overflow-y-auto h-[calc(100dvh-96px)] mt-[120px]"> */}
               <main className="flex flex-col w-full relative overflow-x-hidden overflow-y-auto h-[100vh]">
-                {/* <section className="flex flex-row flex-auto"> */}
-                {/* <section className="flex flex-row mb-16 mt-40 h-full"> */}
                 <section className="flex flex-row">
-                  {/* <div className="flex flex-col flex-auto gap-2 m-auto h-full animate-fadeIn"> */}
                   <div className="flex flex-col gap-2 m-auto animate-fadeIn w-full">
                     {children}
                   </div>
                 </section>
                 <Footer />
               </main>
-              {/* <BottomNavbar /> */}
             </div>
           </div>
           <GoogleTagManager gtmId="GTM-MCQZ8JPF" />

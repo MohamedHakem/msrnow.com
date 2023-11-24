@@ -36,7 +36,7 @@ export function ProductSeller({ seller, productCount }: {
                     width={80}
                     height={80}
                     alt={seller.name ? seller.name : "msrnow.com seller"}
-                    className="rounded-lg"
+                    className="border rounded-full bg-secondary w-20 h-20"
                   />
                 </div> : <div className="border rounded-full bg-secondary w-20 h-20"></div>
                 }
@@ -61,7 +61,9 @@ export function ProductSeller({ seller, productCount }: {
               </div>
               <div className="mt-4">
                 <button className="bg-[#0277bd] rounded-xl w-full p-3 text-white font-bold text-base" onClick={() => setShowPhone(!showPhone)}>اتصل</button>
-                {showPhone && <p className="w-full text-center pt-3">{seller.phone_number}</p>}
+                {showPhone ? <p className="w-full text-center pt-3">{seller.phone_number}</p>
+                  : <p className="w-full text-center pt-3">رقم الهاتف لهذا البائع غير متاح</p>
+                }
               </div>
             </div>
           </AccordionContent>
