@@ -4,11 +4,11 @@ import { defaultSort, sorting } from '@/lib/marketplace/constants';
 import { db } from '@/lib/db';
 import FilterList from '@/components/marketplace/layout/search/filter';
 import { Suspense } from 'react';
-import MarketplaceFilter from '../components/marketplace-filter';
-import { ProductSeller } from '@/components/marketplace/product/product-seller';
+import MarketplaceFilter from '@/app/(routes)/shop/components/marketplace-filter';
+// import { ProductSeller } from '@/components/marketplace/product/product-seller';
 import Image from 'next/image';
 import { TrendingUp } from 'lucide-react';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 export const metadata = {
   title: 'أحذية مقاسات خاصة - بيع واشتري مجانا',
