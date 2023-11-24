@@ -9,8 +9,8 @@ export function ProductDescription({ description }: { description: string }) {
 
   return (
     <div className="mb-6 flex flex-col">
-      <Accordion type="single" collapsible className="" value={open} onValueChange={setOpen}>
-        <AccordionItem value="product-description">
+      <Accordion type="single" collapsible className="border rounded-xl p-2" value={open} onValueChange={setOpen}>
+        <AccordionItem value="product-description" className="border-b-0">
           <AccordionTrigger className="text-lg h-[40px] py-0 hover:bg-gray-100 hover:no-underline rounded-md p-2 font-semibold no-underline">
             <span className="text-xl font-bold">الوصف</span>
           </AccordionTrigger>
