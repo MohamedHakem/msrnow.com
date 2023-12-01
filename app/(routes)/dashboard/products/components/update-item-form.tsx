@@ -284,20 +284,21 @@ export default function UpdateItemForm({ productCategories, product }: {
   async function onSubmit(values: yup.InferType<typeof formSchema>) {
     setLoading(true);
 
-    console.log("[onSubmit] productImages: ", productImages)
-    console.log("imageToDelete: ", imageToDelete)
-    const deleteImgRes = await deleteImage(imageToDelete)
-    console.log("deleteImgRes: ", deleteImgRes)
-    if(deleteImgRes.success) {
-      router.refresh();
-      // router.push('/dashboard/products?add=success')
-      toast.success("تم حذف الصورة بنجاح")
+    if (imageToDelete != "") {
+      console.log("imageToDelete: ", imageToDelete)
+      const deleteImgRes = await deleteImage(imageToDelete)
+      console.log("deleteImgRes: ", deleteImgRes)
+      if (deleteImgRes.success) {
+        router.refresh();
+        router.push('/dashboard/products?add=success')
+        toast.success("تم حذف الصورة بنجاح")
+      }
     }
-    
+
     if (!selectedSizeValues.length) toast.error("من فضلك اختر المقاسات المتاحة للمنتج")
     if (!selectedColorValues.length) toast.error("من فضلك اختر الألوان المتاحة للمنتج")
     if (!productImages.length) toast.error("لم تضف أي صور للمنتج")
-    // await callUpdateProduct(values)
+    await callUpdateProduct(values)
     setLoading(false);
   }
 

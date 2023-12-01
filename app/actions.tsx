@@ -6,8 +6,7 @@ import { User, getServerSession } from 'next-auth';
 import { OrderStatus } from '@prisma/client';
 import { UTApi } from 'uploadthing/server';
 
-// export const utapi = new UTApi();
-// const utapi = new UTApi();
+const utapi = new UTApi();
 
 export async function increment(slug: string, type: string) {
   slug = decodeURIComponent(slug);
@@ -236,8 +235,6 @@ export async function updateUser(userValues: userType) {
 }
 
 export async function deleteImage(url: string) {
-  const utapi = new UTApi();
-
   console.log("[deleteImage action] url: ", url)
 
   const res = await utapi.deleteFiles(url.replace('https://utfs.io/f/', ''));
