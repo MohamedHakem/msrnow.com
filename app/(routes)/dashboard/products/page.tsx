@@ -61,16 +61,9 @@ export default async function ProductsPage() {
       </div>
       <div className="">
         <ul dir="rtl" className="grid grid-cols-1">
-          {/* {myProducts.length === 0 ? (<>لا يوجد طلبات حتي الان</>) : (
-            <ul dir="rtl" className="grid grid-cols-1">
-              <DataTable columns={columns} data={formattedProducts} />
-            </ul>
-          )} */}
-
           <ul dir="rtl" className="grid grid-cols-1">
             <DataTable columns={columns} data={formattedProducts} />
           </ul>
-
         </ul>
       </div>
     </div>

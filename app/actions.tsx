@@ -4,6 +4,10 @@ import { db } from '@/lib/db';
 import { AddProductType } from '@/types';
 import { User, getServerSession } from 'next-auth';
 import { OrderStatus } from '@prisma/client';
+import { UTApi } from 'uploadthing/server';
+
+// export const utapi = new UTApi();
+// const utapi = new UTApi();
 
 export async function increment(slug: string, type: string) {
   slug = decodeURIComponent(slug);
@@ -48,6 +52,9 @@ export async function AddProduct(productValues: AddProductType, product_images: 
   if (session?.user?.email) {
     const user = await db.user.findUnique({ where: { email: session?.user?.email } })
     if (user && user.id) {
+      if (product_images.length === 0) {
+        product_images.push('https://utfs.io/f/713dd1ef-8781-4374-931a-b41f88e9a307-xw39tb.webp')
+      }
       const newProduct = db.product.create({
         data: {
           ...productValues,
@@ -57,6 +64,39 @@ export async function AddProduct(productValues: AddProductType, product_images: 
           images: {
             create: [...(product_images.map(img => ({ url: img })))]
           },
+        }
+      })
+      return newProduct
+    }
+    return false
+  }
+  return false
+}
+
+// export async function updateProduct(productId: number, productValues: AddProductType, product_images: { url: string }[], selectedSizeIds: number[], selectedColorIds: number[]) {
+export async function updateProduct(productId: number, productValues: AddProductType, selectedSizeIds: number[], selectedColorIds: number[]) {
+  console.log("[actions: updateProduct] selectedSizeIds: ", selectedSizeIds, " - selectedColorIds: ", selectedColorIds)
+  const session = await getServerSession()
+  console.log("getServerSession: ", session)
+  if (session?.user?.email) {
+    const user = await db.user.findUnique({ where: { email: session?.user?.email } })
+    if (user && user.id) {
+      // no need to re-add images if they're the same, check and filter existing imgs and only add/create&connect the new ones
+      // images: {
+      //   create: [...(product_images.map(img => ({ url: img.url })))] // this creates and connects new rows/images
+      // },
+
+      // if (product_images.length === 0) {
+      //   product_images.push({ url: 'https://utfs.io/f/12d44b53-3ce2-42a7-8968-a7671068d557-1w4bsm.jpg' })
+      // }
+
+      const newProduct = db.product.update({
+        where: { id: productId },
+        data: {
+          ...productValues,
+          userId: user.id,
+          ProductSizes: { connect: [...(selectedSizeIds.map(sizeId => ({ id: sizeId })))] },
+          ProductColors: { connect: [...(selectedColorIds.map(colorId => ({ id: colorId })))] },
         }
       })
       return newProduct
@@ -193,4 +233,15 @@ export async function updateUser(userValues: userType) {
     return false
   }
   return false
+}
+
+export async function deleteImage(url: string) {
+  const utapi = new UTApi();
+
+  console.log("[deleteImage action] url: ", url)
+
+  const res = await utapi.deleteFiles(url.replace('https://utfs.io/f/', ''));
+  console.log("🚀 ~ file: actions.tsx:241 ~ deleteImage ~ res:", res)
+
+  return res
 }

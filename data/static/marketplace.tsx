@@ -27,12 +27,12 @@ export const MarketplaceNavItems = [
   { title: 'رياضة', url: 'sports' },
   { title: 'فيديو', url: 'videos' },
   { title: 'أكلات', url: 'food' },
-  { title: 'بيع واشتري ببلاش', url: 'marketplace' }
+  { title: 'بيع واشتري ببلاش', url: 'shop' }
 ]
 
 export const SiteMainNavItems = [
   { title: 'أهم الأخبار', url: 'news' },
   { title: 'دليل المنتج المصري', url: 'made-in-egypt' },
-  { title: 'بيع واشتري', url: 'marketplace' }
+  { title: 'بيع واشتري', url: 'shop' }
 ]
 

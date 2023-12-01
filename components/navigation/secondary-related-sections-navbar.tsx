@@ -11,7 +11,7 @@ export default function SecondaryRelatedSections({ marketplaceSections, newsSect
 }) {
   const pathname = usePathname()
 
-  console.log("newsSections: ", newsSections);
+  // console.log("newsSections: ", newsSections);
 
   return (
     <ScrollArea dir="rtl" className="laptop:hidden w-full whitespace-nowrap justify-center items-center">

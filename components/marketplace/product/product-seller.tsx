@@ -29,10 +29,10 @@ export function ProductSeller({ seller, productCount }: {
           <AccordionContent className="pb-0 px-2" defaultChecked={true}>
             <div dir="rtl" className="flex h-full flex-col gap-4 overflow-hidden pt-4 p-2">
               <div className="flex gap-4">
-                {seller.image ? <div className="flex w-[80px]">
+                {seller.image ? <div className="flex w-[80px] h-[80px]">
                   <Image
                     unoptimized
-                    src={seller.image}
+                    src={`https://wsrv.nl/?url=${seller.image}&default=${seller.image}&l=9&af=''&il=''&n=-1&w=160&h=160&output=webp`}
                     width={80}
                     height={80}
                     alt={seller.name ? seller.name : "msrnow.com seller"}
@@ -43,7 +43,7 @@ export function ProductSeller({ seller, productCount }: {
 
                 <div className="flex flex-col">
                   <p className="flex-1 text-2xl truncate line-clamp-2 font-semibold">{seller.name}</p>
-                  <p className="flex flex-1 flex-row gap-1 text-lg truncate line-clamp-2 font-normal pb-2 items-center">
+                  <p className="flex flex-1 flex-row gap-1 text-lg truncate line-clamp-2 font-normal pb-4 items-center">
                     <span className="pl-1">{productCount}</span>
                     <span className="pl-2">منتجات</span>
                     <TrendingUp color={"#00c600"} />

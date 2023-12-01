@@ -4,9 +4,9 @@ import { createUploadthing, type FileRouter } from 'uploadthing/next';
 const f = createUploadthing();
 
 export const ourFileRouter = {
-  productImageUploader: f({ 
+  productImageUploader: f({
     image: { maxFileSize: '4MB', maxFileCount: 10 },
-    pdf: { maxFileSize: '2MB', maxFileCount: 1 }  
+    pdf: { maxFileSize: '2MB', maxFileCount: 1 }
   })
     .middleware(({ req }) => auth({ req }, 'marketplace', 'productImage'))
     .onUploadComplete(() => {}),
@@ -19,6 +19,12 @@ export const ourFileRouter = {
   // pdfUploader: f({ pdf: { maxFileSize: '2MB', maxFileCount: 1 } })
   //   .middleware(({ req }) => auth({ req }, 'marketplace', 'pdfUploader'))
   //   .onUploadComplete(() => {})
+  productImageDeleter: f({
+    image: { maxFileSize: '4MB', maxFileCount: 10 },
+    pdf: { maxFileSize: '2MB', maxFileCount: 1 }
+  })
+    .middleware(({ req }) => auth({ req }, 'marketplace', 'productImage'))
+    .onUploadComplete(() => {})
 };
 
 const auth = async (req: { req: NextRequest }, section: string, type: string) => {

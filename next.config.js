@@ -5,7 +5,7 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react', '@heroicons/react', '@headlessui/react'],
-    ppr: true
+    // ppr: true
     // serverComponentsExternalPackages: ["bcrypt"]
   },
   images: {
