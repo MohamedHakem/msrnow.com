@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import LoadingDots from '@/components/news/loading-dots';
 import { Checkbox } from '@/components/ui/checkbox';
 import toast from 'react-hot-toast';
-import { AddProductSlug, deleteImage, updateProduct } from '@/app/actions';
+import { AddProductSlug, deleteImage, deleteProduct, updateProduct } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { sanitizeSlug } from '@/utils/sanitizeSlug';
 import { UploadDropzone } from '@/lib/uploadthing';
@@ -302,13 +302,28 @@ export default function UpdateItemForm({ productCategories, product }: {
     setLoading(false);
   }
 
-  async function onImageDelete(url: string) {
-    console.log("[onImageDelete] url: ", url);
-    const res = await deleteImage(url)
-    console.log("[onImageDelete] deleteImage res: ", res)
+  async function onDelete() {
+    console.log("productId: ", product.id)
 
-    return res
+    const deleteProductRes = await deleteProduct(product.id)
+    console.log("🚀 callDeleteProduct ~ deleteProductRes:", deleteProductRes)
+
+    if (!!deleteProductRes) {
+      router.refresh();
+      router.push('/dashboard/products?delete=success')
+      toast.success("تم حذف الإعلان بنجاح")
+    } else {
+      toast.error("حدث خطأ. راجع بياناتك وحاول مرة أخري")
+    }
   }
+
+  // async function onImageDelete(url: string) {
+  //   console.log("[onImageDelete] url: ", url);
+  //   const res = await deleteImage(url)
+  //   console.log("[onImageDelete] deleteImage res: ", res)
+
+  //   return res
+  // }
 
   return (
     <div className="py-4 max-w-screen-tablet m-auto">
@@ -773,7 +788,14 @@ export default function UpdateItemForm({ productCategories, product }: {
             </Button>
           </form>
         </Form>
-      </div >
+      </div>
+
+      <div className="my-8">
+        <div className="flex justify-between items-center p-10 bg-red-200 w-full">
+          <span className="text-red-700 font-semibold">أحذف المنتج نهائيا؟</span>
+          <Button onClick={onDelete} className="bg-red-500 py-2 px-3 rounded-md text-white active:scale-95 duration-100 ease-in-out transition-all">احذف</Button>
+        </div>
+      </div>
     </div >
   )
 }

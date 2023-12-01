@@ -89,7 +89,7 @@ export async function updateProduct(productId: number, productValues: AddProduct
       //   product_images.push({ url: 'https://utfs.io/f/12d44b53-3ce2-42a7-8968-a7671068d557-1w4bsm.jpg' })
       // }
 
-      const newProduct = db.product.update({
+      const updatedProduct = db.product.update({
         where: { id: productId },
         data: {
           ...productValues,
@@ -98,7 +98,22 @@ export async function updateProduct(productId: number, productValues: AddProduct
           ProductColors: { connect: [...(selectedColorIds.map(colorId => ({ id: colorId })))] },
         }
       })
-      return newProduct
+      return updatedProduct
+    }
+    return false
+  }
+  return false
+}
+
+export async function deleteProduct(productId: number) {
+  console.log("[actions: deleteProduct] productId: ", productId)
+  const session = await getServerSession()
+  console.log("getServerSession: ", session)
+  if (session?.user?.email) {
+    const user = await db.user.findUnique({ where: { email: session?.user?.email } })
+    if (user && user.id) {
+      const deletedProduct = db.product.delete({ where: { id: productId } })
+      return deletedProduct
     }
     return false
   }
