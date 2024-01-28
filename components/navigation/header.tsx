@@ -55,7 +55,7 @@ export const Header = async () => {
         </div>
       </header>
 
-      <MobileMainSections />
+{/*       <MobileMainSections /> */}
       <SecondaryRelatedSections
         marketplaceSections={marketplaceSectionsNames}
         newsSections={newsSectionsNames}
