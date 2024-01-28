@@ -42,10 +42,10 @@ export const Header = async () => {
               </Suspense>
             </div>
             <div className="w-fit m-auto">
-              <div className="flex gap-3">
-                <Suspense fallback={<OpenCart />}>
+              <div className="flex">
+{/*                 <Suspense fallback={<OpenCart />}>
                   <Cart />
-                </Suspense>
+                </Suspense> */}
 
                 <MobileNav />
               </div>
