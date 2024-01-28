@@ -21,7 +21,7 @@ export default function Banner() {
           {/* ابدأ البيع معنا وليك متجر الكتروني مجاني! */}
           عندك منتج عايز تبيعه؟
         </p>
-        <Link href={session.status === 'authenticated' ? "/dashboard/products" : "/login"}
+        <Link href={"https://slty.shop"}
           className="flex flex-row gap-1 px-4 py-[2px] text-sm font-bold text-white  
           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">
           ابدأ البيع مجانا
