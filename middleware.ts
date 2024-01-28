@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === '/') {
     const url = request.nextUrl.clone();
     // url.pathname = `/marketplace`;
-    url.pathname = `/shop`;
+    url.pathname = `/news`;
     return NextResponse.rewrite(url);
   }
 
