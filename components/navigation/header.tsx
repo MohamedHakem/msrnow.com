@@ -24,7 +24,7 @@ export const Header = async () => {
         <div className="flex flex-row items-center w-full m-auto justify-between animate-fadeIn transition-all duration-50 ease-in-out">
           <HeaderSiteSectionName />
 
-          <div className="hidden laptop:flex flex-auto animate-fadeIn h-16 absolute w-[100dvw]">
+{/*           <div className="hidden laptop:flex flex-auto animate-fadeIn h-16 absolute w-[100dvw]">
             <div className="laptop:flex flex-row justify-center m-auto">
               {SiteMainNavItems.map((s) => (
                 <Link key={s.title} href={`/${s.url}`}
@@ -33,7 +33,7 @@ export const Header = async () => {
                 </Link>
               ))}
             </div>
-          </div>
+          </div> */}
 
           <div className="flex w-auto animate-fadeIn h-full z-10 gap-3">
             <div className="w-full m-auto">
